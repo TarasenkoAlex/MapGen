@@ -7,4 +7,4 @@ install:
   
 script:   # the following commands are just examples, use whatever your build process requires
   - xbuild /p:Configuration=Release MapGen.sln
-  - nunit-console MapGen.Model.Tests/bin/Debug/MapGen.Model.Tests.dll
+  - nunit-console ./MapGen.Model.Tests/bin/Release/MapGen.Model.Tests.dll
