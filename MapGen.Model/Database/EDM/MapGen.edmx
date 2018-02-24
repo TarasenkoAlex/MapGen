@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище MapGenModel" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=&quot;C:\Users\a.tarasenko\Documents\Visual Studio 2015\Projects\MapGen\MapGen.Model\Database\DbFiles\MapGen.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Maps">
+          <Key>
+            <PropertyRef Name="Idm" />
+          </Key>
+          <Property Name="Idm" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Width" Type="integer" Nullable="false" />
+          <Property Name="Length" Type="integer" Nullable="false" />
+          <Property Name="Scale" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Points">
+          <Key>
+            <PropertyRef Name="Idp" />
+          </Key>
+          <Property Name="Idp" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="X" Type="real" Nullable="false" />
+          <Property Name="Y" Type="real" Nullable="false" />
+          <Property Name="Depth" Type="real" Nullable="false" />
+          <Property Name="Idm" Type="integer" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Points_0_0">
+          <End Role="Maps" Type="Self.Maps" Multiplicity="1" />
+          <End Role="Points" Type="Self.Points" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maps">
+              <PropertyRef Name="Idm" />
+            </Principal>
+            <Dependent Role="Points">
+              <PropertyRef Name="Idm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище MapGenModelContainer">
+          <EntitySet Name="Maps" EntityType="Self.Maps" store:Type="Tables" />
+          <EntitySet Name="Points" EntityType="Self.Points" store:Type="Tables" />
+          <AssociationSet Name="FK_Points_0_0" Association="Self.FK_Points_0_0">
+            <End Role="Maps" EntitySet="Maps" />
+            <End Role="Points" EntitySet="Points" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MapGenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Map">
+          <Key>
+            <PropertyRef Name="Idm" />
+          </Key>
+          <Property Name="Idm" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Width" Type="Int64" Nullable="false" />
+          <Property Name="Length" Type="Int64" Nullable="false" />
+          <Property Name="Scale" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Points" Relationship="Self.FK_Points_0_0" FromRole="Maps" ToRole="Points" />
+        </EntityType>
+        <EntityType Name="Point">
+          <Key>
+            <PropertyRef Name="Idp" />
+          </Key>
+          <Property Name="Idp" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="X" Type="Double" Nullable="false" />
+          <Property Name="Y" Type="Double" Nullable="false" />
+          <Property Name="Depth" Type="Double" Nullable="false" />
+          <Property Name="Idm" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Map" Relationship="Self.FK_Points_0_0" FromRole="Points" ToRole="Maps" />
+        </EntityType>
+        <Association Name="FK_Points_0_0">
+          <End Role="Maps" Type="Self.Map" Multiplicity="1" />
+          <End Role="Points" Type="Self.Point" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maps">
+              <PropertyRef Name="Idm" />
+            </Principal>
+            <Dependent Role="Points">
+              <PropertyRef Name="Idm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MapGenEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Maps" EntityType="Self.Map" />
+          <EntitySet Name="Points" EntityType="Self.Point" />
+          <AssociationSet Name="FK_Points_0_0" Association="Self.FK_Points_0_0">
+            <End Role="Maps" EntitySet="Maps" />
+            <End Role="Points" EntitySet="Points" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище MapGenModelContainer" CdmEntityContainer="MapGenEntities">
+          <EntitySetMapping Name="Maps">
+            <EntityTypeMapping TypeName="MapGenModel.Map">
+              <MappingFragment StoreEntitySet="Maps">
+                <ScalarProperty Name="Idm" ColumnName="Idm" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Scale" ColumnName="Scale" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Points">
+            <EntityTypeMapping TypeName="MapGenModel.Point">
+              <MappingFragment StoreEntitySet="Points">
+                <ScalarProperty Name="Idp" ColumnName="Idp" />
+                <ScalarProperty Name="X" ColumnName="X" />
+                <ScalarProperty Name="Y" ColumnName="Y" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="Idm" ColumnName="Idm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
