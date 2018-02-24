@@ -1,5 +1,5 @@
 language: csharp
-solution: MapGeneralization.sln
+solution: MapGen.sln
 
 install:
   - sudo apt-get install nunit-console
