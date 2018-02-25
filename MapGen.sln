@@ -23,14 +23,19 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A154B973-BA1D-4591-A33E-A339ED549957}.Debug|x64.ActiveCfg = Debug|x64
 		{A154B973-BA1D-4591-A33E-A339ED549957}.Release|x64.ActiveCfg = Release|x64
+		{A154B973-BA1D-4591-A33E-A339ED549957}.Release|x64.Build.0 = Release|x64
 		{D10A7B6E-46E2-4B9D-A352-8CE165071FBC}.Debug|x64.ActiveCfg = Debug|x64
 		{D10A7B6E-46E2-4B9D-A352-8CE165071FBC}.Release|x64.ActiveCfg = Release|x64
+		{D10A7B6E-46E2-4B9D-A352-8CE165071FBC}.Release|x64.Build.0 = Release|x64
 		{897BE92B-3126-42BF-8EFB-9C99CD48A35F}.Debug|x64.ActiveCfg = Debug|x64
 		{897BE92B-3126-42BF-8EFB-9C99CD48A35F}.Release|x64.ActiveCfg = Release|x64
+		{897BE92B-3126-42BF-8EFB-9C99CD48A35F}.Release|x64.Build.0 = Release|x64
 		{B0DB7238-E007-434C-AEFD-F721108DF636}.Debug|x64.ActiveCfg = Debug|x64
 		{B0DB7238-E007-434C-AEFD-F721108DF636}.Release|x64.ActiveCfg = Release|x64
+		{B0DB7238-E007-434C-AEFD-F721108DF636}.Release|x64.Build.0 = Release|x64
 		{7A7CC250-694F-46B0-8D1A-162EF5CB463E}.Debug|x64.ActiveCfg = Debug|x64
 		{7A7CC250-694F-46B0-8D1A-162EF5CB463E}.Release|x64.ActiveCfg = Release|x64
+		{7A7CC250-694F-46B0-8D1A-162EF5CB463E}.Release|x64.Build.0 = Release|x64
 		{737ABA83-D969-4C1D-9BB8-193CE2BDF716}.Debug|x64.ActiveCfg = Debug
 		{737ABA83-D969-4C1D-9BB8-193CE2BDF716}.Release|x64.ActiveCfg = Release
 	EndGlobalSection
