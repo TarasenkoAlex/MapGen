@@ -17,22 +17,22 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MapGen.Setup", "MapGen.Setu
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A154B973-BA1D-4591-A33E-A339ED549957}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A154B973-BA1D-4591-A33E-A339ED549957}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D10A7B6E-46E2-4B9D-A352-8CE165071FBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D10A7B6E-46E2-4B9D-A352-8CE165071FBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{897BE92B-3126-42BF-8EFB-9C99CD48A35F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{897BE92B-3126-42BF-8EFB-9C99CD48A35F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0DB7238-E007-434C-AEFD-F721108DF636}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0DB7238-E007-434C-AEFD-F721108DF636}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A7CC250-694F-46B0-8D1A-162EF5CB463E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A7CC250-694F-46B0-8D1A-162EF5CB463E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{737ABA83-D969-4C1D-9BB8-193CE2BDF716}.Debug|Any CPU.ActiveCfg = Debug
-		{737ABA83-D969-4C1D-9BB8-193CE2BDF716}.Release|Any CPU.ActiveCfg = Release
+		{A154B973-BA1D-4591-A33E-A339ED549957}.Debug|x64.ActiveCfg = Debug|x64
+		{A154B973-BA1D-4591-A33E-A339ED549957}.Release|x64.ActiveCfg = Release|x64
+		{D10A7B6E-46E2-4B9D-A352-8CE165071FBC}.Debug|x64.ActiveCfg = Debug|x64
+		{D10A7B6E-46E2-4B9D-A352-8CE165071FBC}.Release|x64.ActiveCfg = Release|x64
+		{897BE92B-3126-42BF-8EFB-9C99CD48A35F}.Debug|x64.ActiveCfg = Debug|x64
+		{897BE92B-3126-42BF-8EFB-9C99CD48A35F}.Release|x64.ActiveCfg = Release|x64
+		{B0DB7238-E007-434C-AEFD-F721108DF636}.Debug|x64.ActiveCfg = Debug|x64
+		{B0DB7238-E007-434C-AEFD-F721108DF636}.Release|x64.ActiveCfg = Release|x64
+		{7A7CC250-694F-46B0-8D1A-162EF5CB463E}.Debug|x64.ActiveCfg = Debug|x64
+		{7A7CC250-694F-46B0-8D1A-162EF5CB463E}.Release|x64.ActiveCfg = Release|x64
+		{737ABA83-D969-4C1D-9BB8-193CE2BDF716}.Debug|x64.ActiveCfg = Debug
+		{737ABA83-D969-4C1D-9BB8-193CE2BDF716}.Release|x64.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
