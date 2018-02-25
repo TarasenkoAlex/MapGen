@@ -1,13 +1,14 @@
 ﻿using System;
 using MapGen.Model.Database;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace MapGen.Model.Tests.Database
 {
-    [TestClass]
+    [TestFixture]
     public class UnitOfWorkTest
     {
-        [TestMethod]
+        [Test]
         public void UnitOfWork_init_success()
         {
             // Arrange.

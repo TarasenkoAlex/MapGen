@@ -6,16 +6,18 @@ using MapGen.Model.Database.EDM;
 using MapGen.Model.Database.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NUnit.Framework;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace MapGen.Model.Tests.Database
 {
-    [TestClass]
+    [TestFixture]
     public class MapsRepositoryTest
     {
         private List<Map> _maps;
         private Mock<MapGenEntities> _mockContext;
 
-        [TestInitialize]
+        [SetUp]
         public void Initialization()
         {
             _maps = new List<Map>()
@@ -55,7 +57,7 @@ namespace MapGen.Model.Tests.Database
             _mockContext.Setup(c => c.Maps).Returns(mockSet.Object);
         }
 
-        [TestMethod]
+        [Test]
         public void MapsRepository_init_success()
         {
             // Arrange.
@@ -66,7 +68,7 @@ namespace MapGen.Model.Tests.Database
             Assert.IsNotNull(mapsRepository);
         }
 
-        [TestMethod]
+        [Test]
         public void MapsRepository_GetAll_init_3_elements_result_3_elements()
         {
             // Arrange.
@@ -90,7 +92,7 @@ namespace MapGen.Model.Tests.Database
                 el.Scale == 10000));
         }
 
-        [TestMethod]
+        [Test]
         public void MapsRepository_Create_1_element_result_is_added()
         {
             // Arrange.
@@ -114,7 +116,7 @@ namespace MapGen.Model.Tests.Database
                 el.Scale == 1200).ToList().Count);
         }
 
-        [TestMethod]
+        [Test]
         public void MapsRepository_Delete_1_element_result_is_deleted()
         {
             // Arrange.
