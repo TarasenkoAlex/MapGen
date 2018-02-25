@@ -2,9 +2,9 @@ language: csharp
 solution: MapGen.sln
 
 install:
-  - sudo apt-get install nunit-console
   - nuget restore MapGen.sln
+  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
   
-script:   # the following commands are just examples, use whatever your build process requires
-  - xbuild /p:Configuration=Debug MapGen.sln
-  - nunit-console ./MapGen.Model.Tests/bin/Debug/MapGen.Model.Tests.dll
+script:
+  - xbuild /p:Configuration=Release MapGen.sln
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./MapGen.Model.Tests/bin/Release/MapGen.Model.Tests.dll
