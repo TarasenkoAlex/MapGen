@@ -1,7 +1,5 @@
-﻿using System;
-using MapGen.Model.Database;
+﻿using MapGen.Model.Database;
 using NUnit.Framework;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace MapGen.Model.Tests.Database
 {

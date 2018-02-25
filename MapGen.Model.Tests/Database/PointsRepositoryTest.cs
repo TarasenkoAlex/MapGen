@@ -4,10 +4,8 @@ using System.Linq;
 using EntityFramework.MoqHelper;
 using MapGen.Model.Database.EDM;
 using MapGen.Model.Database.Repository;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using NUnit.Framework;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace MapGen.Model.Tests.Database
 {
@@ -68,7 +66,7 @@ namespace MapGen.Model.Tests.Database
             Assert.IsNotNull(pointsRepository);
         }
 
-        [TestMethod]
+        [Test]
         public void PointsRepository_GetAll_init_3_elements_result_3_elements()
         {
             // Arrange.
