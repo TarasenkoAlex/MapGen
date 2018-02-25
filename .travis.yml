@@ -6,5 +6,5 @@ install:
   - nuget restore MapGen.sln
   
 script:
-  - xbuild /p:Configuration=Debug MapGen.sln
-  - nunit-console ./MapGen.Model.Tests/bin/Debug/MapGen.Model.Tests.dll
+  - xbuild /p:Configuration=Release MapGen.sln
+  - nunit-console ./MapGen.Model.Tests/bin/Release/MapGen.Model.Tests.dll
