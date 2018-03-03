@@ -1,4 +1,5 @@
 ﻿using MapGen.Model.Database;
+using MapGen.Model.Database.UnitOfWork;
 using NUnit.Framework;
 
 namespace MapGen.Model.Tests.Database

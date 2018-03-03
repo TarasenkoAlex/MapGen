@@ -7,13 +7,14 @@ using MapGen.View.Source.Classes;
 using MapGen.View.Source.Interfaces;
 using SharpGL;
 using SharpGL.SceneGraph;
+using MapGenCamera = MapGen.View.Source.Classes.MapGenCamera;
 
 namespace MapGen.View.GUI.Windows
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, IMainWindow
+    public partial class MainWindow : Window, IMain
     {
 
         #region Region properties.
@@ -57,7 +58,7 @@ namespace MapGen.View.GUI.Windows
                 _triangleCollecton = _triangleCollectionMaker.CreateTriangleCollectionMap(_regMatrix);
         }
 
-        public void ShowLoadingMap()
+        public void DrawMap()
         {
             _isDrawMap = true;
         }
@@ -77,7 +78,7 @@ namespace MapGen.View.GUI.Windows
 
         private DrawingObjects.SurfaceMaker _surfaceMaker;
 
-        private Camera _camera;
+        private MapGenCamera _camera;
 
         private Timer _cameraTimer;
 
@@ -90,7 +91,7 @@ namespace MapGen.View.GUI.Windows
         {
             InitializeComponent();
             InitializeFields();
-            InitOpenGL();
+            InitOpenGl();
             BindingEventsHeadButtonWindow();
             BindingEventMenuButtonWindow();
         }
@@ -116,7 +117,7 @@ namespace MapGen.View.GUI.Windows
         {
             // Обновляем взгляд камеры.
             OpenGL gl = OpenGlControl.OpenGL;
-            _camera.Look(ref gl);
+            //_camera.Look(gl);
         }
 
         private void BindingEventMenuButtonWindow()
@@ -178,15 +179,19 @@ namespace MapGen.View.GUI.Windows
                 //  Восстанавливает начальную точку сисетмы координат.
                 gl.LoadIdentity();
 
-                //// Обновляем взгляд камеры.
-                _camera.Look(ref gl);
-
+                // Обновляем взгляд камеры.
+                _camera.Look(gl);
+                
                 gl.PushMatrix();
 
                 // Отображаем карту.
                 _surfaceMaker.DrawSurface(gl, ref _triangleCollecton);
 
                 gl.PopMatrix();
+
+                gl.Flush();
+
+                OpenGlControl.InvalidateVisual();
 
                 // Запрещаем отрисовку.
                 _isDrawMap = false;
@@ -216,33 +221,31 @@ namespace MapGen.View.GUI.Windows
         /// <summary>
         /// Инициализация OpenGL.
         /// </summary>
-        private void InitOpenGL()
+        private void InitOpenGl()
         {
-            // Получаемт ссылку на элемент управления OpenGL
+            // Получаемт ссылку на элемент управления OpenGl
             OpenGL gl = OpenGlControl.OpenGL;
 
-            //// инициализация Glut 
-            ////gl.glutInit();
-            ////gl.glutInitDisplayMode(Glut.GLUT_RGB | Glut.GLUT_DOUBLE | Glut.GLUT_DEPTH);
-
-            //// очитка окна 
-            //gl.ClearColor(255, 255, 255, 1);
-
-            //// установка порта вывода в соотвествии с размерами элемента Screen 
-            //gl.Viewport(0, 0, (int)OpenGlControl.Width, (int)OpenGlControl.Height);
-
-
-            //// настройка проекции 
+            // Установка порта вывода в соотвествии с размерами элемента Screen.
+            gl.Viewport(0, 0, (int)OpenGlControl.Width, (int)OpenGlControl.Height);
+            
+            // Настройка проекции. 
             gl.MatrixMode(OpenGL.GL_PROJECTION);
             gl.LoadIdentity();
             gl.Perspective(120, (float)OpenGlControl.Width / (float)OpenGlControl.Height, 0.1, 200);
             gl.MatrixMode(OpenGL.GL_MODELVIEW);
             gl.LoadIdentity();
 
-            //// настройка параметров OpenGL для визуализации 
-            //gl.Enable(OpenGL.GL_DEPTH_TEST);
+            // Настройка параметров OpenGl для визуализации.
+            gl.Enable(OpenGL.GL_DEPTH_TEST);
 
-            _camera = new Camera(0.0f, 0.0f, 0.75f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+            _camera = new MapGenCamera
+            {
+                Target = new Vertex(0.0f, 0.0f, 0.0f),
+                Position = new Vertex(0.0f, 0.0f, 1.0f),
+                UpVector = new Vertex(0.0f, 1.0f, 0.0f)
+            };
+            _camera.Project(gl);
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -253,48 +256,42 @@ namespace MapGen.View.GUI.Windows
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
                         _camera.MoveLeftRight(-float.Parse(ResourcesView.MoveSpeed));
-                        _camera.Look(ref gl);
-                        //_isDrawMap = true;
+                        _isDrawMap = true;
                         break;
                     }
                 case Key.D:
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
                         _camera.MoveLeftRight(float.Parse(ResourcesView.MoveSpeed));
-                        _camera.Look(ref gl);
-                        //_isDrawMap = true;
+                        _isDrawMap = true;
                         break;
                     }
                 case Key.S:
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
                         _camera.MoveUpDown(-float.Parse(ResourcesView.MoveSpeed));
-                        _camera.Look(ref gl);
-                        //_isDrawMap = true;
+                        _isDrawMap = true;
                         break;
                     }
                 case Key.W:
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
                         _camera.MoveUpDown(float.Parse(ResourcesView.MoveSpeed));
-                        _camera.Look(ref gl);
-                        //_isDrawMap = true;
+                        _isDrawMap = true;
                         break;
                     }
                 case Key.Q:
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
-                        _camera.MoveForwardBackward(-float.Parse(ResourcesView.MoveSpeed) / 10);
-                        _camera.Look(ref gl);
-                        //_isDrawMap = true;
+                        _camera.MoveForwardBackward(float.Parse(ResourcesView.MoveSpeed));
+                        _isDrawMap = true;
                         break;
                     }
                 case Key.E:
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
-                        _camera.MoveForwardBackward(float.Parse(ResourcesView.MoveSpeed) / 10);
-                        _camera.Look(ref gl);
-                        //_isDrawMap = true;
+                        _camera.MoveForwardBackward(-float.Parse(ResourcesView.MoveSpeed));
+                        _isDrawMap = true;
                         break;
                     }
             }

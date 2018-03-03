@@ -5,37 +5,16 @@ using MapGen.View.Source.Interfaces;
 
 namespace MapGen.View.Source.Classes
 {
-    public class Viewer : IView
+    public class View : IView
     {
-
-        #region Region public events.
-
-        /// <summary>
-        /// Событие открытия окна со списком карт.
-        /// </summary>
-        public event Action ShowMapsOnClick;
-
-        /// <summary>
-        /// Событие загрузки карт.
-        /// </summary>
-        public event Action LoadMaps;
-
-        /// <summary>
-        /// Событи загрузки одной карты.
-        /// </summary>
-        public event Action<string[]> LoadMap;
-
-        #endregion
-
-
         #region Region private fields.
 
-        private readonly IMainWindow _mainWindow;
-
-        private MapView[] _tableMaps;
+        /// <summary>
+        /// Главное окно программы.
+        /// </summary>
+        private readonly IMain _mainWindow;
 
         #endregion
-
 
         #region Region properties.
 
@@ -43,27 +22,6 @@ namespace MapGen.View.Source.Classes
         /// Главное окно программы.
         /// </summary>
         public object MainWindow => _mainWindow;
-
-        /// <summary>
-        /// Карты.
-        /// </summary>
-        public List<string[]> Maps
-        {
-            set
-            {
-                _tableMaps = new MapView[value.Count];
-
-                for (int i = 0; i < value.Count; ++i)
-                {
-                    _tableMaps[i] = new MapView(
-                        int.Parse(value[i][0]),
-                        value[i][1],
-                        int.Parse(value[i][2]),
-                        int.Parse(value[i][3]),
-                        int.Parse(value[i][4]));
-                }
-            }
-        }
 
         /// <summary>
         /// Регулярна матрица глубин.
@@ -78,66 +36,133 @@ namespace MapGen.View.Source.Classes
         }
 
         #endregion
+        
+        #region Region general events.
 
+        /// <summary>
+        /// Событие загрузки карты.
+        /// </summary>
+        public event Action<int> LoadDbMap;
 
+        #endregion
+
+        #region Region events of MainWindow.
+
+        /// <summary>
+        /// Событие выбора елемента View "Файл.База данных карт".
+        /// </summary>
+        public event Action MenuItemListMapsOnClick;
+
+        #endregion
+        
         #region Region constructor.
 
-        public Viewer()
+        /// <summary>
+        /// Создает объект View.
+        /// </summary>
+        public View()
         {
-            _tableMaps = new MapView[] { };
             // Создаем главное окно программы MapGeneralization.
             _mainWindow = new MainWindow();
             // Подписка на события MainWindow.
-            BindingEventsMainWindow();
+            BindingEventsOfMainWindow();
         }
 
         #endregion
-
-
-        #region Region methods TableMapsWindow.
+        
+        #region Region methods of TableMapsWindow.
         
         /// <summary>
-        /// Открыть окно о списком карт.
+        /// Открыть окно со списком карт.
         /// </summary>
-        public void ShowTableMaps()
+        public void ShowTableDbMaps(List<string[]> tableMaps)
         {
-            ITableMapsWindow tableMapsWindow = new TableMapsWindow();
+            ITableMaps tableMapsWindow = new TableMapsWindow();
             tableMapsWindow.ChooseMap += TableMapsWindow_ChooseMap;
-            LoadMaps?.Invoke();
-            tableMapsWindow.Maps = _tableMaps;
+            tableMapsWindow.Maps = ConvertStringToMapView(tableMaps);
             tableMapsWindow.ShowTableMaps();
         }
 
-        private void TableMapsWindow_ChooseMap(string[] map)
+        /// <summary>
+        /// Конвертация списка карт Model в список карт View.
+        /// </summary>
+        /// <param name="tMaps">Список карт Model.</param>
+        /// <returns>Список карт View.</returns>
+        private MapView[] ConvertStringToMapView(List<string[]> tMaps)
         {
-            LoadMap?.Invoke(map);
+            MapView[]  tableMaps = new MapView[tMaps.Count];
+
+            for (int i = 0; i < tMaps.Count; ++i)
+            {
+                tableMaps[i] = new MapView(
+                    int.Parse(tMaps[i][0]),
+                    tMaps[i][1],
+                    int.Parse(tMaps[i][2]),
+                    int.Parse(tMaps[i][3]),
+                    int.Parse(tMaps[i][4]));
+            }
+
+            return tableMaps;
         }
 
+        /// <summary>
+        /// Событие выбора элемента из списка карт базы данных.
+        /// </summary>
+        /// <param name="idm">Id карты.</param>
+        private void TableMapsWindow_ChooseMap(int idm)
+        {
+            LoadDbMap?.Invoke(idm);
+        }
+        
         #endregion
-
-
-        #region Region methods MainWindow.
+        
+        #region Region methods of MainWindow.
 
         /// <summary>
-        /// Окрыть главное окно программы MapGeneralization.
+        /// Окрыть главное окно программы MapGen.
         /// </summary>
         public void ShowMainWindow()
         {
             _mainWindow.ShowMainWindow();
         }
 
-        public void ShowLoadingMap()
+        /// <summary>
+        /// Отрисовка карты в главном окне.
+        /// </summary>
+        public void DrawMap()
         {
-            _mainWindow.ShowLoadingMap();
+            _mainWindow.DrawMap();
         }
 
-        private void BindingEventsMainWindow()
+        /// <summary>
+        /// Подписка событий MainWindow.
+        /// </summary>
+        private void BindingEventsOfMainWindow()
         {
             _mainWindow.MenuItemListMapsOnClick += MenuItemListMapsOn_Click;
         }
+
+        /// <summary>
+        /// Обработка события выбор елемента View "Файл.База данных карт".
+        /// </summary>
         private void MenuItemListMapsOn_Click()
         {
-            ShowMapsOnClick?.Invoke();
+            MenuItemListMapsOnClick?.Invoke();
+        }
+
+        #endregion
+
+        #region Region methods of MessageWindow.
+
+        /// <summary>
+        /// Отображение окна сообщения с ошибкой.
+        /// </summary>
+        /// <param name="title">Заголовок окна.</param>
+        /// <param name="text">Текст сообщения в окне.</param>
+        public void ShowMessageError(string title, string text)
+        {
+            IMessage message = new MessageWindow();
+            message.ShowMessage(title, text, MessageButton.Ok, MessageType.Error);
         }
 
         #endregion

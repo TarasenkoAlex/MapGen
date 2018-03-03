@@ -8,6 +8,7 @@ namespace MapGen.Model.RegMatrix
 {
     public class RegMatrix
     {
+        #region Region properties.
 
         /// <summary>
         /// Шаг регулярной матрицы высот.
@@ -34,5 +35,6 @@ namespace MapGen.Model.RegMatrix
         /// </summary>
         public double MaxDepth => Points.Max();
 
+        #endregion
     }
 }

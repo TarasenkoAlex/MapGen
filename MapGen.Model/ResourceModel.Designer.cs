@@ -61,6 +61,24 @@ namespace MapGen.Model {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на C:\MapGen\Database\.
+        /// </summary>
+        internal static string DATABASE_DIR_PATH {
+            get {
+                return ResourceManager.GetString("DATABASE_DIR_PATH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на MapGen.db.
+        /// </summary>
+        internal static string DATABASE_FILE_NAME {
+            get {
+                return ResourceManager.GetString("DATABASE_FILE_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
         internal static byte[] MapGen {

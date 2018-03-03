@@ -15,7 +15,7 @@ namespace MapGen
             // Создание приложения
             Application app = new Application();
             // Создание главного окна.
-            Presenter.Presenter presenter = new Presenter.Presenter();
+            Presenter.Presenter presenter = new Presenter.Presenter(new Model.Model(), new View.Source.Classes.View());
             // Запуск приложения и отображение главного окна,
             app.Run((Window)presenter.MainWindow);
         }

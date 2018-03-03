@@ -91,19 +91,23 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GUI\Windows\MessageWindow.xaml.cs">
+      <DependentUpon>MessageWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ResourcesView.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourcesView.resx</DependentUpon>
     </Compile>
-    <Compile Include="Source\Classes\Camera.cs" />
+    <Compile Include="Source\Classes\MapGenCamera.cs" />
     <Compile Include="Source\Classes\DrawingObjects.cs" />
     <Compile Include="Source\Classes\MapView.cs" />
     <Compile Include="Source\Classes\RegMatrixView.cs" />
     <Compile Include="Source\Classes\TriangleCollectionMaker.cs" />
     <Compile Include="Source\Classes\Viewer.cs" />
-    <Compile Include="Source\Interfaces\IMainWindow.cs" />
-    <Compile Include="Source\Interfaces\ITableMapsWindow.cs" />
+    <Compile Include="Source\Interfaces\IMain.cs" />
+    <Compile Include="Source\Interfaces\IMessage.cs" />
+    <Compile Include="Source\Interfaces\ITableMaps.cs" />
     <Compile Include="Source\Interfaces\IView.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -159,9 +163,15 @@
   <ItemGroup>
     <Resource Include="Resources\window.minimize.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\message.info.png" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="GUI\Windows\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Windows\MessageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -169,6 +179,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\message.error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\message.question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\message.warning.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

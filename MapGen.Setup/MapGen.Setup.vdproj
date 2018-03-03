@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_06BB833FE37412470579252B8E5E54CA"
+        "OwnerKey" = "8:_81D62FF61BCD4A3D8D96975D2418F3DB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_11D3AFC0A403803C8AB8F442931985F5"
         "OwnerKey" = "8:_2DCA394477CF444DA01EC49D6DE59D51"
         "MsmSig" = "8:_UNDEFINED"
@@ -46,13 +52,7 @@
         "Entry"
         {
         "MsmKey" = "8:_1AADDB8102E0C1BE27470EFCC2856CB5"
-        "OwnerKey" = "8:_5C0DE2FDC57EB931C6DA9676A827C1C1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_1AADDB8102E0C1BE27470EFCC2856CB5"
-        "OwnerKey" = "8:_DF1C528DDF80D8A75112BADCB23AD486"
+        "OwnerKey" = "8:_B8E75E967FCF8F4E525BB30EC500E573"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -81,12 +81,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_208F3974293D46DFB4ACC6F71D362182"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_2DCA394477CF444DA01EC49D6DE59D51"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -105,32 +99,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_5C0DE2FDC57EB931C6DA9676A827C1C1"
-        "OwnerKey" = "8:_81D62FF61BCD4A3D8D96975D2418F3DB"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_81D62FF61BCD4A3D8D96975D2418F3DB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_A69642762D9EC7D79D33A9BC87315889"
-        "OwnerKey" = "8:_2DCA394477CF444DA01EC49D6DE59D51"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A69642762D9EC7D79D33A9BC87315889"
-        "OwnerKey" = "8:_E7A3274169F81EE47051A5FE5FDE728F"
+        "MsmKey" = "8:_AB16DC411254B10F9B7A3DC507D9C71E"
+        "OwnerKey" = "8:_3DDDEFAD4ADD4445BD1822A2F9E50E19"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_AB16DC411254B10F9B7A3DC507D9C71E"
-        "OwnerKey" = "8:_3DDDEFAD4ADD4445BD1822A2F9E50E19"
+        "OwnerKey" = "8:_81D62FF61BCD4A3D8D96975D2418F3DB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -147,20 +129,38 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B8E75E967FCF8F4E525BB30EC500E573"
+        "OwnerKey" = "8:_2DCA394477CF444DA01EC49D6DE59D51"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B8E75E967FCF8F4E525BB30EC500E573"
+        "OwnerKey" = "8:_81D62FF61BCD4A3D8D96975D2418F3DB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B8E75E967FCF8F4E525BB30EC500E573"
+        "OwnerKey" = "8:_CD76A08FA4E520A38F66C65E0170722C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B93CA5DA299040317603D92BDE0E4925"
         "OwnerKey" = "8:_3DDDEFAD4ADD4445BD1822A2F9E50E19"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_BA4B2EA39F3299C53C1817C46CF4DF5B"
-        "OwnerKey" = "8:_5C0DE2FDC57EB931C6DA9676A827C1C1"
+        "MsmKey" = "8:_B93CA5DA299040317603D92BDE0E4925"
+        "OwnerKey" = "8:_81D62FF61BCD4A3D8D96975D2418F3DB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_BA4B2EA39F3299C53C1817C46CF4DF5B"
-        "OwnerKey" = "8:_DF1C528DDF80D8A75112BADCB23AD486"
+        "OwnerKey" = "8:_B8E75E967FCF8F4E525BB30EC500E573"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -195,32 +195,44 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_CD76A08FA4E520A38F66C65E0170722C"
+        "OwnerKey" = "8:_81D62FF61BCD4A3D8D96975D2418F3DB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_DB726409BFC1F6DC090C973C3262F436"
         "OwnerKey" = "8:_3DDDEFAD4ADD4445BD1822A2F9E50E19"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_DF1C528DDF80D8A75112BADCB23AD486"
+        "MsmKey" = "8:_DB726409BFC1F6DC090C973C3262F436"
+        "OwnerKey" = "8:_81D62FF61BCD4A3D8D96975D2418F3DB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E2183B26D29CD6FF31668FDA0AECB290"
         "OwnerKey" = "8:_2DCA394477CF444DA01EC49D6DE59D51"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_DF1C528DDF80D8A75112BADCB23AD486"
-        "OwnerKey" = "8:_E7A3274169F81EE47051A5FE5FDE728F"
+        "MsmKey" = "8:_E2183B26D29CD6FF31668FDA0AECB290"
+        "OwnerKey" = "8:_CD76A08FA4E520A38F66C65E0170722C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E2183B26D29CD6FF31668FDA0AECB290"
+        "OwnerKey" = "8:_81D62FF61BCD4A3D8D96975D2418F3DB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_E6BFD62AE6F9B140169D64F4864756A1"
-        "OwnerKey" = "8:_5C0DE2FDC57EB931C6DA9676A827C1C1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E6BFD62AE6F9B140169D64F4864756A1"
-        "OwnerKey" = "8:_DF1C528DDF80D8A75112BADCB23AD486"
+        "OwnerKey" = "8:_B8E75E967FCF8F4E525BB30EC500E573"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -243,26 +255,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E7A3274169F81EE47051A5FE5FDE728F"
-        "OwnerKey" = "8:_81D62FF61BCD4A3D8D96975D2418F3DB"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_F0B4B352CFC65E61F272ADD4C7EFE0B8"
         "OwnerKey" = "8:_2DCA394477CF444DA01EC49D6DE59D51"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F0B4B352CFC65E61F272ADD4C7EFE0B8"
-        "OwnerKey" = "8:_F8F1AB04C23EE1D167ED99CB49924A6F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F0B4B352CFC65E61F272ADD4C7EFE0B8"
-        "OwnerKey" = "8:_A69642762D9EC7D79D33A9BC87315889"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -291,8 +285,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F8F1AB04C23EE1D167ED99CB49924A6F"
-        "OwnerKey" = "8:_81D62FF61BCD4A3D8D96975D2418F3DB"
+        "MsmKey" = "8:_F0B4B352CFC65E61F272ADD4C7EFE0B8"
+        "OwnerKey" = "8:_E2183B26D29CD6FF31668FDA0AECB290"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -304,31 +298,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5C0DE2FDC57EB931C6DA9676A827C1C1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E7A3274169F81EE47051A5FE5FDE728F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F8F1AB04C23EE1D167ED99CB49924A6F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DF1C528DDF80D8A75112BADCB23AD486"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A69642762D9EC7D79D33A9BC87315889"
+        "OwnerKey" = "8:_CD76A08FA4E520A38F66C65E0170722C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -382,6 +352,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_B8E75E967FCF8F4E525BB30EC500E573"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_E6BFD62AE6F9B140169D64F4864756A1"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -395,6 +371,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_BA4B2EA39F3299C53C1817C46CF4DF5B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E2183B26D29CD6FF31668FDA0AECB290"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -428,6 +410,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
             }
         }
         "Release"
@@ -583,88 +573,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_208F3974293D46DFB4ACC6F71D362182"
-            {
-            "SourcePath" = "8:..\\MapGen.Model\\Database\\DbFiles\\MapGen.db"
-            "TargetName" = "8:MapGen.db"
-            "Tag" = "8:"
-            "Folder" = "8:_4CD3596F61664D5089D531497808F5A9"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5C0DE2FDC57EB931C6DA9676A827C1C1"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MapGen.View, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_5C0DE2FDC57EB931C6DA9676A827C1C1"
-                    {
-                    "Name" = "8:MapGen.View.exe"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MapGen.View.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A69642762D9EC7D79D33A9BC87315889"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MapGen.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_A69642762D9EC7D79D33A9BC87315889"
-                    {
-                    "Name" = "8:MapGen.Model.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MapGen.Model.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AB16DC411254B10F9B7A3DC507D9C71E"
             {
             "AssemblyRegister" = "3:1"
@@ -679,6 +587,37 @@
                     }
                 }
             "SourcePath" = "8:System.Data.SQLite.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B8E75E967FCF8F4E525BB30EC500E573"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MapGen.View, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64"
+                "ScatterAssemblies"
+                {
+                    "_B8E75E967FCF8F4E525BB30EC500E573"
+                    {
+                    "Name" = "8:MapGen.View.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MapGen.View.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
@@ -758,6 +697,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CD76A08FA4E520A38F66C65E0170722C"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MapGen.Presenter, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64"
+                "ScatterAssemblies"
+                {
+                    "_CD76A08FA4E520A38F66C65E0170722C"
+                    {
+                    "Name" = "8:MapGen.Presenter.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MapGen.Presenter.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DB726409BFC1F6DC090C973C3262F436"
             {
             "AssemblyRegister" = "3:1"
@@ -789,20 +759,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DF1C528DDF80D8A75112BADCB23AD486"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E2183B26D29CD6FF31668FDA0AECB290"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MapGen.View, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:MapGen.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64"
                 "ScatterAssemblies"
                 {
-                    "_DF1C528DDF80D8A75112BADCB23AD486"
+                    "_E2183B26D29CD6FF31668FDA0AECB290"
                     {
-                    "Name" = "8:MapGen.View.exe"
+                    "Name" = "8:MapGen.Model.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:MapGen.View.exe"
+            "SourcePath" = "8:MapGen.Model.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
@@ -851,37 +821,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E7A3274169F81EE47051A5FE5FDE728F"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MapGen.Presenter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_E7A3274169F81EE47051A5FE5FDE728F"
-                    {
-                    "Name" = "8:MapGen.Presenter.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MapGen.Presenter.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F0B4B352CFC65E61F272ADD4C7EFE0B8"
             {
             "AssemblyRegister" = "3:1"
@@ -896,37 +835,6 @@
                     }
                 }
             "SourcePath" = "8:EntityFramework.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F8F1AB04C23EE1D167ED99CB49924A6F"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MapGen.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_F8F1AB04C23EE1D167ED99CB49924A6F"
-                    {
-                    "Name" = "8:MapGen.Model.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MapGen.Model.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
@@ -971,17 +879,6 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_4CD3596F61664D5089D531497808F5A9"
-                    {
-                    "Name" = "8:Database"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_00E0BF9EB0FB43559BA8BAF3A2550024"
-                        "Folders"
-                        {
-                        }
-                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_C4589E920200451F84BC270741ADE92A"
@@ -1533,7 +1430,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2DCA394477CF444DA01EC49D6DE59D51"
             {
-            "SourcePath" = "8:..\\MapGen.Presenter\\obj\\Release\\MapGen.Presenter.dll"
+            "SourcePath" = "8:..\\MapGen.Presenter\\obj\\x64\\Debug\\MapGen.Presenter.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
@@ -1561,7 +1458,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_31DCF7CD530D433EB9D53649FFCFC6EC"
             {
-            "SourcePath" = "8:..\\MapGen.View\\obj\\Release\\MapGen.View.exe"
+            "SourcePath" = "8:..\\MapGen.View\\obj\\x64\\Debug\\MapGen.View.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
@@ -1589,7 +1486,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3DDDEFAD4ADD4445BD1822A2F9E50E19"
             {
-            "SourcePath" = "8:..\\MapGen.Model\\obj\\Release\\MapGen.Model.dll"
+            "SourcePath" = "8:..\\MapGen.Model\\obj\\x64\\Debug\\MapGen.Model.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
@@ -1617,7 +1514,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_81D62FF61BCD4A3D8D96975D2418F3DB"
             {
-            "SourcePath" = "8:..\\MapGen\\obj\\Release\\MapGen.exe"
+            "SourcePath" = "8:..\\MapGen\\obj\\x64\\Debug\\MapGen.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"

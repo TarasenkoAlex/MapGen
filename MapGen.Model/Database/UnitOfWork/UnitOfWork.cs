@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MapGen.Model.Database.EDM;
 using MapGen.Model.Database.Repository;
 
-namespace MapGen.Model.Database
+namespace MapGen.Model.Database.UnitOfWork
 {
     public class UnitOfWork
     {

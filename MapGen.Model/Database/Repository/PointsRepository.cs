@@ -10,14 +10,15 @@ namespace MapGen.Model.Database.Repository
 {
     public class PointsRepository : IRepository<Point>
     {
-
         #region Region private fields.
 
-        private MapGenEntities _db;
+        /// <summary>
+        /// Контекст базы данных.
+        /// </summary>
+        private readonly MapGenEntities _db;
 
         #endregion
-
-
+        
         #region Region constructor.
 
         /// <summary>
@@ -30,8 +31,7 @@ namespace MapGen.Model.Database.Repository
         }
 
         #endregion
-
-
+        
         #region Region public methods.
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace MapGen.Model.Database.Repository
         /// <summary>
         /// Получение точек из репозитории по id карты.
         /// </summary>
-        /// <param name="id">ID карты.</param>
+        /// <param name="idMap">ID карты.</param>
         /// <returns>Точки из репозитория.</returns>
         public Point[] Get(int idMap)
         {

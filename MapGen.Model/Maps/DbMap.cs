@@ -12,7 +12,6 @@ namespace MapGen.Model.Maps
     /// </summary>
     public class DbMap
     {
-
         #region Region properties.
 
         /// <summary>
@@ -23,17 +22,17 @@ namespace MapGen.Model.Maps
         /// <summary>
         /// Ширина карты.
         /// </summary>
-        public int Width { get; set; }
+        public long Width { get; set; }
 
         /// <summary>
         /// Длина карты.
         /// </summary>
-        public int Length { get; set; }
+        public long Length { get; set; }
 
         /// <summary>
         /// Масштаб карты (1 : Scale).
         /// </summary>
-        public int Scale { get; set; }
+        public long Scale { get; set; }
 
         /// <summary>
         /// Облако точек карты.
@@ -41,8 +40,7 @@ namespace MapGen.Model.Maps
         public Point[] CloudPoints { get; set; }
 
         #endregion
-
-
+        
         #region Region cosntructor.
 
         /// <summary>
@@ -53,7 +51,7 @@ namespace MapGen.Model.Maps
         /// <param name="length">Длина карты.</param>
         /// <param name="scale">Масштаб.</param>
         /// <param name="cloudPoints">Облако точек карты.</param>
-        public DbMap(string name, int width, int length, int scale, Point[] cloudPoints)
+        public DbMap(string name, long width, long length, long scale, Point[] cloudPoints)
         {
             Name = name;
             Width = width;
@@ -63,13 +61,5 @@ namespace MapGen.Model.Maps
         }
 
         #endregion
-
-
-        #region Region public methods.
-
-
-
-        #endregion
-
     }
 }

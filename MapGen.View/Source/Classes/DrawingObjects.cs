@@ -79,11 +79,11 @@ namespace MapGen.View.Source.Classes
                     gl.Begin(OpenGL.GL_TRIANGLES);
 
                     gl.Color(_depthScale.GetColorDepth(triangle.A.Depth));
-                    gl.Vertex((float)triangle.A.X, (float)triangle.A.Y, 0.0f);
+                    gl.Vertex((float)triangle.A.X, (float)triangle.A.Y);
                     gl.Color(_depthScale.GetColorDepth(triangle.B.Depth));
-                    gl.Vertex((float)triangle.B.X, (float)triangle.B.Y, 0.0f);
+                    gl.Vertex((float)triangle.B.X, (float)triangle.B.Y);
                     gl.Color(_depthScale.GetColorDepth(triangle.C.Depth));
-                    gl.Vertex((float)triangle.C.X, (float)triangle.C.Y, 0.0f);
+                    gl.Vertex((float)triangle.C.X, (float)triangle.C.Y);
 
                     gl.End();
 
@@ -91,16 +91,16 @@ namespace MapGen.View.Source.Classes
                     gl.Color(0.0f, 0.0f, 0.0f);
 
                     // рисуем ребра
-                    gl.Begin(OpenGL.GL_TRIANGLES);
+                    gl.Begin(OpenGL.GL_LINES);
                     // ребро между точками А и В
-                    gl.Vertex((float)triangle.A.X, (float)triangle.A.Y, 0.0f);
-                    gl.Vertex((float)triangle.B.X, (float)triangle.B.Y, 0.0f);
+                    gl.Vertex((float)triangle.A.X, (float)triangle.A.Y);
+                    gl.Vertex((float)triangle.B.X, (float)triangle.B.Y);
                     // ребро между точками В и С
-                    gl.Vertex((float)triangle.B.X, (float)triangle.B.Y, 0.0f);
-                    gl.Vertex((float)triangle.C.X, (float)triangle.C.Y, 0.0f);
+                    gl.Vertex((float)triangle.B.X, (float)triangle.B.Y);
+                    gl.Vertex((float)triangle.C.X, (float)triangle.C.Y);
                     // ребро между точками А и С
-                    gl.Vertex((float)triangle.A.X, (float)triangle.A.Y, 0.0f);
-                    gl.Vertex((float)triangle.C.X, (float)triangle.C.Y, 0.0f);
+                    gl.Vertex((float)triangle.A.X, (float)triangle.A.Y);
+                    gl.Vertex((float)triangle.C.X, (float)triangle.C.Y);
                     gl.End();
                 }               
                                 

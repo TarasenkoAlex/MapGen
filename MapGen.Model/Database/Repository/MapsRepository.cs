@@ -10,14 +10,15 @@ namespace MapGen.Model.Database.Repository
 {
     public class MapsRepository : IRepository<Map>
     {
-
         #region Region private fields.
 
-        private MapGenEntities _db;
+        /// <summary>
+        ///  Контекст базы данных.
+        /// </summary>
+        private readonly MapGenEntities _db;
 
         #endregion
-
-
+        
         #region Region constructor.
 
         /// <summary>
@@ -30,8 +31,7 @@ namespace MapGen.Model.Database.Repository
         }
 
         #endregion
-
-
+        
         #region Region public methods.
 
         /// <summary>
@@ -53,6 +53,19 @@ namespace MapGen.Model.Database.Repository
         }
 
         /// <summary>
+        /// Получение карты из репозитории по id карты.
+        /// </summary>
+        /// <param name="idMap">ID карты.</param>
+        /// <returns>Карта.</returns>
+        public Map Get(int idMap)
+        {
+            var map = _db.Maps.Where(el => el.Idm == idMap).ToArray();
+            if (map.Length != 0)
+                return map[0];
+            return null;
+        }
+
+        /// <summary>
         /// Удаление карты из репозитория по его id.
         /// </summary>
         /// <param name="id">ID удаляемой карты.</param>
@@ -64,6 +77,5 @@ namespace MapGen.Model.Database.Repository
         }
 
         #endregion
-
     }
 }

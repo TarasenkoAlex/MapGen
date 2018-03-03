@@ -83,6 +83,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\DatabaseWorker\DatabaseWorker.cs" />
     <Compile Include="Database\EDM\Map.cs">
       <DependentUpon>MapGen.tt</DependentUpon>
     </Compile>
@@ -107,8 +108,12 @@
     <Compile Include="Database\Repository\IRepository.cs" />
     <Compile Include="Database\Repository\MapsRepository.cs" />
     <Compile Include="Database\Repository\PointsRepository.cs" />
-    <Compile Include="Database\UnitOfWork.cs" />
+    <Compile Include="Database\UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="General\Methods.cs" />
+    <Compile Include="Interpolation\Setting\ISettingInterpolation.cs" />
     <Compile Include="Maps\DbMap.cs" />
+    <Compile Include="IModel.cs" />
+    <Compile Include="Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegMatrix\RegMatrix.cs" />
     <Compile Include="RegMatrix\RegMatrixMaker.cs" />

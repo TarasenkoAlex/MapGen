@@ -1,37 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using MapGen.View.GUI.Windows;
 using MapGen.View.Source.Classes;
 
 namespace MapGen.View.Source.Interfaces
 {
     public interface IView
     {
-
         #region Region properties.
-
         object MainWindow { get; }
-        List<string[]> Maps { set; }
         RegMatrixView RegMatrix { set; }
-        void ShowLoadingMap();
-
         #endregion
 
+        #region Region general events.
+        event Action<int> LoadDbMap;
+        #endregion
 
-        #region Region general methods.
+        #region Region events of MainWindow.
+        event Action MenuItemListMapsOnClick;
+        #endregion
 
+        #region Region methods of TableMapsWindow.
+        void ShowTableDbMaps(List<string[]> tableMaps);
+        #endregion
+
+        #region Region methods of MainWindow.
         void ShowMainWindow();
-        void ShowTableMaps();
-
+        void DrawMap();
         #endregion
 
-
-        #region Region events.
-
-        event Action ShowMapsOnClick;
-        event Action LoadMaps;
-        event Action<string[]> LoadMap;
-
+        #region Region methods of MessageWindow.
+        void ShowMessageError(string title, string text);
         #endregion
-
     }
 }

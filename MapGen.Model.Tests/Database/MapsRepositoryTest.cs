@@ -129,5 +129,23 @@ namespace MapGen.Model.Tests.Database
                 el.Width == 100 &&
                 el.Scale == 10000).ToList().Count);
         }
+
+        [Test]
+        public void MapsRepository_Get_1_element_by_id_1_result_is_get()
+        {
+            // Arrange.
+            MapsRepository mapsRepository = new MapsRepository(_mockContext.Object);
+
+            // Act.
+            Map map = mapsRepository.Get(1);
+
+            // Assert.
+            Assert.NotNull(map);
+            Assert.AreEqual(map.Idm, 1);
+            Assert.AreEqual(map.Name, "Name1");
+            Assert.AreEqual(map.Length, 100);
+            Assert.AreEqual(map.Width, 100);
+            Assert.AreEqual(map.Scale, 10000);
+        }
     }
 }
