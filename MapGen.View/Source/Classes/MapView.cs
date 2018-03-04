@@ -29,7 +29,14 @@ namespace MapGen.View.Source.Classes
         /// </summary>
         public int Scale { get; set; }
 
-
+        /// <summary>
+        /// Создает объект информации о карте.
+        /// </summary>
+        /// <param name="id">Id карты.</param>
+        /// <param name="name">Имя карты.</param>
+        /// <param name="width">Ширина карты.</param>
+        /// <param name="length">Длина карты.</param>
+        /// <param name="scale">Масштаб карты.</param>
         public MapView(int id, string name, int width, int length, int scale)
         {
             Id = id;
@@ -71,6 +78,5 @@ namespace MapGen.View.Source.Classes
                 default: return "";
             }
         }
-
     }
 }

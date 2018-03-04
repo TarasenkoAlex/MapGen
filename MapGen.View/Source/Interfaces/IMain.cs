@@ -7,8 +7,6 @@ namespace MapGen.View.Source.Interfaces
     public interface IMain
     {
         #region Region properties.
-        Window OwnerWindow { set; }
-        Window Window { get; }
         RegMatrixView RegMatrix { set; }
         #endregion
 
@@ -18,8 +16,7 @@ namespace MapGen.View.Source.Interfaces
 
         #region Region methods.
         void ShowMainWindow();
-        void CreateTriangleCollectionMap();
-        void DrawMap();
+        void DrawSeaMap();
         #endregion
     }
 }

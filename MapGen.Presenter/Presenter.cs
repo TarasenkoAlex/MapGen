@@ -8,7 +8,6 @@ namespace MapGen.Presenter
 {
     public class Presenter
     {
-
         #region Region private fields.
 
         /// <summary>
@@ -22,8 +21,7 @@ namespace MapGen.Presenter
         private readonly IModel _model;
 
         #endregion
-
-
+        
         #region Region properties.
 
         /// <summary>
@@ -32,8 +30,7 @@ namespace MapGen.Presenter
         public object MainWindow => _view.MainWindow;
 
         #endregion
-
-
+        
         #region Region constructor.
 
         /// <summary>
@@ -61,8 +58,7 @@ namespace MapGen.Presenter
         }
 
         #endregion
-
-
+        
         #region Region private methods.
 
         /// <summary>
@@ -138,7 +134,7 @@ namespace MapGen.Presenter
             _view.RegMatrix = ConvertRegMatrixToRegMatrixView(regMatrix);
             
             // Отображаем карту.
-            _view.DrawMap();
+            _view.DrawSeaMap();
         }
 
         /// <summary>
@@ -161,6 +157,5 @@ namespace MapGen.Presenter
         }
 
         #endregion
-
     }
 }

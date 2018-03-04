@@ -26,7 +26,7 @@ namespace MapGen.View.Source.Interfaces
 
         #region Region methods of MainWindow.
         void ShowMainWindow();
-        void DrawMap();
+        void DrawSeaMap();
         #endregion
 
         #region Region methods of MessageWindow.

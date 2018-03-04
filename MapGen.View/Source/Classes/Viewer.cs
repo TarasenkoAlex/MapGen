@@ -31,7 +31,6 @@ namespace MapGen.View.Source.Classes
             set
             {
                 _mainWindow.RegMatrix = value;
-                _mainWindow.CreateTriangleCollectionMap();
             }
         }
 
@@ -129,9 +128,9 @@ namespace MapGen.View.Source.Classes
         /// <summary>
         /// Отрисовка карты в главном окне.
         /// </summary>
-        public void DrawMap()
+        public void DrawSeaMap()
         {
-            _mainWindow.DrawMap();
+            _mainWindow.DrawSeaMap();
         }
 
         /// <summary>

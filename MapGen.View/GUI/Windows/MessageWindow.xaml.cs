@@ -10,17 +10,22 @@ namespace MapGen.View.GUI.Windows
     /// <summary>
     /// Логика взаимодействия для MessageWindow.xaml
     /// </summary>
-    public partial class MessageWindow : Window, IMessage
+    public partial class MessageWindow : IMessage
     {
-
         #region Region events.
 
+        /// <summary>
+        /// Событие результата сообщения.
+        /// </summary>
         public event Action<bool> ReturnResult;
 
         #endregion
 
         #region Region constructor.
 
+        /// <summary>
+        /// Создает окно сообщения.
+        /// </summary>
         public MessageWindow()
         {
             InitializeComponent();
@@ -31,6 +36,13 @@ namespace MapGen.View.GUI.Windows
 
         #region Region public methods.
 
+        /// <summary>
+        /// Отображает окно сообщения.
+        /// </summary>
+        /// <param name="title">Заголовок сообщения.</param>
+        /// <param name="text">Текст сообщения.</param>
+        /// <param name="butonType">Тип кнопок выбора.</param>
+        /// <param name="messageType">Тип сообщения.</param>
         public void ShowMessage(string title, string text, MessageButton butonType, MessageType messageType)
         {
             Dispatcher.Invoke(() =>
@@ -48,6 +60,9 @@ namespace MapGen.View.GUI.Windows
 
         #region Region private methods.
         
+        /// <summary>
+        /// Подписка на события окна сообщения.
+        /// </summary>
         private void BindingEventsOfWindow()
         {
             // Обработка кнопки закрытия.
@@ -75,6 +90,10 @@ namespace MapGen.View.GUI.Windows
             };
         }
 
+        /// <summary>
+        /// Инициализация изображения в сообщении в зависимости от типа сообщения.
+        /// </summary>
+        /// <param name="messageType"></param>
         private void InitMessageType(MessageType messageType)
         {
             switch (messageType)
@@ -102,6 +121,10 @@ namespace MapGen.View.GUI.Windows
             }
         }
 
+        /// <summary>
+        /// Инициализация изображения.
+        /// </summary>
+        /// <param name="source">Изображение.</param>
         private void InitImageMessage(Bitmap source)
         {
             IntPtr hsource = source.GetHbitmap();
@@ -113,6 +136,10 @@ namespace MapGen.View.GUI.Windows
             ImageMessage.Source = wpfBitmap;
         }
 
+        /// <summary>
+        /// Инициализация кнопок в зависимости от выбранного типа кнопок.
+        /// </summary>
+        /// <param name="messageButton"></param>
         private void InitMessageButtons(MessageButton messageButton)
         {
             switch (messageButton)
@@ -137,6 +164,8 @@ namespace MapGen.View.GUI.Windows
         #endregion
     }
 
+    #region Region enums.
+
     /// <summary>
     /// Тип сообщения. Необходим для отображения картинки в окне диалога
     /// </summary>
@@ -156,4 +185,6 @@ namespace MapGen.View.GUI.Windows
         Ok,
         YesNo
     }
+
+    #endregion
 }

@@ -9,22 +9,13 @@ namespace MapGen.View.GUI.Windows
     /// <summary>
     /// Логика взаимодействия для TableMapsWindow.xaml
     /// </summary>
-    public partial class TableMapsWindow : Window, ITableMaps
+    public partial class TableMapsWindow : ITableMaps
     {
-        #region Region private fields.
-
-        private MapView[] _maps;
-
-        #endregion
-        
-        #region Region events.
-
-        public event Action<int> ChooseMap;
-
-        #endregion
-        
         #region Region properties.
 
+        /// <summary>
+        /// Список карт.
+        /// </summary>
         public MapView[] Maps
         {
             set
@@ -37,11 +28,32 @@ namespace MapGen.View.GUI.Windows
                 });
             }
         }
-        
+
         #endregion
         
+        #region Region events.
+
+        /// <summary>
+        /// Событие выбора элемента из списка карт.
+        /// </summary>
+        public event Action<int> ChooseMap;
+
+        #endregion
+
+        #region Region private fields.
+
+        /// <summary>
+        /// Список карт.
+        /// </summary>
+        private MapView[] _maps;
+
+        #endregion
+
         #region Region constructor.
 
+        /// <summary>
+        /// Создает окно со списком карт.
+        /// </summary>
         public TableMapsWindow()
         {
             InitializeComponent();
@@ -53,6 +65,9 @@ namespace MapGen.View.GUI.Windows
 
         #region Region public methods.
 
+        /// <summary>
+        /// Отобразить окно со списком карт.
+        /// </summary>
         public void ShowTableMaps()
         {
             ShowDialog();
@@ -62,11 +77,17 @@ namespace MapGen.View.GUI.Windows
         
         #region Region private methods.
 
+        /// <summary>
+        /// Инициализация private полей.
+        /// </summary>
         private void InitFields()
         {
             _maps = new MapView[] { };
         }
 
+        /// <summary>
+        /// Подписка событий окна.
+        /// </summary>
         private void BindingEventsButtonWindow()
         {
             // Обработка кнопки закрытия.
@@ -80,10 +101,19 @@ namespace MapGen.View.GUI.Windows
         
         #region Region handler events.
         
+        /// <summary>
+        /// Обработка события выбора элемента из списка карт.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             SelectMap();
         }
+
+        /// <summary>
+        /// Обработка события загрузки карты.
+        /// </summary>
         private void SelectMap()
         {
             MapView selectedItem = (MapView)GridTableMaps.SelectedItem;

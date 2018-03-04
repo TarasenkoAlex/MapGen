@@ -91,6 +91,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GUI\Grids\DepthScale.xaml.cs">
+      <DependentUpon>DepthScale.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Windows\MessageWindow.xaml.cs">
       <DependentUpon>MessageWindow.xaml</DependentUpon>
     </Compile>
@@ -167,6 +170,10 @@
     <Resource Include="Resources\message.info.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="GUI\Grids\DepthScale.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\Windows\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

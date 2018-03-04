@@ -14,79 +14,60 @@ namespace MapGen.View.GUI.Windows
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, IMain
+    public partial class MainWindow : IMain
     {
-
         #region Region properties.
-
-        public Window OwnerWindow
-        {
-            set { Owner = value; }
-        }
-
-        public Window Window => this;
-
-        public RegMatrixView RegMatrix
-        {
-            set
-            {
-                _regMatrix = value;
-                _surfaceMaker = new DrawingObjects.SurfaceMaker(value.MaxDepth);
-            }
-        }
+        
+        /// <summary>
+        /// Регулярная матрица глубин.
+        /// </summary>
+        public RegMatrixView RegMatrix { get; set; }
 
         #endregion
 
+        #region Region events.
 
-        #region Region public events.
-
+        /// <summary>
+        /// Событие выбора елемента View "Файл.База данных карт".
+        /// </summary>
         public event Action MenuItemListMapsOnClick;
 
         #endregion
 
-
-        #region Region public methods.
-
-        public void ShowMainWindow()
-        {
-            Show();
-        }
-
-        public void CreateTriangleCollectionMap()
-        {
-            if (_regMatrix != null)
-                _triangleCollecton = _triangleCollectionMaker.CreateTriangleCollectionMap(_regMatrix);
-        }
-
-        public void DrawMap()
-        {
-            _isDrawMap = true;
-        }
-
-        #endregion
-
-
         #region Region private fields.
 
+        /// <summary>
+        /// Флаг, отвечающий перерисовать ли карту.
+        /// </summary>
         private bool _isDrawMap;
 
-        private RegMatrixView _regMatrix;
-
+        /// <summary>
+        /// Объект для триангуляции.
+        /// </summary>
         private TriangleCollectionMaker _triangleCollectionMaker;
 
-        private ConcurrentBag<DrawingObjects.Triangle> _triangleCollecton;
+        /// <summary>
+        /// Карта, представленная в виде коллекии треугольников.
+        /// </summary>
+        private DrawingObjects.Triangle[] _triangleCollecton;
 
+        /// <summary>
+        /// Объект для отрисовки поверхности на карте.
+        /// </summary>
         private DrawingObjects.SurfaceMaker _surfaceMaker;
 
+        /// <summary>
+        /// Камера.
+        /// </summary>
         private MapGenCamera _camera;
 
-        private Timer _cameraTimer;
-
         #endregion
-
-
+        
         #region Region constructer.
 
+        /// <summary>
+        /// Создает объект главного окна программы.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -96,35 +77,49 @@ namespace MapGen.View.GUI.Windows
             BindingEventMenuButtonWindow();
         }
 
-        #endregion
-
-
-        #region Region private methods.
-
+        /// <summary>
+        /// Инициализация private полей.
+        /// </summary>
         private void InitializeFields()
         {
-            _isDrawMap = false;
+            _surfaceMaker = new DrawingObjects.SurfaceMaker();
             _triangleCollectionMaker = new TriangleCollectionMaker();
-            _triangleCollecton = new ConcurrentBag<DrawingObjects.Triangle>();
-
-            //ElapsedEventHandler threadCameraTimer = EventCameraTimer;
-            //_cameraTimer.Elapsed += threadCameraTimer;
-            //_cameraTimer.Interval = 500;
-            //_cameraTimer.Start();
+            _triangleCollecton = new DrawingObjects.Triangle[] {};
         }
 
-        private void EventCameraTimer(object source, ElapsedEventArgs e)
+        /// <summary>
+        /// Инициализация OpenGL.
+        /// </summary>
+        private void InitOpenGl()
         {
-            // Обновляем взгляд камеры.
+            // Получаем ссылку на элемент управления OpenGl
             OpenGL gl = OpenGlControl.OpenGL;
-            //_camera.Look(gl);
+
+            // Установка порта вывода в соотвествии с размерами элемента Screen.
+            gl.Viewport(0, 0, (int)OpenGlControl.Width, (int)OpenGlControl.Height);
+
+            // Настройка проекции. 
+            gl.MatrixMode(OpenGL.GL_PROJECTION);
+            gl.LoadIdentity();
+            gl.Perspective(120, (float)OpenGlControl.Width / (float)OpenGlControl.Height, 0.1, 200);
+            gl.MatrixMode(OpenGL.GL_MODELVIEW);
+            gl.LoadIdentity();
+
+            // Настройка параметров OpenGl для визуализации.
+            gl.Enable(OpenGL.GL_DEPTH_TEST);
+
+            // Инициализация камеры.
+            _camera = new MapGenCamera
+            {
+                Target = new Vertex(0.0f, 0.0f, 0.0f),
+                Position = new Vertex(0.0f, 0.0f, 1.0f),
+                UpVector = new Vertex(0.0f, 1.0f, 0.0f)
+            };
         }
 
-        private void BindingEventMenuButtonWindow()
-        {
-            MenuItemListMaps.Click += MenuItemListMaps_OnClick;
-        }
-
+        /// <summary>
+        /// Подписка на собития кнопок заголовка главного окна.
+        /// </summary>
         private void BindingEventsHeadButtonWindow()
         {
             // Обработка кнопки свернуть.
@@ -151,21 +146,75 @@ namespace MapGen.View.GUI.Windows
             ButtonClose.Click += (s, e) => Close();
         }
 
+        /// <summary>
+        /// Подписка на события кнопок меню гавного окна.
+        /// </summary>
+        private void BindingEventMenuButtonWindow()
+        {
+            MenuItemListMaps.Click += MenuItemListMaps_OnClick;
+        }
+
         #endregion
 
+        #region Region public methods.
 
-        #region Region events OpenGLControl.
+        /// <summary>
+        /// Открыть главное окно.
+        /// </summary>
+        public void ShowMainWindow()
+        {
+            Show();
+        }
 
+        /// <summary>
+        /// Отрисовка карты в главном окне.
+        /// </summary>
+        public void DrawSeaMap()
+        {
+            if (RegMatrix != null)
+            {
+                string messageerror;
+                if (_triangleCollectionMaker.CreateTriangleCollectionMap(RegMatrix, out _triangleCollecton, out messageerror))
+                {
+
+                    _isDrawMap = true;
+                }
+                else
+                {
+                    IMessage message = new MessageWindow();
+                    message.ShowMessage("Процесс отрисовки карты", "Не загружена регулярная матрица глубин морской карты!", MessageButton.Ok, MessageType.Error);
+                }
+            }
+            else
+            {
+                IMessage message = new MessageWindow();
+                message.ShowMessage("Процесс отрисовки карты", "Не загружена регулярная матрица глубин морской карты!", MessageButton.Ok, MessageType.Error);
+            }
+        }
+
+        #endregion
+
+        #region Region processing events of OpenGLControl.
+
+        /// <summary>
+        /// Инициализация OpenGl.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void OpenGLControl_OpenGLInitialized(object sender, OpenGLEventArgs args)
         {
             //  получаем ссылку на окно OpenGL 
             OpenGL gl = args.OpenGL;
 
-
             //  Задаем цвет очистки экрана
             gl.ClearColor(0, 0, 0, 0);
         }
 
+        /// <summary>
+        /// Обработка события отрисовки в OpenGLControl.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void OpenGLControl_OpenGLDraw(object sender, OpenGLEventArgs args)
         {
             if (_isDrawMap)
@@ -185,7 +234,10 @@ namespace MapGen.View.GUI.Windows
                 gl.PushMatrix();
 
                 // Отображаем карту.
-                _surfaceMaker.DrawSurface(gl, ref _triangleCollecton);
+                if (RegMatrix != null)
+                {
+                    _surfaceMaker.DrawSurface(gl, _triangleCollecton, RegMatrix.MaxDepth);
+                }
 
                 gl.PopMatrix();
 
@@ -198,56 +250,39 @@ namespace MapGen.View.GUI.Windows
             }
         }
 
+        /// <summary>
+        /// Обработка события изменения размера OpenGLControl.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void OpenGLControl_Resized(object sender, OpenGLEventArgs args)
         {
-
+            _isDrawMap = true;
         }
 
         #endregion
 
+        #region Region processing events of menu.
 
-        #region Region events menu.
-
+        /// <summary>
+        /// Событие выбора елемента View "Файл.База данных карт".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuItemListMaps_OnClick(object sender, RoutedEventArgs e)
         {
             MenuItemListMapsOnClick?.Invoke();
         }
 
         #endregion
-
-
-        #region Region private methods.
-
+        
+        #region Region processing events of window.
+        
         /// <summary>
-        /// Инициализация OpenGL.
+        /// Обработка события нажатия клавиш.
         /// </summary>
-        private void InitOpenGl()
-        {
-            // Получаемт ссылку на элемент управления OpenGl
-            OpenGL gl = OpenGlControl.OpenGL;
-
-            // Установка порта вывода в соотвествии с размерами элемента Screen.
-            gl.Viewport(0, 0, (int)OpenGlControl.Width, (int)OpenGlControl.Height);
-            
-            // Настройка проекции. 
-            gl.MatrixMode(OpenGL.GL_PROJECTION);
-            gl.LoadIdentity();
-            gl.Perspective(120, (float)OpenGlControl.Width / (float)OpenGlControl.Height, 0.1, 200);
-            gl.MatrixMode(OpenGL.GL_MODELVIEW);
-            gl.LoadIdentity();
-
-            // Настройка параметров OpenGl для визуализации.
-            gl.Enable(OpenGL.GL_DEPTH_TEST);
-
-            _camera = new MapGenCamera
-            {
-                Target = new Vertex(0.0f, 0.0f, 0.0f),
-                Position = new Vertex(0.0f, 0.0f, 1.0f),
-                UpVector = new Vertex(0.0f, 1.0f, 0.0f)
-            };
-            _camera.Project(gl);
-        }
-
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
@@ -299,6 +334,11 @@ namespace MapGen.View.GUI.Windows
 
         #endregion.
 
+        #region Region private methods.
 
+
+
+        #endregion.
     }
 }
+

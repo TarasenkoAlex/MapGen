@@ -8,19 +8,6 @@ namespace MapGen.View.Source.Classes
 {
     public class MapGenCamera : LookAtCamera
     {
-
-        #region Region constructor.
-
-        /// <summary>
-        /// Создание камеры.
-        /// </summary>
-        public MapGenCamera()
-        {
-        }
-
-        #endregion
-
-
         #region Region methods moving.
         
         /// <summary>
@@ -66,6 +53,5 @@ namespace MapGen.View.Source.Classes
         }
 
         #endregion
-        
     }
 }
