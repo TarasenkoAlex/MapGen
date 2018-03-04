@@ -225,14 +225,17 @@ namespace MapGen.View.GUI.Windows
                 //  Очищает буфер кадра 
                 gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
 
-                //  Восстанавливает начальную точку сисетмы координат.
+                //  Восстанавливает начальную точку системы координат.
                 gl.LoadIdentity();
+
+                // Поворот системы координат на 180 градусов вокруг оси X.
+                gl.Rotate(180, 0, 0);
 
                 // Обновляем взгляд камеры.
                 _camera.Look(gl);
                 
                 gl.PushMatrix();
-
+                
                 // Отображаем карту.
                 if (RegMatrix != null)
                 {
@@ -287,45 +290,45 @@ namespace MapGen.View.GUI.Windows
         {
             switch (e.Key)
             {
-                case Key.A:
+                case Key.A: // Движение камеры влево.
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
                         _camera.MoveLeftRight(-float.Parse(ResourcesView.MoveSpeed));
                         _isDrawMap = true;
                         break;
                     }
-                case Key.D:
+                case Key.D: // Движение камеры вправо.
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
                         _camera.MoveLeftRight(float.Parse(ResourcesView.MoveSpeed));
                         _isDrawMap = true;
                         break;
                     }
-                case Key.S:
+                case Key.S: // Движение камеры вниз.
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
                         _camera.MoveUpDown(-float.Parse(ResourcesView.MoveSpeed));
                         _isDrawMap = true;
                         break;
                     }
-                case Key.W:
+                case Key.W: // Движение камеры вверх.
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
                         _camera.MoveUpDown(float.Parse(ResourcesView.MoveSpeed));
                         _isDrawMap = true;
                         break;
                     }
-                case Key.Q:
-                    {
-                        OpenGL gl = OpenGlControl.OpenGL;
-                        _camera.MoveForwardBackward(float.Parse(ResourcesView.MoveSpeed));
-                        _isDrawMap = true;
-                        break;
-                    }
-                case Key.E:
+                case Key.Q: // Движение камеры вперед.
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
                         _camera.MoveForwardBackward(-float.Parse(ResourcesView.MoveSpeed));
+                        _isDrawMap = true;
+                        break;
+                    }
+                case Key.E: // Движение камеры назад.
+                    {
+                        OpenGL gl = OpenGlControl.OpenGL;
+                        _camera.MoveForwardBackward(float.Parse(ResourcesView.MoveSpeed));
                         _isDrawMap = true;
                         break;
                     }

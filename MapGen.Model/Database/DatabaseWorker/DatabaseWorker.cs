@@ -21,7 +21,7 @@ namespace MapGen.Model.Database.DatabaseWorker
         /// <summary>
         /// Очередь запросов на вставку.
         /// </summary>
-        private ConcurrentQueue<Tuple<TypeQueue, object>> _queueInserts;
+        private readonly ConcurrentQueue<Tuple<TypeQueue, object>> _queueInserts;
 
         /// <summary>
         /// есть ли подключение к базе данных.

@@ -26,8 +26,8 @@ namespace MapGen.View.Source.Classes
         /// <param name="speed">Шаг смещения.</param>
         public void MoveUpDown(float speed)
         {
-            Target = new Vertex(Target.X, Target.Y + speed, Target.Z);
-            Position = new Vertex(Position.X, Position.Y + speed, Position.Z);
+            Target = new Vertex(Target.X, Target.Y - speed, Target.Z);
+            Position = new Vertex(Position.X, Position.Y - speed, Position.Z);
         }
 
         /// <summary>
@@ -36,10 +36,10 @@ namespace MapGen.View.Source.Classes
         /// <param name="speed">Шаг смещения.</param>
         public void MoveForwardBackward(float speed)
         {
-            if (Target.Z + speed >= 0.0f)
+            if (Target.Z - speed >= 0.0f)
             {
-                Target = new Vertex(Target.X, Target.Y, Target.Z + speed);
-                Position = new Vertex(Position.X, Position.Y, Position.Z + speed);
+                Target = new Vertex(Target.X, Target.Y, Target.Z - speed);
+                Position = new Vertex(Position.X, Position.Y, Position.Z - speed);
             }
         }
 

@@ -23,6 +23,8 @@ namespace MapGen.Model.Tests.Database
                 {
                     Idm = 0,
                     Name = "Name0",
+                    Latitude = "56.278206",
+                    Longitude = "43.971291",
                     Length = 100,
                     Width = 100,
                     Scale = 1000
@@ -31,6 +33,8 @@ namespace MapGen.Model.Tests.Database
                 {
                     Idm = 1,
                     Name = "Name1",
+                    Latitude = "56.278206",
+                    Longitude = "43.971291",
                     Length = 100,
                     Width = 100,
                     Scale = 10000
@@ -39,6 +43,8 @@ namespace MapGen.Model.Tests.Database
                 {
                     Idm = 2,
                     Name = "Name2",
+                    Latitude = "56.278206",
+                    Longitude = "43.971291",
                     Length = 100,
                     Width = 100,
                     Scale = 100000
@@ -78,12 +84,14 @@ namespace MapGen.Model.Tests.Database
             {
                 getAll.Add(el);
             }
-
+            
             // Assert.
             Assert.AreEqual(3, getAll.Count);
             Assert.IsNotNull(getAll.Find(el =>
                 el.Idm == 1 && 
                 el.Name == "Name1" &&
+                el.Latitude == "56.278206" && 
+                el.Longitude == "43.971291" &&
                 el.Length == 100 &&
                 el.Width == 100 &&
                 el.Scale == 10000));
@@ -98,6 +106,8 @@ namespace MapGen.Model.Tests.Database
             {
                 Name = "added name",
                 Length = 120,
+                Latitude = "56.278206",
+                Longitude = "43.971291",
                 Width = 120,
                 Scale = 1200
             };
@@ -108,6 +118,8 @@ namespace MapGen.Model.Tests.Database
             // Assert.
             Assert.AreEqual(1, _mockContext.Object.Maps.Where(el =>
                 el.Name == "added name" &&
+                el.Latitude == "56.278206" &&
+                el.Longitude == "43.971291" &&
                 el.Length == 120 &&
                 el.Width == 120 &&
                 el.Scale == 1200).ToList().Count);
@@ -125,6 +137,8 @@ namespace MapGen.Model.Tests.Database
             // Assert.
             Assert.AreEqual(0, _mockContext.Object.Maps.Where(el =>
                 el.Name == "Name1" &&
+                el.Latitude == "56.278206" &&
+                el.Longitude == "43.971291" &&
                 el.Length == 100 &&
                 el.Width == 100 &&
                 el.Scale == 10000).ToList().Count);
@@ -143,6 +157,8 @@ namespace MapGen.Model.Tests.Database
             Assert.NotNull(map);
             Assert.AreEqual(map.Idm, 1);
             Assert.AreEqual(map.Name, "Name1");
+            Assert.AreEqual(map.Latitude, "56.278206");
+            Assert.AreEqual(map.Longitude, "43.971291");
             Assert.AreEqual(map.Length, 100);
             Assert.AreEqual(map.Width, 100);
             Assert.AreEqual(map.Scale, 10000);

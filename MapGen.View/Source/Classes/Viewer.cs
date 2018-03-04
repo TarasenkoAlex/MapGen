@@ -96,9 +96,11 @@ namespace MapGen.View.Source.Classes
                 tableMaps[i] = new MapView(
                     int.Parse(tMaps[i][0]),
                     tMaps[i][1],
-                    int.Parse(tMaps[i][2]),
-                    int.Parse(tMaps[i][3]),
-                    int.Parse(tMaps[i][4]));
+                    tMaps[i][2],
+                    tMaps[i][3],
+                    int.Parse(tMaps[i][4]),
+                    int.Parse(tMaps[i][5]),
+                    int.Parse(tMaps[i][6]));
             }
 
             return tableMaps;

@@ -123,14 +123,13 @@
       <DependentUpon>ResourceModel.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Database\DbFiles\MapGen.db" />
     <EntityDeploy Include="Database\EDM\MapGen.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MapGen.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Database\DbFiles\MapGen.db" />
     <None Include="Database\EDM\MapGen.edmx.diagram">
       <DependentUpon>MapGen.edmx</DependentUpon>
     </None>
@@ -139,6 +138,14 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ResourceModel.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceModel.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Database\EDM\MapGen.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -150,12 +157,6 @@
       <DependentUpon>MapGen.edmx</DependentUpon>
       <LastGenOutput>MapGen.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="ResourceModel.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ResourceModel.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.107.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.107.0\build\net45\System.Data.SQLite.Core.targets')" />

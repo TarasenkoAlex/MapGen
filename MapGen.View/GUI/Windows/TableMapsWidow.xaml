@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MapGen.View.GUI.Windows"
              xmlns:classes="clr-namespace:MapGen.View.Source.Classes"
-             MinHeight="300" MinWidth="500" MaxHeight="300" MaxWidth="500" Height="300" Width="500" 
+             MinHeight="300" MinWidth="640" MaxHeight="300" MaxWidth="640" Height="300" Width="640" 
              WindowStyle="None" 
              AllowsTransparency="True"
              WindowStartupLocation="CenterScreen">
@@ -36,6 +36,8 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" Width="30" CanUserResize="False"/>
                 <DataGridTextColumn Header="Имя карты" Binding="{Binding Path=Name}" Width="170" CanUserResize="False"/>
+                <DataGridTextColumn Header="Долгота" Binding="{Binding Path=Latitude}" Width="70" CanUserResize="False"/>
+                <DataGridTextColumn Header="Широта" Binding="{Binding Path=Longitude}" Width="70" CanUserResize="False"/>
                 <DataGridTextColumn Header="Ширина" Binding="{Binding Path=Width}" Width="70" CanUserResize="False"/>
                 <DataGridTextColumn Header="Длина" Binding="{Binding Path=Length}" Width="70" CanUserResize="False"/>
                 <DataGridTextColumn Header="Масштаб" Binding="{Binding Path=Scale}" Width="70" CanUserResize="False"/>

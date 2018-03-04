@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fb4d099924554db7866a930b41ab3d48" Name="Diagram1">
-        <EntityTypeShape EntityType="MapGenModel.Map" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MapGenModel.Point" Width="1.5" PointX="3.125" PointY="0.875" IsExpanded="true" />
+      <Diagram DiagramId="f3fa76dbd9b8462fba0e480440d29b62" Name="Diagram1">
+        <EntityTypeShape EntityType="MapGenModel.Map" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MapGenModel.Point" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="MapGenModel.FK_Points_0_0" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

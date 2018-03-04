@@ -23,24 +23,24 @@ namespace MapGen.Model.Tests.Database
                 new Point
                 {
                     Idp = 0,
-                    X = 0.0,
-                    Y = 1.0,
+                    X = 0,
+                    Y = 1,
                     Depth = 1500,
                     Idm = 0
                 },
                 new Point
                 {
                     Idp = 1,
-                    X = 1.0,
-                    Y = 1.0,
+                    X = 1,
+                    Y = 1,
                     Depth = 2000,
                     Idm = 1
                 },
                 new Point
                 {
                     Idp = 2,
-                    X = 0.5,
-                    Y = 2.0,
+                    X = 1,
+                    Y = 2,
                     Depth = 1500,
                     Idm = 0
                 },
@@ -97,8 +97,8 @@ namespace MapGen.Model.Tests.Database
             PointsRepository pointsRepository = new PointsRepository(_mockContext.Object);
             Point addPoint = new Point
             {
-                X = 5.0,
-                Y = 2.0,
+                X = 5,
+                Y = 2,
                 Depth = 5000,
                 Idm = 1
             };
@@ -108,8 +108,8 @@ namespace MapGen.Model.Tests.Database
 
             // Assert.
             Assert.AreEqual(1, _mockContext.Object.Points.Where(el =>
-                Math.Abs(el.X - 5.0) < double.Epsilon &&
-                Math.Abs(el.Y - 2.0) < double.Epsilon &&
+                el.X == 5 &&
+                el.Y == 2 &&
                 Math.Abs(el.Depth - 5000) < double.Epsilon &&
                 el.Idm == 1).ToList().Count);
         }
@@ -126,8 +126,8 @@ namespace MapGen.Model.Tests.Database
             // Assert.
             Assert.AreEqual(0, _mockContext.Object.Points.Where(el =>
                 el.Idp == 1 &&
-                Math.Abs(el.X - 1.0) < double.Epsilon &&
-                Math.Abs(el.Y - 1.0) < double.Epsilon &&
+                el.X == 1 &&
+                el.Y == 1 &&
                 Math.Abs(el.Depth - 2000) < double.Epsilon &&
                 el.Idm == 1).ToList().Count);
         }

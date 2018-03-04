@@ -22,6 +22,8 @@ namespace MapGen.Model.Database.EDM
     
         public long Idm { get; set; }
         public string Name { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
         public long Width { get; set; }
         public long Length { get; set; }
         public long Scale { get; set; }

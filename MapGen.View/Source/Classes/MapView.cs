@@ -15,14 +15,24 @@ namespace MapGen.View.Source.Classes
         public string Name { get; set; }
 
         /// <summary>
-        /// Ширина карты.
+        /// Долгота начала карты.
         /// </summary>
-        public int Width { get; set; }
+        public string Latitude { get; set; }
 
         /// <summary>
-        /// Длина карты.
+        /// Широта начала карты.
         /// </summary>
-        public int Length { get; set; }
+        public string Longitude { get; set; }
+
+        /// <summary>
+        /// Ширина карты (сек.).
+        /// </summary>
+        public long Width { get; set; }
+
+        /// <summary>
+        /// Длина карты (сек.).
+        /// </summary>
+        public long Length { get; set; }
 
         /// <summary>
         /// Масштаб карты (1 : Scale).
@@ -34,13 +44,17 @@ namespace MapGen.View.Source.Classes
         /// </summary>
         /// <param name="id">Id карты.</param>
         /// <param name="name">Имя карты.</param>
+        /// <param name="latitude">Долгота начала карты.</param>
+        /// <param name="longitude">Широта начала карты.</param>
         /// <param name="width">Ширина карты.</param>
         /// <param name="length">Длина карты.</param>
         /// <param name="scale">Масштаб карты.</param>
-        public MapView(int id, string name, int width, int length, int scale)
+        public MapView(int id, string name, string latitude, string longitude, int width, int length, int scale)
         {
             Id = id;
             Name = name;
+            Latitude = latitude;
+            Longitude = longitude;
             Width = width;
             Length = length;
             Scale = scale;
@@ -62,6 +76,14 @@ namespace MapGen.View.Source.Classes
                 case "Name":
                 {
                     return "Имя карты";
+                }
+                case "Latitude":
+                {
+                    return "Долгота";
+                }
+                case "Longitude":
+                {
+                    return "Широта";
                 }
                 case "Width":
                 {

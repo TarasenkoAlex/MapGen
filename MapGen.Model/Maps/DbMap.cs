@@ -20,12 +20,22 @@ namespace MapGen.Model.Maps
         public string Name { get; set; }
 
         /// <summary>
-        /// Ширина карты.
+        /// Долгота начала карты.
+        /// </summary>
+        public string Latitude { get; set; }
+
+        /// <summary>
+        /// Широта начала карты.
+        /// </summary>
+        public string Longitude { get; set; }
+
+        /// <summary>
+        /// Ширина карты (сек.).
         /// </summary>
         public long Width { get; set; }
 
         /// <summary>
-        /// Длина карты.
+        /// Длина карты (сек.).
         /// </summary>
         public long Length { get; set; }
 

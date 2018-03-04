@@ -11,6 +11,8 @@
           </Key>
           <Property Name="Idm" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="Width" Type="integer" Nullable="false" />
           <Property Name="Length" Type="integer" Nullable="false" />
           <Property Name="Scale" Type="integer" Nullable="false" />
@@ -20,8 +22,8 @@
             <PropertyRef Name="Idp" />
           </Key>
           <Property Name="Idp" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="X" Type="real" Nullable="false" />
-          <Property Name="Y" Type="real" Nullable="false" />
+          <Property Name="X" Type="integer" Nullable="false" />
+          <Property Name="Y" Type="integer" Nullable="false" />
           <Property Name="Depth" Type="real" Nullable="false" />
           <Property Name="Idm" Type="integer" Nullable="false" />
         </EntityType>
@@ -56,6 +58,8 @@
           </Key>
           <Property Name="Idm" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Latitude" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Longitude" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Width" Type="Int64" Nullable="false" />
           <Property Name="Length" Type="Int64" Nullable="false" />
           <Property Name="Scale" Type="Int64" Nullable="false" />
@@ -66,8 +70,8 @@
             <PropertyRef Name="Idp" />
           </Key>
           <Property Name="Idp" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="X" Type="Double" Nullable="false" />
-          <Property Name="Y" Type="Double" Nullable="false" />
+          <Property Name="X" Type="Int64" Nullable="false" />
+          <Property Name="Y" Type="Int64" Nullable="false" />
           <Property Name="Depth" Type="Double" Nullable="false" />
           <Property Name="Idm" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Map" Relationship="Self.FK_Points_0_0" FromRole="Points" ToRole="Maps" />
@@ -103,6 +107,8 @@
               <MappingFragment StoreEntitySet="Maps">
                 <ScalarProperty Name="Idm" ColumnName="Idm" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
                 <ScalarProperty Name="Width" ColumnName="Width" />
                 <ScalarProperty Name="Length" ColumnName="Length" />
                 <ScalarProperty Name="Scale" ColumnName="Scale" />

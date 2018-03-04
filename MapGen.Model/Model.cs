@@ -101,6 +101,8 @@ namespace MapGen.Model
                     {
                         map.Idm.ToString(),
                         map.Name,
+                        map.Latitude,
+                        map.Longitude,
                         map.Width.ToString(),
                         map.Length.ToString(),
                         map.Scale.ToString()

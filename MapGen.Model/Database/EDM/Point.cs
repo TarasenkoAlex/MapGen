@@ -15,8 +15,8 @@ namespace MapGen.Model.Database.EDM
     public partial class Point
     {
         public long Idp { get; set; }
-        public double X { get; set; }
-        public double Y { get; set; }
+        public long X { get; set; }
+        public long Y { get; set; }
         public double Depth { get; set; }
         public long Idm { get; set; }
     
