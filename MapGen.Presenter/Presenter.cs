@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using MapGen.Model;
 using MapGen.View.Source.Interfaces;
 using MapGen.View.Source.Classes;
@@ -90,24 +91,27 @@ namespace MapGen.Presenter
         /// </summary>
         private void View_MenuItemListMapsOnClick()
         {
-            string message;
+            new Thread(() =>
+                {
+                    string message;
+                    // Подключаемся к базе данных.
+                    if (!_model.ConnectToDatabase(out message))
+                    {
+                        _view.ShowMessageError("Загрузка базы данных", $"Не удалось подключиться к базе данных! {message}");
+                        return;
+                    }
 
-            // Подключаемся к базе данных.
-            if (!_model.ConnectToDatabase(out message))
-            {
-                _view.ShowMessageError("Загрузка базы данных", $"Не удалось подключиться к базе данных! {message}");
-                return;
-            }
-
-            List<string[]> maps;
-            if (_model.GetDbMaps(out maps, out message))
-            {
-                _view.ShowTableDbMaps(maps);
-            }
-            else
-            {
-                _view.ShowMessageError("Загрузка базы данных", $"Не удалось загрузить список карт! {message}");
-            }
+                    List<string[]> maps;
+                    if (_model.GetDbMaps(out maps, out message))
+                    {
+                        _view.ShowTableDbMaps(maps);
+                    }
+                    else
+                    {
+                        _view.ShowMessageError("Загрузка базы данных", $"Не удалось загрузить список карт! {message}");
+                    }
+                })
+                {IsBackground = true}.Start();
         }
 
         /// <summary>
@@ -116,25 +120,31 @@ namespace MapGen.Presenter
         /// <param name="idm">Id карты.</param>
         private void View_LoadDbMap(int idm)
         {
-            RegMatrix regMatrix;
-            string message;
-            if (!_model.LoadDbMap(idm, out message))    // Загружаме карты из базы данных.
-            {
-                // Ошибка загрузки.
-                return;
-            }
-            
-            if (!_model.CreateRegMatrix(out regMatrix, out message))   // Строим регулярную матрицу глубин.
-            {
-                // Ошибка создания регулярной матрицы.
-                return;
-            }
-            
-            // Передаем в View регулярную матрицу для отображения.
-            _view.RegMatrix = ConvertRegMatrixToRegMatrixView(regMatrix);
-            
-            // Отображаем карту.
-            _view.DrawSeaMap();
+            new Thread(() =>
+                {
+                    string message;
+                    // Загружаем карту из базы данных.
+                    if (!_model.LoadDbMap(idm, out message))
+                    {
+                        _view.ShowMessageError("Загрузка базы данных", $"Не удалось загрузить карту из базы данных! {message}");
+                        return;
+                    }
+
+                    RegMatrix regMatrix;
+                    // Строим регулярную матрицу глубин.
+                    if (!_model.CreateRegMatrix(out regMatrix, out message))
+                    {
+                        _view.ShowMessageError("Создание регулярной матрицы", $"Не удалось создать регулярную матрицу глубин! {message}");
+                        return;
+                    }
+
+                    // Передаем в View регулярную матрицу для отображения.
+                    _view.RegMatrix = ConvertRegMatrixToRegMatrixView(regMatrix);
+
+                    // Отображаем карту.
+                    _view.DrawSeaMap();
+                })
+                {IsBackground = true}.Start();
         }
 
         /// <summary>

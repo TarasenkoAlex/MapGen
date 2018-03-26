@@ -102,11 +102,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourcesView.resx</DependentUpon>
     </Compile>
+    <Compile Include="Source\Classes\KeyboardController.cs" />
     <Compile Include="Source\Classes\MapGenCamera.cs" />
     <Compile Include="Source\Classes\DrawingObjects.cs" />
     <Compile Include="Source\Classes\MapView.cs" />
     <Compile Include="Source\Classes\RegMatrixView.cs" />
-    <Compile Include="Source\Classes\TriangleCollectionMaker.cs" />
     <Compile Include="Source\Classes\Viewer.cs" />
     <Compile Include="Source\Interfaces\IMain.cs" />
     <Compile Include="Source\Interfaces\IMessage.cs" />
@@ -123,20 +123,11 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="ResourcesView.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourcesView.Designer.cs</LastGenOutput>
@@ -196,6 +187,7 @@
   <ItemGroup>
     <Resource Include="Resources\message.warning.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

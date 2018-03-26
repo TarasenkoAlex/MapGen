@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 using MapGen.View.Source.Classes;
 using MapGen.View.Source.Interfaces;
 using SharpGL;
@@ -23,6 +24,11 @@ namespace MapGen.View.GUI.Windows
         /// </summary>
         public RegMatrixView RegMatrix { get; set; }
 
+        /// <summary>
+        /// Диспатчер главного окна.
+        /// </summary>
+        public Dispatcher MyDispatcher => Dispatcher;
+
         #endregion
 
         #region Region events.
@@ -40,22 +46,7 @@ namespace MapGen.View.GUI.Windows
         /// Флаг, отвечающий перерисовать ли карту.
         /// </summary>
         private bool _isDrawMap;
-
-        /// <summary>
-        /// Объект для триангуляции.
-        /// </summary>
-        private TriangleCollectionMaker _triangleCollectionMaker;
-
-        /// <summary>
-        /// Карта, представленная в виде коллекии треугольников.
-        /// </summary>
-        private DrawingObjects.Triangle[] _triangleCollecton;
-
-        /// <summary>
-        /// Объект для отрисовки поверхности на карте.
-        /// </summary>
-        private DrawingObjects.SurfaceMaker _surfaceMaker;
-
+       
         /// <summary>
         /// Камера.
         /// </summary>
@@ -82,9 +73,7 @@ namespace MapGen.View.GUI.Windows
         /// </summary>
         private void InitializeFields()
         {
-            _surfaceMaker = new DrawingObjects.SurfaceMaker();
-            _triangleCollectionMaker = new TriangleCollectionMaker();
-            _triangleCollecton = new DrawingObjects.Triangle[] {};
+            _isDrawMap = false;
         }
 
         /// <summary>
@@ -101,7 +90,8 @@ namespace MapGen.View.GUI.Windows
             // Настройка проекции. 
             gl.MatrixMode(OpenGL.GL_PROJECTION);
             gl.LoadIdentity();
-            gl.Perspective(120, (float)OpenGlControl.Width / (float)OpenGlControl.Height, 0.1, 200);
+            gl.Ortho2D(1, OpenGlControl.Width, 1, OpenGlControl.Height);
+            //gl.Perspective(120, (float)OpenGlControl.Width / (float)OpenGlControl.Height, 0.1, 200);
             gl.MatrixMode(OpenGL.GL_MODELVIEW);
             gl.LoadIdentity();
 
@@ -143,7 +133,10 @@ namespace MapGen.View.GUI.Windows
             };
 
             // Обработка кнопки закрытия.
-            ButtonClose.Click += (s, e) => Close();
+            ButtonClose.Click += (s, e) =>
+            {
+                Close();
+            };
         }
 
         /// <summary>
@@ -174,9 +167,8 @@ namespace MapGen.View.GUI.Windows
             if (RegMatrix != null)
             {
                 string messageerror;
-                if (_triangleCollectionMaker.CreateTriangleCollectionMap(RegMatrix, out _triangleCollecton, out messageerror))
+                if (RegMatrix.InitColorForPoints(out messageerror))
                 {
-
                     _isDrawMap = true;
                 }
                 else
@@ -217,7 +209,7 @@ namespace MapGen.View.GUI.Windows
         /// <param name="args"></param>
         private void OpenGLControl_OpenGLDraw(object sender, OpenGLEventArgs args)
         {
-            if (_isDrawMap)
+            //if (_isDrawMap)
             {
                 // Получаемт ссылку на элемент управления OpenGL
                 OpenGL gl = args.OpenGL;
@@ -235,12 +227,9 @@ namespace MapGen.View.GUI.Windows
                 _camera.Look(gl);
                 
                 gl.PushMatrix();
-                
+
                 // Отображаем карту.
-                if (RegMatrix != null)
-                {
-                    _surfaceMaker.DrawSurface(gl, _triangleCollecton, RegMatrix.MaxDepth);
-                }
+                RegMatrix?.DrawSurface(gl);
 
                 gl.PopMatrix();
 
@@ -294,20 +283,23 @@ namespace MapGen.View.GUI.Windows
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
                         _camera.MoveLeftRight(-float.Parse(ResourcesView.MoveSpeed));
-                        _isDrawMap = true;
+                        _camera.Look(gl);
+                        //_isDrawMap = true;
                         break;
                     }
                 case Key.D: // Движение камеры вправо.
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
                         _camera.MoveLeftRight(float.Parse(ResourcesView.MoveSpeed));
-                        _isDrawMap = true;
+                        _camera.Look(gl);
+                        //_isDrawMap = true;
                         break;
                     }
                 case Key.S: // Движение камеры вниз.
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
                         _camera.MoveUpDown(-float.Parse(ResourcesView.MoveSpeed));
+                        //_camera.Look(gl);
                         _isDrawMap = true;
                         break;
                     }
@@ -315,6 +307,7 @@ namespace MapGen.View.GUI.Windows
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
                         _camera.MoveUpDown(float.Parse(ResourcesView.MoveSpeed));
+                        //_camera.Look(gl);
                         _isDrawMap = true;
                         break;
                     }
@@ -322,6 +315,7 @@ namespace MapGen.View.GUI.Windows
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
                         _camera.MoveForwardBackward(-float.Parse(ResourcesView.MoveSpeed));
+                        //_camera.Look(gl);
                         _isDrawMap = true;
                         break;
                     }
@@ -329,6 +323,7 @@ namespace MapGen.View.GUI.Windows
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
                         _camera.MoveForwardBackward(float.Parse(ResourcesView.MoveSpeed));
+                        //_camera.Look(gl);
                         _isDrawMap = true;
                         break;
                     }

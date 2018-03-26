@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MapGen.Model.Database.EDM;
 using MapGen.Model.Interpolation.Setting;
+using MapGen.Model.Interpolation.Strategy;
 using MapGen.Model.Maps;
 
 namespace MapGen.Model
@@ -12,8 +13,8 @@ namespace MapGen.Model
     public interface IModel
     {
         #region Region properties.
-        ISettingInterpolation SettingInterpolation { get; set; }
         DbMap SeaMap { get; }
+        StrategyInterpolKriging StrategyInterpolKriging { get; set; }
         #endregion
 
         #region Region methods. Database.

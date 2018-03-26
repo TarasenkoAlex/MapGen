@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Threading;
 using MapGen.View.GUI.Windows;
 using MapGen.View.Source.Classes;
 
@@ -10,6 +11,7 @@ namespace MapGen.View.Source.Interfaces
         #region Region properties.
         object MainWindow { get; }
         RegMatrixView RegMatrix { set; }
+        Dispatcher Dispatcher { get; }
         #endregion
 
         #region Region general events.

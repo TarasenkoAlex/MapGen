@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Windows.Threading;
 using MapGen.View.GUI.Windows;
 using MapGen.View.Source.Interfaces;
 
@@ -22,6 +24,11 @@ namespace MapGen.View.Source.Classes
         /// Главное окно программы.
         /// </summary>
         public object MainWindow => _mainWindow;
+
+        /// <summary>
+        /// Диспатчер.
+        /// </summary>
+        public Dispatcher Dispatcher => _mainWindow.MyDispatcher;
 
         /// <summary>
         /// Регулярна матрица глубин.
@@ -70,16 +77,19 @@ namespace MapGen.View.Source.Classes
         #endregion
         
         #region Region methods of TableMapsWindow.
-        
+
         /// <summary>
         /// Открыть окно со списком карт.
         /// </summary>
         public void ShowTableDbMaps(List<string[]> tableMaps)
         {
-            ITableMaps tableMapsWindow = new TableMapsWindow();
-            tableMapsWindow.ChooseMap += TableMapsWindow_ChooseMap;
-            tableMapsWindow.Maps = ConvertStringToMapView(tableMaps);
-            tableMapsWindow.ShowTableMaps();
+            Dispatcher.Invoke(() =>
+            {
+                ITableMaps tableMapsWindow = new TableMapsWindow();
+                tableMapsWindow.ChooseMap += TableMapsWindow_ChooseMap;
+                tableMapsWindow.Maps = ConvertStringToMapView(tableMaps);
+                tableMapsWindow.ShowTableMaps();
+            });
         }
 
         /// <summary>
@@ -124,7 +134,10 @@ namespace MapGen.View.Source.Classes
         /// </summary>
         public void ShowMainWindow()
         {
-            _mainWindow.ShowMainWindow();
+            Dispatcher.Invoke(() =>
+            {
+                _mainWindow.ShowMainWindow();
+            });
         }
 
         /// <summary>
@@ -132,7 +145,10 @@ namespace MapGen.View.Source.Classes
         /// </summary>
         public void DrawSeaMap()
         {
-            _mainWindow.DrawSeaMap();
+            Dispatcher.Invoke(() =>
+            {
+                _mainWindow.DrawSeaMap();
+            });
         }
 
         /// <summary>
@@ -151,6 +167,12 @@ namespace MapGen.View.Source.Classes
             MenuItemListMapsOnClick?.Invoke();
         }
 
+
+        private void CloseWindow()
+        {
+            
+        }
+
         #endregion
 
         #region Region methods of MessageWindow.
@@ -162,8 +184,11 @@ namespace MapGen.View.Source.Classes
         /// <param name="text">Текст сообщения в окне.</param>
         public void ShowMessageError(string title, string text)
         {
-            IMessage message = new MessageWindow();
-            message.ShowMessage(title, text, MessageButton.Ok, MessageType.Error);
+            Dispatcher.Invoke(() =>
+            {
+                IMessage message = new MessageWindow();
+                message.ShowMessage(title, text, MessageButton.Ok, MessageType.Error);
+            });
         }
 
         #endregion

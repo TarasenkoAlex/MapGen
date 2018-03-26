@@ -61,7 +61,79 @@ namespace MapGen.View {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 10.
+        ///   Ищет локализованную строку, похожую на 168|255|255.
+        /// </summary>
+        internal static string ColorDepth1 {
+            get {
+                return ResourceManager.GetString("ColorDepth1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 138|255|255.
+        /// </summary>
+        internal static string ColorDepth2 {
+            get {
+                return ResourceManager.GetString("ColorDepth2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 108|255|255.
+        /// </summary>
+        internal static string ColorDepth3 {
+            get {
+                return ResourceManager.GetString("ColorDepth3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 78|195|240.
+        /// </summary>
+        internal static string ColorDepth4 {
+            get {
+                return ResourceManager.GetString("ColorDepth4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 48|165|215.
+        /// </summary>
+        internal static string ColorDepth5 {
+            get {
+                return ResourceManager.GetString("ColorDepth5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 18|135|180.
+        /// </summary>
+        internal static string ColorDepth6 {
+            get {
+                return ResourceManager.GetString("ColorDepth6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 0|105|150.
+        /// </summary>
+        internal static string ColorDepth7 {
+            get {
+                return ResourceManager.GetString("ColorDepth7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 0|85|130.
+        /// </summary>
+        internal static string ColorDepth8 {
+            get {
+                return ResourceManager.GetString("ColorDepth8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 8.
         /// </summary>
         internal static string CountDepthScale {
             get {

@@ -9,6 +9,7 @@ using MapGen.Model.Database.EDM;
 using MapGen.Model.Database.UnitOfWork;
 using MapGen.Model.General;
 using MapGen.Model.Interpolation.Setting;
+using MapGen.Model.Interpolation.Strategy;
 using MapGen.Model.Maps;
 using MapGen.Model.RegMatrix;
 
@@ -19,14 +20,14 @@ namespace MapGen.Model
         #region Region private fields.
         
         /// <summary>
-        /// Создает регулряную матрицу по облаку точек.
-        /// </summary>
-        private readonly RegMatrixMaker _regMatrixMaker;
-
-        /// <summary>
         /// Клиент баазы данных.
         /// </summary>
         private readonly DatabaseWorker _databaseWorker;
+
+        /// <summary>
+        /// Создает регулряную матрицу по облаку точек.
+        /// </summary>
+        private readonly IRegMatrixMaker _regMatrixMaker;
 
         #endregion
 
@@ -38,9 +39,9 @@ namespace MapGen.Model
         public DbMap SeaMap { get; private set; }
 
         /// <summary>
-        /// Конфигурация интерполяции.
+        /// Стратегия интерполяции при помощи метода Кригинг.
         /// </summary>
-        public ISettingInterpolation SettingInterpolation { get; set; }
+        public StrategyInterpolKriging StrategyInterpolKriging { get; set; }
 
         #endregion
 
@@ -51,8 +52,12 @@ namespace MapGen.Model
         /// </summary>
         public Model()
         {
+            // public.
+            StrategyInterpolKriging = new StrategyInterpolKriging(new SettingInterpolKriging());
+           
+            // private.
             _databaseWorker = new DatabaseWorker();
-            _regMatrixMaker = new RegMatrixMaker();
+            _regMatrixMaker = new RegMatrixMaker(StrategyInterpolKriging);
         }
 
         #endregion
@@ -173,7 +178,7 @@ namespace MapGen.Model
         /// <returns>Успешно ли прошло создание.</returns>
         public bool CreateRegMatrix(out RegMatrix.RegMatrix regMatrix, out string message)
         {
-            // В зависимости от настройки интерполяции создавать рег матрицу.
+            // В зависимости от настройки интерполяции создает регулярную матрицу.
             return _regMatrixMaker.CreateRegMatrix(SeaMap, 1.0, out regMatrix, out message);
         }
 
