@@ -121,7 +121,7 @@ namespace MapGen.Presenter
         private void View_LoadDbMap(int idm)
         {
             new Thread(() =>
-                {
+                { 
                     string message;
                     // Загружаем карту из базы данных.
                     if (!_model.LoadDbMap(idm, out message))
