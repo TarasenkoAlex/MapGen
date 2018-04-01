@@ -1,6 +1,6 @@
 ﻿namespace MapGen.Model.Interpolation.Setting
 {
-    public interface ISettingInterpolKriging : IGeneralSettingInterpol
+    public interface ISettingInterpolationKriging : ISettingInterpolationGeneral
     {
         /// <summary>
         /// Вариограмма.

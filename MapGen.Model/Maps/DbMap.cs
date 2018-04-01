@@ -50,7 +50,12 @@ namespace MapGen.Model.Maps
         public Point[] CloudPoints { get; set; }
 
         #endregion
+
+        #region Public methods.
+
         
+        #endregion
+
         #region Region cosntructor.
 
         /// <summary>

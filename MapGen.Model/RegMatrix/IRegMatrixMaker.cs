@@ -14,14 +14,15 @@ namespace MapGen.Model.RegMatrix
         /// Стратегия интерполяции.
         /// </summary>
         IStratagyInterpol StratagyInterpol { get; set; }
+
         /// <summary>
         /// Создание регулярной матрицы глубин.
         /// </summary>
         /// <param name="map">Карта.</param>
-        /// <param name="step">Шаг регулярной матрицы.</param>
+        /// <param name="scale">Масштаб карты (1 : scale).</param>
         /// <param name="regMatrix">Регулярная карта.</param>
         /// <param name="message">Сообщение ошибки.</param>
         /// <returns>Успешно ли создана регулярная матрица глубин.</returns>
-        bool CreateRegMatrix(DbMap map, double step, out RegMatrix regMatrix, out string message);
+        bool CreateRegMatrix(DbMap map, long scale, out RegMatrix regMatrix, out string message);
     }
 }

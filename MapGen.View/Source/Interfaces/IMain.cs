@@ -8,12 +8,13 @@ namespace MapGen.View.Source.Interfaces
     public interface IMain
     {
         #region Region properties.
-        RegMatrixView RegMatrix { set; }
+        GraphicMap GraphicMap { set; }
         Dispatcher MyDispatcher { get; }
         #endregion
 
         #region Region events.
         event Action MenuItemListMapsOnClick;
+        event Action<int> ChangeScale;
         #endregion
 
         #region Region methods.

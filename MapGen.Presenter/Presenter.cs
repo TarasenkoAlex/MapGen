@@ -132,14 +132,14 @@ namespace MapGen.Presenter
 
                     RegMatrix regMatrix;
                     // Строим регулярную матрицу глубин.
-                    if (!_model.CreateRegMatrix(out regMatrix, out message))
+                    if (!_model.CreateRegMatrix(_model.SeaMap.Scale, out regMatrix, out message))
                     {
                         _view.ShowMessageError("Создание регулярной матрицы", $"Не удалось создать регулярную матрицу глубин! {message}");
                         return;
                     }
 
-                    // Передаем в View регулярную матрицу для отображения.
-                    _view.RegMatrix = ConvertRegMatrixToRegMatrixView(regMatrix);
+                    // Конвертируем регулярную матрицу в карту для отрисовки. Передаем во View.
+                    _view.GraphicMap = ConvertRegMatrixToGraphicMap(regMatrix, _model.SeaMap.Scale);
 
                     // Отображаем карту.
                     _view.DrawSeaMap();
@@ -148,22 +148,39 @@ namespace MapGen.Presenter
         }
 
         /// <summary>
-        /// Конвертация регулярной матрицы Model в регулярную матрицу View.
+        /// Конвертация регулярной матрицы в карту для отрисовки.
         /// </summary>
         /// <param name="regMatrix">Регулярная матрица Model.</param>
-        /// <returns>Регулярная матрица View.</returns>
-        private RegMatrixView ConvertRegMatrixToRegMatrixView(RegMatrix regMatrix)
+        /// <param name="scale">Масштаб карты (1 : scale).</param>
+        /// <returns>Карта для отрисовки.</returns>
+        private GraphicMap ConvertRegMatrixToGraphicMap(RegMatrix regMatrix, long scale)
         {
-            RegMatrixView result = new RegMatrixView()
+            GraphicMap graphicMap = new GraphicMap
             {
-                Step = regMatrix.Step,
+                Scale = scale,
                 Width = regMatrix.Width,
                 Length = regMatrix.Length,
                 MaxDepth = regMatrix.MaxDepth,
-                Points = regMatrix.Points
+                Points = new Point3dColor[regMatrix.Points.Length]
             };
 
-            return result;
+            DrawingObjects.DepthScale depthScale = new DrawingObjects.DepthScale(graphicMap.MaxDepth);
+
+            for (int i = 0; i < regMatrix.Length; ++i)
+            {
+                for (int j = 0; j < regMatrix.Width; ++j)
+                {
+                    graphicMap.Points[i * regMatrix.Width + j] = new Point3dColor
+                    {
+                        X = regMatrix.Step * j,
+                        Y = regMatrix.Step * i,
+                        Depth = regMatrix.Points[i * regMatrix.Width + j],
+                        Color = depthScale.GetColorDepth(regMatrix.Points[i * regMatrix.Width + j])
+                };
+                }
+            }
+
+            return graphicMap;
         }
 
         #endregion

@@ -10,12 +10,13 @@ namespace MapGen.View.Source.Interfaces
     {
         #region Region properties.
         object MainWindow { get; }
-        RegMatrixView RegMatrix { set; }
+        GraphicMap GraphicMap { set; }
         Dispatcher Dispatcher { get; }
         #endregion
 
         #region Region general events.
         event Action<int> LoadDbMap;
+        event Action<int> ChangeScale;
         #endregion
 
         #region Region events of MainWindow.

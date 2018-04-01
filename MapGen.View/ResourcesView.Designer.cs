@@ -192,7 +192,7 @@ namespace MapGen.View {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 0,25.
+        ///   Ищет локализованную строку, похожую на 0,5.
         /// </summary>
         internal static string MoveSpeed {
             get {

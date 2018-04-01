@@ -2,16 +2,13 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using MapGen.Model.Database.EDM;
 using MapGen.Model.General;
 
-namespace MapGen.Model.Database.DatabaseWorker
+namespace MapGen.Model.Database.DbWorker
 {
-    class DatabaseWorker
+    public class DatabaseWorker
     {
         /// <summary>
         /// Объект для работы с репозитриями базы данных и подключением.
@@ -32,7 +29,12 @@ namespace MapGen.Model.Database.DatabaseWorker
         /// Имя файла базы данных.
         /// </summary>
         public string DbName;
-    
+
+        /// <summary>
+        /// Количество элементов в очереди запросов.
+        /// </summary>
+        public int CountQueueInserts => _queueInserts.Count;
+
         /// <summary>
         /// Существует ли база данных.
         /// </summary>

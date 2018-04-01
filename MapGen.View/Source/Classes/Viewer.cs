@@ -31,13 +31,13 @@ namespace MapGen.View.Source.Classes
         public Dispatcher Dispatcher => _mainWindow.MyDispatcher;
 
         /// <summary>
-        /// Регулярна матрица глубин.
+        /// Карта для отрисовки.
         /// </summary>
-        public RegMatrixView RegMatrix
+        public GraphicMap GraphicMap
         {
             set
             {
-                _mainWindow.RegMatrix = value;
+                _mainWindow.GraphicMap = value;
             }
         }
 
@@ -49,6 +49,11 @@ namespace MapGen.View.Source.Classes
         /// Событие загрузки карты.
         /// </summary>
         public event Action<int> LoadDbMap;
+
+        /// <summary>
+        /// Событие изменения масштаба.
+        /// </summary>
+        public event Action<int> ChangeScale;
 
         #endregion
 

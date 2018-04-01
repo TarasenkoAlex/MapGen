@@ -102,11 +102,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourcesView.resx</DependentUpon>
     </Compile>
+    <Compile Include="Source\Classes\GraphicMap.cs" />
     <Compile Include="Source\Classes\KeyboardController.cs" />
     <Compile Include="Source\Classes\MapGenCamera.cs" />
     <Compile Include="Source\Classes\DrawingObjects.cs" />
     <Compile Include="Source\Classes\MapView.cs" />
-    <Compile Include="Source\Classes\RegMatrixView.cs" />
     <Compile Include="Source\Classes\Viewer.cs" />
     <Compile Include="Source\Interfaces\IMain.cs" />
     <Compile Include="Source\Interfaces\IMessage.cs" />

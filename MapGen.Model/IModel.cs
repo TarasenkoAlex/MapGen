@@ -22,7 +22,7 @@ namespace MapGen.Model
         bool GetDbMaps(out List<string[]> maps, out string message);
         bool LoadDbMap(int idMap, out string message);
         bool GetDbMaps(out List<Map> maps, out string message);
-        bool CreateRegMatrix(out RegMatrix.RegMatrix regMatrix, out string message);
+        bool CreateRegMatrix(long scale, out RegMatrix.RegMatrix regMatrix, out string message);
         #endregion
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MapGen.Model.Database;
-using MapGen.Model.Database.DatabaseWorker;
+using MapGen.Model.Database.DbWorker;
 using MapGen.Model.Database.EDM;
 using MapGen.Model.Database.UnitOfWork;
 using MapGen.Model.General;
@@ -32,7 +32,7 @@ namespace MapGen.Model
         #endregion
 
         #region Region public fields.
-
+        
         /// <summary>
         /// Исходная загруженная карта.
         /// </summary>
@@ -53,7 +53,7 @@ namespace MapGen.Model
         public Model()
         {
             // public.
-            StrategyInterpolKriging = new StrategyInterpolKriging(new SettingInterpolKriging());
+            StrategyInterpolKriging = new StrategyInterpolKriging(new SettingInterpolationKriging());
            
             // private.
             _databaseWorker = new DatabaseWorker();
@@ -173,13 +173,14 @@ namespace MapGen.Model
         /// <summary>
         /// Создание регулярной матрицы глубин.
         /// </summary>
+        /// <param name="scale">Масштаб карты (1 : scale).</param>
         /// <param name="regMatrix">Регулярная матрица глубин.</param>
         /// <param name="message">Сообщение с ошибкой.</param>
         /// <returns>Успешно ли прошло создание.</returns>
-        public bool CreateRegMatrix(out RegMatrix.RegMatrix regMatrix, out string message)
+        public bool CreateRegMatrix(long scale, out RegMatrix.RegMatrix regMatrix, out string message)
         {
             // В зависимости от настройки интерполяции создает регулярную матрицу.
-            return _regMatrixMaker.CreateRegMatrix(SeaMap, 1.0, out regMatrix, out message);
+            return _regMatrixMaker.CreateRegMatrix(SeaMap, scale, out regMatrix, out message);
         }
 
         #endregion

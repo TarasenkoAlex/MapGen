@@ -3,7 +3,7 @@
     /// <summary>
     /// Класс настройки интерполяции методом Крайгинга.
     /// </summary>
-    public class SettingInterpolKriging : ISettingInterpolKriging
+    public class SettingInterpolationKriging : ISettingInterpolationKriging
     {
         /// <summary>
         /// Шаг регулярной матрицы.

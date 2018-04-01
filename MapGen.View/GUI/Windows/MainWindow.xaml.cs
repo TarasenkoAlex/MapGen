@@ -18,11 +18,11 @@ namespace MapGen.View.GUI.Windows
     public partial class MainWindow : IMain
     {
         #region Region properties.
-        
+
         /// <summary>
-        /// Регулярная матрица глубин.
+        /// Карта для отрисовки.
         /// </summary>
-        public RegMatrixView RegMatrix { get; set; }
+        public GraphicMap GraphicMap { get; set; }
 
         /// <summary>
         /// Диспатчер главного окна.
@@ -37,6 +37,11 @@ namespace MapGen.View.GUI.Windows
         /// Событие выбора елемента View "Файл.База данных карт".
         /// </summary>
         public event Action MenuItemListMapsOnClick;
+
+        /// <summary>
+        /// Событие изменения масштаба.
+        /// </summary>
+        public event Action<int> ChangeScale;
 
         #endregion
 
@@ -164,23 +169,14 @@ namespace MapGen.View.GUI.Windows
         /// </summary>
         public void DrawSeaMap()
         {
-            if (RegMatrix != null)
+            if (GraphicMap != null)
             {
-                string messageerror;
-                if (RegMatrix.InitColorForPoints(out messageerror))
-                {
-                    _isDrawMap = true;
-                }
-                else
-                {
-                    IMessage message = new MessageWindow();
-                    message.ShowMessage("Процесс отрисовки карты", "Не загружена регулярная матрица глубин морской карты!", MessageButton.Ok, MessageType.Error);
-                }
+                _isDrawMap = true;
             }
             else
             {
                 IMessage message = new MessageWindow();
-                message.ShowMessage("Процесс отрисовки карты", "Не загружена регулярная матрица глубин морской карты!", MessageButton.Ok, MessageType.Error);
+                message.ShowMessage("Процесс отрисовки карты", "Не загружена карта!", MessageButton.Ok, MessageType.Error);
             }
         }
 
@@ -209,7 +205,7 @@ namespace MapGen.View.GUI.Windows
         /// <param name="args"></param>
         private void OpenGLControl_OpenGLDraw(object sender, OpenGLEventArgs args)
         {
-            //if (_isDrawMap)
+            if (_isDrawMap)
             {
                 // Получаемт ссылку на элемент управления OpenGL
                 OpenGL gl = args.OpenGL;
@@ -229,7 +225,7 @@ namespace MapGen.View.GUI.Windows
                 gl.PushMatrix();
 
                 // Отображаем карту.
-                RegMatrix?.DrawSurface(gl);
+                GraphicMap?.DrawSurface(gl);
 
                 gl.PopMatrix();
 
@@ -283,16 +279,16 @@ namespace MapGen.View.GUI.Windows
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
                         _camera.MoveLeftRight(-float.Parse(ResourcesView.MoveSpeed));
-                        _camera.Look(gl);
-                        //_isDrawMap = true;
+                        //_camera.Look(gl);
+                        _isDrawMap = true;
                         break;
                     }
                 case Key.D: // Движение камеры вправо.
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
                         _camera.MoveLeftRight(float.Parse(ResourcesView.MoveSpeed));
-                        _camera.Look(gl);
-                        //_isDrawMap = true;
+                        //_camera.Look(gl);
+                        _isDrawMap = true;
                         break;
                     }
                 case Key.S: // Движение камеры вниз.

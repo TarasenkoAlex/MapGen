@@ -17,7 +17,7 @@ namespace MapGen.Model.Interpolation.Strategy
         /// <summary>
         /// Конфигурация для построения регулярной матрицы глубин.
         /// </summary>
-        public ISettingInterpolKriging Setting { get; set; }
+        public ISettingInterpolationKriging Setting { get; set; }
 
         #endregion
 
@@ -27,7 +27,7 @@ namespace MapGen.Model.Interpolation.Strategy
         /// Создает объект с алгоритмом заполения матрицы глубин точками методом Кригинг.
         /// </summary>
         /// <param name="settingKriging">Конфигурация для построения регулярной матрицы глубин.</param>
-        public StrategyInterpolKriging(ISettingInterpolKriging settingKriging)
+        public StrategyInterpolKriging(ISettingInterpolationKriging settingKriging)
         {
             Setting = settingKriging;
         }
@@ -55,6 +55,7 @@ namespace MapGen.Model.Interpolation.Strategy
             try
             {
                 // Заполенение регулярной матрицы.
+                // (x, y) - координаты в секундах.
                 for (long y = 0; y < regMatrix.Length; ++y)
                 {
                     for (long x = 0; x < regMatrix.Width; ++x)
