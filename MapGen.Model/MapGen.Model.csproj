@@ -159,9 +159,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Co\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Database\EDM\MapGen.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
