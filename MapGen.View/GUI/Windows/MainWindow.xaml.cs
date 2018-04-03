@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
@@ -9,6 +11,7 @@ using MapGen.View.Source.Interfaces;
 using SharpGL;
 using SharpGL.SceneGraph;
 using MapGenCamera = MapGen.View.Source.Classes.MapGenCamera;
+using System.IO;
 
 namespace MapGen.View.GUI.Windows
 {
@@ -22,7 +25,7 @@ namespace MapGen.View.GUI.Windows
         /// <summary>
         /// Карта для отрисовки.
         /// </summary>
-        public GraphicMap GraphicMap { get; set; }
+        public GraphicMap GraphicMap { private get; set; }
 
         /// <summary>
         /// Диспатчер главного окна.
@@ -175,8 +178,7 @@ namespace MapGen.View.GUI.Windows
             }
             else
             {
-                IMessage message = new MessageWindow();
-                message.ShowMessage("Процесс отрисовки карты", "Не загружена карта!", MessageButton.Ok, MessageType.Error);
+                MessageBox.Show("Не загружена карта!", "Процесс отрисовки карты", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -286,6 +288,10 @@ namespace MapGen.View.GUI.Windows
                 case Key.D: // Движение камеры вправо.
                     {
                         OpenGL gl = OpenGlControl.OpenGL;
+
+                        Bitmap bitmap = GetSnapShot(GraphicMap.Width * 10, GraphicMap.Length * 10);
+                        bitmap.Save(@"C:\MapGen\GetSnapShot.bmp");
+
                         _camera.MoveLeftRight(float.Parse(ResourcesView.MoveSpeed));
                         //_camera.Look(gl);
                         _isDrawMap = true;
@@ -304,7 +310,7 @@ namespace MapGen.View.GUI.Windows
                         OpenGL gl = OpenGlControl.OpenGL;
                         _camera.MoveUpDown(float.Parse(ResourcesView.MoveSpeed));
                         //_camera.Look(gl);
-                        _isDrawMap = true;
+                        _isDrawMap = true; 
                         break;
                     }
                 case Key.Q: // Движение камеры вперед.
@@ -324,6 +330,19 @@ namespace MapGen.View.GUI.Windows
                         break;
                     }
             }
+        }
+
+        private Bitmap GetSnapShot(int width, int height)
+        {
+            OpenGL gl = OpenGlControl.OpenGL;
+            var snapShotBmp = new Bitmap(width, height);
+            BitmapData bmpData = snapShotBmp.LockBits(
+                new Rectangle(0, 0, width, height), 
+                ImageLockMode.WriteOnly,
+                PixelFormat.Format24bppRgb);
+            gl.ReadPixels(0, 0, width, height, OpenGL.GL_BGR, OpenGL.GL_UNSIGNED_BYTE, bmpData.Scan0);
+            snapShotBmp.UnlockBits(bmpData);
+            return snapShotBmp;
         }
 
         #endregion.

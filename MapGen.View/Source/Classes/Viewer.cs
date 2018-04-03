@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Windows;
 using System.Windows.Threading;
 using MapGen.View.GUI.Windows;
 using MapGen.View.Source.Interfaces;
@@ -191,8 +192,7 @@ namespace MapGen.View.Source.Classes
         {
             Dispatcher.Invoke(() =>
             {
-                IMessage message = new MessageWindow();
-                message.ShowMessage(title, text, MessageButton.Ok, MessageType.Error);
+                MessageBox.Show(text, title, MessageBoxButton.OK, MessageBoxImage.Error);
             });
         }
 

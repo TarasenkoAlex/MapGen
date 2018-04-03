@@ -11,7 +11,7 @@ namespace MapGen.View.Source.Interfaces
         GraphicMap GraphicMap { set; }
         Dispatcher MyDispatcher { get; }
         #endregion
-
+         
         #region Region events.
         event Action MenuItemListMapsOnClick;
         event Action<int> ChangeScale;
