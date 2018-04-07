@@ -53,7 +53,7 @@ namespace MapGen.Model.Maps
 
         #region Public methods.
 
-        
+
         #endregion
 
         #region Region cosntructor.
@@ -65,13 +65,17 @@ namespace MapGen.Model.Maps
         /// <param name="width">Ширина карты.</param>
         /// <param name="length">Длина карты.</param>
         /// <param name="scale">Масштаб.</param>
+        /// <param name="latitude">Долгота начала карты.</param>
+        /// <param name="longitude">Широта начала карты.</param>
         /// <param name="cloudPoints">Облако точек карты.</param>
-        public DbMap(string name, long width, long length, long scale, Point[] cloudPoints)
+        public DbMap(string name, long width, long length, long scale, string latitude, string longitude, Point[] cloudPoints)
         {
             Name = name;
             Width = width;
             Length = length;
             Scale = scale;
+            Latitude = latitude;
+            Longitude = longitude;
             CloudPoints = cloudPoints;
         }
 

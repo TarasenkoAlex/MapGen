@@ -335,12 +335,12 @@ namespace MapGen.View.GUI.Windows
         private Bitmap GetSnapShot(int width, int height)
         {
             OpenGL gl = OpenGlControl.OpenGL;
-            var snapShotBmp = new Bitmap(width, height);
+            var snapShotBmp = new Bitmap(width * 10, height * 10);
             BitmapData bmpData = snapShotBmp.LockBits(
-                new Rectangle(0, 0, width, height), 
+                new Rectangle(0, 0, width * 10, height * 10), 
                 ImageLockMode.WriteOnly,
                 PixelFormat.Format24bppRgb);
-            gl.ReadPixels(0, 0, width, height, OpenGL.GL_BGR, OpenGL.GL_UNSIGNED_BYTE, bmpData.Scan0);
+            gl.ReadPixels(0, 0, width * 10, height * 10, OpenGL.GL_BGR, OpenGL.GL_UNSIGNED_BYTE, bmpData.Scan0);
             snapShotBmp.UnlockBits(bmpData);
             return snapShotBmp;
         }

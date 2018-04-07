@@ -28,7 +28,7 @@ namespace MapGen.View.Source.Classes
             public DepthScale(double maxDepth)
             {
                 StepScale = Math.Truncate(maxDepth / (int.Parse(ResourcesView.CountDepthScale) - 1));
-                Range = StepScale * int.Parse(ResourcesView.CountDepthScale);
+                Range = StepScale * (int.Parse(ResourcesView.CountDepthScale) - 1);
             }
 
             /// <summary>
@@ -86,7 +86,7 @@ namespace MapGen.View.Source.Classes
                     }
                 }
                 
-                return new GLColor(float.Parse(rgb[0]), float.Parse(rgb[1]), float.Parse(rgb[2]), 1.0f);
+                return new GLColor(float.Parse(rgb[0])/255f, float.Parse(rgb[1])/255f, float.Parse(rgb[2])/255f, 1.0f);
             }
         }
         

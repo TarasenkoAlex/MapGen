@@ -160,7 +160,7 @@ namespace MapGen.Model
             try
             {
                 // Сохраняем карту.
-                SeaMap = new DbMap(map.Name, map.Width, map.Length, map.Scale, cloudPoints);
+                SeaMap = new DbMap(map.Name, map.Width, map.Length, map.Scale, map.Latitude, map.Longitude, cloudPoints);
             }
             catch (Exception ex)
             {

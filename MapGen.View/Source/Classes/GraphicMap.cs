@@ -44,28 +44,28 @@ namespace MapGen.View.Source.Classes
             gl.PointSize(0.3f);
             gl.LineWidth(0.3f);
 
-            //int indexPoint = 0;
+            int indexPoint = 0;
             for (int iy = 0; iy < Length - 1; ++iy)
             {
                 for (int jx = 0; jx < Width - 1; ++jx)
                 {
                     gl.Begin(OpenGL.GL_QUADS);
 
-                    //indexPoint = iy * Width + jx;
-                    gl.Color(Points[iy * Width + jx].Color);
-                    gl.Vertex(Points[iy * Width + jx].X, Points[iy * Width + jx].Y);
+                    indexPoint = iy * Width + jx;
+                    gl.Color(Points[indexPoint].Color);
+                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
 
-                    //indexPoint = iy * Width + jx + 1;
-                    gl.Color(Points[iy * Width + jx + 1].Color);
-                    gl.Vertex(Points[iy * Width + jx + 1].X, Points[iy * Width + jx + 1].Y);
+                    indexPoint = iy * Width + jx + 1;
+                    gl.Color(Points[indexPoint].Color);
+                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
 
-                    //indexPoint = (iy + 1) * Width + jx + 1;
-                    gl.Color(Points[(iy + 1) * Width + jx + 1].Color);
-                    gl.Vertex(Points[(iy + 1) * Width + jx + 1].X, Points[(iy + 1) * Width + jx + 1].Y);
+                    indexPoint = (iy + 1) * Width + jx + 1;
+                    gl.Color(Points[indexPoint].Color);
+                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
 
-                    //indexPoint = (iy + 1) * Width + jx;
-                    gl.Color(Points[(iy + 1) * Width + jx].Color);
-                    gl.Vertex(Points[(iy + 1) * Width + jx].X, Points[(iy + 1) * Width + jx].Y);
+                    indexPoint = (iy + 1) * Width + jx;
+                    gl.Color(Points[indexPoint].Color);
+                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
 
                     gl.End();
 
@@ -74,25 +74,25 @@ namespace MapGen.View.Source.Classes
                     // рисуем ребра
                     gl.Begin(OpenGL.GL_LINES);
 
-                    //indexPoint = iy * Width + jx;
-                    gl.Vertex(Points[iy * Width + jx].X, Points[iy * Width + jx].Y);
-                    //indexPoint = iy * Width + jx + 1;
-                    gl.Vertex(Points[iy * Width + jx + 1].X, Points[iy * Width + jx + 1].Y);
+                    indexPoint = iy * Width + jx;
+                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
+                    indexPoint = iy * Width + jx + 1;
+                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
 
-                    //indexPoint = iy * Width + jx + 1;
-                    gl.Vertex(Points[iy * Width + jx + 1].X, Points[iy * Width + jx + 1].Y);
-                    //indexPoint = (iy + 1) * Width + jx + 1;
-                    gl.Vertex(Points[(iy + 1) * Width + jx + 1].X, Points[(iy + 1) * Width + jx + 1].Y);
+                    indexPoint = iy * Width + jx + 1;
+                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
+                    indexPoint = (iy + 1) * Width + jx + 1;
+                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
 
-                    //indexPoint = (iy + 1) * Width + jx + 1;
-                    gl.Vertex(Points[(iy + 1) * Width + jx + 1].X, Points[(iy + 1) * Width + jx + 1].Y);
-                    //indexPoint = (iy + 1) * Width + jx;
-                    gl.Vertex(Points[(iy + 1) * Width + jx].X, Points[(iy + 1) * Width + jx].Y);
+                    indexPoint = (iy + 1) * Width + jx + 1;
+                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
+                    indexPoint = (iy + 1) * Width + jx;
+                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
 
-                    //indexPoint = (iy + 1) * Width + jx;
-                    gl.Vertex(Points[(iy + 1) * Width + jx].X, Points[(iy + 1) * Width + jx].Y);
-                    //indexPoint = iy * Width + jx;
-                    gl.Vertex(Points[iy * Width + jx].X, Points[iy * Width + jx].Y);
+                    indexPoint = (iy + 1) * Width + jx;
+                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
+                    indexPoint = iy * Width + jx;
+                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
 
                     gl.End();
                 }

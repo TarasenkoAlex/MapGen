@@ -140,25 +140,25 @@
     <value>168|255|255</value>
   </data>
   <data name="ColorDepth2" xml:space="preserve">
-    <value>138|255|255</value>
+    <value>140|213|233</value>
   </data>
   <data name="ColorDepth3" xml:space="preserve">
-    <value>108|255|255</value>
+    <value>126|192|222</value>
   </data>
   <data name="ColorDepth4" xml:space="preserve">
-    <value>78|195|240</value>
+    <value>98|149|200</value>
   </data>
   <data name="ColorDepth5" xml:space="preserve">
-    <value>48|165|215</value>
+    <value>84|128|190</value>
   </data>
   <data name="ColorDepth6" xml:space="preserve">
-    <value>18|135|180</value>
+    <value>57|86|168</value>
   </data>
   <data name="ColorDepth7" xml:space="preserve">
-    <value>0|105|150</value>
+    <value>29|43|146</value>
   </data>
   <data name="ColorDepth8" xml:space="preserve">
-    <value>0|85|130</value>
+    <value>1|1|124</value>
   </data>
   <data name="CountDepthScale" xml:space="preserve">
     <value>8</value>

@@ -70,7 +70,7 @@ namespace MapGen.View {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 138|255|255.
+        ///   Ищет локализованную строку, похожую на 140|213|233.
         /// </summary>
         internal static string ColorDepth2 {
             get {
@@ -79,7 +79,7 @@ namespace MapGen.View {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 108|255|255.
+        ///   Ищет локализованную строку, похожую на 126|192|222.
         /// </summary>
         internal static string ColorDepth3 {
             get {
@@ -88,7 +88,7 @@ namespace MapGen.View {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 78|195|240.
+        ///   Ищет локализованную строку, похожую на 98|149|200.
         /// </summary>
         internal static string ColorDepth4 {
             get {
@@ -97,7 +97,7 @@ namespace MapGen.View {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 48|165|215.
+        ///   Ищет локализованную строку, похожую на 84|128|190.
         /// </summary>
         internal static string ColorDepth5 {
             get {
@@ -106,7 +106,7 @@ namespace MapGen.View {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 18|135|180.
+        ///   Ищет локализованную строку, похожую на 57|86|168.
         /// </summary>
         internal static string ColorDepth6 {
             get {
@@ -115,7 +115,7 @@ namespace MapGen.View {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 0|105|150.
+        ///   Ищет локализованную строку, похожую на 29|43|146.
         /// </summary>
         internal static string ColorDepth7 {
             get {
@@ -124,7 +124,7 @@ namespace MapGen.View {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 0|85|130.
+        ///   Ищет локализованную строку, похожую на 1|1|124.
         /// </summary>
         internal static string ColorDepth8 {
             get {

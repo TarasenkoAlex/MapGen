@@ -176,7 +176,7 @@ namespace MapGen.Presenter
                         Y = regMatrix.Step * i,
                         Depth = regMatrix.Points[i * regMatrix.Width + j],
                         Color = depthScale.GetColorDepth(regMatrix.Points[i * regMatrix.Width + j])
-                };
+                    };
                 }
             }
 
