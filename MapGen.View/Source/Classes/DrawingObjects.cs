@@ -38,7 +38,7 @@ namespace MapGen.View.Source.Classes
             /// <returns>Цвет.</returns>
             public GLColor GetColorDepth(double depth)
             {
-                string[] rgb = {"0.0f", "0.0f", "0.0f"};
+                string[] rgb = {"0,0", "0,0", "0,0"};
                 
                 int numColor = (int)Math.Truncate(depth / StepScale) + 1;
 
