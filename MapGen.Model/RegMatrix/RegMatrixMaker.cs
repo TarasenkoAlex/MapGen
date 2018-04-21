@@ -82,11 +82,11 @@ namespace MapGen.Model.RegMatrix
         }
 
         /// <summary>
-        /// Инициализация словаря кэффициентов масштабирвоания.
+        /// Инициализация словаря кэффициентов масштабирования.
         /// </summary>
         private void InitScaleCoeffDict()
         {
-            double startCoeff = 1.0d;
+            double startCoeff = 0.5d;
 
             _scaleCoeffDict = new Dictionary<long, double>
             {
