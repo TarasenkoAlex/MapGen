@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SharpGL;
+using SharpGL.Enumerations;
 using SharpGL.SceneGraph;
 
 namespace MapGen.View.Source.Classes
@@ -34,65 +35,66 @@ namespace MapGen.View.Source.Classes
         /// Максимальная глубина.
         /// </summary>
         public double MaxDepth { get; set; }
-        
+
         /// <summary>
         /// Отрисовка карты с помощью OpenGl.
         /// </summary>
         /// <param name="gl">OpenGl.</param>
-        public void DrawSurface(OpenGL gl)
+        /// <param name="xCoeff">Сжатие по X.</param>
+        /// <param name="yCoeff">Сжатие по Y.</param>
+        public void DrawSurface(OpenGL gl, double xCoeff, double yCoeff)
         {
             gl.PointSize(0.3f);
             gl.LineWidth(0.3f);
 
-            int indexPoint = 0;
             for (int iy = 0; iy < Length - 1; ++iy)
             {
                 for (int jx = 0; jx < Width - 1; ++jx)
                 {
-                    gl.Begin(OpenGL.GL_QUADS);
+                    gl.Begin(BeginMode.Quads);
 
-                    indexPoint = iy * Width + jx;
+                    var indexPoint = iy * Width + jx;
                     gl.Color(Points[indexPoint].Color);
-                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
+                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
 
                     indexPoint = iy * Width + jx + 1;
                     gl.Color(Points[indexPoint].Color);
-                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
+                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
 
                     indexPoint = (iy + 1) * Width + jx + 1;
                     gl.Color(Points[indexPoint].Color);
-                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
+                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
 
                     indexPoint = (iy + 1) * Width + jx;
                     gl.Color(Points[indexPoint].Color);
-                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
+                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
 
                     gl.End();
 
                     gl.Color(0.0f, 0.0f, 0.0f);
 
                     // рисуем ребра
-                    gl.Begin(OpenGL.GL_LINES);
+                    gl.Begin(BeginMode.Lines);
 
                     indexPoint = iy * Width + jx;
-                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
+                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
                     indexPoint = iy * Width + jx + 1;
-                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
+                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
 
                     indexPoint = iy * Width + jx + 1;
-                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
+                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
                     indexPoint = (iy + 1) * Width + jx + 1;
-                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
+                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
 
                     indexPoint = (iy + 1) * Width + jx + 1;
-                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
+                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
                     indexPoint = (iy + 1) * Width + jx;
-                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
+                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
 
                     indexPoint = (iy + 1) * Width + jx;
-                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
+                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
                     indexPoint = iy * Width + jx;
-                    gl.Vertex(Points[indexPoint].X, Points[indexPoint].Y);
+                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
 
                     gl.End();
                 }
