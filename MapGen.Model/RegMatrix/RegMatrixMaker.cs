@@ -70,7 +70,7 @@ namespace MapGen.Model.RegMatrix
 
                 regMatrix.Length = (int)map.Length + 1;
 
-                regMatrix.Points = new double[regMatrix.Width * regMatrix.Length];
+                regMatrix.Points = new PointRegMatrix[regMatrix.Width * regMatrix.Length];
             }
             catch (Exception ex)
             {

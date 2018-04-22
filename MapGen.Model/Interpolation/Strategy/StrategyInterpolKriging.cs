@@ -62,9 +62,17 @@ namespace MapGen.Model.Interpolation.Strategy
                     {
                         var findIndex = Array.FindIndex(map.CloudPoints, point => point.X == x && point.Y == y);
                         if (findIndex != -1)
-                            regMatrix.Points[y * regMatrix.Width + x] = map.CloudPoints[findIndex].Depth;
+                            regMatrix.Points[y * regMatrix.Width + x] = new PointRegMatrix
+                            {
+                                IsSource = true,
+                                Depth = map.CloudPoints[findIndex].Depth
+                            };
                         else
-                            regMatrix.Points[y * regMatrix.Width + x] = Kriging(x, y, map.CloudPoints);
+                            regMatrix.Points[y * regMatrix.Width + x] = new PointRegMatrix
+                            {
+                                IsSource = false,
+                                Depth = Kriging(x, y, map.CloudPoints)
+                            };
                     }
                 }
             }

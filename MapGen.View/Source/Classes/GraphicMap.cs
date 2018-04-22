@@ -39,7 +39,7 @@ namespace MapGen.View.Source.Classes
         /// <summary>
         /// Точки карты. Хранятся в виде матрицы размером Width х Length.
         /// </summary>
-        public  Point3dColor[] Points { get; set; } = { };
+        public  Point3DColor[] Points { get; set; } = { };
 
         /// <summary>
         /// Максимальная глубина.
@@ -54,64 +54,56 @@ namespace MapGen.View.Source.Classes
         /// <param name="yCoeff">Сжатие по Y.</param>
         public void Draw(OpenGL gl, double xCoeff, double yCoeff)
         {
-            gl.PointSize(0.3f);
-            
-            // Отрисовка цифр градусов на краях карты.
-            DrawNumbersEdgeOfMap(gl, xCoeff, yCoeff);
-
-            // Отрисовка краев карты.
-            DrawStripsEdgeOfMap(gl, xCoeff, yCoeff);
-
             // Отрисовка содержимого карты.
             DrawDataMap(gl, xCoeff, yCoeff);
 
+            // Отрисовка краев карты.
+            DrawStripsEdgeOfMap(gl, xCoeff, yCoeff);
+            
             // Отрисовка линий широт и долготы.
             DrawLinesLatitudeAndLongitude(gl, xCoeff, yCoeff);
+
+            // Отрисовка исходных точек карты.
+            DrawSourcePointsOfMap(gl, xCoeff, yCoeff);
         }
 
         /// <summary>
-        /// Отрисовка цифр градусов на краях карты.
+        /// Отрисовка содержимого карты.
         /// </summary>
         /// <param name="gl">OpenGl.</param>
         /// <param name="xCoeff">Сжатие по X.</param>
         /// <param name="yCoeff">Сжатие по Y.</param>
-        private void DrawNumbersEdgeOfMap(OpenGL gl, double xCoeff, double yCoeff)
+        private void DrawDataMap(OpenGL gl, double xCoeff, double yCoeff)
         {
-            gl.Color(0f, 0f, 0f);
-            // TODO
-        }
-
-        /// <summary>
-        /// Отрисовка линий широт и долготы.
-        /// </summary>
-        /// <param name="gl">OpenGl.</param>
-        /// <param name="xCoeff">Сжатие по X.</param>
-        /// <param name="yCoeff">Сжатие по Y.</param>
-        private void DrawLinesLatitudeAndLongitude(OpenGL gl, double xCoeff, double yCoeff)
-        {
-            gl.Color(0.0f, 0.0f, 0.0f);
-            gl.LineWidth(0.3f);
-
-            // Отрисовка линий широт.
-            for (int i = 0; i < Width; ++i)
+            gl.PointSize(0.3f);
+            for (int iy = 0; iy < Length - 1; ++iy)
             {
-                gl.Begin(BeginMode.Lines);
-                gl.Vertex(Points[i].X * xCoeff, -WidthEndOfLine * yCoeff, -0.001d);
-                gl.Vertex(Points[Width * (Length - 1) + i].X * xCoeff, (Points[Width * (Length - 1) + i].Y + WidthEndOfLine) * yCoeff, -0.001d);
-                gl.End();
+                for (int jx = 0; jx < Width - 1; ++jx)
+                {
+                    // Отрисовываем полигоны, закрашенные градиентно.
+                    gl.Begin(BeginMode.Quads);
+
+                    var indexPoint = iy * Width + jx;
+                    gl.Color(Points[indexPoint].Color);
+                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
+
+                    indexPoint = iy * Width + jx + 1;
+                    gl.Color(Points[indexPoint].Color);
+                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
+
+                    indexPoint = (iy + 1) * Width + jx + 1;
+                    gl.Color(Points[indexPoint].Color);
+                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
+
+                    indexPoint = (iy + 1) * Width + jx;
+                    gl.Color(Points[indexPoint].Color);
+                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
+
+                    gl.End();
+                }
             }
-
-            // Отрисовка линий долготы.
-            for (int j = 0; j < Length; ++j)
-            {
-                gl.Begin(BeginMode.Lines);
-                gl.Vertex(-WidthEndOfLine * xCoeff, Points[Width * j].Y * yCoeff, -0.001d);
-                gl.Vertex((Points[Width * (j + 1) - 1].X + WidthEndOfLine) * xCoeff, Points[Width * (j + 1) - 1].Y * yCoeff, -0.001d);
-                gl.End();
-            }  
         }
-
-
+        
         /// <summary>
         /// Отрисовка краев карты.
         /// </summary>
@@ -154,46 +146,77 @@ namespace MapGen.View.Source.Classes
             gl.Vertex(0, -WidthEdgeOfMap * yCoeff);
             gl.End();
         }
-
+        
         /// <summary>
-        /// Отрисовка содержимого карты.
+        /// Отрисовка линий широт и долготы.
         /// </summary>
         /// <param name="gl">OpenGl.</param>
         /// <param name="xCoeff">Сжатие по X.</param>
         /// <param name="yCoeff">Сжатие по Y.</param>
-        private void DrawDataMap(OpenGL gl, double xCoeff, double yCoeff)
+        private void DrawLinesLatitudeAndLongitude(OpenGL gl, double xCoeff, double yCoeff)
         {
-            for (int iy = 0; iy < Length - 1; ++iy)
+            gl.Color(0.0f, 0.0f, 0.0f);
+            gl.LineWidth(0.3f);
+
+            // Отрисовка линий широт.
+            for (int i = 0; i < Width; ++i)
             {
-                for (int jx = 0; jx < Width - 1; ++jx)
+                gl.Begin(BeginMode.Lines);
+                gl.Vertex(Points[i].X * xCoeff, -WidthEndOfLine * yCoeff, -0.0001d);
+                gl.Vertex(Points[Width * (Length - 1) + i].X * xCoeff, (Points[Width * (Length - 1) + i].Y + WidthEndOfLine) * yCoeff, -0.0001d);
+                gl.End();
+            }
+
+            // Отрисовка линий долготы.
+            for (int j = 0; j < Length; ++j)
+            {
+                gl.Begin(BeginMode.Lines);
+                gl.Vertex(-WidthEndOfLine * xCoeff, Points[Width * j].Y * yCoeff, -0.0001d);
+                gl.Vertex((Points[Width * (j + 1) - 1].X + WidthEndOfLine) * xCoeff, Points[Width * (j + 1) - 1].Y * yCoeff, -0.0001d);
+                gl.End();
+            }  
+        }
+
+        /// <summary>
+        /// Отрисовка цифр градусов на краях карты.
+        /// </summary>
+        /// <param name="gl">OpenGl.</param>
+        /// <param name="xCoeff">Сжатие по X.</param>
+        /// <param name="yCoeff">Сжатие по Y.</param>
+        private void DrawNumbersEdgeOfMap(OpenGL gl, double xCoeff, double yCoeff)
+        {
+            gl.Color(0f, 0f, 0f);
+            // TODO
+            
+            gl.DrawText(10, 10, 1f, 1f, 1f, "", 12, "HELLO");
+        }
+
+        /// <summary>
+        /// Отрисовка исходных точек карты.
+        /// </summary>
+        /// <param name="gl">OpenGl.</param>
+        /// <param name="xCoeff">Сжатие по X.</param>
+        /// <param name="yCoeff">Сжатие по Y.</param>
+        private void DrawSourcePointsOfMap(OpenGL gl, double xCoeff, double yCoeff)
+        {
+            gl.PointSize(6.0f);
+            gl.Color(0f, 0f, 0f);
+            
+            gl.Begin(BeginMode.Points);
+            foreach (var point in Points)
+            {
+                if (point.IsSource)
                 {
-                    // Отрисовываем полигоны, закрашенные градиентно.
-                    gl.Begin(BeginMode.Quads);
-
-                    var indexPoint = iy * Width + jx;
-                    gl.Color(Points[indexPoint].Color);
-                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
-
-                    indexPoint = iy * Width + jx + 1;
-                    gl.Color(Points[indexPoint].Color);
-                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
-
-                    indexPoint = (iy + 1) * Width + jx + 1;
-                    gl.Color(Points[indexPoint].Color);
-                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
-
-                    indexPoint = (iy + 1) * Width + jx;
-                    gl.Color(Points[indexPoint].Color);
-                    gl.Vertex(Points[indexPoint].X * xCoeff, Points[indexPoint].Y * yCoeff);
-
-                    gl.End();
+                    gl.Vertex(point.X * xCoeff, point.Y * yCoeff, -0.001d);
                 }
             }
+            gl.End();
         }
     }
 
-    public class Point3dColor
+    public class Point3DColor
     {
+        public bool IsSource { get; set; }
         public double X { get; set; }
         public double Y { get; set; }
         public double Depth { get; set; }

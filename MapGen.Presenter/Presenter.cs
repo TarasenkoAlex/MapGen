@@ -161,7 +161,7 @@ namespace MapGen.Presenter
                 Width = regMatrix.Width,
                 Length = regMatrix.Length,
                 MaxDepth = regMatrix.MaxDepth,
-                Points = new Point3dColor[regMatrix.Points.Length]
+                Points = new Point3DColor[regMatrix.Points.Length]
             };
 
             DrawingObjects.DepthScale depthScale = new DrawingObjects.DepthScale(graphicMap.MaxDepth);
@@ -170,12 +170,14 @@ namespace MapGen.Presenter
             {
                 for (int j = 0; j < regMatrix.Width; ++j)
                 {
-                    graphicMap.Points[i * regMatrix.Width + j] = new Point3dColor
+                    var point = regMatrix.Points[i * regMatrix.Width + j];
+                    graphicMap.Points[i * regMatrix.Width + j] = new Point3DColor
                     {
+                        IsSource = point.IsSource,
                         X = regMatrix.Step * j,
                         Y = regMatrix.Step * i,
-                        Depth = regMatrix.Points[i * regMatrix.Width + j],
-                        Color = depthScale.GetColorDepth(regMatrix.Points[i * regMatrix.Width + j])
+                        Depth = point.Depth,
+                        Color = depthScale.GetColorDepth(point.Depth)
                     };
                 }
             }

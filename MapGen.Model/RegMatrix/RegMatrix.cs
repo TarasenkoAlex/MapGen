@@ -28,13 +28,32 @@ namespace MapGen.Model.RegMatrix
         /// <summary>
         /// Точки регулярной матрицы высот.
         /// </summary>
-        public double[] Points { get; set; }
+        public PointRegMatrix[] Points { get; set; }
 
         /// <summary>
         /// Максимальная глубина.
         /// </summary>
-        public double MaxDepth => Points.Max();
+        public double MaxDepth
+        {
+            get
+            {
+                double maxDepth = 0.0d;
+                foreach (var point in Points)
+                {
+                    if (point.Depth > maxDepth)
+                        maxDepth = point.Depth;
+                }
 
+                return maxDepth;
+            }
+        }
+        
         #endregion
+    }
+
+    public class PointRegMatrix
+    {
+        public bool IsSource { get; set; }
+        public double Depth { get; set; }
     }
 }
