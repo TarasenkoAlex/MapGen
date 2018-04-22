@@ -18,9 +18,9 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition x:Name="ToolBarRowDefinition" Height="30"/>
             <RowDefinition Height="472*"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition x:Name="StatusBarRowDefinition" Height="30"/>
         </Grid.RowDefinitions>
         <Grid Background="#2D2D30">
             <Image HorizontalAlignment="Left" Width="30" Height="30" Stretch="Fill" Source="/MapGen.View;component/Resources/main.window.headicon.png" Margin="10,0,0,0" />
@@ -46,8 +46,8 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Вид" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25">
-                <MenuItem Header="Панель инструментов" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25" IsChecked="True"/>
-                <MenuItem Header="Статус состояний" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25" IsChecked="True"/>
+                <MenuItem x:Name="MenuItemToolBar" Header="Панель инструментов" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25" IsChecked="True"/>
+                <MenuItem x:Name="MenuItemStatusBar" Header="Статус состояния" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25" IsChecked="True"/>
             </MenuItem>
             <MenuItem Header="Справка" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25">
             </MenuItem>

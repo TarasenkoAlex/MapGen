@@ -90,6 +90,16 @@ namespace MapGen.View.GUI.Windows
         /// </summary>
         private double _yCoeff = 1.0d;
 
+        /// <summary>
+        /// Чекбокс для тулбара.
+        /// </summary>
+        private bool IsCheckToolBarr = true;
+
+        /// <summary>
+        /// Чекбокс для строки состояния.
+        /// </summary>
+        private bool IsCheckStatusBar = true;
+
         #endregion
 
         #region Region constructer.
@@ -151,9 +161,14 @@ namespace MapGen.View.GUI.Windows
         /// </summary>
         private void BindingEventMenuButtonWindow()
         {
-            MenuItemListMaps.Click += MenuItemListMaps_OnClick;
-        }
+            // Файл.
+            MenuItemListMaps.Click += MenuItemListMaps_Click;
 
+            // Вид.
+            MenuItemToolBar.Click += MenuItemToolBar_Click;
+            MenuItemStatusBar.Click += MenuItemStatusBar_Click;
+        }
+        
         #endregion
 
         #region Region public methods.
@@ -304,15 +319,39 @@ namespace MapGen.View.GUI.Windows
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void MenuItemListMaps_OnClick(object sender, RoutedEventArgs e)
+        private void MenuItemListMaps_Click(object sender, RoutedEventArgs e)
         {
             MenuItemListMapsOnClick?.Invoke();
         }
 
+        /// <summary>
+        /// Событие выбора елемента View "Вид.Панель иструментов".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuItemToolBar_Click(object sender, RoutedEventArgs e)
+        {
+            IsCheckToolBarr = !IsCheckToolBarr;
+            MenuItemToolBar.IsChecked = IsCheckToolBarr;
+            ToolBarRowDefinition.Height = IsCheckToolBarr ? new GridLength(30) : new GridLength(0);
+        }
+
+        /// <summary>
+        /// Событие выбора елемента View "Вид.Строка состояния".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuItemStatusBar_Click(object sender, RoutedEventArgs e)
+        {
+            IsCheckStatusBar = !IsCheckStatusBar;
+            MenuItemStatusBar.IsChecked = IsCheckStatusBar;
+            StatusBarRowDefinition.Height = IsCheckStatusBar ? new GridLength(30) : new GridLength(0);
+        }
+        
         #endregion
-        
+
         #region Region processing events of window.
-        
+
         /// <summary>
         /// Обработка события нажатия клавиш.
         /// </summary>
