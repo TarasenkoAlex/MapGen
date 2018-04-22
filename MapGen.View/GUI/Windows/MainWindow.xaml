@@ -88,6 +88,8 @@
             <Label x:Name="LabelWidth" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="494,2,0,2" HorizontalAlignment="Left" Width="61"/>
             <Label Content="Длина:" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="560,2,0,2" HorizontalAlignment="Left" Width="48"/>
             <Label x:Name="LabelLength" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="608,2,0,2" HorizontalAlignment="Left" Width="61"/>
+            <Label Content="Масштаб:" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="0,2,74,2" HorizontalAlignment="Right" Width="62"/>
+            <Label x:Name="LabelScale" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="0,2,10,2" HorizontalAlignment="Right" Width="64"/>
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="#FF474747" Offset="0"/>

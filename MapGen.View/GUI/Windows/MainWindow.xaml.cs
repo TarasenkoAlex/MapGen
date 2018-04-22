@@ -38,6 +38,7 @@ namespace MapGen.View.GUI.Windows
                     LabelLongitude.Content = value.Longitude;
                     LabelWidth.Content = value.Width - 1;
                     LabelLength.Content = value.Length - 1;
+                    LabelScale.Content = $"1:{value.Scale}";
                 });
             }
         }
@@ -93,12 +94,12 @@ namespace MapGen.View.GUI.Windows
         /// <summary>
         /// Чекбокс для тулбара.
         /// </summary>
-        private bool IsCheckToolBarr = true;
+        private bool _isCheckToolBar = true;
 
         /// <summary>
         /// Чекбокс для строки состояния.
         /// </summary>
-        private bool IsCheckStatusBar = true;
+        private bool _isCheckStatusBar = true;
 
         #endregion
 
@@ -342,9 +343,9 @@ namespace MapGen.View.GUI.Windows
         /// <param name="e"></param>
         private void MenuItemToolBar_Click(object sender, RoutedEventArgs e)
         {
-            IsCheckToolBarr = !IsCheckToolBarr;
-            MenuItemToolBar.IsChecked = IsCheckToolBarr;
-            ToolBarRowDefinition.Height = IsCheckToolBarr ? new GridLength(30) : new GridLength(0);
+            _isCheckToolBar = !_isCheckToolBar;
+            MenuItemToolBar.IsChecked = _isCheckToolBar;
+            ToolBarRowDefinition.Height = _isCheckToolBar ? new GridLength(30) : new GridLength(0);
         }
 
         /// <summary>
@@ -354,9 +355,9 @@ namespace MapGen.View.GUI.Windows
         /// <param name="e"></param>
         private void MenuItemStatusBar_Click(object sender, RoutedEventArgs e)
         {
-            IsCheckStatusBar = !IsCheckStatusBar;
-            MenuItemStatusBar.IsChecked = IsCheckStatusBar;
-            StatusBarRowDefinition.Height = IsCheckStatusBar ? new GridLength(30) : new GridLength(0);
+            _isCheckStatusBar = !_isCheckStatusBar;
+            MenuItemStatusBar.IsChecked = _isCheckStatusBar;
+            StatusBarRowDefinition.Height = _isCheckStatusBar ? new GridLength(30) : new GridLength(0);
         }
         
         #endregion
