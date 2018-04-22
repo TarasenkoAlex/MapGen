@@ -42,7 +42,7 @@
                 <MenuItem x:Name="MenuItemListMaps" Header="База данных карт" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25">
                 </MenuItem>
                 <Separator/>
-                <MenuItem Header="Выход" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25">
+                <MenuItem x:Name="MenuItemExit" Header="Выход" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25">
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Вид" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25">

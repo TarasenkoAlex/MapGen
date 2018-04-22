@@ -163,12 +163,13 @@ namespace MapGen.View.GUI.Windows
         {
             // Файл.
             MenuItemListMaps.Click += MenuItemListMaps_Click;
+            MenuItemExit.Click += MenuItemExit_Click;
 
             // Вид.
             MenuItemToolBar.Click += MenuItemToolBar_Click;
             MenuItemStatusBar.Click += MenuItemStatusBar_Click;
         }
-        
+
         #endregion
 
         #region Region public methods.
@@ -252,7 +253,7 @@ namespace MapGen.View.GUI.Windows
         /// <param name="args"></param>
         private void OpenGLControl_OpenGLDraw(object sender, OpenGLEventArgs args)
         {
-            _isDrawMap = true;
+            //_isDrawMap = true;
             if (_isDrawMap)
             {
                 // Получаем ссылку на элемент управления OpenGL.
@@ -313,6 +314,16 @@ namespace MapGen.View.GUI.Windows
         #endregion
 
         #region Region processing events of menu.
+
+        /// <summary>
+        /// Событие выбора елемента View "Файл.Выход".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuItemExit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
 
         /// <summary>
         /// Событие выбора елемента View "Файл.База данных карт".
