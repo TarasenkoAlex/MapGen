@@ -157,6 +157,9 @@ namespace MapGen.Presenter
         {
             GraphicMap graphicMap = new GraphicMap
             {
+                Name = _model.SeaMap.Name,
+                Latitude = _model.SeaMap.Latitude,
+                Longitude = _model.SeaMap.Longitude,
                 Scale = scale,
                 Width = regMatrix.Width,
                 Length = regMatrix.Length,

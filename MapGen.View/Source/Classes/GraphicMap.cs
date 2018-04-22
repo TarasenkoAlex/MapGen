@@ -22,6 +22,21 @@ namespace MapGen.View.Source.Classes
         private const double WidthEdgeOfMap = 0.1d;
 
         /// <summary>
+        /// Имя карты.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Долгота начала карты.
+        /// </summary>
+        public string Latitude { get; set; }
+
+        /// <summary>
+        /// Широта начала карты.
+        /// </summary>
+        public string Longitude { get; set; }
+
+        /// <summary>
         /// Масштаб карты (1 : Scale).
         /// </summary>
         public long Scale { get; set; }

@@ -18,13 +18,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="472*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid Background="#2D2D30">
             <Image HorizontalAlignment="Left" Width="30" Height="30" Stretch="Fill" Source="/MapGen.View;component/Resources/main.window.headicon.png" Margin="10,0,0,0" />
-            <Label x:Name="HeadWindow" Content="MapGen" Margin="45,0,0,0" Foreground="#FFCC00" HorizontalAlignment="Left" Width="860" FontWeight="Bold"/>
+            <Label x:Name="HeadWindow" Content="MapGen" Margin="45,0,0,0" FontFamily="Segoe UI" Foreground="#FFCC00" HorizontalAlignment="Left" Width="860" FontWeight="Bold"/>
             <StackPanel Height="30" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button x:Name="ButtonMinimize" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Свернуть">
                     <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/window.minimize.png" Stretch="None" />
@@ -60,13 +60,6 @@
                 </LinearGradientBrush>
             </Grid.Background>
         </Grid>
-        <!--<wpf:OpenGLControl 
-            x:Name="OpenGlControl"
-            OpenGLDraw="OpenGLControl_OpenGLDraw"
-            OpenGLInitialized="OpenGLControl_OpenGLInitialized"
-            Resized="OpenGLControl_Resized"
-            DrawFPS="True"
-            Grid.Row="3"/>-->
         <Grid Grid.Row="3">
             <wpf:OpenGLControl 
                 x:Name="OpenGlControl"
@@ -74,9 +67,27 @@
                 OpenGLInitialized="OpenGLControl_OpenGLInitialized"
                 Resized="OpenGLControl_Resized"
                 DrawFPS="True"/>
+            <Grid Margin="0,222,10,198" Background="#FF474747" Height="60" Width="30" HorizontalAlignment="Right" >
+                <Button x:Name="ButtonZoomPlus" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Приблизить" VerticalAlignment="Top">
+                    <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/window.opengl.plus.png" Stretch="Fill" />
+                </Button>
+                <Button x:Name="ButtonZoomMinus" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Отдалить" Margin="0,30,0,0">
+                    <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/window.opengl.minus.png" Stretch="Fill" />
+                </Button>
+            </Grid>
         </Grid>
         <Grid Grid.Row="4">
             <Separator Background="#2D2D30" Margin="0" Height="1" VerticalAlignment="Top"/>
+            <Label Content="Имя карты:" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="8,2,0,2" HorizontalAlignment="Left" Width="72"/>
+            <Label x:Name="LabelNameMap" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="80,2,0,2" HorizontalAlignment="Left" Width="100"/>
+            <Label Content="Долгота:" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="185,2,0,2" HorizontalAlignment="Left" Width="56"/>
+            <Label x:Name="LabelLongitude" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="241,2,0,2" HorizontalAlignment="Left" Width="64"/>
+            <Label Content="Широта:" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="310,2,0,2" HorizontalAlignment="Left" Width="56"/>
+            <Label x:Name="LabelLatitude" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="366,2,0,2" HorizontalAlignment="Left" Width="64"/>
+            <Label Content="Ширина:" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="435,2,0,2" HorizontalAlignment="Left" Width="59"/>
+            <Label x:Name="LabelWidth" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="494,2,0,2" HorizontalAlignment="Left" Width="61"/>
+            <Label Content="Длина:" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="560,2,0,2" HorizontalAlignment="Left" Width="48"/>
+            <Label x:Name="LabelLength" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="608,2,0,2" HorizontalAlignment="Left" Width="61"/>
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="#FF474747" Offset="0"/>
@@ -86,3 +97,4 @@
         </Grid>
     </Grid>
 </Window>
+

@@ -26,7 +26,21 @@ namespace MapGen.View.GUI.Windows
         /// <summary>
         /// Карта для отрисовки.
         /// </summary>
-        public GraphicMap GraphicMap { private get; set; }
+        public GraphicMap GraphicMap
+        { 
+            set
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    _graphicMap = value;
+                    LabelNameMap.Content = value.Name;
+                    LabelLatitude.Content = value.Latitude;
+                    LabelLongitude.Content = value.Longitude;
+                    LabelWidth.Content = value.Width - 1;
+                    LabelLength.Content = value.Length - 1;
+                });
+            }
+        }
 
         /// <summary>
         /// Диспатчер главного окна.
@@ -50,6 +64,11 @@ namespace MapGen.View.GUI.Windows
         #endregion
 
         #region Region private fields.
+
+        /// <summary>
+        /// Карта для отрисовки.
+        /// </summary>
+        private GraphicMap _graphicMap;
 
         /// <summary>
         /// Флаг, отвечающий перерисовать ли карту.
@@ -152,7 +171,7 @@ namespace MapGen.View.GUI.Windows
         /// </summary>
         public void DrawSeaMap()
         {
-            if (GraphicMap != null)
+            if (_graphicMap != null)
             {
                 _isDrawMap = true;
             }
@@ -235,11 +254,11 @@ namespace MapGen.View.GUI.Windows
 
                 // Обновляем взгляд камеры.
                 _camera.Look(gl);
-                
+
                 //gl.PushMatrix();
 
                 // Отображаем карту.
-                GraphicMap?.Draw(gl, _xCoeff, _yCoeff);
+                _graphicMap?.Draw(gl, _xCoeff, _yCoeff);
 
                 //gl.PopMatrix();
                
