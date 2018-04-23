@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Timers;
@@ -33,12 +34,15 @@ namespace MapGen.View.GUI.Windows
                 Dispatcher.Invoke(() =>
                 {
                     _graphicMap = value;
+
                     LabelNameMap.Content = value.Name;
                     LabelLatitude.Content = value.Latitude;
                     LabelLongitude.Content = value.Longitude;
                     LabelWidth.Content = value.Width - 1;
                     LabelLength.Content = value.Length - 1;
                     LabelScale.Content = $"1:{value.Scale}";
+
+                    RefreshEnableButtonOfZoom();
                 });
             }
         }
@@ -65,6 +69,11 @@ namespace MapGen.View.GUI.Windows
         #endregion
 
         #region Region private fields.
+
+        /// <summary>
+        /// Все рассматриваемые масштабы.
+        /// </summary>
+        private readonly List<int> _enableScale = new List<int> {10000, 25000, 50000, 100000, 200000, 300000, 500000, 1000000};
 
         /// <summary>
         /// Карта для отрисовки.
@@ -122,7 +131,7 @@ namespace MapGen.View.GUI.Windows
         /// </summary>
         private void InitializeFields()
         {
-            _isDrawMap = false;
+            
         }
 
         /// <summary>
@@ -432,6 +441,33 @@ namespace MapGen.View.GUI.Windows
         }
 
         #endregion.
+
+        #region Region private methods.
+
+        /// <summary>
+        /// Обновление доступности кнопок масштабирования.
+        /// </summary>
+        private void RefreshEnableButtonOfZoom()
+        {
+            int findIndex = _enableScale.FindIndex(scale => scale == _graphicMap.Scale);
+            if (findIndex == 0)
+            {
+                ButtonZoomMinus.IsEnabled = false;
+                ButtonZoomPlus.IsEnabled = true;
+            } 
+            else if (findIndex == _enableScale.Count - 1)
+            {
+                ButtonZoomMinus.IsEnabled = true;
+                ButtonZoomPlus.IsEnabled = false;
+            }
+            else
+            {
+                ButtonZoomMinus.IsEnabled = true;
+                ButtonZoomPlus.IsEnabled = true;
+            }
+        }
+
+        #endregion
 
     }
 }
