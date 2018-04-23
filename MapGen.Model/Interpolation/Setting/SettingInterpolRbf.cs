@@ -1,9 +1,9 @@
 ﻿namespace MapGen.Model.Interpolation.Setting
 {
     /// <summary>
-    /// Класс настройки интерполяции методом Крайгинга.
+    /// Класс настройки интерполяции методом RBF.
     /// </summary>
-    public class SettingInterpolationKriging : ISettingInterpolationKriging
+    public class SettingInterpolRbf : ISettingInterpolRbf
     {
         /// <summary>
         /// Шаг регулярной матрицы.
@@ -26,23 +26,8 @@
         public double StepEncreaseOfEnvirons { get; set; } = 1;
 
         /// <summary>
-        /// Вариограмма.
+        /// Базисная функция.
         /// </summary>
-        public Variograms Variogram { get; set; } = Variograms.Spherial;
-
-        /// <summary>
-        /// Ранг.
-        /// </summary>
-        public double A { get; set; } = 20;
-
-        /// <summary>
-        /// Вклад дисперсии или порог.
-        /// </summary>
-        public double C { get; set; } = 100;
-
-        /// <summary>
-        /// Эффект самородка.
-        /// </summary>
-        public double C0 { get; set; } = 0;
+        public BasicFunctions BasicFunction { get; set; } = BasicFunctions.MultiLog;
     }
 }

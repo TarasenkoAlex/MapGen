@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MapGen.Model.Interpolation.Setting
 {
-    public interface ISettingInterpolationRbf : ISettingInterpolationGeneral
+    public interface ISettingInterpolRbf : ISettingInterpolGeneral
     {
         /// <summary>
         /// Базисная функция.

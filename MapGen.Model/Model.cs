@@ -70,7 +70,7 @@ namespace MapGen.Model
         public Model()
         {
             // public.
-            StrategyInterpol = new StrategyInterpolKriging(new SettingInterpolationKriging());
+            StrategyInterpol = new StrategyInterpolKriging(new SettingInterpolKriging());
             StrategyGen = null;
 
             // private.

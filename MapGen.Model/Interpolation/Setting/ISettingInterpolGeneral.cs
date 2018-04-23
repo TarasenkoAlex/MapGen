@@ -1,6 +1,6 @@
 ﻿namespace MapGen.Model.Interpolation.Setting
 {
-    public interface ISettingInterpolationGeneral
+    public interface ISettingInterpolGeneral
     {
         /// <summary>
         /// Шаг регулярной матрицы.

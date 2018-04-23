@@ -118,11 +118,13 @@
     <Compile Include="Generalization\Setting\ISettingGen.cs" />
     <Compile Include="Generalization\Strategy\IStrategyGen.cs" />
     <Compile Include="General\Methods.cs" />
-    <Compile Include="Interpolation\Setting\ISettingInterpolationGeneral.cs" />
-    <Compile Include="Interpolation\Setting\ISettingInterpolationRbf.cs" />
-    <Compile Include="Interpolation\Setting\ISettingInterpolationKriging.cs" />
-    <Compile Include="Interpolation\Setting\SettingInterpolationKriging.cs" />
+    <Compile Include="Interpolation\Setting\ISettingInterpolGeneral.cs" />
+    <Compile Include="Interpolation\Setting\ISettingInterpolRbf.cs" />
+    <Compile Include="Interpolation\Setting\ISettingInterpolKriging.cs" />
+    <Compile Include="Interpolation\Setting\SettingInterpolRbf.cs" />
+    <Compile Include="Interpolation\Setting\SettingInterpolKriging.cs" />
     <Compile Include="Interpolation\Strategy\IStrategyInterpol.cs" />
+    <Compile Include="Interpolation\Strategy\StrategyInterpolRbf.cs" />
     <Compile Include="Maps\DbMap.cs" />
     <Compile Include="IModel.cs" />
     <Compile Include="Model.cs" />
