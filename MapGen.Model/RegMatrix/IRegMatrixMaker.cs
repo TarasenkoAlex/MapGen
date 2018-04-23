@@ -13,7 +13,7 @@ namespace MapGen.Model.RegMatrix
         /// <summary>
         /// Стратегия интерполяции.
         /// </summary>
-        IStratagyInterpol StratagyInterpol { get; set; }
+        IStrategyInterpol StratagyInterpol { get; set; }
 
         /// <summary>
         /// Создание регулярной матрицы глубин.

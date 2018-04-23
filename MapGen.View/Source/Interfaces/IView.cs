@@ -16,7 +16,7 @@ namespace MapGen.View.Source.Interfaces
 
         #region Region general events.
         event Action<int> LoadDbMap;
-        event Action<int> ChangeScale;
+        event Action<int> ZoomEvent;
         #endregion
 
         #region Region events of MainWindow.

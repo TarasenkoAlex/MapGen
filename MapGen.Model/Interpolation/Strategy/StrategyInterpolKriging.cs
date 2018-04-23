@@ -10,7 +10,7 @@ using MapGen.Model.RegMatrix;
 
 namespace MapGen.Model.Interpolation.Strategy
 {
-    public class StrategyInterpolKriging : IStratagyInterpol
+    public class StrategyInterpolKriging : IStrategyInterpol
     {
         #region Region properties.
 

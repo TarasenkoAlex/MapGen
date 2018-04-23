@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapGen.Model.Clustering.Setting
+namespace MapGen.Model.Generalization.Setting
 {
-    public interface ISettingClustering
+    public interface ISettingGen
     {
+
     }
 }

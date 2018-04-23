@@ -7,7 +7,7 @@ using MapGen.Model.Maps;
 
 namespace MapGen.Model.Interpolation.Strategy
 {
-    public interface IStratagyInterpol
+    public interface IStrategyInterpol
     {
         /// <summary>
         /// Заполнение регулярной матрицы глубин точками.

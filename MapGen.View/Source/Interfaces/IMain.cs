@@ -14,7 +14,7 @@ namespace MapGen.View.Source.Interfaces
          
         #region Region events.
         event Action MenuItemListMapsOnClick;
-        event Action<int> ChangeScale;
+        event Action<int> ZoomEvent;
         #endregion
 
         #region Region methods.

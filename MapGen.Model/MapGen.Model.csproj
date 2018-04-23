@@ -87,8 +87,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clustering\Setting\ISettingClustering.cs" />
-    <Compile Include="Clustering\Strategy\IStrategyClustering.cs" />
     <Compile Include="Database\DbWorker\DatabaseWorker.cs" />
     <Compile Include="Database\EDM\Map.cs">
       <DependentUpon>MapGen.tt</DependentUpon>
@@ -115,14 +113,16 @@
     <Compile Include="Database\Repository\MapsRepository.cs" />
     <Compile Include="Database\Repository\PointsRepository.cs" />
     <Compile Include="Database\UnitOfWork\UnitOfWork.cs" />
-    <Compile Include="Generalization\Setting\ISettingGeneralization.cs" />
-    <Compile Include="Generalization\Strategy\IStrategyGeneralization.cs" />
+    <Compile Include="Generalization\Algoritm\CLMGAlgoritm.cs" />
+    <Compile Include="Generalization\Algoritm\IMGAlgoritm.cs" />
+    <Compile Include="Generalization\Setting\ISettingGen.cs" />
+    <Compile Include="Generalization\Strategy\IStrategyGen.cs" />
     <Compile Include="General\Methods.cs" />
     <Compile Include="Interpolation\Setting\ISettingInterpolationGeneral.cs" />
     <Compile Include="Interpolation\Setting\ISettingInterpolationRbf.cs" />
     <Compile Include="Interpolation\Setting\ISettingInterpolationKriging.cs" />
     <Compile Include="Interpolation\Setting\SettingInterpolationKriging.cs" />
-    <Compile Include="Interpolation\Strategy\IStratagyInterpol.cs" />
+    <Compile Include="Interpolation\Strategy\IStrategyInterpol.cs" />
     <Compile Include="Maps\DbMap.cs" />
     <Compile Include="IModel.cs" />
     <Compile Include="Model.cs" />

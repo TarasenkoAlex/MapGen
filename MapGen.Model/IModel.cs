@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MapGen.Model.Database.EDM;
+using MapGen.Model.Generalization.Strategy;
 using MapGen.Model.Interpolation.Setting;
 using MapGen.Model.Interpolation.Strategy;
 using MapGen.Model.Maps;
@@ -13,8 +14,10 @@ namespace MapGen.Model
     public interface IModel
     {
         #region Region properties.
-        DbMap SeaMap { get; }
-        StrategyInterpolKriging StrategyInterpolKriging { get; set; }
+        DbMap SourceSeaMap { get; }
+        DbMap MapGenSeaMap { get; }
+        IStrategyInterpol StrategyInterpol { get; set; }
+        IStrategyGen StrategyGen { get; set; }
         #endregion
 
         #region Region methods. Database.
@@ -22,7 +25,14 @@ namespace MapGen.Model
         bool GetDbMaps(out List<string[]> maps, out string message);
         bool LoadDbMap(int idMap, out string message);
         bool GetDbMaps(out List<Map> maps, out string message);
-        bool CreateRegMatrix(long scale, out RegMatrix.RegMatrix regMatrix, out string message);
+        #endregion
+
+        #region Region public methods. RegMatrix.
+        bool CreateRegMatrix(bool isSourceMap, long scale, out RegMatrix.RegMatrix regMatrix, out string message);
+        #endregion
+
+        #region Region public methods. MapGen.
+        bool ExecuteMapGen(long scale, out string message);
         #endregion
     }
 }

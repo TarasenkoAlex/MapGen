@@ -54,7 +54,7 @@ namespace MapGen.View.Source.Classes
         /// <summary>
         /// Событие изменения масштаба.
         /// </summary>
-        public event Action<int> ChangeScale;
+        public event Action<int> ZoomEvent;
 
         #endregion
 
@@ -77,7 +77,7 @@ namespace MapGen.View.Source.Classes
             // Создаем главное окно программы MapGeneralization.
             _mainWindow = new MainWindow();
             // Подписка на события MainWindow.
-            BindingEventsOfMainWindow();
+            SubscribeEventsOfMainWindow();
         }
 
         #endregion
@@ -160,17 +160,20 @@ namespace MapGen.View.Source.Classes
         /// <summary>
         /// Подписка событий MainWindow.
         /// </summary>
-        private void BindingEventsOfMainWindow()
+        private void SubscribeEventsOfMainWindow()
         {
             _mainWindow.MenuItemListMapsOnClick += MenuItemListMapsOn_Click;
+            _mainWindow.ZoomEvent += MainWindow_ZoomEvent;
         }
-
-        /// <summary>
-        /// Обработка события выбор елемента View "Файл.База данных карт".
-        /// </summary>
+        
         private void MenuItemListMapsOn_Click()
         {
             MenuItemListMapsOnClick?.Invoke();
+        }
+
+        private void MainWindow_ZoomEvent(int scale)
+        {
+            ZoomEvent?.Invoke(scale);
         }
 
         #endregion

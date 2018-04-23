@@ -105,6 +105,7 @@
     <Compile Include="Source\Classes\DrawingObjects.cs" />
     <Compile Include="Source\Classes\MapView.cs" />
     <Compile Include="Source\Classes\Viewer.cs" />
+    <Compile Include="Source\Classes\ZoomStepper.cs" />
     <Compile Include="Source\Interfaces\IMain.cs" />
     <Compile Include="Source\Interfaces\ITableMaps.cs" />
     <Compile Include="Source\Interfaces\IView.cs" />

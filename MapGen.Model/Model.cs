@@ -8,6 +8,8 @@ using MapGen.Model.Database.DbWorker;
 using MapGen.Model.Database.EDM;
 using MapGen.Model.Database.UnitOfWork;
 using MapGen.Model.General;
+using MapGen.Model.Generalization.Algoritm;
+using MapGen.Model.Generalization.Strategy;
 using MapGen.Model.Interpolation.Setting;
 using MapGen.Model.Interpolation.Strategy;
 using MapGen.Model.Maps;
@@ -25,23 +27,38 @@ namespace MapGen.Model
         private readonly DatabaseWorker _databaseWorker;
 
         /// <summary>
-        /// Создает регулряную матрицу по облаку точек.
+        /// Создает регулярную матрицу по облаку точек.
         /// </summary>
         private readonly IRegMatrixMaker _regMatrixMaker;
+
+        /// <summary>
+        /// Создет объект для выполнения алгоритма картографической генерализации методом кластеризации.
+        /// </summary>
+        private readonly IMGAlgoritm _mgAlgoritm;
 
         #endregion
 
         #region Region public fields.
-        
+
         /// <summary>
         /// Исходная загруженная карта.
         /// </summary>
-        public DbMap SeaMap { get; private set; }
+        public DbMap SourceSeaMap { get; private set; }
 
         /// <summary>
-        /// Стратегия интерполяции при помощи метода Кригинг.
+        /// Карта после картографической генерализации.
         /// </summary>
-        public StrategyInterpolKriging StrategyInterpolKriging { get; set; }
+        public DbMap MapGenSeaMap { get; private set; }
+
+        /// <summary>
+        /// Стратегия интерполяции.
+        /// </summary>
+        public IStrategyInterpol StrategyInterpol { get; set; }
+
+        /// <summary>
+        /// Стратегия генерализации.
+        /// </summary>
+        public IStrategyGen StrategyGen { get; set; }
 
         #endregion
 
@@ -53,11 +70,13 @@ namespace MapGen.Model
         public Model()
         {
             // public.
-            StrategyInterpolKriging = new StrategyInterpolKriging(new SettingInterpolationKriging());
-           
+            StrategyInterpol = new StrategyInterpolKriging(new SettingInterpolationKriging());
+            StrategyGen = null;
+
             // private.
             _databaseWorker = new DatabaseWorker();
-            _regMatrixMaker = new RegMatrixMaker(StrategyInterpolKriging);
+            _regMatrixMaker = new RegMatrixMaker(StrategyInterpol);
+            _mgAlgoritm = new CLMGAlgoritm(StrategyGen);
         }
 
         #endregion
@@ -160,7 +179,7 @@ namespace MapGen.Model
             try
             {
                 // Сохраняем карту.
-                SeaMap = new DbMap(map.Name, map.Width, map.Length, map.Scale, map.Latitude, map.Longitude, cloudPoints);
+                SourceSeaMap = new DbMap(map.Name, map.Width, map.Length, map.Scale, map.Latitude, map.Longitude, cloudPoints);
             }
             catch (Exception ex)
             {
@@ -169,25 +188,60 @@ namespace MapGen.Model
             }
             return true;
         }
+        
+        #endregion
+
+        #region Region public methods. RegMatrix.
 
         /// <summary>
         /// Создание регулярной матрицы глубин.
         /// </summary>
+        /// <param name="isSourceMap">Исходную ли карту.</param>
         /// <param name="scale">Масштаб карты (1 : scale).</param>
         /// <param name="regMatrix">Регулярная матрица глубин.</param>
         /// <param name="message">Сообщение с ошибкой.</param>
         /// <returns>Успешно ли прошло создание.</returns>
-        public bool CreateRegMatrix(long scale, out RegMatrix.RegMatrix regMatrix, out string message)
+        public bool CreateRegMatrix(bool isSourceMap, long scale, out RegMatrix.RegMatrix regMatrix, out string message)
         {
             // В зависимости от настройки интерполяции создает регулярную матрицу.
-            return _regMatrixMaker.CreateRegMatrix(SeaMap, scale, out regMatrix, out message);
+            if (isSourceMap)
+            {
+                return _regMatrixMaker.CreateRegMatrix(SourceSeaMap, scale, out regMatrix, out message);
+            }
+            return _regMatrixMaker.CreateRegMatrix(MapGenSeaMap, scale, out regMatrix, out message);
+        }
+
+        #endregion
+
+        #region Region public methods. MapGen.
+
+        /// <summary>
+        /// Выполнить генерализацию.
+        /// </summary>
+        /// <param name="scale">Масштаб.</param>
+        /// <param name="message">Сообщение ошибки.</param>
+        /// <returns>Успешно ли прошел алгоритм генерализации.</returns>
+        public bool ExecuteMapGen(long scale, out string message)
+        {
+            DbMap outDbMap;
+
+            // В зависимости от настройки выполнить генерализацию.
+            bool result = _mgAlgoritm.Execute(scale, SourceSeaMap, out outDbMap, out message);
+
+            // Сохраняем получившуюся карту.
+            if (result)
+            {
+                SourceSeaMap = outDbMap;
+            }
+
+            return result;
         }
 
         #endregion
 
         #region Region private methods.
 
-        
+
 
         #endregion
     }

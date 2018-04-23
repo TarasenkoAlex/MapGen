@@ -49,10 +49,10 @@ namespace MapGen.Presenter
             InitializeFields();
 
             // Подписка на события View.
-            BindingEventsOfView();
+            SubscribeEventsOfView();
 
             // Подписка на события Model.
-            BindingEventsOfModel();
+            SubscribeEventsOfModel();
 
             // Открываем главное окно программы.
             _view.ShowMainWindow();
@@ -73,16 +73,17 @@ namespace MapGen.Presenter
         /// <summary>
         /// Подписка событий View.
         /// </summary>
-        private void BindingEventsOfView()
+        private void SubscribeEventsOfView()
         {
             _view.LoadDbMap += View_LoadDbMap;
             _view.MenuItemListMapsOnClick += View_MenuItemListMapsOnClick;
+            _view.ZoomEvent += View_ZoomEvent;
         }
-
+        
         /// <summary>
         /// Подписка событий Model.
         /// </summary>
-        private void BindingEventsOfModel()
+        private void SubscribeEventsOfModel()
         {
         }
 
@@ -132,14 +133,14 @@ namespace MapGen.Presenter
 
                     RegMatrix regMatrix;
                     // Строим регулярную матрицу глубин.
-                    if (!_model.CreateRegMatrix(_model.SeaMap.Scale, out regMatrix, out message))
+                    if (!_model.CreateRegMatrix(true, _model.SourceSeaMap.Scale, out regMatrix, out message))
                     {
                         _view.ShowMessageError("Создание регулярной матрицы", $"Не удалось создать регулярную матрицу глубин! {message}");
                         return;
                     }
 
                     // Конвертируем регулярную матрицу в карту для отрисовки. Передаем во View.
-                    _view.GraphicMap = ConvertRegMatrixToGraphicMap(regMatrix, _model.SeaMap.Scale);
+                    _view.GraphicMap = ConvertRegMatrixToGraphicMap(regMatrix, _model.SourceSeaMap.Scale);
 
                     // Отображаем карту.
                     _view.DrawSeaMap();
@@ -157,9 +158,9 @@ namespace MapGen.Presenter
         {
             GraphicMap graphicMap = new GraphicMap
             {
-                Name = _model.SeaMap.Name,
-                Latitude = _model.SeaMap.Latitude,
-                Longitude = _model.SeaMap.Longitude,
+                Name = _model.SourceSeaMap.Name,
+                Latitude = _model.SourceSeaMap.Latitude,
+                Longitude = _model.SourceSeaMap.Longitude,
                 Scale = scale,
                 Width = regMatrix.Width,
                 Length = regMatrix.Length,
@@ -186,6 +187,38 @@ namespace MapGen.Presenter
             }
 
             return graphicMap;
+        }
+
+        /// <summary>
+        /// Обработка события изменения масштаба.
+        /// </summary>
+        /// <param name="scale">Масштаб.</param>
+        private void View_ZoomEvent(int scale)
+        {
+            new Thread(() =>
+                {
+                    string message;
+                    if (!_model.ExecuteMapGen(scale, out message))
+                    {
+                        _view.ShowMessageError("Картографическая генерализация", $"Не выполнить картографическую генерализацю! {message}");
+                        return;
+                    }
+
+                    RegMatrix regMatrix;
+                    // Строим регулярную матрицу глубин.
+                    if (!_model.CreateRegMatrix(false, _model.SourceSeaMap.Scale, out regMatrix, out message))
+                    {
+                        _view.ShowMessageError("Создание регулярной матрицы", $"Не удалось создать регулярную матрицу глубин! {message}");
+                        return;
+                    }
+
+                    // Конвертируем регулярную матрицу в карту для отрисовки. Передаем во View.
+                    _view.GraphicMap = ConvertRegMatrixToGraphicMap(regMatrix, _model.SourceSeaMap.Scale);
+
+                    // Отображаем карту.
+                    _view.DrawSeaMap();
+                })
+                { IsBackground = true }.Start();
         }
 
         #endregion

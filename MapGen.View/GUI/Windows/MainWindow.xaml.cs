@@ -64,7 +64,7 @@ namespace MapGen.View.GUI.Windows
         /// <summary>
         /// Событие изменения масштаба.
         /// </summary>
-        public event Action<int> ChangeScale;
+        public event Action<int> ZoomEvent;
 
         #endregion
 
@@ -110,6 +110,11 @@ namespace MapGen.View.GUI.Windows
         /// </summary>
         private bool _isCheckStatusBar = true;
 
+        /// <summary>
+        /// Класс для определения следующего и предыдущего масштаба.
+        /// </summary>
+        private readonly ZoomStepper _zoomStepper = new ZoomStepper();
+
         #endregion
 
         #region Region constructer.
@@ -122,8 +127,9 @@ namespace MapGen.View.GUI.Windows
             InitializeComponent();
             InitializeFields();
             InitOpenGl();
-            BindingEventsHeadButtonWindow();
-            BindingEventMenuButtonWindow();
+            SubscribeEventsButtonHeadWindow();
+            SubscribeEventButtonMenu();
+            SubscribeEventButtonWindow();
         }
 
         /// <summary>
@@ -137,7 +143,7 @@ namespace MapGen.View.GUI.Windows
         /// <summary>
         /// Подписка на собития кнопок заголовка главного окна.
         /// </summary>
-        private void BindingEventsHeadButtonWindow()
+        private void SubscribeEventsButtonHeadWindow()
         {
             // Обработка кнопки свернуть.
             ButtonMinimize.Click += (s, e) => WindowState = WindowState.Minimized;
@@ -167,9 +173,9 @@ namespace MapGen.View.GUI.Windows
         }
 
         /// <summary>
-        /// Подписка на события кнопок меню гавного окна.
+        /// Подписка на события кнопок меню главного окна.
         /// </summary>
-        private void BindingEventMenuButtonWindow()
+        private void SubscribeEventButtonMenu()
         {
             // Файл.
             MenuItemListMaps.Click += MenuItemListMaps_Click;
@@ -178,6 +184,18 @@ namespace MapGen.View.GUI.Windows
             // Вид.
             MenuItemToolBar.Click += MenuItemToolBar_Click;
             MenuItemStatusBar.Click += MenuItemStatusBar_Click;
+        }
+
+        /// <summary>
+        /// Подписка на события оставшихся кнопок окна.
+        /// </summary>
+        private void SubscribeEventButtonWindow()
+        {
+            // Приблизить.
+            ButtonZoomPlus.Click += ButtonZoomPlus_Click;
+
+            // Отдалить. 
+            ButtonZoomMinus.Click += ButtonZoomMinus_Click;
         }
 
         #endregion
@@ -371,13 +389,8 @@ namespace MapGen.View.GUI.Windows
         
         #endregion
 
-        #region Region processing events of window.
-
-        /// <summary>
-        /// Обработка события нажатия клавиш.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        #region Region processing events.
+        
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
@@ -427,21 +440,24 @@ namespace MapGen.View.GUI.Windows
             }
         }
 
-        private Bitmap GetSnapShot(int width, int height)
+        private void ButtonZoomPlus_Click(object sender, RoutedEventArgs e)
         {
-            OpenGL gl = OpenGlControl.OpenGL;
-            var snapShotBmp = new Bitmap(width * 10, height * 10);
-            BitmapData bmpData = snapShotBmp.LockBits(
-                new Rectangle(0, 0, width * 10, height * 10), 
-                ImageLockMode.WriteOnly,
-                PixelFormat.Format24bppRgb);
-            gl.ReadPixels(0, 0, width * 10, height * 10, OpenGL.GL_BGR, OpenGL.GL_UNSIGNED_BYTE, bmpData.Scan0);
-            snapShotBmp.UnlockBits(bmpData);
-            return snapShotBmp;
+            if (_graphicMap != null)
+            {
+                ZoomEvent?.Invoke(_zoomStepper.NextScale(_graphicMap.Scale));
+            }
         }
 
-        #endregion.
-
+        private void ButtonZoomMinus_Click(object sender, RoutedEventArgs e)
+        {
+            if (_graphicMap != null)
+            {
+                ZoomEvent?.Invoke(_zoomStepper.PrevScale(_graphicMap.Scale));
+            }
+        }
+        
+        #endregion
+        
         #region Region private methods.
 
         /// <summary>
@@ -449,7 +465,7 @@ namespace MapGen.View.GUI.Windows
         /// </summary>
         private void RefreshEnableButtonOfZoom()
         {
-            int findIndex = _enableScale.FindIndex(scale => scale == _graphicMap.Scale);
+            int findIndex = _zoomStepper.FindIndex(_graphicMap.Scale);
             if (findIndex == 0)
             {
                 ButtonZoomMinus.IsEnabled = false;
@@ -465,6 +481,19 @@ namespace MapGen.View.GUI.Windows
                 ButtonZoomMinus.IsEnabled = true;
                 ButtonZoomPlus.IsEnabled = true;
             }
+        }
+
+        private Bitmap GetSnapShot(int width, int height)
+        {
+            OpenGL gl = OpenGlControl.OpenGL;
+            var snapShotBmp = new Bitmap(width * 10, height * 10);
+            BitmapData bmpData = snapShotBmp.LockBits(
+                new Rectangle(0, 0, width * 10, height * 10),
+                ImageLockMode.WriteOnly,
+                PixelFormat.Format24bppRgb);
+            gl.ReadPixels(0, 0, width * 10, height * 10, OpenGL.GL_BGR, OpenGL.GL_UNSIGNED_BYTE, bmpData.Scan0);
+            snapShotBmp.UnlockBits(bmpData);
+            return snapShotBmp;
         }
 
         #endregion

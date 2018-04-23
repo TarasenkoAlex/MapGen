@@ -19,13 +19,13 @@ namespace MapGen.Model.RegMatrix
         /// <summary>
         /// Стратегия интерполяции.
         /// </summary>
-        public IStratagyInterpol StratagyInterpol { get; set; }
+        public IStrategyInterpol StratagyInterpol { get; set; }
 
         /// <summary>
         /// Создет объект для создания регуряной матрицы глубин.
         /// </summary>
-        /// <param name="strategyInterpol"></param>
-        public RegMatrixMaker(IStratagyInterpol strategyInterpol)
+        /// <param name="strategyInterpol">Стратегия создания.</param>
+        public RegMatrixMaker(IStrategyInterpol strategyInterpol)
         {
             StratagyInterpol = strategyInterpol;
             InitScaleCoeffDict();
