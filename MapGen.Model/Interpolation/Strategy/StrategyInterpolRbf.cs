@@ -27,7 +27,7 @@ namespace MapGen.Model.Interpolation.Strategy
         /// <summary>
         /// Создает объект с алгоритмом заполения матрицы глубин точками методом RBF.
         /// </summary>
-        /// <param name="settingKriging">Конфигурация для построения регулярной матрицы глубин.</param>
+        /// <param name="settingRbf">Конфигурация для построения регулярной матрицы глубин.</param>
         public StrategyInterpolRbf(ISettingInterpolRbf settingRbf)
         {
             Setting = settingRbf;
@@ -114,7 +114,7 @@ namespace MapGen.Model.Interpolation.Strategy
             double[,] K = new double[size, size];
 
             // Вектор коэффицентов.
-            double[] lamda = new double[size];
+            double[] lamda;
 
             // Вектор ковариаций между искомой точкой и всеми остальными.
             double[] k = new double[size];
@@ -129,19 +129,19 @@ namespace MapGen.Model.Interpolation.Strategy
                     switch (Setting.BasicFunction)
                     {
                         case BasicFunctions.MultiQuadric:
-                            K[i, j] = MultiQuadric(K[i, j]);
+                            K[i, j] = MultiQuadric(K[i, j], Setting.R);
                             break;
                         case BasicFunctions.InverseMultiQuadric:
-                            K[i, j] = InverseMultiQuadric(K[i, j]);
+                            K[i, j] = InverseMultiQuadric(K[i, j], Setting.R);
                             break;
                         case BasicFunctions.MultiLog:
-                            K[i, j] = MultiLog(K[i, j]);
+                            K[i, j] = MultiLog(K[i, j], Setting.R);
                             break;
                         case BasicFunctions.NaturalCubicSpline:
-                            K[i, j] = NaturalCubicSpline(K[i, j]);
+                            K[i, j] = NaturalCubicSpline(K[i, j], Setting.R);
                             break;
                         case BasicFunctions.ThinPlateSpline:
-                            K[i, j] = ThinPlateSpline(K[i, j]);
+                            K[i, j] = ThinPlateSpline(K[i, j], Setting.R);
                             break;
                     }
                 }
@@ -160,19 +160,19 @@ namespace MapGen.Model.Interpolation.Strategy
                 switch (Setting.BasicFunction)
                 {
                     case BasicFunctions.MultiQuadric:
-                        k[i] = MultiQuadric(k[i]);
+                        k[i] = MultiQuadric(k[i], Setting.R);
                         break;
                     case BasicFunctions.InverseMultiQuadric:
-                        k[i] = InverseMultiQuadric(k[i]);
+                        k[i] = InverseMultiQuadric(k[i], Setting.R);
                         break;
                     case BasicFunctions.MultiLog:
-                        k[i] = MultiLog(k[i]);
+                        k[i] = MultiLog(k[i], Setting.R);
                         break;
                     case BasicFunctions.NaturalCubicSpline:
-                        k[i] = NaturalCubicSpline(k[i]);
+                        k[i] = NaturalCubicSpline(k[i], Setting.R);
                         break;
                     case BasicFunctions.ThinPlateSpline:
-                        k[i] = ThinPlateSpline(k[i]);
+                        k[i] = ThinPlateSpline(k[i], Setting.R);
                         break;
                 }
             }
@@ -180,7 +180,7 @@ namespace MapGen.Model.Interpolation.Strategy
             k[size] = 1;
             int info;
 
-            alglib.densesolverreport rep = new alglib.densesolverreport();
+            alglib.densesolverreport rep;
             alglib.rmatrixsolve(K, size + 1, k, out info, out rep, out lamda);
 
             for (int i = 0; i < size; i++)
@@ -193,25 +193,25 @@ namespace MapGen.Model.Interpolation.Strategy
             return result;
         }
 
-        private static double MultiQuadric(double h, double w = 1)
+        private static double MultiQuadric(double r, double R)
         {
-            return Math.Pow((h * h + w * w), 0.5);
+            return Math.Pow((r * r + R * R), 0.5);
         }
-        private static double InverseMultiQuadric(double h, double w = 1)
+        private static double InverseMultiQuadric(double r, double R)
         {
-            return Math.Pow((h * h + w * w), -0.5);
+            return Math.Pow((r * r + R * R), -0.5);
         }
-        private static double MultiLog(double h, double w = 1)
+        private static double MultiLog(double r, double R)
         {
-            return Math.Log(h * h + w * w);
+            return Math.Log(r * r + R * R);
         }
-        private static double NaturalCubicSpline(double h, double w = 1)
+        private static double NaturalCubicSpline(double r, double R)
         {
-            return Math.Pow((h * h + w * w), 3.0f / 2.0f);
+            return Math.Pow((r * r + R * R), 3.0f / 2.0f);
         }
-        private static double ThinPlateSpline(double h, double w = 1)
+        private static double ThinPlateSpline(double r, double R)
         {
-            return (h * h + w * w) * Math.Log(h * h + w * w);
+            return (r * r + R * R) * Math.Log(r * r + R * R);
         }
 
         #endregion

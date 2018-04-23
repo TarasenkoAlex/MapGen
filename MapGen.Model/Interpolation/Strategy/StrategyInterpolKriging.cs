@@ -113,7 +113,7 @@ namespace MapGen.Model.Interpolation.Strategy
             double[,] K = new double[size, size];
 
             // Вектор коэффицентов.
-            double[] lamda = new double[size];
+            double[] lamda;
 
             // Вектор ковариаций между искомой точкой и всеми остальными.
             double[] k = new double[size];

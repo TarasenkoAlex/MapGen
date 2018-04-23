@@ -12,6 +12,11 @@ namespace MapGen.Model.Interpolation.Setting
         /// Базисная функция.
         /// </summary>
         BasicFunctions BasicFunction { get; set; }
+
+        /// <summary>
+        /// Фактор сглаживания.
+        /// </summary>
+        double R { get; set; }
     }
 
     public enum BasicFunctions

@@ -29,5 +29,10 @@
         /// Базисная функция.
         /// </summary>
         public BasicFunctions BasicFunction { get; set; } = BasicFunctions.MultiLog;
+
+        /// <summary>
+        /// Фактор сглаживания.
+        /// </summary>
+        public double R { get; set; } = 1;
     }
 }
