@@ -173,12 +173,6 @@ namespace MapGen.View.Source.Classes
             MenuItemListMapsOnClick?.Invoke();
         }
 
-
-        private void CloseWindow()
-        {
-            
-        }
-
         #endregion
 
         #region Region methods of MessageWindow.
