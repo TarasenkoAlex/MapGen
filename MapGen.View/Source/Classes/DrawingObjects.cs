@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using SharpGL;
 using SharpGL.SceneGraph;
 
@@ -17,7 +18,7 @@ namespace MapGen.View.Source.Classes
             public double Range { get; }
 
             /// <summary>
-            /// Шаг шкалы гюлубин.
+            /// Шаг шкалы глубин.
             /// </summary>
             public double StepScale { get; }
 
@@ -87,6 +88,24 @@ namespace MapGen.View.Source.Classes
                 }
                 
                 return new GLColor(float.Parse(rgb[0])/255f, float.Parse(rgb[1])/255f, float.Parse(rgb[2])/255f, 1.0f);
+            }
+
+            /// <summary>
+            /// Получить границы глубин для отображения шкалы глубин.
+            /// </summary>
+            /// <returns></returns>
+            public double[] GetDepthScale()
+            {
+                int count = int.Parse(ResourcesView.CountDepthScale) - 1;
+
+                double[] result = new double[count];
+                
+                for (int i = 1; i <= count; ++i)
+                {
+                    result[i - 1] = i * StepScale;
+                }
+
+                return result;
             }
         }
         

@@ -67,13 +67,37 @@
                 OpenGLInitialized="OpenGLControl_OpenGLInitialized"
                 Resized="OpenGLControl_Resized"
                 DrawFPS="False"/>
-            <Grid Margin="0,222,10,198" Background="#FF474747" Height="60" Width="30" HorizontalAlignment="Right" >
+            <Grid Margin="0,210,10,210" Background="#FF474747" Height="60" Width="30" HorizontalAlignment="Right" >
                 <Button x:Name="ButtonZoomPlus" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Приблизить" VerticalAlignment="Top">
                     <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/window.opengl.plus.png" Stretch="Fill" />
                 </Button>
                 <Button x:Name="ButtonZoomMinus" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Отдалить" Margin="0,30,0,0">
                     <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/window.opengl.minus.png" Stretch="Fill" />
                 </Button>
+            </Grid>
+            <Grid Background="#FF474747" Height="54" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="517">
+                <Label Content="Шкала глубин" FontSize="10" FontFamily="Segoe UI" Foreground="#FFCC00" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="76" Margin="219,-4,222,32"/>
+                <Grid Margin="10,13,0,0" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="496">
+                    <Rectangle Fill="#A8FFFF" Width="60" Height="18" Stroke="Black" Margin="0,3,0,4" HorizontalAlignment="Left"/>
+                    <Rectangle Fill="#8CD5E9" Width="60" Height="18" Stroke="Black" Margin="62,3,0,4" HorizontalAlignment="Left"/>
+                    <Rectangle Fill="#7EC0DE" Width="60" Height="18" Stroke="Black" Margin="124,3,0,4" HorizontalAlignment="Left"/>
+                    <Rectangle Fill="#6295C8" Width="60" Height="18" Stroke="Black" Margin="186,3,0,4" HorizontalAlignment="Left"/>
+                    <Rectangle Fill="#5480BE" Width="60" Height="18" Stroke="Black" Margin="248,3,0,4" HorizontalAlignment="Left"/>
+                    <Rectangle Fill="#3956A8" Width="60" Height="18" Stroke="Black" Margin="310,3,0,4" HorizontalAlignment="Left"/>
+                    <Rectangle Fill="#1D2B92" Width="60" Height="18" Stroke="Black" Margin="372,3,0,4" HorizontalAlignment="Left"/>
+                    <Rectangle Fill="#01017C" Width="60" Height="18" Stroke="Black" Margin="434,3,0,4" HorizontalAlignment="Left"/>
+                </Grid>
+                <Grid Margin="0,37,-1,6" HorizontalAlignment="Left" Width="518">
+                    <Label x:Name="LabelDScale0" FontSize="10" FontFamily="Segoe UI" Foreground="#FFCC00" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="0,-8,503,-7"/>
+                    <Label x:Name="LabelDScale1" FontSize="10" FontFamily="Segoe UI" Foreground="#FFCC00" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="57,-8,416,-7" Width="45"/>
+                    <Label x:Name="LabelDScale2" FontSize="10" FontFamily="Segoe UI" Foreground="#FFCC00" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="120,-8,355,-7" Width="43"/>
+                    <Label x:Name="LabelDScale3" FontSize="10" FontFamily="Segoe UI" Foreground="#FFCC00" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="182,-8,293,-7" Width="43"/>
+                    <Label x:Name="LabelDScale4" FontSize="10" FontFamily="Segoe UI" Foreground="#FFCC00" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="244,-8,228,-7" Width="46"/>
+                    <Label x:Name="LabelDScale5" FontSize="10" FontFamily="Segoe UI" Foreground="#FFCC00" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="307,-8,168,-7" Width="43"/>
+                    <Label x:Name="LabelDScale6" FontSize="10" FontFamily="Segoe UI" Foreground="#FFCC00" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="368,-8,106,-7" Width="44"/>
+                    <Label x:Name="LabelDScale7" FontSize="10" FontFamily="Segoe UI" Foreground="#FFCC00" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="430,-8,43,-7" Width="45"/>
+                    <Label x:Name="LabelDScale8" FontSize="10" FontFamily="Segoe UI" Foreground="#FFCC00" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="43" Margin="468,-8,7,-7"/>
+                </Grid>
             </Grid>
         </Grid>
         <Grid Grid.Row="4">

@@ -43,6 +43,7 @@ namespace MapGen.View.GUI.Windows
                     LabelScale.Content = $"1:{value.Scale}";
 
                     RefreshEnableButtonOfZoom();
+                    RefreshDepthScalePanel();
                 });
             }
         }
@@ -114,7 +115,7 @@ namespace MapGen.View.GUI.Windows
         /// Класс для определения следующего и предыдущего масштаба.
         /// </summary>
         private readonly ZoomStepper _zoomStepper = new ZoomStepper();
-
+        
         #endregion
 
         #region Region constructer.
@@ -480,6 +481,27 @@ namespace MapGen.View.GUI.Windows
             {
                 ButtonZoomMinus.IsEnabled = true;
                 ButtonZoomPlus.IsEnabled = true;
+            }
+        }
+
+        /// <summary>
+        /// Обновление шкалы глубин.
+        /// </summary>
+        private void RefreshDepthScalePanel()
+        {
+            DrawingObjects.DepthScale depthScale = new DrawingObjects.DepthScale(_graphicMap.MaxDepth);
+            double[] depths = depthScale.GetDepthScale();
+            if (depths.Length != 0)
+            {
+                LabelDScale0.Content = "0";
+                LabelDScale1.Content = depths[0];
+                LabelDScale2.Content = depths[1];
+                LabelDScale3.Content = depths[2];
+                LabelDScale4.Content = depths[3];
+                LabelDScale5.Content = depths[4];
+                LabelDScale6.Content = depths[5];
+                LabelDScale7.Content = depths[6];
+                LabelDScale8.Content = "глубже";
             }
         }
 

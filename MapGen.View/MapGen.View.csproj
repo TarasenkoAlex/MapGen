@@ -91,9 +91,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GUI\Grids\DepthScale.xaml.cs">
-      <DependentUpon>DepthScale.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ResourcesView.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -155,10 +152,6 @@
     <Resource Include="Resources\window.minimize.png" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="GUI\Grids\DepthScale.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="GUI\Windows\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -173,6 +166,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\window.opengl.plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GUI\Grids\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
