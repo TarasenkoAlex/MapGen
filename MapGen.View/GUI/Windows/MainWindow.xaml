@@ -45,6 +45,14 @@
                 <MenuItem x:Name="MenuItemExit" Header="Выход" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25">
                 </MenuItem>
             </MenuItem>
+            <MenuItem Header="Сервис" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25">
+                <MenuItem Header="Настройки" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25">
+                    <MenuItem x:Name="MenuItemSettingsInterpol" Header="Интерполяция" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25">
+                    </MenuItem>
+                    <MenuItem Header="Кластеризация" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25">
+                    </MenuItem>
+                </MenuItem>
+            </MenuItem>
             <MenuItem Header="Вид" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25">
                 <MenuItem x:Name="MenuItemToolBar" Header="Панель инструментов" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25" IsChecked="True"/>
                 <MenuItem x:Name="MenuItemStatusBar" Header="Статус состояния" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25" IsChecked="True"/>
@@ -66,7 +74,7 @@
                 OpenGLDraw="OpenGLControl_OpenGLDraw"
                 OpenGLInitialized="OpenGLControl_OpenGLInitialized"
                 Resized="OpenGLControl_Resized"
-                DrawFPS="False"/>
+                DrawFPS="True"/>
             <Grid Margin="0,210,10,210" Background="#FF474747" Height="60" Width="30" HorizontalAlignment="Right" >
                 <Button x:Name="ButtonZoomPlus" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Приблизить" VerticalAlignment="Top">
                     <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/window.opengl.plus.png" Stretch="Fill" />

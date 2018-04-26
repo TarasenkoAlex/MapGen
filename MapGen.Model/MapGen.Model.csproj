@@ -118,6 +118,7 @@
     <Compile Include="Generalization\Setting\ISettingGen.cs" />
     <Compile Include="Generalization\Strategy\IStrategyGen.cs" />
     <Compile Include="General\Methods.cs" />
+    <Compile Include="Interpolation\Setting\ISettingInterpol.cs" />
     <Compile Include="Interpolation\Setting\ISettingInterpolGeneral.cs" />
     <Compile Include="Interpolation\Setting\ISettingInterpolRbf.cs" />
     <Compile Include="Interpolation\Setting\ISettingInterpolKriging.cs" />

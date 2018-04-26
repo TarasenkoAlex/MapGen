@@ -58,7 +58,7 @@ namespace MapGen.View.GUI.Windows
         {
             InitializeComponent();
             InitFields();
-            BindingEventsButtonWindow();
+            SubscribeEventsButtonWindow();
         }
 
         #endregion
@@ -88,7 +88,7 @@ namespace MapGen.View.GUI.Windows
         /// <summary>
         /// Подписка событий окна.
         /// </summary>
-        private void BindingEventsButtonWindow()
+        private void SubscribeEventsButtonWindow()
         {
             // Обработка кнопки закрытия.
             ButtonClose.Click += (s, e) => Close();

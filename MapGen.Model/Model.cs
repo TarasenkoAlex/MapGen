@@ -27,9 +27,19 @@ namespace MapGen.Model
         private readonly DatabaseWorker _databaseWorker;
 
         /// <summary>
+        /// Настройка интерполяции.
+        /// </summary>
+        private ISettingInterpol _settingInterpol;
+
+        /// <summary>
         /// Создает регулярную матрицу по облаку точек.
         /// </summary>
-        private readonly IRegMatrixMaker _regMatrixMaker;
+        private IRegMatrixMaker _regMatrixMaker;
+        
+        /// <summary>
+        /// Стратегия генерализации.
+        /// </summary>
+        private IStrategyGen _strategyGen;
 
         /// <summary>
         /// Создет объект для выполнения алгоритма картографической генерализации методом кластеризации.
@@ -51,14 +61,29 @@ namespace MapGen.Model
         public DbMap MapGenSeaMap { get; private set; }
 
         /// <summary>
-        /// Стратегия интерполяции.
+        /// Настройка интерполяции.
         /// </summary>
-        public IStrategyInterpol StrategyInterpol { get; set; }
-
-        /// <summary>
-        /// Стратегия генерализации.
-        /// </summary>
-        public IStrategyGen StrategyGen { get; set; }
+        public ISettingInterpol SettingInterpol
+        {
+            get { return _settingInterpol; }
+            set
+            {
+                _settingInterpol = value;
+                var kriging = _settingInterpol as ISettingInterpolKriging;
+                if (kriging != null)
+                {
+                    _regMatrixMaker = new RegMatrixMaker(new StrategyInterpolKriging(kriging));
+                }
+                else
+                {
+                    var rbf = _settingInterpol as ISettingInterpolRbf;
+                    if (rbf != null)
+                    {
+                        _regMatrixMaker = new RegMatrixMaker(new StrategyInterpolRbf(rbf));
+                    }
+                }
+            }
+        }
 
         #endregion
 
@@ -70,13 +95,16 @@ namespace MapGen.Model
         public Model()
         {
             // public.
-            StrategyInterpol = new StrategyInterpolKriging(new SettingInterpolKriging());
-            StrategyGen = null;
+            SettingInterpol = new SettingInterpolKriging();
 
             // private.
             _databaseWorker = new DatabaseWorker();
-            _regMatrixMaker = new RegMatrixMaker(StrategyInterpol);
-            _mgAlgoritm = new CLMGAlgoritm(StrategyGen);
+
+            _settingInterpol = new SettingInterpolKriging();
+            _regMatrixMaker = new RegMatrixMaker(new StrategyInterpolKriging(new SettingInterpolKriging()));
+
+            _strategyGen = null;
+            _mgAlgoritm = new CLMGAlgoritm(_strategyGen);
         }
 
         #endregion
@@ -231,7 +259,7 @@ namespace MapGen.Model
             // Сохраняем получившуюся карту.
             if (result)
             {
-                SourceSeaMap = outDbMap;
+                MapGenSeaMap = outDbMap;
             }
 
             return result;

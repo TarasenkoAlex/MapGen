@@ -4,6 +4,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
 using MapGen.View.GUI.Windows;
+using MapGen.View.Source.Classes.SettingInterpol;
 using MapGen.View.Source.Interfaces;
 
 namespace MapGen.View.Source.Classes
@@ -16,6 +17,11 @@ namespace MapGen.View.Source.Classes
         /// Главное окно программы.
         /// </summary>
         private readonly IMain _mainWindow;
+
+        /// <summary>
+        /// Загружена ли карта.
+        /// </summary>
+        private bool _isLoadMap = false;
 
         #endregion
 
@@ -38,12 +44,18 @@ namespace MapGen.View.Source.Classes
         {
             set
             {
+                _isLoadMap = true;
                 _mainWindow.GraphicMap = value;
             }
         }
 
+        /// <summary>
+        /// Настройка интерполяции.
+        /// </summary>
+        public IVSettingInterpol SettingInterpol { get; set; }
+
         #endregion
-        
+
         #region Region general events.
 
         /// <summary>
@@ -56,6 +68,11 @@ namespace MapGen.View.Source.Classes
         /// </summary>
         public event Action<int> ZoomEvent;
 
+        /// <summary>
+        /// Событие сохранения настроек интерполяции.
+        /// </summary>
+        public event Action<IVSettingInterpol> SaveSettingsInterpol;
+
         #endregion
 
         #region Region events of MainWindow.
@@ -63,10 +80,15 @@ namespace MapGen.View.Source.Classes
         /// <summary>
         /// Событие выбора елемента View "Файл.База данных карт".
         /// </summary>
-        public event Action MenuItemListMapsOnClick;
+        public event Action MenuItemListMapsClick;
+
+        /// <summary>
+        /// Событие выбора елемента View "Сервис.Настройки.Интерполяция".
+        /// </summary>
+        public event Action MenuItemSettingsInterpolClick;
 
         #endregion
-        
+
         #region Region constructor.
 
         /// <summary>
@@ -92,8 +114,8 @@ namespace MapGen.View.Source.Classes
             Dispatcher.Invoke(() =>
             {
                 ITableMaps tableMapsWindow = new TableMapsWindow();
-                tableMapsWindow.ChooseMap += TableMapsWindow_ChooseMap;
                 tableMapsWindow.Maps = ConvertStringToMapView(tableMaps);
+                tableMapsWindow.ChooseMap += TableMapsWindow_ChooseMap;
                 tableMapsWindow.ShowTableMaps();
             });
         }
@@ -162,13 +184,19 @@ namespace MapGen.View.Source.Classes
         /// </summary>
         private void SubscribeEventsOfMainWindow()
         {
-            _mainWindow.MenuItemListMapsOnClick += MenuItemListMapsOn_Click;
+            _mainWindow.MenuItemListMapsClick += MenuItemListMaps_Click;
+            _mainWindow.MenuItemSettingsInterpolClick += MenuItemSettingsInterpol_Click;
             _mainWindow.ZoomEvent += MainWindow_ZoomEvent;
         }
-        
-        private void MenuItemListMapsOn_Click()
+
+        private void MenuItemSettingsInterpol_Click()
         {
-            MenuItemListMapsOnClick?.Invoke();
+            MenuItemSettingsInterpolClick?.Invoke();
+        }
+
+        private void MenuItemListMaps_Click()
+        {
+            MenuItemListMapsClick?.Invoke();
         }
 
         private void MainWindow_ZoomEvent(int scale)
@@ -195,5 +223,31 @@ namespace MapGen.View.Source.Classes
 
         #endregion
 
+
+        #region Region methods of windows settings.
+
+        /// <summary>
+        /// Отображение окна с настройками интерполции.
+        /// </summary>
+        public void ShowSettingsInterlopWindow()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                ISettingInterpol settingInterpolWindow = new SettingsInterlopWindow();
+                settingInterpolWindow.SettingInterpol = SettingInterpol;
+                settingInterpolWindow.Save += SettingInterpolWindow_Save;
+                settingInterpolWindow.ShowSettingsInterlopWindow();
+            });
+        }
+
+        private void SettingInterpolWindow_Save(IVSettingInterpol settings)
+        {
+            if (_isLoadMap)
+            {
+                SaveSettingsInterpol?.Invoke(settings);
+            }
+        }
+
+        #endregion
     }
 }

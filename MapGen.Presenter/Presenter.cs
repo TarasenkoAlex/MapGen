@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using MapGen.Model;
+using MapGen.Model.Interpolation.Setting;
 using MapGen.View.Source.Interfaces;
 using MapGen.View.Source.Classes;
 using MapGen.Model.RegMatrix;
+using MapGen.View.Source.Classes.SettingInterpol;
 
 namespace MapGen.Presenter
 {
@@ -76,8 +78,10 @@ namespace MapGen.Presenter
         private void SubscribeEventsOfView()
         {
             _view.LoadDbMap += View_LoadDbMap;
-            _view.MenuItemListMapsOnClick += View_MenuItemListMapsOnClick;
+            _view.MenuItemListMapsClick += View_MenuItemListMapsClick;
+            _view.MenuItemSettingsInterpolClick += View_MenuItemSettingsInterpolClick;
             _view.ZoomEvent += View_ZoomEvent;
+            _view.SaveSettingsInterpol += View_SaveSettingsInterpol;
         }
         
         /// <summary>
@@ -90,7 +94,7 @@ namespace MapGen.Presenter
         /// <summary>
         /// Обработка события загрузки списка карт из базы данных.
         /// </summary>
-        private void View_MenuItemListMapsOnClick()
+        private void View_MenuItemListMapsClick()
         {
             new Thread(() =>
                 {
@@ -140,53 +144,16 @@ namespace MapGen.Presenter
                     }
 
                     // Конвертируем регулярную матрицу в карту для отрисовки. Передаем во View.
-                    _view.GraphicMap = ConvertRegMatrixToGraphicMap(regMatrix, _model.SourceSeaMap.Scale);
+                    _view.GraphicMap = Converter.ToGraphicMap(
+                        regMatrix, _model.SourceSeaMap.Name, 
+                        _model.SourceSeaMap.Latitude, 
+                        _model.SourceSeaMap.Longitude, 
+                        _model.SourceSeaMap.Scale);
 
                     // Отображаем карту.
                     _view.DrawSeaMap();
                 })
                 {IsBackground = true}.Start();
-        }
-
-        /// <summary>
-        /// Конвертация регулярной матрицы в карту для отрисовки.
-        /// </summary>
-        /// <param name="regMatrix">Регулярная матрица Model.</param>
-        /// <param name="scale">Масштаб карты (1 : scale).</param>
-        /// <returns>Карта для отрисовки.</returns>
-        private GraphicMap ConvertRegMatrixToGraphicMap(RegMatrix regMatrix, long scale)
-        {
-            GraphicMap graphicMap = new GraphicMap
-            {
-                Name = _model.SourceSeaMap.Name,
-                Latitude = _model.SourceSeaMap.Latitude,
-                Longitude = _model.SourceSeaMap.Longitude,
-                Scale = scale,
-                Width = regMatrix.Width,
-                Length = regMatrix.Length,
-                MaxDepth = regMatrix.MaxDepth,
-                Points = new Point3DColor[regMatrix.Points.Length]
-            };
-
-            DrawingObjects.DepthScale depthScale = new DrawingObjects.DepthScale(graphicMap.MaxDepth);
-
-            for (int i = 0; i < regMatrix.Length; ++i)
-            {
-                for (int j = 0; j < regMatrix.Width; ++j)
-                {
-                    var point = regMatrix.Points[i * regMatrix.Width + j];
-                    graphicMap.Points[i * regMatrix.Width + j] = new Point3DColor
-                    {
-                        IsSource = point.IsSource,
-                        X = regMatrix.Step * j,
-                        Y = regMatrix.Step * i,
-                        Depth = point.Depth,
-                        Color = depthScale.GetColorDepth(point.Depth)
-                    };
-                }
-            }
-
-            return graphicMap;
         }
 
         /// <summary>
@@ -213,7 +180,94 @@ namespace MapGen.Presenter
                     }
 
                     // Конвертируем регулярную матрицу в карту для отрисовки. Передаем во View.
-                    _view.GraphicMap = ConvertRegMatrixToGraphicMap(regMatrix, _model.SourceSeaMap.Scale);
+                    _view.GraphicMap = Converter.ToGraphicMap(
+                        regMatrix, _model.SourceSeaMap.Name,
+                        _model.SourceSeaMap.Latitude,
+                        _model.SourceSeaMap.Longitude,
+                        _model.SourceSeaMap.Scale);
+
+                    // Отображаем карту.
+                    _view.DrawSeaMap();
+                })
+                { IsBackground = true }.Start();
+        }
+
+        /// <summary>
+        /// Обработка события открытия окна с настройками интерполяции.
+        /// </summary>
+        private void View_MenuItemSettingsInterpolClick()
+        {
+            new Thread(() =>
+                {
+                    // Загружаем настройки интерполяции из model в view.
+                    var kriging = _model.SettingInterpol as ISettingInterpolKriging;
+                    if (kriging != null)
+                    {
+                        _view.SettingInterpol = Converter.ToIVSettingInterpol(kriging);
+                    }
+                    else
+                    {
+                        var rbf = _model.SettingInterpol as ISettingInterpolRbf;
+                        if (rbf != null)
+                        {
+                            _view.SettingInterpol = Converter.ToIVSettingInterpol(rbf);
+                        }
+                        else
+                        {
+                            _view.ShowMessageError("Загрузка настроек интерполяции", $"Не удалось загрузить настройки интерполяции!");
+                        }
+                    }
+
+                    // Отображаем окно с настройками интерполяции.
+                    _view.ShowSettingsInterlopWindow();
+                })
+                { IsBackground = true }.Start();
+        }
+
+        /// <summary>
+        /// Обработка события сохранениянастроек интерполяции.
+        /// </summary>
+        /// <param name="setting"></param>
+        private void View_SaveSettingsInterpol(IVSettingInterpol setting)
+        {
+            new Thread(() =>
+                {
+                    // Сохранение настройки интерполяции в model.
+                    var kriging = setting as VSettingInterpolKriging;
+                    if (kriging != null)
+                    {
+                        _model.SettingInterpol = Converter.ToISettingInterpol(kriging);
+                    }
+                    else
+                    {
+                        var rbf = setting as VSettingInterpolRbf;
+                        if (rbf != null)
+                        {
+                            _model.SettingInterpol = Converter.ToISettingInterpol(rbf);
+                        }
+                        else
+                        {
+                            _view.ShowMessageError("Сохранение настроек интерполяции",
+                                $"Не удалось сохранить настройки интерполяции!");
+                        }
+                    }
+
+                    string message;
+                    RegMatrix regMatrix;
+                    // Строим регулярную матрицу глубин.
+                    if (!_model.CreateRegMatrix(true, _model.SourceSeaMap.Scale, out regMatrix, out message))
+                    {
+                        _view.ShowMessageError("Создание регулярной матрицы",
+                            $"Не удалось создать регулярную матрицу глубин! {message}");
+                        return;
+                    }
+
+                    // Конвертируем регулярную матрицу в карту для отрисовки. Передаем во View.
+                    _view.GraphicMap = Converter.ToGraphicMap(
+                        regMatrix, _model.SourceSeaMap.Name,
+                        _model.SourceSeaMap.Latitude,
+                        _model.SourceSeaMap.Longitude,
+                        _model.SourceSeaMap.Scale);
 
                     // Отображаем карту.
                     _view.DrawSeaMap();

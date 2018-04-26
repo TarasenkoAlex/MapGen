@@ -1,0 +1,47 @@
+﻿<Window x:Class="MapGen.View.GUI.Windows.SettingsInterlopWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MapGen.View.GUI.Windows"
+        MinHeight="403" MinWidth="364" MaxHeight="403" MaxWidth="364" Height="403" Width="364" 
+        WindowStyle="None" 
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="30"/>
+    </WindowChrome.WindowChrome>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="270*"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#2D2D30" Row="0">
+            <Image HorizontalAlignment="Left" Width="30" Height="30" Stretch="None" Source="/MapGen.View;component/Resources/table.maps.window.database.png" Margin="10,0,0,0" />
+            <Label Content="Настройка интерполяции" Margin="45,0,0,0" Foreground="#FFCC00" HorizontalAlignment="Left" Width="168" FontWeight="Bold"/>
+            <StackPanel Height="30" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button x:Name="ButtonClose" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Закрыть">
+                    <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/window.close.png" Stretch="None" />
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#2D2D30" Offset="0"/>
+                    <GradientStop Color="#FF474747" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <GroupBox Header="Методы интерполяции" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Margin="10,10,0,0" VerticalAlignment="Top" Height="57" BorderBrush="#FFB7F1D5" HorizontalAlignment="Left" Width="344">
+                <Grid>
+                    <RadioButton x:Name="RadioButtonKriging" Content="Кригинг" IsChecked="True" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Margin="10,10,0,0" HorizontalAlignment="Left" Width="150" Height="20" VerticalAlignment="Top"/>
+                    <RadioButton x:Name="RadioButtonRbf" Content="RBF" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Margin="165,10,-7,0" HorizontalAlignment="Left" Width="150" Height="20" VerticalAlignment="Top"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Параметры" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Margin="10,72,-12,0" VerticalAlignment="Top" Height="245" BorderBrush="#FFB7F1D5" HorizontalAlignment="Left" Width="344">
+                <Grid x:Name="GridSettings" Height="220" Width="330" Margin="0,2,-22,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+            </GroupBox>
+            <Button x:Name="ButtonSave" Content="Сохранить настройки" Background="#3F3F46" Foreground="#FFCC00" BorderBrush="#FFB7F1D5" Margin="10,332,0,0" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="344"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -60,7 +60,12 @@ namespace MapGen.View.GUI.Windows
         /// <summary>
         /// Событие выбора елемента View "Файл.База данных карт".
         /// </summary>
-        public event Action MenuItemListMapsOnClick;
+        public event Action MenuItemListMapsClick;
+
+        /// <summary>
+        /// Событие выбора елемента View "Сервис.Настройки.Интерполяция".
+        /// </summary>
+        public event Action MenuItemSettingsInterpolClick;
 
         /// <summary>
         /// Событие изменения масштаба.
@@ -182,6 +187,9 @@ namespace MapGen.View.GUI.Windows
             MenuItemListMaps.Click += MenuItemListMaps_Click;
             MenuItemExit.Click += MenuItemExit_Click;
 
+            // Сервис.
+            MenuItemSettingsInterpol.Click += MenuItemSettingsInterpol_Click;
+
             // Вид.
             MenuItemToolBar.Click += MenuItemToolBar_Click;
             MenuItemStatusBar.Click += MenuItemStatusBar_Click;
@@ -282,7 +290,7 @@ namespace MapGen.View.GUI.Windows
         /// <param name="args"></param>
         private void OpenGLControl_OpenGLDraw(object sender, OpenGLEventArgs args)
         {
-            //_isDrawMap = true;
+            _isDrawMap = true;
             if (_isDrawMap)
             {
                 // Получаем ссылку на элемент управления OpenGL.
@@ -345,7 +353,7 @@ namespace MapGen.View.GUI.Windows
         #region Region processing events of menu.
 
         /// <summary>
-        /// Событие выбора елемента View "Файл.Выход".
+        /// Событие выбора элемента View "Файл.Выход".
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -355,17 +363,17 @@ namespace MapGen.View.GUI.Windows
         }
 
         /// <summary>
-        /// Событие выбора елемента View "Файл.База данных карт".
+        /// Событие выбора элемента View "Файл.База данных карт".
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void MenuItemListMaps_Click(object sender, RoutedEventArgs e)
         {
-            MenuItemListMapsOnClick?.Invoke();
+            MenuItemListMapsClick?.Invoke();
         }
 
         /// <summary>
-        /// Событие выбора елемента View "Вид.Панель иструментов".
+        /// Событие выбора элемента View "Вид.Панель иструментов".
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -377,7 +385,7 @@ namespace MapGen.View.GUI.Windows
         }
 
         /// <summary>
-        /// Событие выбора елемента View "Вид.Строка состояния".
+        /// Событие выбора элемента View "Вид.Строка состояния".
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -387,11 +395,21 @@ namespace MapGen.View.GUI.Windows
             MenuItemStatusBar.IsChecked = _isCheckStatusBar;
             StatusBarRowDefinition.Height = _isCheckStatusBar ? new GridLength(30) : new GridLength(0);
         }
-        
+
+        /// <summary>
+        /// Событие выбора элемента View "Сервис.Настройки.Интерполяция".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuItemSettingsInterpol_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItemSettingsInterpolClick?.Invoke();
+        }
+
         #endregion
 
         #region Region processing events.
-        
+
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
@@ -457,6 +475,7 @@ namespace MapGen.View.GUI.Windows
             }
         }
         
+
         #endregion
         
         #region Region private methods.

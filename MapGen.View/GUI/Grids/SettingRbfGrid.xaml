@@ -1,0 +1,27 @@
+﻿<Grid x:Class="MapGen.View.GUI.Grids.SettingRbfGrid"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d" 
+      Height="220" Width="330">
+
+    <Grid>
+        <Label Content="Начальный радиус окрестности:" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" HorizontalAlignment="Left" Width="275" Height="25" VerticalAlignment="Top" />
+        <TextBox x:Name="TextBoxMinRadiusOfEnvirons" Text="3" FontFamily="Segoe UI" FontSize="12" Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" Margin="280,4,0,0"/>
+        <Label Content="Минимальное количество точек в окрестности:" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" HorizontalAlignment="Left" Width="275" Height="25" VerticalAlignment="Top" Margin="0,30,0,0" />
+        <TextBox x:Name="TextBoxMinCountPointsOfEnvirons" Text="10" FontFamily="Segoe UI" FontSize="12" Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" Margin="280,34,0,0"/>
+        <Label Content="Шаг увеличения окрестности:" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" HorizontalAlignment="Left" Width="275" Height="25" VerticalAlignment="Top" Margin="0,60,0,0" />
+        <TextBox x:Name="TextBoxStepEncreaseOfEnvirons" Text="1" FontFamily="Segoe UI" FontSize="12" Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" Margin="280,64,0,0"/>
+        <Label Content="Базисная функция:" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" HorizontalAlignment="Left" Width="186" Height="25" VerticalAlignment="Top" Margin="0,90,0,0" />
+        <ComboBox x:Name="ComboBoxBasicFunction" SelectedIndex="0" FontFamily="Segoe UI" FontSize="12" Margin="191,90,0,0" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="129">
+            <ListBoxItem Content="MultiQuadric" FontFamily="Segoe UI" FontSize="12" Height="20"/>
+            <ListBoxItem Content="InverseMultiQuadric" FontFamily="Segoe UI" FontSize="12" Height="20"/>
+            <ListBoxItem Content="MultiLog" FontFamily="Segoe UI" FontSize="12" Height="20"/>
+            <ListBoxItem Content="NaturalCubicSpline" FontFamily="Segoe UI" FontSize="12" Height="20"/>
+            <ListBoxItem Content="ThinPlateSpline" FontFamily="Segoe UI" FontSize="12" Height="20"/>
+        </ComboBox>
+        <Label Content="Фактор сглаживания:" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" HorizontalAlignment="Left" Width="275" Height="25" VerticalAlignment="Top" Margin="0,120,0,0" />
+        <TextBox x:Name="TextBoxR" Text="1" FontFamily="Segoe UI" FontSize="12" Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" Margin="280,124,0,0"/>
+    </Grid>
+</Grid>

@@ -1,9 +1,12 @@
-﻿namespace MapGen.Model.Interpolation.Setting
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MapGen.View.Source.Classes.SettingInterpol
 {
-    /// <summary>
-    /// Класс настройки интерполяции методом RBF.
-    /// </summary>
-    public class SettingInterpolRbf : ISettingInterpolRbf, ISettingInterpol
+    public class VSettingInterpolRbf : IVSettingInterpol
     {
         /// <summary>
         /// Минимальный радиус окрестности.
@@ -23,7 +26,7 @@
         /// <summary>
         /// Базисная функция.
         /// </summary>
-        public BasicFunctions BasicFunction { get; set; } = BasicFunctions.MultiLog;
+        public VBasicFunctions BasicFunction { get; set; } = VBasicFunctions.MultiLog;
 
         /// <summary>
         /// Фактор сглаживания.

@@ -40,7 +40,7 @@ namespace MapGen.Model.General
         /// <param name="minCountPointsOfEnvirons">Минимальное количество точек в окрестности.</param>
         /// <param name="stepEncreaseOfEnvirons">Шаг увеличения окрестности.</param>
         /// <returns>номера точек окрестности относительно исходного списка точек</returns>
-        public static List<int> GetSurroundOfPoint(double x, double y, Point[] cloudPoints, double minRadiusOfEnvirons, double stepEncreaseOfEnvirons, double minCountPointsOfEnvirons)
+        public static List<int> GetSurroundOfPoint(double x, double y, Point[] cloudPoints, double minRadiusOfEnvirons, double stepEncreaseOfEnvirons, int minCountPointsOfEnvirons)
         {
             List<int> listIndexPointsSurround = new List<int>();
 

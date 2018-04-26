@@ -16,8 +16,7 @@ namespace MapGen.Model
         #region Region properties.
         DbMap SourceSeaMap { get; }
         DbMap MapGenSeaMap { get; }
-        IStrategyInterpol StrategyInterpol { get; set; }
-        IStrategyGen StrategyGen { get; set; }
+        ISettingInterpol SettingInterpol { get; set; }
         #endregion
 
         #region Region methods. Database.

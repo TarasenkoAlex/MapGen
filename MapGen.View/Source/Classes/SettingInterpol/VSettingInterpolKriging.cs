@@ -1,9 +1,12 @@
-﻿namespace MapGen.Model.Interpolation.Setting
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MapGen.View.Source.Classes.SettingInterpol
 {
-    /// <summary>
-    /// Класс настройки интерполяции методом Крайгинга.
-    /// </summary>
-    public class SettingInterpolKriging : ISettingInterpolKriging, ISettingInterpol
+    public class VSettingInterpolKriging : IVSettingInterpol
     {
         /// <summary>
         /// Минимальный радиус окрестности.
@@ -23,7 +26,7 @@
         /// <summary>
         /// Вариограмма.
         /// </summary>
-        public Variograms Variogram { get; set; } = Variograms.Spherial;
+        public VVariograms Variogram { get; set; } = VVariograms.Spherial;
 
         /// <summary>
         /// Ранг.
