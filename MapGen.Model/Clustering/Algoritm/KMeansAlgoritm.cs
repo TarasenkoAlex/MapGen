@@ -55,7 +55,6 @@ namespace MapGen.Model.Clustering.Algoritm
 
                 // Выполняем кластеризаци.
                 KMeans algoritmKMeans = new KMeans(countPointsOfOutDbMap);
-                algoritmKMeans.MaxIterations = 1;
                 Stopwatch st = new Stopwatch();
                 st.Reset();
                 st.Start();
