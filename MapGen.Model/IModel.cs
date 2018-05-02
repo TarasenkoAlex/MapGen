@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MapGen.Model.Database.EDM;
-using MapGen.Model.Generalization.Strategy;
 using MapGen.Model.Interpolation.Setting;
 using MapGen.Model.Interpolation.Strategy;
 using MapGen.Model.Maps;
@@ -27,7 +26,7 @@ namespace MapGen.Model
         #endregion
 
         #region Region public methods. RegMatrix.
-        bool CreateRegMatrix(bool isSourceMap, long scale, out RegMatrix.RegMatrix regMatrix, out string message);
+        bool CreateRegMatrix(bool isSourceMap, out RegMatrix.RegMatrix regMatrix, out string message);
         #endregion
 
         #region Region public methods. MapGen.

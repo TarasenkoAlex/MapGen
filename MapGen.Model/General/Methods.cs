@@ -25,9 +25,18 @@ namespace MapGen.Model.General
         /// Нахождение расстояния между двумя точками на плоскости.
         /// </summary>
         /// <returns>расстояние между двумя точками</returns>
-        public static double DistanceBetweenTwoPoints(double x1, double y1, double x2, double y2)
+        public static double DistanceBetweenTwoPoints2D(double x1, double y1, double x2, double y2)
         {
             return Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+        }
+
+        /// <summary>
+        /// Нахождение расстояния между двумя точками в трехмерии.
+        /// </summary>
+        /// <returns>расстояние между двумя точками</returns>
+        public static double DistanceBetweenTwoPoints3D(double x1, double y1, double z1, double x2, double y2, double z2)
+        {
+            return Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) + (z2 - z1) * (z2 - z1));
         }
 
         /// <summary>
@@ -50,7 +59,7 @@ namespace MapGen.Model.General
             {
                 for (int i = 0; i < cloudPoints.Length; i++)
                 {
-                    var currentDistance = DistanceBetweenTwoPoints(cloudPoints[i].X, cloudPoints[i].Y, x, y);
+                    var currentDistance = DistanceBetweenTwoPoints2D(cloudPoints[i].X, cloudPoints[i].Y, x, y);
                     if ((currentDistance <= minRadiusOfEnvirons) && (currentDistance > prevMinRadius))
                         listIndexPointsSurround.Add(i);
                 }

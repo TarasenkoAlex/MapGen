@@ -463,7 +463,7 @@ namespace MapGen.View.GUI.Windows
         {
             if (_graphicMap != null)
             {
-                ZoomEvent?.Invoke(_zoomStepper.NextScale(_graphicMap.Scale));
+                ZoomEvent?.Invoke(_zoomStepper.PrevScale(_graphicMap.Scale));
             }
         }
 
@@ -471,7 +471,7 @@ namespace MapGen.View.GUI.Windows
         {
             if (_graphicMap != null)
             {
-                ZoomEvent?.Invoke(_zoomStepper.PrevScale(_graphicMap.Scale));
+                ZoomEvent?.Invoke(_zoomStepper.NextScale(_graphicMap.Scale));
             }
         }
         
@@ -488,13 +488,13 @@ namespace MapGen.View.GUI.Windows
             int findIndex = _zoomStepper.FindIndex(_graphicMap.Scale);
             if (findIndex == 0)
             {
-                ButtonZoomMinus.IsEnabled = false;
-                ButtonZoomPlus.IsEnabled = true;
+                ButtonZoomMinus.IsEnabled = true;
+                ButtonZoomPlus.IsEnabled = false;
             } 
             else if (findIndex == _enableScale.Count - 1)
             {
-                ButtonZoomMinus.IsEnabled = true;
-                ButtonZoomPlus.IsEnabled = false;
+                ButtonZoomMinus.IsEnabled = false;
+                ButtonZoomPlus.IsEnabled = true;
             }
             else
             {

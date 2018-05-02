@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MapGen.Model.Clustering.Algoritm;
 using MapGen.Model.Database;
 using MapGen.Model.Database.DbWorker;
 using MapGen.Model.Database.EDM;
 using MapGen.Model.Database.UnitOfWork;
 using MapGen.Model.General;
 using MapGen.Model.Generalization.Algoritm;
-using MapGen.Model.Generalization.Strategy;
+using MapGen.Model.Generalization.Setting;
 using MapGen.Model.Interpolation.Setting;
 using MapGen.Model.Interpolation.Strategy;
 using MapGen.Model.Maps;
@@ -37,9 +38,9 @@ namespace MapGen.Model
         private IRegMatrixMaker _regMatrixMaker;
         
         /// <summary>
-        /// Стратегия генерализации.
+        /// Настройка генерализации.
         /// </summary>
-        private IStrategyGen _strategyGen;
+        private SettingGen _settingGen;
 
         /// <summary>
         /// Создет объект для выполнения алгоритма картографической генерализации методом кластеризации.
@@ -72,14 +73,14 @@ namespace MapGen.Model
                 var kriging = _settingInterpol as ISettingInterpolKriging;
                 if (kriging != null)
                 {
-                    _regMatrixMaker = new RegMatrixMaker(new StrategyInterpolKriging(kriging));
+                    _regMatrixMaker.StratagyInterpol = new StrategyInterpolKriging(kriging);
                 }
                 else
                 {
                     var rbf = _settingInterpol as ISettingInterpolRbf;
                     if (rbf != null)
                     {
-                        _regMatrixMaker = new RegMatrixMaker(new StrategyInterpolRbf(rbf));
+                        _regMatrixMaker.StratagyInterpol = new StrategyInterpolRbf(rbf);
                     }
                 }
             }
@@ -95,7 +96,7 @@ namespace MapGen.Model
         public Model()
         {
             // public.
-            SettingInterpol = new SettingInterpolKriging();
+            //SettingInterpol = new SettingInterpolKriging();
 
             // private.
             _databaseWorker = new DatabaseWorker();
@@ -103,8 +104,8 @@ namespace MapGen.Model
             _settingInterpol = new SettingInterpolKriging();
             _regMatrixMaker = new RegMatrixMaker(new StrategyInterpolKriging(new SettingInterpolKriging()));
 
-            _strategyGen = null;
-            _mgAlgoritm = new CLMGAlgoritm(_strategyGen);
+            _settingGen = new SettingGen();
+            _mgAlgoritm = new CLMGAlgoritm(new SettingGen());
         }
 
         #endregion
@@ -225,18 +226,17 @@ namespace MapGen.Model
         /// Создание регулярной матрицы глубин.
         /// </summary>
         /// <param name="isSourceMap">Исходную ли карту.</param>
-        /// <param name="scale">Масштаб карты (1 : scale).</param>
         /// <param name="regMatrix">Регулярная матрица глубин.</param>
         /// <param name="message">Сообщение с ошибкой.</param>
         /// <returns>Успешно ли прошло создание.</returns>
-        public bool CreateRegMatrix(bool isSourceMap, long scale, out RegMatrix.RegMatrix regMatrix, out string message)
+        public bool CreateRegMatrix(bool isSourceMap, out RegMatrix.RegMatrix regMatrix, out string message)
         {
             // В зависимости от настройки интерполяции создает регулярную матрицу.
             if (isSourceMap)
             {
-                return _regMatrixMaker.CreateRegMatrix(SourceSeaMap, scale, out regMatrix, out message);
+                return _regMatrixMaker.CreateRegMatrix(SourceSeaMap, SourceSeaMap.Scale, out regMatrix, out message);
             }
-            return _regMatrixMaker.CreateRegMatrix(MapGenSeaMap, scale, out regMatrix, out message);
+            return _regMatrixMaker.CreateRegMatrix(MapGenSeaMap, MapGenSeaMap.Scale, out regMatrix, out message);
         }
 
         #endregion

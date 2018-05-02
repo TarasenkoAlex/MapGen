@@ -122,7 +122,7 @@ namespace MapGen.Model.Interpolation.Strategy
             {
                 for (int j = 0; j < size; j++)
                 {
-                    K[i, j] = Methods.DistanceBetweenTwoPoints(
+                    K[i, j] = Methods.DistanceBetweenTwoPoints2D(
                         cloudPoints[surroundPoints[i]].X, cloudPoints[surroundPoints[i]].Y,
                         cloudPoints[surroundPoints[j]].X, cloudPoints[surroundPoints[j]].Y);
                     switch (Setting.Variogram)
@@ -148,7 +148,7 @@ namespace MapGen.Model.Interpolation.Strategy
 
             for (int i = 0; i < size; i++)
             {
-                k[i] = Methods.DistanceBetweenTwoPoints(x, y, cloudPoints[surroundPoints[i]].X, cloudPoints[surroundPoints[i]].Y);
+                k[i] = Methods.DistanceBetweenTwoPoints2D(x, y, cloudPoints[surroundPoints[i]].X, cloudPoints[surroundPoints[i]].Y);
                 switch (Setting.Variogram)
                 {
                     case Variograms.Spherial:

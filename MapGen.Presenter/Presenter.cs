@@ -137,7 +137,7 @@ namespace MapGen.Presenter
 
                     RegMatrix regMatrix;
                     // Строим регулярную матрицу глубин.
-                    if (!_model.CreateRegMatrix(true, _model.SourceSeaMap.Scale, out regMatrix, out message))
+                    if (!_model.CreateRegMatrix(true, out regMatrix, out message))
                     {
                         _view.ShowMessageError("Создание регулярной матрицы", $"Не удалось создать регулярную матрицу глубин! {message}");
                         return;
@@ -145,7 +145,8 @@ namespace MapGen.Presenter
 
                     // Конвертируем регулярную матрицу в карту для отрисовки. Передаем во View.
                     _view.GraphicMap = Converter.ToGraphicMap(
-                        regMatrix, _model.SourceSeaMap.Name, 
+                        regMatrix, 
+                        _model.SourceSeaMap.Name, 
                         _model.SourceSeaMap.Latitude, 
                         _model.SourceSeaMap.Longitude, 
                         _model.SourceSeaMap.Scale);
@@ -173,7 +174,7 @@ namespace MapGen.Presenter
 
                     RegMatrix regMatrix;
                     // Строим регулярную матрицу глубин.
-                    if (!_model.CreateRegMatrix(false, _model.SourceSeaMap.Scale, out regMatrix, out message))
+                    if (!_model.CreateRegMatrix(false, out regMatrix, out message))
                     {
                         _view.ShowMessageError("Создание регулярной матрицы", $"Не удалось создать регулярную матрицу глубин! {message}");
                         return;
@@ -181,10 +182,11 @@ namespace MapGen.Presenter
 
                     // Конвертируем регулярную матрицу в карту для отрисовки. Передаем во View.
                     _view.GraphicMap = Converter.ToGraphicMap(
-                        regMatrix, _model.SourceSeaMap.Name,
-                        _model.SourceSeaMap.Latitude,
-                        _model.SourceSeaMap.Longitude,
-                        _model.SourceSeaMap.Scale);
+                        regMatrix,
+                        _model.MapGenSeaMap.Name,
+                        _model.MapGenSeaMap.Latitude,
+                        _model.MapGenSeaMap.Longitude,
+                        _model.MapGenSeaMap.Scale);
 
                     // Отображаем карту.
                     _view.DrawSeaMap();
@@ -255,7 +257,7 @@ namespace MapGen.Presenter
                     string message;
                     RegMatrix regMatrix;
                     // Строим регулярную матрицу глубин.
-                    if (!_model.CreateRegMatrix(true, _model.SourceSeaMap.Scale, out regMatrix, out message))
+                    if (!_model.CreateRegMatrix(true, out regMatrix, out message))
                     {
                         _view.ShowMessageError("Создание регулярной матрицы",
                             $"Не удалось создать регулярную матрицу глубин! {message}");
@@ -264,7 +266,8 @@ namespace MapGen.Presenter
 
                     // Конвертируем регулярную матрицу в карту для отрисовки. Передаем во View.
                     _view.GraphicMap = Converter.ToGraphicMap(
-                        regMatrix, _model.SourceSeaMap.Name,
+                        regMatrix, 
+                        _model.SourceSeaMap.Name,
                         _model.SourceSeaMap.Latitude,
                         _model.SourceSeaMap.Longitude,
                         _model.SourceSeaMap.Scale);
