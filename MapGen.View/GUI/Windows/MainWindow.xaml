@@ -75,6 +75,20 @@
                 OpenGLInitialized="OpenGLControl_OpenGLInitialized"
                 Resized="OpenGLControl_Resized"
                 DrawFPS="True"/>
+            <Grid Margin="0,10,10,440" Background="#FF474747" Width="120" HorizontalAlignment="Right" >
+                <Button x:Name="ButtonLockUnlockDrawData" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Отрисовка содержимого карты." HorizontalAlignment="Left" Width="30">
+                    <Image x:Name="ImageLockUnlockDrawData" Height="26" Width="26" Source="/MapGen.View;component/Resources/window.opengl.data.unlock.png" Stretch="Fill" />
+                </Button>
+                <Button x:Name="ButtonLockUnlockDrawStripsEdge" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Отрисовка краев карты." HorizontalAlignment="Left" Width="30" Margin="30,0,0,0">
+                    <Image x:Name="ImageLockUnlockDrawStripsEdge" Height="26" Width="26" Source="/MapGen.View;component/Resources/window.opengl.stripsedge.unlock.png" Stretch="Fill" />
+                </Button>
+                <Button x:Name="ButtonLockUnlockDrawGrid" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Отрисовка сетки широты и долготы." HorizontalAlignment="Left" Width="30" Margin="60,0,0,0">
+                    <Image x:Name="ImageLockUnlockDrawGrid" Height="26" Width="26" Source="/MapGen.View;component/Resources/window.opengl.grid.unlock.png" Stretch="Fill" />
+                </Button>
+                <Button x:Name="ButtonLockUnlockDrawSourcePoints" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Отрисовка исходных точек карты." HorizontalAlignment="Left" Width="30" Margin="90,0,0,0">
+                    <Image x:Name="ImageLockUnlockDrawSourcePoints" Height="26" Width="26" Source="/MapGen.View;component/Resources/window.opengl.points.unlock.png" Stretch="Fill" />
+                </Button>
+            </Grid>
             <Grid Margin="0,210,10,210" Background="#FF474747" Height="60" Width="30" HorizontalAlignment="Right" >
                 <Button x:Name="ButtonZoomPlus" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Приблизить" VerticalAlignment="Top">
                     <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/window.opengl.plus.png" Stretch="Fill" />

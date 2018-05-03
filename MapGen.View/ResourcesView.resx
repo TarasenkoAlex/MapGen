@@ -169,4 +169,28 @@
   <data name="window_opengl_plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\window.opengl.plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="window_opengl_data_lock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\window.opengl.data.lock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="window_opengl_data_unlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\window.opengl.data.unlock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="window_opengl_grid_lock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\window.opengl.grid.lock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="window_opengl_grid_unlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\window.opengl.grid.unlock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="window_opengl_points_lock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\window.opengl.points.lock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="window_opengl_points_unlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\window.opengl.points.unlock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="window_opengl_stripsedge_lock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\window.opengl.stripsedge.lock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="window_opengl_stripsedge_unlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\window.opengl.stripsedge.unlock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

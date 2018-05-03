@@ -114,6 +114,7 @@
     <Compile Include="Source\Classes\MapGenCamera.cs" />
     <Compile Include="Source\Classes\DrawingObjects.cs" />
     <Compile Include="Source\Classes\MapView.cs" />
+    <Compile Include="Source\Classes\SettingGraphicMap.cs" />
     <Compile Include="Source\Classes\SettingInterpol\IVSettingInterpol.cs" />
     <Compile Include="Source\Classes\Viewer.cs" />
     <Compile Include="Source\Classes\SettingInterpol\VSettingInterpolKriging.cs" />
@@ -200,6 +201,30 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="mapgen.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\window.opengl.data.lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\window.opengl.grid.lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\window.opengl.points.lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\window.opengl.stripsedge.lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\window.opengl.points.unlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\window.opengl.stripsedge.unlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\window.opengl.grid.unlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\window.opengl.data.unlock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

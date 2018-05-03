@@ -14,12 +14,17 @@ namespace MapGen.View.Source.Classes
         /// <summary>
         /// Длина концов линий широты и долготы.
         /// </summary>
-        private const double WidthEndOfLine = 0.025;
+        public double WidthEndOfLine { get; set; } = 0.025d;
 
         /// <summary>
         /// Ширина краев карты.
         /// </summary>
-        private const double WidthEdgeOfMap = 0.1d;
+        public double WidthEdgeOfMap { get; set; } = 0.1d;
+
+        /// <summary>
+        /// Размер точек.
+        /// </summary>
+        public float PointSize { get; set; } = 8.0f;
 
         /// <summary>
         /// Имя карты.
@@ -67,19 +72,32 @@ namespace MapGen.View.Source.Classes
         /// <param name="gl">OpenGl.</param>
         /// <param name="xCoeff">Сжатие по X.</param>
         /// <param name="yCoeff">Сжатие по Y.</param>
-        public void Draw(OpenGL gl, double xCoeff, double yCoeff)
+        /// <param name="settingGraphicMap">Настройка.</param>
+        public void Draw(OpenGL gl, double xCoeff, double yCoeff, SettingGraphicMap settingGraphicMap)
         {
             // Отрисовка содержимого карты.
-            DrawDataMap(gl, xCoeff, yCoeff);
+            if (settingGraphicMap.IsDrawDataMap)
+            {
+                DrawDataMap(gl, xCoeff, yCoeff);
+            }
 
             // Отрисовка краев карты.
-            DrawStripsEdgeOfMap(gl, xCoeff, yCoeff);
-            
-            // Отрисовка линий широт и долготы.
-            DrawLinesLatitudeAndLongitude(gl, xCoeff, yCoeff);
+            if (settingGraphicMap.IsDrawStripsEdgeOfMap)
+            {
+                DrawStripsEdgeOfMap(gl, xCoeff, yCoeff);
+            }
+
+            // Отрисовка сетки широты и долготы.
+            if (settingGraphicMap.IsDrawGridLatitudeAndLongitude)
+            {
+                DrawGridLatitudeAndLongitude(gl, xCoeff, yCoeff);
+            }
 
             // Отрисовка исходных точек карты.
-            DrawSourcePointsOfMap(gl, xCoeff, yCoeff);
+            if (settingGraphicMap.IsDrawSourcePointsOfMap)
+            {
+                DrawSourcePointsOfMap(gl, xCoeff, yCoeff);
+            }
         }
 
         /// <summary>
@@ -168,7 +186,7 @@ namespace MapGen.View.Source.Classes
         /// <param name="gl">OpenGl.</param>
         /// <param name="xCoeff">Сжатие по X.</param>
         /// <param name="yCoeff">Сжатие по Y.</param>
-        private void DrawLinesLatitudeAndLongitude(OpenGL gl, double xCoeff, double yCoeff)
+        private void DrawGridLatitudeAndLongitude(OpenGL gl, double xCoeff, double yCoeff)
         {
             gl.Color(0.0f, 0.0f, 0.0f);
             gl.LineWidth(0.3f);
@@ -193,20 +211,6 @@ namespace MapGen.View.Source.Classes
         }
 
         /// <summary>
-        /// Отрисовка цифр градусов на краях карты.
-        /// </summary>
-        /// <param name="gl">OpenGl.</param>
-        /// <param name="xCoeff">Сжатие по X.</param>
-        /// <param name="yCoeff">Сжатие по Y.</param>
-        private void DrawNumbersEdgeOfMap(OpenGL gl, double xCoeff, double yCoeff)
-        {
-            gl.Color(0f, 0f, 0f);
-            // TODO
-            
-            gl.DrawText(10, 10, 1f, 1f, 1f, "", 12, "HELLO");
-        }
-
-        /// <summary>
         /// Отрисовка исходных точек карты.
         /// </summary>
         /// <param name="gl">OpenGl.</param>
@@ -214,8 +218,8 @@ namespace MapGen.View.Source.Classes
         /// <param name="yCoeff">Сжатие по Y.</param>
         private void DrawSourcePointsOfMap(OpenGL gl, double xCoeff, double yCoeff)
         {
-            gl.PointSize(6.0f);
-            gl.Color(0f, 0f, 0f);
+            gl.PointSize(PointSize);
+            gl.Color(182f, 255f, 0f);
             
             gl.Begin(BeginMode.Points);
             foreach (var point in Points)

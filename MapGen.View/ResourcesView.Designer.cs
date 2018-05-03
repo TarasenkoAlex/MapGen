@@ -203,6 +203,46 @@ namespace MapGen.View {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap window_opengl_data_lock {
+            get {
+                object obj = ResourceManager.GetObject("window_opengl_data_lock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap window_opengl_data_unlock {
+            get {
+                object obj = ResourceManager.GetObject("window_opengl_data_unlock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap window_opengl_grid_lock {
+            get {
+                object obj = ResourceManager.GetObject("window_opengl_grid_lock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap window_opengl_grid_unlock {
+            get {
+                object obj = ResourceManager.GetObject("window_opengl_grid_unlock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap window_opengl_minus {
             get {
                 object obj = ResourceManager.GetObject("window_opengl_minus", resourceCulture);
@@ -216,6 +256,46 @@ namespace MapGen.View {
         internal static System.Drawing.Bitmap window_opengl_plus {
             get {
                 object obj = ResourceManager.GetObject("window_opengl_plus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap window_opengl_points_lock {
+            get {
+                object obj = ResourceManager.GetObject("window_opengl_points_lock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap window_opengl_points_unlock {
+            get {
+                object obj = ResourceManager.GetObject("window_opengl_points_unlock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap window_opengl_stripsedge_lock {
+            get {
+                object obj = ResourceManager.GetObject("window_opengl_stripsedge_lock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap window_opengl_stripsedge_unlock {
+            get {
+                object obj = ResourceManager.GetObject("window_opengl_stripsedge_unlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

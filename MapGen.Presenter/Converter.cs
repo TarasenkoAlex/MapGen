@@ -159,8 +159,7 @@ namespace MapGen.Presenter
                 default: return BasicFunctions.MultiLog;
             }
         }
-
-
+        
         /// <summary>
         /// Конвертация регулярной матрицы в карту для отрисовки.
         /// </summary>
@@ -181,7 +180,10 @@ namespace MapGen.Presenter
                 Width = regMatrix.Width,
                 Length = regMatrix.Length,
                 MaxDepth = regMatrix.MaxDepth,
-                Points = new Point3DColor[regMatrix.Points.Length]
+                Points = new Point3DColor[regMatrix.Points.Length],
+                WidthEdgeOfMap = regMatrix.Step / 4,
+                WidthEndOfLine = regMatrix.Step / 8,
+                PointSize = 8.0f
             };
 
             DrawingObjects.DepthScale depthScale = new DrawingObjects.DepthScale(graphicMap.MaxDepth);

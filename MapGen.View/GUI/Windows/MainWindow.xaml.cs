@@ -13,7 +13,10 @@ using SharpGL;
 using SharpGL.SceneGraph;
 using MapGenCamera = MapGen.View.Source.Classes.MapGenCamera;
 using System.IO;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using SharpGL.Enumerations;
+using PixelFormat = System.Drawing.Imaging.PixelFormat;
 
 namespace MapGen.View.GUI.Windows
 {
@@ -120,7 +123,12 @@ namespace MapGen.View.GUI.Windows
         /// Класс для определения следующего и предыдущего масштаба.
         /// </summary>
         private readonly ZoomStepper _zoomStepper = new ZoomStepper();
-        
+
+        /// <summary>
+        /// Настройка отображения карты.
+        /// </summary>
+        private readonly SettingGraphicMap _settingGraphicMap = new SettingGraphicMap();
+
         #endregion
 
         #region Region constructer.
@@ -205,6 +213,18 @@ namespace MapGen.View.GUI.Windows
 
             // Отдалить. 
             ButtonZoomMinus.Click += ButtonZoomMinus_Click;
+            
+            // Отрисовка содержимого карты (вкл / выкл).
+            ButtonLockUnlockDrawData.Click += ButtonLockUnlockDrawData_Click;
+
+            // Отрисовка краев карты (вкл / выкл).
+            ButtonLockUnlockDrawStripsEdge.Click += ButtonLockUnlockDrawStripsEdge_Click;
+
+            // Отрисовка линий широт и долготы (вкл / выкл).
+            ButtonLockUnlockDrawGrid.Click += ButtonLockUnlockDrawGrid_Click;
+
+            // Отрисовка исходных точек карты (вкл / выкл).
+            ButtonLockUnlockDrawSourcePoints.Click += ButtonLockUnlockDrawSourcePoints_Click;
         }
 
         #endregion
@@ -311,7 +331,7 @@ namespace MapGen.View.GUI.Windows
                 //gl.PushMatrix();
 
                 // Отображаем карту.
-                _graphicMap?.Draw(gl, _xCoeff, _yCoeff);
+                _graphicMap?.Draw(gl, _xCoeff, _yCoeff, _settingGraphicMap);
 
                 //gl.PopMatrix();
                
@@ -474,10 +494,65 @@ namespace MapGen.View.GUI.Windows
                 ZoomEvent?.Invoke(_zoomStepper.NextScale(_graphicMap.Scale));
             }
         }
-        
+
+        private void ButtonLockUnlockDrawSourcePoints_Click(object sender, RoutedEventArgs e)
+        {
+            if (_settingGraphicMap.IsDrawSourcePointsOfMap)
+            {
+                _settingGraphicMap.IsDrawSourcePointsOfMap = false;
+                InitImageOnImage(ImageLockUnlockDrawSourcePoints, ResourcesView.window_opengl_points_lock);
+            }
+            else
+            {
+                _settingGraphicMap.IsDrawSourcePointsOfMap = true;
+                InitImageOnImage(ImageLockUnlockDrawSourcePoints, ResourcesView.window_opengl_points_unlock);
+            }
+        }
+
+        private void ButtonLockUnlockDrawGrid_Click(object sender, RoutedEventArgs e)
+        {
+            if (_settingGraphicMap.IsDrawGridLatitudeAndLongitude)
+            {
+                _settingGraphicMap.IsDrawGridLatitudeAndLongitude = false;
+                InitImageOnImage(ImageLockUnlockDrawGrid, ResourcesView.window_opengl_grid_lock);
+            }
+            else
+            {
+                _settingGraphicMap.IsDrawGridLatitudeAndLongitude = true;
+                InitImageOnImage(ImageLockUnlockDrawGrid, ResourcesView.window_opengl_grid_unlock);
+            }
+        }
+
+        private void ButtonLockUnlockDrawStripsEdge_Click(object sender, RoutedEventArgs e)
+        {
+            if (_settingGraphicMap.IsDrawStripsEdgeOfMap)
+            {
+                _settingGraphicMap.IsDrawStripsEdgeOfMap = false;
+                InitImageOnImage(ImageLockUnlockDrawStripsEdge, ResourcesView.window_opengl_stripsedge_lock);
+            }
+            else
+            {
+                _settingGraphicMap.IsDrawStripsEdgeOfMap = true;
+                InitImageOnImage(ImageLockUnlockDrawStripsEdge, ResourcesView.window_opengl_stripsedge_unlock);
+            }
+        }
+
+        private void ButtonLockUnlockDrawData_Click(object sender, RoutedEventArgs e)
+        {
+            if (_settingGraphicMap.IsDrawDataMap)
+            {
+                _settingGraphicMap.IsDrawDataMap = false;
+                InitImageOnImage(ImageLockUnlockDrawData, ResourcesView.window_opengl_data_lock);
+            }
+            else
+            {
+                _settingGraphicMap.IsDrawDataMap = true;
+                InitImageOnImage(ImageLockUnlockDrawData, ResourcesView.window_opengl_data_unlock);
+            }
+        }
 
         #endregion
-        
+
         #region Region private methods.
 
         /// <summary>
@@ -535,6 +610,20 @@ namespace MapGen.View.GUI.Windows
             gl.ReadPixels(0, 0, width * 10, height * 10, OpenGL.GL_BGR, OpenGL.GL_UNSIGNED_BYTE, bmpData.Scan0);
             snapShotBmp.UnlockBits(bmpData);
             return snapShotBmp;
+        }
+
+        private void InitImageOnImage(System.Windows.Controls.Image image, Bitmap source)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                IntPtr hsource = source.GetHbitmap();
+                ImageSource wpfBitmap = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                    hsource,
+                    IntPtr.Zero,
+                    Int32Rect.Empty,
+                    BitmapSizeOptions.FromEmptyOptions());
+                image.Source = wpfBitmap;
+            });
         }
 
         #endregion
