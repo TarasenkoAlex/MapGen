@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:wpf="clr-namespace:SharpGL.WPF;assembly=SharpGL.WPF"
+             xmlns:userControls="clr-namespace:MapGen.View.GUI.UserControls"
              mc:Ignorable="d" 
              Title="MapGen" 
              MinHeight="600" MinWidth="1000" Height="600" Width="1000" 
@@ -121,6 +122,9 @@
                     <Label x:Name="LabelDScale8" FontSize="10" FontFamily="Segoe UI" Foreground="#FFCC00" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="43" Margin="468,-8,7,-7"/>
                 </Grid>
             </Grid>
+            <Viewbox x:Name="ProgressBar" Width="150" Height="150" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+                <userControls:CircularProgressBar/>
+            </Viewbox>
         </Grid>
         <Grid Grid.Row="4">
             <Separator Background="#2D2D30" Margin="0" Height="1" VerticalAlignment="Top"/>

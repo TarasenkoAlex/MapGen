@@ -111,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clustering\Algoritm\ICLAlgoritm.cs" />
+    <Compile Include="Clustering\Algoritm\Kernel\KMeans.cs" />
     <Compile Include="Clustering\Algoritm\KMeansAlgoritm.cs" />
     <Compile Include="Clustering\Setting\ICLSetting.cs" />
     <Compile Include="Clustering\Setting\KMeansCLSetting.cs" />

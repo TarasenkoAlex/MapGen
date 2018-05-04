@@ -56,6 +56,17 @@ namespace MapGen.View.GUI.Windows
         /// </summary>
         public Dispatcher MyDispatcher => Dispatcher;
 
+        /// <summary>
+        /// Запустить или остановить прогресс-бар.
+        /// </summary>
+        public bool IsRunningProgressBar
+        {
+            set
+            {
+                Dispatcher.Invoke(() => { ProgressBar.Visibility = value ? Visibility.Visible : Visibility.Collapsed; });
+            }
+        }
+
         #endregion
 
         #region Region events.

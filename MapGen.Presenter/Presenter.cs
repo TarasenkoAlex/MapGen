@@ -98,6 +98,9 @@ namespace MapGen.Presenter
         {
             new Thread(() =>
                 {
+                    // Запускаем прогресс-бар главного окна.
+                    _view.IsRunningProgressBarMainWindow = true;
+
                     string message;
                     // Подключаемся к базе данных.
                     if (!_model.ConnectToDatabase(out message))
@@ -115,6 +118,9 @@ namespace MapGen.Presenter
                     {
                         _view.ShowMessageError("Загрузка базы данных", $"Не удалось загрузить список карт! {message}");
                     }
+
+                    // Останавливаем прогресс-бар главного окна.
+                    _view.IsRunningProgressBarMainWindow = false;
                 })
                 {IsBackground = true}.Start();
         }
@@ -126,7 +132,10 @@ namespace MapGen.Presenter
         private void View_LoadDbMap(int idm)
         {
             new Thread(() =>
-                { 
+                {
+                    // Запускаем прогресс-бар главного окна.
+                    _view.IsRunningProgressBarMainWindow = true;
+
                     string message;
                     // Загружаем карту из базы данных.
                     if (!_model.LoadDbMap(idm, out message))
@@ -153,6 +162,9 @@ namespace MapGen.Presenter
 
                     // Отображаем карту.
                     _view.DrawSeaMap();
+
+                    // Останавливаем прогресс-бар главного окна.
+                    _view.IsRunningProgressBarMainWindow = false;
                 })
                 {IsBackground = true}.Start();
         }
@@ -165,10 +177,13 @@ namespace MapGen.Presenter
         {
             new Thread(() =>
                 {
+                    // Запускаем прогресс-бар главного окна.
+                    _view.IsRunningProgressBarMainWindow = true;
+
                     string message;
                     if (!_model.ExecuteMapGen(scale, out message))
                     {
-                        _view.ShowMessageError("Картографическая генерализация", $"Не выполнить картографическую генерализацю! {message}");
+                        _view.ShowMessageError("Картографическая генерализация", $"Не удалось выполнить картографическую генерализацю! {message}");
                         return;
                     }
 
@@ -190,6 +205,9 @@ namespace MapGen.Presenter
 
                     // Отображаем карту.
                     _view.DrawSeaMap();
+                    
+                    // Останавливаем прогресс-бар главного окна.
+                    _view.IsRunningProgressBarMainWindow = false;
                 })
                 { IsBackground = true }.Start();
         }
@@ -201,6 +219,9 @@ namespace MapGen.Presenter
         {
             new Thread(() =>
                 {
+                    // Запускаем прогресс-бар главного окна.
+                    _view.IsRunningProgressBarMainWindow = true;
+
                     // Загружаем настройки интерполяции из model в view.
                     var kriging = _model.SettingInterpol as ISettingInterpolKriging;
                     if (kriging != null)
@@ -222,6 +243,9 @@ namespace MapGen.Presenter
 
                     // Отображаем окно с настройками интерполяции.
                     _view.ShowSettingsInterlopWindow();
+
+                    // Останавливаем прогресс-бар главного окна.
+                    _view.IsRunningProgressBarMainWindow = false;
                 })
                 { IsBackground = true }.Start();
         }
@@ -234,6 +258,9 @@ namespace MapGen.Presenter
         {
             new Thread(() =>
                 {
+                    // Запускаем прогресс-бар главного окна.
+                    _view.IsRunningProgressBarMainWindow = true;
+
                     // Сохранение настройки интерполяции в model.
                     var kriging = setting as VSettingInterpolKriging;
                     if (kriging != null)
@@ -274,6 +301,9 @@ namespace MapGen.Presenter
 
                     // Отображаем карту.
                     _view.DrawSeaMap();
+                    
+                    // Останавливаем прогресс-бар главного окна.
+                    _view.IsRunningProgressBarMainWindow = false;
                 })
                 { IsBackground = true }.Start();
         }

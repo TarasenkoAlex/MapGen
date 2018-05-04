@@ -14,6 +14,7 @@ namespace MapGen.View.Source.Interfaces
         GraphicMap GraphicMap { set; }
         Dispatcher Dispatcher { get; }
         IVSettingInterpol SettingInterpol { get; set; }
+        bool IsRunningProgressBarMainWindow { set; }
         #endregion
 
         #region Region general events.

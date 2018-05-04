@@ -54,6 +54,14 @@ namespace MapGen.View.Source.Classes
         /// </summary>
         public IVSettingInterpol SettingInterpol { get; set; }
 
+        /// <summary>
+        /// Запустить или остановить прогресс-бар главного окна.
+        /// </summary>
+        public bool IsRunningProgressBarMainWindow
+        {
+            set { _mainWindow.IsRunningProgressBar = value; }
+        }
+
         #endregion
 
         #region Region general events.

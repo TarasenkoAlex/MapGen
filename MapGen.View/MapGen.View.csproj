@@ -81,6 +81,7 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -99,6 +100,9 @@
     </Compile>
     <Compile Include="GUI\Grids\SettingRbfGrid.xaml.cs">
       <DependentUpon>SettingRbfGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\CircularProgressBar.xaml.cs">
+      <DependentUpon>CircularProgressBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\Windows\SettingsInterlopWindow.xaml.cs">
       <DependentUpon>SettingsInterlopWindow.xaml</DependentUpon>
@@ -177,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\Grids\SettingRbfGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\UserControls\CircularProgressBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

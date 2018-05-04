@@ -40,52 +40,14 @@ namespace MapGen.Model.Clustering.Algoritm
             try
             {
                 message = string.Empty;
-
-                // Формируем данные для метода кластеризации.
-                double[][] observations = new double[sourceCloudPoints.Length][];
-                for (int i = 0; i < sourceCloudPoints.Length; ++i)
-                {
-                    observations[i] = new double[3]
-                    {
-                        sourceCloudPoints[i].X,
-                        sourceCloudPoints[i].Y,
-                        sourceCloudPoints[i].Depth
-                    };
-                }
-
-                // Выполняем кластеризаци.
-                KMeans algoritmKMeans = new KMeans(countPointsOfOutDbMap);
+                
+                // Выполняем кластеризацию.
+                Kernel.KMeans algoritmKMeans = new Kernel.KMeans(countPointsOfOutDbMap);
                 Stopwatch st = new Stopwatch();
                 st.Reset();
                 st.Start();
-                KMeansClusterCollection clusters = algoritmKMeans.Learn(observations);
+                algoritmKMeans.Learn(sourceCloudPoints, out distCloudPoints, out message);
                 st.Stop();
-
-                int[] labels = clusters.Decide(observations);
-
-                // Формируем выходные данные.
-                distCloudPoints = new Point[countPointsOfOutDbMap];
-                for (int i = 0; i < sourceCloudPoints.Length; ++i)
-                {
-                    if (distCloudPoints[labels[i]] == null)
-                    {
-                        distCloudPoints[labels[i]] = new Point
-                        {
-                            X = (long) observations[i][0],
-                            Y = (long) observations[i][1],
-                            Depth = (long) observations[i][2]
-                        };
-                    }
-                    else
-                    {
-                        if (distCloudPoints[labels[i]].Depth <= (long) observations[i][2])
-                        {
-                            distCloudPoints[labels[i]].X = (long) observations[i][0];
-                            distCloudPoints[labels[i]].Y = (long) observations[i][1];
-                            distCloudPoints[labels[i]].Depth = (long) observations[i][2];
-                        }
-                    }
-                }
 
                 return true;
             }

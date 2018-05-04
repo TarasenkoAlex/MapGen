@@ -10,8 +10,9 @@ namespace MapGen.View.Source.Interfaces
         #region Region properties.
         GraphicMap GraphicMap { set; }
         Dispatcher MyDispatcher { get; }
+        bool IsRunningProgressBar { set; }
         #endregion
-         
+
         #region Region events.
         event Action MenuItemListMapsClick;
         event Action MenuItemSettingsInterpolClick;
