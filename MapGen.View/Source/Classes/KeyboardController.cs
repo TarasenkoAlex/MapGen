@@ -12,7 +12,7 @@ namespace MapGen.View.Source.Classes
     {
         #region Region methods of processing input keys from keyboard.
 
-        public void KeyDown(OpenGL gl, MapGenCamera camera, Key key)
+        public void KeyDown(OpenGL gl, MGCamera camera, Key key)
         {
             switch (key)
             {

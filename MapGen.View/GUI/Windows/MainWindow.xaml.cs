@@ -11,7 +11,7 @@ using MapGen.View.Source.Classes;
 using MapGen.View.Source.Interfaces;
 using SharpGL;
 using SharpGL.SceneGraph;
-using MapGenCamera = MapGen.View.Source.Classes.MapGenCamera;
+using MGCamera = MapGen.View.Source.Classes.MGCamera;
 using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -109,12 +109,12 @@ namespace MapGen.View.GUI.Windows
         /// <summary>
         /// Текущая камера.
         /// </summary>
-        private MapGenCamera _currentCamera;
+        private MGCamera _currentCamera;
 
         /// <summary>
         /// Исходная камера.
         /// </summary>
-        private readonly MapGenCamera _initialCamera = new MapGenCamera
+        private readonly MGCamera _initialCamera = new MGCamera
         {
             Target = new Vertex(0.0f, 0.0f, 0.0f),
             Position = new Vertex(0.0f, 0.0f, 1.0f),
@@ -306,7 +306,7 @@ namespace MapGen.View.GUI.Windows
             gl.Enable(OpenGL.GL_DEPTH_TEST);
 
             // Инициализация камеры.
-            _currentCamera = (MapGenCamera)_initialCamera.Clone();
+            _currentCamera = (MGCamera)_initialCamera.Clone();
         }
 
         /// <summary>
@@ -573,7 +573,7 @@ namespace MapGen.View.GUI.Windows
 
         private void ButtonInitialCamera_Click(object sender, RoutedEventArgs e)
         {
-            _currentCamera = (MapGenCamera)_initialCamera.Clone();
+            _currentCamera = (MGCamera)_initialCamera.Clone();
         }
 
         #endregion

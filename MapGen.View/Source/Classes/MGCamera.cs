@@ -6,7 +6,7 @@ using SharpGL.SceneGraph.Cameras;
 
 namespace MapGen.View.Source.Classes
 {
-    public class MapGenCamera : LookAtCamera
+    public class MGCamera : LookAtCamera
     {
         #region Region methods moving.
         

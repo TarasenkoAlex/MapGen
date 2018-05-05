@@ -115,7 +115,7 @@
     <Compile Include="Source\Classes\Enums.cs" />
     <Compile Include="Source\Classes\GraphicMap.cs" />
     <Compile Include="Source\Classes\KeyboardController.cs" />
-    <Compile Include="Source\Classes\MapGenCamera.cs" />
+    <Compile Include="Source\Classes\MGCamera.cs" />
     <Compile Include="Source\Classes\DrawingObjects.cs" />
     <Compile Include="Source\Classes\MapView.cs" />
     <Compile Include="Source\Classes\SettingGraphicMap.cs" />
