@@ -44,6 +44,7 @@ namespace MapGen.View.GUI.Windows
                     LabelWidth.Content = value.Width - 1;
                     LabelLength.Content = value.Length - 1;
                     LabelScale.Content = $"1:{value.Scale}";
+                    LabelCountPoints.Content = value.CountSourcePoints;
 
                     RefreshEnableButtonOfZoom();
                     RefreshDepthScalePanel();

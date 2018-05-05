@@ -67,6 +67,11 @@ namespace MapGen.View.Source.Classes
         public double MaxDepth { get; set; }
 
         /// <summary>
+        /// Количество исходных точек.
+        /// </summary>
+        public int CountSourcePoints { get; set; }
+
+        /// <summary>
         /// Отрисовка карты с помощью OpenGl.
         /// </summary>
         /// <param name="gl">OpenGl.</param>

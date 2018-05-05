@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using MapGen.Model.Interpolation.Setting;
@@ -187,7 +189,8 @@ namespace MapGen.Presenter
             };
 
             DrawingObjects.DepthScale depthScale = new DrawingObjects.DepthScale(graphicMap.MaxDepth);
-
+            
+            int countSourcePoints = 0;
             for (int i = 0; i < regMatrix.Length; ++i)
             {
                 for (int j = 0; j < regMatrix.Width; ++j)
@@ -201,8 +204,11 @@ namespace MapGen.Presenter
                         Depth = point.Depth,
                         Color = depthScale.GetColorDepth(point.Depth)
                     };
+                    countSourcePoints = point.IsSource ? countSourcePoints + 1 : countSourcePoints;
                 }
             }
+
+            graphicMap.CountSourcePoints = countSourcePoints;
 
             return graphicMap;
         }
