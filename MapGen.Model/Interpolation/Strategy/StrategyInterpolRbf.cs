@@ -55,27 +55,31 @@ namespace MapGen.Model.Interpolation.Strategy
 
             try
             {
+                RegMatrix.RegMatrix matrix = regMatrix;
+
                 // Заполенение регулярной матрицы.
                 // (x, y) - координаты в секундах.
-                for (long y = 0; y < regMatrix.Length; ++y)
+                //for (long y = 0; y < matrix.Length; ++y)
+                Parallel.For(0, matrix.Length, y =>
                 {
-                    for (long x = 0; x < regMatrix.Width; ++x)
+                    //for (long x = 0; x < matrix.Width; ++x)
+                    Parallel.For(0, matrix.Length, x =>
                     {
                         var findIndex = Array.FindIndex(map.CloudPoints, point => point.X == x && point.Y == y);
                         if (findIndex != -1)
-                            regMatrix.Points[y * regMatrix.Width + x] = new PointRegMatrix
+                            matrix.Points[y * matrix.Width + x] = new PointRegMatrix
                             {
                                 IsSource = true,
                                 Depth = map.CloudPoints[findIndex].Depth
                             };
                         else
-                            regMatrix.Points[y * regMatrix.Width + x] = new PointRegMatrix
+                            matrix.Points[y * matrix.Width + x] = new PointRegMatrix
                             {
                                 IsSource = false,
                                 Depth = RBF(x, y, map.CloudPoints)
                             };
-                    }
-                }
+                    });
+                });
             }
             catch (Exception ex)
             {
