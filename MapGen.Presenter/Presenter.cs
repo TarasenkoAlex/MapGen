@@ -47,9 +47,6 @@ namespace MapGen.Presenter
             _model = model;
             _view = view;
 
-            // Инициализация полей Presenter.
-            InitializeFields();
-
             // Подписка на события View.
             SubscribeEventsOfView();
 
@@ -63,15 +60,7 @@ namespace MapGen.Presenter
         #endregion
         
         #region Region private methods.
-
-        /// <summary>
-        /// Инициализация полей Presenter.
-        /// </summary>
-        private void InitializeFields()
-        {
-            
-        }
-
+        
         /// <summary>
         /// Подписка событий View.
         /// </summary>

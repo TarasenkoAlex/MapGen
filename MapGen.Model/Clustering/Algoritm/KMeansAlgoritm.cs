@@ -8,6 +8,7 @@ using Accord.IO;
 using Accord.MachineLearning;
 using MapGen.Model.Clustering.Setting;
 using MapGen.Model.Database.EDM;
+using KMeans = MapGen.Model.Clustering.Algoritm.Kernel.KMeans;
 
 namespace MapGen.Model.Clustering.Algoritm
 {
@@ -42,11 +43,11 @@ namespace MapGen.Model.Clustering.Algoritm
                 message = string.Empty;
                 
                 // Выполняем кластеризацию.
-                Kernel.KMeans algoritmKMeans = new Kernel.KMeans(countPointsOfOutDbMap);
+                KMeans algoritmKMeans = new KMeans(countPointsOfOutDbMap);
                 Stopwatch st = new Stopwatch();
                 st.Reset();
                 st.Start();
-                algoritmKMeans.Learn(sourceCloudPoints, out distCloudPoints, out message);
+                algoritmKMeans.Learn(sourceCloudPoints, out distCloudPoints);
                 st.Stop();
 
                 return true;

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using MapGen.Model.Database.EDM;
 
@@ -9,41 +8,72 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
 {
     public class KMeans
     {
+        /// <summary>
+        /// Количество кластеров.
+        /// </summary>
         public int K { get; }
 
+        /// <summary>
+        /// Коичество итераций.
+        /// </summary>
         public int Itarations { get; private set; } = 0;
 
+        /// <summary>
+        /// Максимальное количество итераций.
+        /// </summary>
         public int MaxItarations { get; set; } = -1;
 
+        /// <summary>
+        /// Настройка параллельного выполнения.
+        /// </summary>
         public ParallelOptions ParallelOptions { get; set; } = new ParallelOptions();
 
+        /// <summary>
+        /// Кластера.
+        /// </summary>
         public KMeansCluster[] Clusters { get; private set; }
 
+        /// <summary>
+        /// Настройка выбора центроидов на первом шаге алгоритма.
+        /// </summary>
+        public Seedings Seeding { get; set; } = Seedings.Random;
+
+        /// <summary>
+        /// Создает объект для выполнения метода кластеризации.
+        /// </summary>
+        /// <param name="k">Количество кластеров.</param>
         public KMeans(int k)
         {
             K = k;
         }
 
-        public void Learn(Point[] data, out Point[] outData, out string message)
+        /// <summary>
+        /// Выполнить кластеризацию.
+        /// </summary>
+        /// <param name="data">Исходные данные.</param>
+        /// <param name="outData">Множество точек, которые являются представителями кластеров.</param>
+        public void Learn(Point[] data, out Point[] outData)
         {
             outData = new Point[K];
-            message = string.Empty;
 
+            // Инициализируем центроиды.
             FirstInitClusters(data);
 
+            // Запускаем кластеризацию пока н сработает критерий останова.
             object sync = new object();
             int movements = 1;
-            while (movements > 0)
+            while (movements > 0 && !(Itarations == MaxItarations && MaxItarations != -1))
             {
                 movements = 0;
 
-                //for (int i = 0; i < _clusters.Length; ++i)
+                // Пересчитываем центроиды о каждого кластера.
                 Parallel.For(0, K, ParallelOptions, i =>
                 {
                     Clusters[i].UpdateCentroid(data);
                 });
 
-                //for (int i = 0; i < _clusters.Length; ++i)
+                // Вычисляем ближайшие центроиды для каждой точки.
+                // Перемещаем точки в другие кластера, если это необходимо.
                 Parallel.For(0, K, ParallelOptions, i =>
                 {
                     for (int pointIndex = 0; pointIndex < Clusters[i].Count; ++pointIndex)
@@ -67,14 +97,11 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
                     }
                 });
 
+                // Увеличиваем количество итераций.
                 Itarations++;
-
-                if (Itarations == MaxItarations && MaxItarations != -1)
-                {
-                    break;
-                }
             }
 
+            // Формируем выходной 
             for (int i = 0; i < K; ++i)
             {
                 for (int j = 0; j < Clusters[i].Count; ++j)
@@ -94,28 +121,43 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
             }
         }
 
-        private void FirstInitClusters(Point[] data)
+        private void SeedingCentroids(Point[] data)
         {
             Clusters = new KMeansCluster[K];
 
-            int interval = data.Length;
-            int range = interval % K == 0 ? interval / K : interval / (K - 1);
+            switch (Seeding)
+            {
+                case Seedings.Random:
+                {
+                    int[] ind = GetSortedRandVector(K, 0, data.Length);
+                    InitCentroidsByData(ind, data);
+                    break;
+                }
+                default:
+                {
+                    int[] ind = GetSortedRandVector(K, 0, data.Length);
+                    InitCentroidsByData(ind, data);
+                    break;
+                }
+            }
+        }
 
-            Random rand = new Random();
-
+        private void InitCentroidsByData(int[] ind, Point[] data)
+        {
             for (int i = 0; i < K; ++i)
             {
-                var index = (i == K - 1)
-                    ? rand.Next(i * range, interval)
-                    : rand.Next(i * range, (i + 1) * range);
-
                 Clusters[i] = new KMeansCluster();
-                Clusters[i].Centroid[0] = data[index].X;
-                Clusters[i].Centroid[1] = data[index].Y;
-                Clusters[i].Centroid[2] = data[index].Depth;
+                Clusters[i].Centroid[0] = data[ind[i]].X;
+                Clusters[i].Centroid[1] = data[ind[i]].Y;
+                Clusters[i].Centroid[2] = data[ind[i]].Depth;
             }
+        }
 
-            for (int i = 0; i < interval; ++i)
+        private void FirstInitClusters(Point[] data)
+        {
+            SeedingCentroids(data);
+
+            for (int i = 0; i < data.Length; ++i)
             {
                 var index = FindNearestCluster(data[i]);
                 Clusters[index].Add(i);
@@ -153,6 +195,29 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
             return minIndex;
         }
 
+        private int[] GetSortedRandVector(int size, int startIndex, int endIndex)
+        {
+            Random random = new Random(startIndex);
+
+            var randVector = new int[size];
+
+            for (int i = 0; i < size; ++i)
+            {
+                var value = random.Next(endIndex);
+                if (!randVector.Contains(value))
+                {
+                    randVector[i] = value;
+                }
+                else
+                {
+                    i--;
+                }
+            }
+
+            Array.Sort(randVector);
+
+            return randVector;
+        }
     }
 
     public class KMeansCluster : List<int>
@@ -176,4 +241,10 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
             Centroid = tmp;
         }
     }
+
+    public enum Seedings
+    {
+        /// <summary> Случайная последовательность. </summary>
+        Random = 0,
+    };
 }
