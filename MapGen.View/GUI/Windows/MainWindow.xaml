@@ -77,21 +77,21 @@
                 Resized="OpenGLControl_Resized"
                 DrawFPS="True"/>
             <Grid Margin="10,10,0,0" Background="#FF474747" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" >
-                <Button x:Name="ButtonInitialCamera" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Вернуть камеру в начальное положение." VerticalAlignment="Top">
+                <Button x:Name="ButtonInitialCamera" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Вернуть камеру в начальное положение" VerticalAlignment="Top">
                     <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/window.opengl.initialcamera.png" Stretch="Fill" />
                 </Button>
             </Grid>
             <Grid Margin="0,10,10,0" Background="#FF474747" Width="120" HorizontalAlignment="Right" Height="30" VerticalAlignment="Top" >
-                <Button x:Name="ButtonLockUnlockDrawData" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Отрисовка содержимого карты." HorizontalAlignment="Left" Width="30">
+                <Button x:Name="ButtonLockUnlockDrawData" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Отрисовка содержимого карты" HorizontalAlignment="Left" Width="30">
                     <Image x:Name="ImageLockUnlockDrawData" Height="26" Width="26" Source="/MapGen.View;component/Resources/window.opengl.data.unlock.png" Stretch="Fill" />
                 </Button>
-                <Button x:Name="ButtonLockUnlockDrawStripsEdge" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Отрисовка краев карты." HorizontalAlignment="Left" Width="30" Margin="30,0,0,0">
+                <Button x:Name="ButtonLockUnlockDrawStripsEdge" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Отрисовка краев карты" HorizontalAlignment="Left" Width="30" Margin="30,0,0,0">
                     <Image x:Name="ImageLockUnlockDrawStripsEdge" Height="26" Width="26" Source="/MapGen.View;component/Resources/window.opengl.stripsedge.unlock.png" Stretch="Fill" />
                 </Button>
-                <Button x:Name="ButtonLockUnlockDrawGrid" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Отрисовка сетки широты и долготы." HorizontalAlignment="Left" Width="30" Margin="60,0,0,0">
+                <Button x:Name="ButtonLockUnlockDrawGrid" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Отрисовка сетки широты и долготы" HorizontalAlignment="Left" Width="30" Margin="60,0,0,0">
                     <Image x:Name="ImageLockUnlockDrawGrid" Height="26" Width="26" Source="/MapGen.View;component/Resources/window.opengl.grid.unlock.png" Stretch="Fill" />
                 </Button>
-                <Button x:Name="ButtonLockUnlockDrawSourcePoints" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Отрисовка исходных точек карты." HorizontalAlignment="Left" Width="30" Margin="90,0,0,0">
+                <Button x:Name="ButtonLockUnlockDrawSourcePoints" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Отрисовка исходных точек карты" HorizontalAlignment="Left" Width="30" Margin="90,0,0,0">
                     <Image x:Name="ImageLockUnlockDrawSourcePoints" Height="26" Width="26" Source="/MapGen.View;component/Resources/window.opengl.points.unlock.png" Stretch="Fill" />
                 </Button>
             </Grid>
