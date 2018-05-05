@@ -115,13 +115,13 @@ namespace MapGen.Model.Interpolation.Strategy
             int size = surroundPoints.Count;
 
             // Матрица ковариаций.
-            double[,] K = new double[size, size];
+            double[,] K = new double[size + 1, size + 1];
 
             // Вектор коэффицентов.
             double[] lamda;
 
             // Вектор ковариаций между искомой точкой и всеми остальными.
-            double[] k = new double[size];
+            double[] k = new double[size + 1];
 
             for (int i = 0; i < size; i++)
             {

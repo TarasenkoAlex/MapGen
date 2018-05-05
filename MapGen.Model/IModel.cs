@@ -26,7 +26,7 @@ namespace MapGen.Model
         #endregion
 
         #region Region public methods. RegMatrix.
-        bool CreateRegMatrix(bool isSourceMap, out RegMatrix.RegMatrix regMatrix, out string message);
+        bool CreateRegMatrix(out RegMatrix.RegMatrix regMatrix, out string message);
         #endregion
 
         #region Region public methods. MapGen.

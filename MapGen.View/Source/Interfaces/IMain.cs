@@ -21,7 +21,8 @@ namespace MapGen.View.Source.Interfaces
 
         #region Region methods.
         void ShowMainWindow();
-        void DrawSeaMap();
+        void DrawSeaMapWithResetCamera();
+        void DrawSeaMapWithoutResetCamera();
         #endregion
     }
 }

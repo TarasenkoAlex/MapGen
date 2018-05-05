@@ -265,9 +265,25 @@ namespace MapGen.View.GUI.Windows
         }
 
         /// <summary>
-        /// Отрисовка карты в главном окне.
+        /// Отрисовка карты в главном окне с выставлением камеры на начальное положение.
         /// </summary>
-        public void DrawSeaMap()
+        public void DrawSeaMapWithResetCamera()
+        {
+            if (_graphicMap != null)
+            {
+                _currentCamera = (MGCamera)_initialCamera.Clone();
+                _isDrawMap = true;
+            }
+            else
+            {
+                MessageBox.Show("Не загружена карта!", "Процесс отрисовки карты", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
+        /// Отрисовка карты в главном окне без выставлением камеры на начальное положение.
+        /// </summary>
+        public void DrawSeaMapWithoutResetCamera()
         {
             if (_graphicMap != null)
             {
@@ -330,9 +346,8 @@ namespace MapGen.View.GUI.Windows
         /// <param name="args"></param>
         private void OpenGLControl_OpenGLDraw(object sender, OpenGLEventArgs args)
         {
-            _isDrawMap = true;
-            if (_isDrawMap)
-            {
+            //if (_isDrawMap)
+            //{
                 // Получаем ссылку на элемент управления OpenGL.
                 OpenGL gl = args.OpenGL;
 
@@ -357,7 +372,7 @@ namespace MapGen.View.GUI.Windows
                
                 // Запрещаем отрисовку.
                 _isDrawMap = false;
-            }
+            //}
         }
 
         /// <summary>
@@ -482,14 +497,14 @@ namespace MapGen.View.GUI.Windows
                     _isDrawMap = true;
                     break;
                 }
-                case Key.Q: // Движение камеры вперед.
+                case Key.Q: // Движение камеры назад.
                 {
                     OpenGL gl = OpenGlControl.OpenGL;
                     _currentCamera.MoveForwardBackward(-float.Parse(ResourcesView.MoveSpeed));
                     _isDrawMap = true;
                     break;
                 }
-                case Key.E: // Движение камеры назад.
+                case Key.E: // Движение камеры вперед.
                 {
                     OpenGL gl = OpenGlControl.OpenGL;
                     _currentCamera.MoveForwardBackward(float.Parse(ResourcesView.MoveSpeed));
@@ -519,11 +534,13 @@ namespace MapGen.View.GUI.Windows
         {
             if (_settingGraphicMap.IsDrawSourcePointsOfMap)
             {
+                _isDrawMap = true;
                 _settingGraphicMap.IsDrawSourcePointsOfMap = false;
                 InitImageOnImage(ImageLockUnlockDrawSourcePoints, ResourcesView.window_opengl_points_lock);
             }
             else
             {
+                _isDrawMap = true;
                 _settingGraphicMap.IsDrawSourcePointsOfMap = true;
                 InitImageOnImage(ImageLockUnlockDrawSourcePoints, ResourcesView.window_opengl_points_unlock);
             }
@@ -533,11 +550,13 @@ namespace MapGen.View.GUI.Windows
         {
             if (_settingGraphicMap.IsDrawGridLatitudeAndLongitude)
             {
+                _isDrawMap = true;
                 _settingGraphicMap.IsDrawGridLatitudeAndLongitude = false;
                 InitImageOnImage(ImageLockUnlockDrawGrid, ResourcesView.window_opengl_grid_lock);
             }
             else
             {
+                _isDrawMap = true;
                 _settingGraphicMap.IsDrawGridLatitudeAndLongitude = true;
                 InitImageOnImage(ImageLockUnlockDrawGrid, ResourcesView.window_opengl_grid_unlock);
             }
@@ -547,11 +566,13 @@ namespace MapGen.View.GUI.Windows
         {
             if (_settingGraphicMap.IsDrawStripsEdgeOfMap)
             {
+                _isDrawMap = true;
                 _settingGraphicMap.IsDrawStripsEdgeOfMap = false;
                 InitImageOnImage(ImageLockUnlockDrawStripsEdge, ResourcesView.window_opengl_stripsedge_lock);
             }
             else
             {
+                _isDrawMap = true;
                 _settingGraphicMap.IsDrawStripsEdgeOfMap = true;
                 InitImageOnImage(ImageLockUnlockDrawStripsEdge, ResourcesView.window_opengl_stripsedge_unlock);
             }
@@ -561,11 +582,13 @@ namespace MapGen.View.GUI.Windows
         {
             if (_settingGraphicMap.IsDrawDataMap)
             {
+                _isDrawMap = true;
                 _settingGraphicMap.IsDrawDataMap = false;
                 InitImageOnImage(ImageLockUnlockDrawData, ResourcesView.window_opengl_data_lock);
             }
             else
             {
+                _isDrawMap = true;
                 _settingGraphicMap.IsDrawDataMap = true;
                 InitImageOnImage(ImageLockUnlockDrawData, ResourcesView.window_opengl_data_unlock);
             }
@@ -574,6 +597,7 @@ namespace MapGen.View.GUI.Windows
         private void ButtonInitialCamera_Click(object sender, RoutedEventArgs e)
         {
             _currentCamera = (MGCamera)_initialCamera.Clone();
+            _isDrawMap = true;
         }
 
         #endregion
@@ -624,19 +648,11 @@ namespace MapGen.View.GUI.Windows
             }
         }
 
-        private Bitmap GetSnapShot(int width, int height)
-        {
-            OpenGL gl = OpenGlControl.OpenGL;
-            var snapShotBmp = new Bitmap(width * 10, height * 10);
-            BitmapData bmpData = snapShotBmp.LockBits(
-                new Rectangle(0, 0, width * 10, height * 10),
-                ImageLockMode.WriteOnly,
-                PixelFormat.Format24bppRgb);
-            gl.ReadPixels(0, 0, width * 10, height * 10, OpenGL.GL_BGR, OpenGL.GL_UNSIGNED_BYTE, bmpData.Scan0);
-            snapShotBmp.UnlockBits(bmpData);
-            return snapShotBmp;
-        }
-
+        /// <summary>
+        /// Инициализация Image другой картинкой.
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="source"></param>
         private void InitImageOnImage(System.Windows.Controls.Image image, Bitmap source)
         {
             Dispatcher.Invoke(() =>
@@ -651,6 +667,19 @@ namespace MapGen.View.GUI.Windows
             });
         }
 
+        private Bitmap GetSnapShot(int width, int height)
+        {
+            OpenGL gl = OpenGlControl.OpenGL;
+            var snapShotBmp = new Bitmap(width * 10, height * 10);
+            BitmapData bmpData = snapShotBmp.LockBits(
+                new Rectangle(0, 0, width * 10, height * 10),
+                ImageLockMode.WriteOnly,
+                PixelFormat.Format24bppRgb);
+            gl.ReadPixels(0, 0, width * 10, height * 10, OpenGL.GL_BGR, OpenGL.GL_UNSIGNED_BYTE, bmpData.Scan0);
+            snapShotBmp.UnlockBits(bmpData);
+            return snapShotBmp;
+        }
+        
         #endregion
 
     }

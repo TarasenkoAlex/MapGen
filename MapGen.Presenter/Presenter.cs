@@ -135,7 +135,7 @@ namespace MapGen.Presenter
 
                     RegMatrix regMatrix;
                     // Строим регулярную матрицу глубин.
-                    if (!_model.CreateRegMatrix(true, out regMatrix, out message))
+                    if (!_model.CreateRegMatrix(out regMatrix, out message))
                     {
                         _view.ShowMessageError("Создание регулярной матрицы", $"Не удалось создать регулярную матрицу глубин! {message}");
                         return;
@@ -150,7 +150,7 @@ namespace MapGen.Presenter
                         _model.SourceSeaMap.Scale);
 
                     // Отображаем карту.
-                    _view.DrawSeaMap();
+                    _view.DrawSeaMapWithResetCamera();
 
                     // Останавливаем прогресс-бар главного окна.
                     _view.IsRunningProgressBarMainWindow = false;
@@ -178,7 +178,7 @@ namespace MapGen.Presenter
 
                     RegMatrix regMatrix;
                     // Строим регулярную матрицу глубин.
-                    if (!_model.CreateRegMatrix(false, out regMatrix, out message))
+                    if (!_model.CreateRegMatrix(out regMatrix, out message))
                     {
                         _view.ShowMessageError("Создание регулярной матрицы", $"Не удалось создать регулярную матрицу глубин! {message}");
                         return;
@@ -193,7 +193,7 @@ namespace MapGen.Presenter
                         _model.MapGenSeaMap.Scale);
 
                     // Отображаем карту.
-                    _view.DrawSeaMap();
+                    _view.DrawSeaMapWithoutResetCamera();
                     
                     // Останавливаем прогресс-бар главного окна.
                     _view.IsRunningProgressBarMainWindow = false;
@@ -240,7 +240,7 @@ namespace MapGen.Presenter
         }
 
         /// <summary>
-        /// Обработка события сохранениянастроек интерполяции.
+        /// Обработка события сохранения настроек интерполяции.
         /// </summary>
         /// <param name="setting"></param>
         private void View_SaveSettingsInterpol(IVSettingInterpol setting)
@@ -273,7 +273,7 @@ namespace MapGen.Presenter
                     string message;
                     RegMatrix regMatrix;
                     // Строим регулярную матрицу глубин.
-                    if (!_model.CreateRegMatrix(true, out regMatrix, out message))
+                    if (!_model.CreateRegMatrix(out regMatrix, out message))
                     {
                         _view.ShowMessageError("Создание регулярной матрицы",
                             $"Не удалось создать регулярную матрицу глубин! {message}");
@@ -289,7 +289,7 @@ namespace MapGen.Presenter
                         _model.SourceSeaMap.Scale);
 
                     // Отображаем карту.
-                    _view.DrawSeaMap();
+                    _view.DrawSeaMapWithoutResetCamera();
                     
                     // Останавливаем прогресс-бар главного окна.
                     _view.IsRunningProgressBarMainWindow = false;

@@ -21,7 +21,12 @@ namespace MapGen.Model
     public class Model : IModel
     {
         #region Region private fields.
-        
+
+        /// <summary>
+        /// Использовать для отрисовки исходную карту.
+        /// </summary>
+        private bool _isUseSourceMap = true;
+
         /// <summary>
         /// Клиент баазы данных.
         /// </summary>
@@ -35,7 +40,7 @@ namespace MapGen.Model
         /// <summary>
         /// Создает регулярную матрицу по облаку точек.
         /// </summary>
-        private IRegMatrixMaker _regMatrixMaker;
+        private readonly IRegMatrixMaker _regMatrixMaker;
         
         /// <summary>
         /// Настройка генерализации.
@@ -209,6 +214,9 @@ namespace MapGen.Model
             {
                 // Сохраняем карту.
                 SourceSeaMap = new DbMap(map.Name, map.Width, map.Length, map.Scale, map.Latitude, map.Longitude, cloudPoints);
+
+                // Выставляем, что необходимо отрисовывать исходную карту.
+                _isUseSourceMap = true;
             }
             catch (Exception ex)
             {
@@ -225,14 +233,13 @@ namespace MapGen.Model
         /// <summary>
         /// Создание регулярной матрицы глубин.
         /// </summary>
-        /// <param name="isSourceMap">Исходную ли карту.</param>
         /// <param name="regMatrix">Регулярная матрица глубин.</param>
         /// <param name="message">Сообщение с ошибкой.</param>
         /// <returns>Успешно ли прошло создание.</returns>
-        public bool CreateRegMatrix(bool isSourceMap, out RegMatrix.RegMatrix regMatrix, out string message)
+        public bool CreateRegMatrix(out RegMatrix.RegMatrix regMatrix, out string message)
         {
             // В зависимости от настройки интерполяции создает регулярную матрицу.
-            if (isSourceMap)
+            if (_isUseSourceMap)
             {
                 return _regMatrixMaker.CreateRegMatrix(SourceSeaMap, SourceSeaMap.Scale, out regMatrix, out message);
             }
@@ -261,6 +268,9 @@ namespace MapGen.Model
             {
                 MapGenSeaMap = outDbMap;
             }
+
+            // Выставляем, что необходимо отрисовывать карту, полученную после генерализации.
+            _isUseSourceMap = false;
 
             return result;
         }

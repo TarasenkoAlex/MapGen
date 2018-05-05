@@ -36,7 +36,7 @@ namespace MapGen.View.Source.Classes
         /// <param name="speed">Шаг смещения.</param>
         public void MoveForwardBackward(float speed)
         {
-            if (Position.Z - speed > 0.0f)
+            if (Position.Z - speed > 0.5f)
             {
                 Target = new Vertex(Target.X, Target.Y, Target.Z - speed);
                 Position = new Vertex(Position.X, Position.Y, Position.Z - speed);

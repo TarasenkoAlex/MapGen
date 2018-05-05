@@ -177,13 +177,24 @@ namespace MapGen.View.Source.Classes
         }
 
         /// <summary>
-        /// Отрисовка карты в главном окне.
+        /// Отрисовка карты в главном окне с выставлением камеры на начальное положение.
         /// </summary>
-        public void DrawSeaMap()
+        public void DrawSeaMapWithResetCamera()
         {
             Dispatcher.Invoke(() =>
             {
-                _mainWindow.DrawSeaMap();
+                _mainWindow.DrawSeaMapWithResetCamera();
+            });
+        }
+
+        /// <summary>
+        /// Отрисовка карты в главном окне без выставлением камеры на начальное положение.
+        /// </summary>
+        public void DrawSeaMapWithoutResetCamera()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                _mainWindow.DrawSeaMapWithoutResetCamera();
             });
         }
 

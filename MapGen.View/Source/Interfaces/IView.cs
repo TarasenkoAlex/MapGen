@@ -34,7 +34,8 @@ namespace MapGen.View.Source.Interfaces
 
         #region Region methods of MainWindow.
         void ShowMainWindow();
-        void DrawSeaMap();
+        void DrawSeaMapWithResetCamera();
+        void DrawSeaMapWithoutResetCamera();
         #endregion
 
         #region Region methods of MessageWindow.
