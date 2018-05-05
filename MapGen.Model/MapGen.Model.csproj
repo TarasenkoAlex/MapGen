@@ -171,7 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Database\DbFiles\MapGen.db" />
+    <None Include="Database\Files\MapGen.db" />
     <EntityDeploy Include="Database\EDM\MapGen.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MapGen.Designer.cs</LastGenOutput>
