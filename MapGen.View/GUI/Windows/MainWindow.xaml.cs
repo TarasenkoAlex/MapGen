@@ -106,9 +106,19 @@ namespace MapGen.View.GUI.Windows
         private bool _isDrawMap;
        
         /// <summary>
-        /// Камера.
+        /// Текущая камера.
         /// </summary>
-        private MapGenCamera _camera;
+        private MapGenCamera _currentCamera;
+
+        /// <summary>
+        /// Исходная камера.
+        /// </summary>
+        private readonly MapGenCamera _initialCamera = new MapGenCamera
+        {
+            Target = new Vertex(0.0f, 0.0f, 0.0f),
+            Position = new Vertex(0.0f, 0.0f, 1.0f),
+            UpVector = new Vertex(0.0f, 1.0f, 0.0f)
+        };
 
         /// <summary>
         /// Коэффициент сжатия по X.
@@ -236,6 +246,9 @@ namespace MapGen.View.GUI.Windows
 
             // Отрисовка исходных точек карты (вкл / выкл).
             ButtonLockUnlockDrawSourcePoints.Click += ButtonLockUnlockDrawSourcePoints_Click;
+
+            // Вернуть камеру в исходное положение.
+            ButtonInitialCamera.Click += ButtonInitialCamera_Click;
         }
 
         #endregion
@@ -292,12 +305,7 @@ namespace MapGen.View.GUI.Windows
             gl.Enable(OpenGL.GL_DEPTH_TEST);
 
             // Инициализация камеры.
-            _camera = new MapGenCamera
-            {
-                Target = new Vertex(0.0f, 0.0f, 0.0f),
-                Position = new Vertex(0.0f, 0.0f, 1.0f),
-                UpVector = new Vertex(0.0f, 1.0f, 0.0f)
-            };
+            _currentCamera = (MapGenCamera)_initialCamera.Clone();
         }
 
         /// <summary>
@@ -337,7 +345,7 @@ namespace MapGen.View.GUI.Windows
                 gl.Rotate(180, 0, 0);
 
                 // Обновляем взгляд камеры.
-                _camera.Look(gl);
+                _currentCamera.Look(gl);
 
                 //gl.PushMatrix();
 
@@ -448,42 +456,42 @@ namespace MapGen.View.GUI.Windows
                 case Key.A: // Движение камеры влево.
                 {
                     OpenGL gl = OpenGlControl.OpenGL;
-                    _camera.MoveLeftRight(-float.Parse(ResourcesView.MoveSpeed));
+                    _currentCamera.MoveLeftRight(-float.Parse(ResourcesView.MoveSpeed));
                     _isDrawMap = true;
                     break;
                 }
                 case Key.D: // Движение камеры вправо.
                 {
                     OpenGL gl = OpenGlControl.OpenGL;
-                    _camera.MoveLeftRight(float.Parse(ResourcesView.MoveSpeed));
+                    _currentCamera.MoveLeftRight(float.Parse(ResourcesView.MoveSpeed));
                     _isDrawMap = true;
                     break;
                 }
                 case Key.S: // Движение камеры вниз.
                 {
                     OpenGL gl = OpenGlControl.OpenGL;
-                    _camera.MoveUpDown(-float.Parse(ResourcesView.MoveSpeed));
+                    _currentCamera.MoveUpDown(-float.Parse(ResourcesView.MoveSpeed));
                     _isDrawMap = true;
                     break;
                 }
                 case Key.W: // Движение камеры вверх.
                 {
                     OpenGL gl = OpenGlControl.OpenGL;
-                    _camera.MoveUpDown(float.Parse(ResourcesView.MoveSpeed));
+                    _currentCamera.MoveUpDown(float.Parse(ResourcesView.MoveSpeed));
                     _isDrawMap = true;
                     break;
                 }
                 case Key.Q: // Движение камеры вперед.
                 {
                     OpenGL gl = OpenGlControl.OpenGL;
-                    _camera.MoveForwardBackward(-float.Parse(ResourcesView.MoveSpeed));
+                    _currentCamera.MoveForwardBackward(-float.Parse(ResourcesView.MoveSpeed));
                     _isDrawMap = true;
                     break;
                 }
                 case Key.E: // Движение камеры назад.
                 {
                     OpenGL gl = OpenGlControl.OpenGL;
-                    _camera.MoveForwardBackward(float.Parse(ResourcesView.MoveSpeed));
+                    _currentCamera.MoveForwardBackward(float.Parse(ResourcesView.MoveSpeed));
                     _isDrawMap = true;
                     break;
                 }
@@ -560,6 +568,11 @@ namespace MapGen.View.GUI.Windows
                 _settingGraphicMap.IsDrawDataMap = true;
                 InitImageOnImage(ImageLockUnlockDrawData, ResourcesView.window_opengl_data_unlock);
             }
+        }
+
+        private void ButtonInitialCamera_Click(object sender, RoutedEventArgs e)
+        {
+            _currentCamera = (MapGenCamera)_initialCamera.Clone();
         }
 
         #endregion

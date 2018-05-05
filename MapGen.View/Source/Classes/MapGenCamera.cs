@@ -43,6 +43,8 @@ namespace MapGen.View.Source.Classes
             }
         }
 
+        #endregion
+
         /// <summary>
         /// Обновляем взгляд камеры.
         /// </summary>
@@ -52,6 +54,9 @@ namespace MapGen.View.Source.Classes
             TransformProjectionMatrix(gl);
         }
 
-        #endregion
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

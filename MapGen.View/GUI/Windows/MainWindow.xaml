@@ -76,6 +76,11 @@
                 OpenGLInitialized="OpenGLControl_OpenGLInitialized"
                 Resized="OpenGLControl_Resized"
                 DrawFPS="True"/>
+            <Grid Margin="10,10,0,0" Background="#FF474747" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                <Button x:Name="ButtonInitialCamera" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Вернуть камеру в начальное положение." VerticalAlignment="Top">
+                    <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/window.opengl.initialcamera.png" Stretch="Fill" />
+                </Button>
+            </Grid>
             <Grid Margin="0,10,10,0" Background="#FF474747" Width="120" HorizontalAlignment="Right" Height="30" VerticalAlignment="Top" >
                 <Button x:Name="ButtonLockUnlockDrawData" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Отрисовка содержимого карты." HorizontalAlignment="Left" Width="30">
                     <Image x:Name="ImageLockUnlockDrawData" Height="26" Width="26" Source="/MapGen.View;component/Resources/window.opengl.data.unlock.png" Stretch="Fill" />
