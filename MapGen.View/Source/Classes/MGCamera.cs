@@ -54,6 +54,10 @@ namespace MapGen.View.Source.Classes
             TransformProjectionMatrix(gl);
         }
 
+        /// <summary>
+        /// Клонирование объекта.
+        /// </summary>
+        /// <returns></returns>
         public object Clone()
         {
             return this.MemberwiseClone();
