@@ -152,6 +152,16 @@ namespace MapGen.View {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mapgen_title {
+            get {
+                object obj = ResourceManager.GetObject("mapgen_title", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 0,5.
         /// </summary>
         internal static string MoveSpeed {

@@ -25,7 +25,7 @@
         </Grid.RowDefinitions>
         <Grid Background="#2D2D30">
             <Image HorizontalAlignment="Left" Width="30" Height="30" Stretch="Fill" Source="/MapGen.View;component/Resources/main.window.headicon.png" Margin="10,0,0,0" />
-            <Label x:Name="HeadWindow" Content="MapGen" Margin="45,0,0,0" FontFamily="Segoe UI" Foreground="#FFCC00" HorizontalAlignment="Left" Width="860" FontWeight="Bold"/>
+            <Image HorizontalAlignment="Center" Width="200" Height="30" Stretch="None" Source="/MapGen.View;component/Resources/mapgen.title.png" Margin="400,0" />
             <StackPanel Height="30" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button x:Name="ButtonMinimize" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Свернуть">
                     <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/window.minimize.png" Stretch="None" />
