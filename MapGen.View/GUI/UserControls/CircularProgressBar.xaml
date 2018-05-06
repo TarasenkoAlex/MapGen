@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MapGen.View.GUI.UserControls"
             Height="120" Width="120" Background="Transparent">
     <Grid>
-        <Label Content="Загрузка..." Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Margin="28,48,25,47"/>
+        <Label Content="Загрузка..." Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Margin="28,48,25,47" Visibility="Collapsed"/>
         <Grid Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Canvas RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="100" >
                 <Ellipse Width="20" Height="20" Canvas.Left="40" Canvas.Top="0" Stretch="Fill" Fill="#B7F1D5" Opacity="1.0"/>

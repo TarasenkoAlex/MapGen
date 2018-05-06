@@ -17,6 +17,7 @@ namespace MapGen.View.Source.Interfaces
         IVSettingInterpol SettingInterpol { get; set; }
         VSettingGen SettingGen { get; set; }
         bool IsRunningProgressBarMainWindow { set; }
+        string NameProcess { set; }
         #endregion
 
         #region Region general events.

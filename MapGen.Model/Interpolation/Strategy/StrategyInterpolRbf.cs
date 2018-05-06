@@ -63,7 +63,7 @@ namespace MapGen.Model.Interpolation.Strategy
                 Parallel.For(0, matrix.Length, y =>
                 {
                     //for (long x = 0; x < matrix.Width; ++x)
-                    Parallel.For(0, matrix.Length, x =>
+                    Parallel.For(0, matrix.Width, x =>
                     {
                         var findIndex = Array.FindIndex(map.CloudPoints, point => point.X == x && point.Y == y);
                         if (findIndex != -1)

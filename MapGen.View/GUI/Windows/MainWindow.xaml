@@ -130,6 +130,7 @@
             <Viewbox x:Name="ProgressBar" Width="150" Height="150" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
                 <userControls:CircularProgressBar/>
             </Viewbox>
+            <Label x:Name="LabelNameProcess" Content="Сохранение настроек генерализации" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" HorizontalAlignment="Left" Margin="45,0,0,454" Visibility="Collapsed" Width="445"/>
         </Grid>
         <Grid Grid.Row="4">
             <Separator Background="#2D2D30" Margin="0" Height="1" VerticalAlignment="Top"/>

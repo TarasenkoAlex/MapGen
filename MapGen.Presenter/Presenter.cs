@@ -92,6 +92,7 @@ namespace MapGen.Presenter
                 {
                     // Запускаем прогресс-бар главного окна.
                     _view.IsRunningProgressBarMainWindow = true;
+                    _view.NameProcess = "Загрузка базы данных";
 
                     string message;
                     // Подключаемся к базе данных.
@@ -127,6 +128,7 @@ namespace MapGen.Presenter
                 {
                     // Запускаем прогресс-бар главного окна.
                     _view.IsRunningProgressBarMainWindow = true;
+                    _view.NameProcess = "Загрузка базы данных";
 
                     string message;
                     // Загружаем карту из базы данных.
@@ -135,6 +137,8 @@ namespace MapGen.Presenter
                         _view.ShowMessageError("Загрузка базы данных", $"Не удалось загрузить карту из базы данных! {message}");
                         return;
                     }
+
+                    _view.NameProcess = "Интерполяция";
 
                     RegMatrix regMatrix;
                     // Строим регулярную матрицу глубин.
@@ -171,6 +175,7 @@ namespace MapGen.Presenter
                 {
                     // Запускаем прогресс-бар главного окна.
                     _view.IsRunningProgressBarMainWindow = true;
+                    _view.NameProcess = "Генерализация";
 
                     string message;
                     if (!_model.ExecuteMapGen(scale, out message))
@@ -178,6 +183,8 @@ namespace MapGen.Presenter
                         _view.ShowMessageError("Картографическая генерализация", $"Не удалось выполнить картографическую генерализацю! {message}");
                         return;
                     }
+
+                    _view.NameProcess = "Интерполяция";
 
                     RegMatrix regMatrix;
                     // Строим регулярную матрицу глубин.
@@ -213,6 +220,7 @@ namespace MapGen.Presenter
                 {
                     // Запускаем прогресс-бар главного окна.
                     _view.IsRunningProgressBarMainWindow = true;
+                    _view.NameProcess = "Загрузка настроек интерполяции";
 
                     // Загружаем настройки интерполяции из model в view.
                     var kriging = _model.SettingInterpol as ISettingInterpolKriging;
@@ -251,6 +259,7 @@ namespace MapGen.Presenter
                 {
                     // Запускаем прогресс-бар главного окна.
                     _view.IsRunningProgressBarMainWindow = true;
+                    _view.NameProcess = "Загрузка настроек генерализации";
 
                     // Загружаем настройки генерализации из model в view.
                     _view.SettingGen = Converter.ToVSettingGen(_model.SettingGen);
@@ -274,6 +283,7 @@ namespace MapGen.Presenter
                 {
                     // Запускаем прогресс-бар главного окна.
                     _view.IsRunningProgressBarMainWindow = true;
+                    _view.NameProcess = "Сохранение настроек интерполяции";
 
                     // Сохранение настройки интерполяции в model.
                     var kriging = setting as VSettingInterpolKriging;
@@ -294,6 +304,8 @@ namespace MapGen.Presenter
                                 $"Не удалось сохранить настройки интерполяции!");
                         }
                     }
+
+                    _view.NameProcess = "Интерполяция";
 
                     string message;
                     RegMatrix regMatrix;
@@ -332,6 +344,7 @@ namespace MapGen.Presenter
             {
                 // Запускаем прогресс-бар главного окна.
                 _view.IsRunningProgressBarMainWindow = true;
+                _view.NameProcess = "Сохранение настроек генерализации";
 
                 // Сохранение настройки интерполяции в model.
                 _model.SettingGen = Converter.ToSettingGen(setting);

@@ -68,6 +68,14 @@ namespace MapGen.View.Source.Classes
             set { _mainWindow.IsRunningProgressBar = value; }
         }
 
+        /// <summary>
+        /// Имя процесса.
+        /// </summary>
+        public string NameProcess
+        {
+            set { _mainWindow.NameProcess = value; }
+        }
+
         #endregion
 
         #region Region general events.

@@ -11,6 +11,7 @@ namespace MapGen.View.Source.Interfaces
         GraphicMap GraphicMap { set; }
         Dispatcher MyDispatcher { get; }
         bool IsRunningProgressBar { set; }
+        string NameProcess { set; }
         #endregion
 
         #region Region events.

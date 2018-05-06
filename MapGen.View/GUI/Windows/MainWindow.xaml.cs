@@ -64,7 +64,33 @@ namespace MapGen.View.GUI.Windows
         {
             set
             {
-                Dispatcher.Invoke(() => { ProgressBar.Visibility = value ? Visibility.Visible : Visibility.Collapsed; });
+                Dispatcher.Invoke(() =>
+                {
+                    if (value)
+                    {
+                        ProgressBar.Visibility = Visibility.Visible;
+                        LabelNameProcess.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        ProgressBar.Visibility = Visibility.Collapsed;
+                        LabelNameProcess.Visibility = Visibility.Collapsed;
+                    }
+                });
+            }
+        }
+
+        /// <summary>
+        /// Имя процесса.
+        /// </summary>
+        public string NameProcess
+        {
+            set
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    LabelNameProcess.Content = value;
+                });
             }
         }
 
