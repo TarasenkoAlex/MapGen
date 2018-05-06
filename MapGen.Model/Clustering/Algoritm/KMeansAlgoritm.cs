@@ -17,13 +17,13 @@ namespace MapGen.Model.Clustering.Algoritm
         /// <summary>
         /// Настройка кластеризации.
         /// </summary>
-        private KMeansClSetting _setting;
+        private readonly SettingCLKMeans _setting;
 
         /// <summary>
         /// Создает объект для выполнения кластеризации методом К-средних.
         /// </summary>
         /// <param name="setting">Настройка кластеризации.</param>
-        public KMeansAlgoritm(KMeansClSetting setting)
+        public KMeansAlgoritm(SettingCLKMeans setting)
         {
             _setting = setting;
         }
@@ -41,9 +41,17 @@ namespace MapGen.Model.Clustering.Algoritm
             try
             {
                 message = string.Empty;
-                
+
                 // Выполняем кластеризацию.
-                KMeans algoritmKMeans = new KMeans(countPointsOfOutDbMap);
+                KMeans algoritmKMeans = new KMeans(countPointsOfOutDbMap)
+                {
+                    Seeding = _setting.Seeding,
+                    MaxItarations = _setting.MaxItarations,
+                    ParallelOptions = new ParallelOptions
+                    {
+                        MaxDegreeOfParallelism = _setting.MaxDegreeOfParallelism
+                    }
+                };
                 Stopwatch st = new Stopwatch();
                 st.Reset();
                 st.Start();

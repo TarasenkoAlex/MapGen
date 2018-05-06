@@ -54,7 +54,7 @@ namespace MapGen.Model
 
         #endregion
 
-        #region Region public fields.
+        #region Region properties.
 
         /// <summary>
         /// Исходная загруженная карта.
@@ -91,6 +91,19 @@ namespace MapGen.Model
             }
         }
 
+        /// <summary>
+        /// Настройка генерализации.
+        /// </summary>
+        public SettingGen SettingGen
+        {
+            get { return _settingGen; }
+            set
+            {
+                _settingGen = value;
+                _mgAlgoritm.SettingGen = value;
+            }
+        }
+
         #endregion
 
         #region Region constructor.
@@ -100,9 +113,6 @@ namespace MapGen.Model
         /// </summary>
         public Model()
         {
-            // public.
-            //SettingInterpol = new SettingInterpolKriging();
-
             // private.
             _databaseWorker = new DatabaseWorker();
 

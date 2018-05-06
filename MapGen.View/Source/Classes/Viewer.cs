@@ -4,6 +4,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
 using MapGen.View.GUI.Windows;
+using MapGen.View.Source.Classes.SettingGen;
 using MapGen.View.Source.Classes.SettingInterpol;
 using MapGen.View.Source.Interfaces;
 
@@ -55,6 +56,11 @@ namespace MapGen.View.Source.Classes
         public IVSettingInterpol SettingInterpol { get; set; }
 
         /// <summary>
+        /// Настройка генерализации.
+        /// </summary>
+        public VSettingGen SettingGen { get; set; }
+
+        /// <summary>
         /// Запустить или остановить прогресс-бар главного окна.
         /// </summary>
         public bool IsRunningProgressBarMainWindow
@@ -81,6 +87,11 @@ namespace MapGen.View.Source.Classes
         /// </summary>
         public event Action<IVSettingInterpol> SaveSettingsInterpol;
 
+        /// <summary>
+        /// Событие сохранения настроек генерализации.
+        /// </summary>
+        public event Action<VSettingGen> SaveSettingsGen;
+
         #endregion
 
         #region Region events of MainWindow.
@@ -94,6 +105,11 @@ namespace MapGen.View.Source.Classes
         /// Событие выбора елемента View "Сервис.Настройки.Интерполяция".
         /// </summary>
         public event Action MenuItemSettingsInterpolClick;
+
+        /// <summary>
+        /// Событие выбора елемента View "Сервис.Настройки.Генерализация".
+        /// </summary>
+        public event Action MenuItemSettingsGenClick;
 
         #endregion
 
@@ -205,12 +221,18 @@ namespace MapGen.View.Source.Classes
         {
             _mainWindow.MenuItemListMapsClick += MenuItemListMaps_Click;
             _mainWindow.MenuItemSettingsInterpolClick += MenuItemSettingsInterpol_Click;
+            _mainWindow.MenuItemSettingsGenClick += MenuItemSettingsGen_Click;
             _mainWindow.ZoomEvent += MainWindow_ZoomEvent;
         }
 
         private void MenuItemSettingsInterpol_Click()
         {
             MenuItemSettingsInterpolClick?.Invoke();
+        }
+
+        private void MenuItemSettingsGen_Click()
+        {
+            MenuItemSettingsGenClick?.Invoke();
         }
 
         private void MenuItemListMaps_Click()
@@ -264,6 +286,28 @@ namespace MapGen.View.Source.Classes
             if (_isLoadMap)
             {
                 SaveSettingsInterpol?.Invoke(settings);
+            }
+        }
+
+        /// <summary>
+        /// Отображение окна с настройками генерализации.
+        /// </summary>
+        public void ShowSettingsGenWindow()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                ISettingGen settingGenWindow = new SettingsGenWindow();
+                settingGenWindow.SettingGen = SettingGen;
+                settingGenWindow.Save += SettingGenWindow_Save;
+                settingGenWindow.ShowSettingsGenWindow();
+            });
+        }
+
+        private void SettingGenWindow_Save(VSettingGen settings)
+        {
+            if (_isLoadMap)
+            {
+                SaveSettingsGen?.Invoke(settings);
             }
         }
 

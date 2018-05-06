@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MapGen.Model.Clustering.Algoritm;
 using MapGen.Model.Clustering.Setting;
 using MapGen.Model.Database.EDM;
+using MapGen.Model.General;
 using MapGen.Model.Generalization.Setting;
 using MapGen.Model.Maps;
 
@@ -16,7 +17,7 @@ namespace MapGen.Model.Generalization.Algoritm
         /// <summary>
         /// Алгоритм кластеризации.
         /// </summary>
-        private ICLAlgoritm _clusteringAlgoritm = new KMeansAlgoritm(new KMeansClSetting());
+        private ICLAlgoritm _clusteringAlgoritm = new KMeansAlgoritm(new SettingCLKMeans());
 
         /// <summary>
         /// Настройка генерализации.
@@ -35,7 +36,7 @@ namespace MapGen.Model.Generalization.Algoritm
             set
             {
                 _settingGen = value;
-                var kmeans = value.ClSetting as KMeansClSetting;
+                var kmeans = value.SettingCL as SettingCLKMeans;
                 if (kmeans != null)
                 {
                     _clusteringAlgoritm = new KMeansAlgoritm(kmeans);
@@ -67,7 +68,7 @@ namespace MapGen.Model.Generalization.Algoritm
 
             // Вычисляем количество точек составляемой карты.
             int countPointsOfOutDbMap = 0;
-            if (SettingGen.SelectionRule == SelectionRule.Topfer)
+            if (SettingGen.SelectionRule == SelectionRules.Topfer)
             {
                 countPointsOfOutDbMap = SelectionFunctions.FunctionTopfer(inDbMap.Scale, scale, inDbMap.CloudPoints.Length);
             }

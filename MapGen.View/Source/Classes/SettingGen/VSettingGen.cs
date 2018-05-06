@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MapGen.Model.Clustering.Setting;
+using MapGen.View.Source.Classes.SettingClustering;
 
-namespace MapGen.Model.Generalization.Setting
+namespace MapGen.View.Source.Classes.SettingGen
 {
-    public class SettingGen
+    public class VSettingGen
     {
         /// <summary> 
         /// Формулы для определения норм отбора. 
         /// </summary>
-        public SelectionRule SelectionRule { get; set; } = SelectionRule.Topfer;
+        public VSelectionRules SelectionRule { get; set; } = VSelectionRules.Topfer;
 
         /// <summary>
         /// Настройка кластеризации.
         /// </summary>
-        public ICLSetting ClSetting { get; set; }
+        public IVSettingCL SettingCL { get; set; }
     }
 }

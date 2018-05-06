@@ -5,15 +5,23 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using MapGen.Model;
+using MapGen.Model.Clustering.Setting;
+using MapGen.Model.General;
 using MapGen.Model.Interpolation.Setting;
 using MapGen.Model.RegMatrix;
 using MapGen.View.Source.Classes;
 using MapGen.View.Source.Classes.SettingInterpol;
+using MapGen.Model.Generalization.Setting;
+using MapGen.View.Source.Classes.SettingClustering;
+using MapGen.View.Source.Classes.SettingGen;
 
 namespace MapGen.Presenter
 {
     public static class Converter
     {
+        #region Public methods.
+
         /// <summary>
         /// Конвертировать ISettingInterpolKriging в IVSettingInterpol.
         /// </summary>
@@ -91,6 +99,105 @@ namespace MapGen.Presenter
         }
         
         /// <summary>
+        /// Конвертация регулярной матрицы в карту для отрисовки.
+        /// </summary>
+        /// <param name="regMatrix">Регулярная матрица Model.</param>
+        /// <param name="longitude">Долгота.</param>
+        /// <param name="scale">Масштаб карты (1 : scale).</param>
+        /// <param name="name">Имя карты.</param>
+        /// <param name="latitude">Широта.</param>
+        /// <returns>Карта для отрисовки.</returns>
+        public static GraphicMap ToGraphicMap(RegMatrix regMatrix, string name, string latitude, string longitude, long scale)
+        {
+            GraphicMap graphicMap = new GraphicMap
+            {
+                Name = name,
+                Latitude = latitude,
+                Longitude = longitude,
+                Scale = scale,
+                Width = regMatrix.Width,
+                Length = regMatrix.Length,
+                MaxDepth = regMatrix.MaxDepth,
+                Points = new Point3DColor[regMatrix.Points.Length],
+                WidthEdgeOfMap = regMatrix.Step / 4,
+                WidthEndOfLine = regMatrix.Step / 8,
+                PointSize = 8.0f
+            };
+
+            DrawingObjects.DepthScale depthScale = new DrawingObjects.DepthScale(graphicMap.MaxDepth);
+            
+            int countSourcePoints = 0;
+            for (int i = 0; i < regMatrix.Length; ++i)
+            {
+                for (int j = 0; j < regMatrix.Width; ++j)
+                {
+                    var point = regMatrix.Points[i * regMatrix.Width + j];
+                    graphicMap.Points[i * regMatrix.Width + j] = new Point3DColor
+                    {
+                        IsSource = point.IsSource,
+                        X = regMatrix.Step * j,
+                        Y = regMatrix.Step * i,
+                        Depth = point.Depth,
+                        Color = depthScale.GetColorDepth(point.Depth)
+                    };
+                    countSourcePoints = point.IsSource ? countSourcePoints + 1 : countSourcePoints;
+                }
+            }
+
+            graphicMap.CountSourcePoints = countSourcePoints;
+
+            return graphicMap;
+        }
+
+        /// <summary>
+        /// Конвертировать SettingGen в VSettingGen.
+        /// </summary>
+        /// <param name="setting"></param>
+        /// <returns></returns>
+        public static VSettingGen ToVSettingGen(SettingGen setting)
+        {
+            VSettingGen vsetting = null;
+
+            var kmeans = setting.SettingCL as SettingCLKMeans;
+            if (kmeans != null)
+            {
+                vsetting = new VSettingGen()
+                {
+                    SelectionRule = ConvertSelectionRulesToVSelectionRules(setting.SelectionRule),
+                    SettingCL = ConvertSettingClKMeansToIVSettingCL(kmeans)
+                };
+            }
+
+            return vsetting;
+        }
+
+        /// <summary>
+        /// Конвертировать VSettingGen в SettingGen.
+        /// </summary>
+        /// <param name="vsetting"></param>
+        /// <returns></returns>
+        public static SettingGen ToSettingGen(VSettingGen vsetting)
+        {
+            SettingGen setting = null;
+
+            var kmeans = vsetting.SettingCL as VSettingCLKMeans;
+            if (kmeans != null)
+            {
+                setting = new SettingGen()
+                {
+                    SelectionRule = ConvertVSelectionRulesToSelectionRules(vsetting.SelectionRule),
+                    SettingCL = ConvertVSettingCLKMeansToSettingCLKMeans(kmeans)
+                };
+            }
+
+            return setting;
+        }
+
+        #endregion
+
+        #region Private methods.
+
+        /// <summary>
         /// Конвертация вариаграммы из model в вариаграмму view.
         /// </summary>
         /// <param name="variograms"></param>
@@ -161,56 +268,95 @@ namespace MapGen.Presenter
                 default: return BasicFunctions.MultiLog;
             }
         }
-        
+
         /// <summary>
-        /// Конвертация регулярной матрицы в карту для отрисовки.
+        /// Конвертация VSettingCLKMeans в SettingCLMeans.
         /// </summary>
-        /// <param name="regMatrix">Регулярная матрица Model.</param>
-        /// <param name="longitude">Долгота.</param>
-        /// <param name="scale">Масштаб карты (1 : scale).</param>
-        /// <param name="name">Имя карты.</param>
-        /// <param name="latitude">Широта.</param>
-        /// <returns>Карта для отрисовки.</returns>
-        public static GraphicMap ToGraphicMap(RegMatrix regMatrix, string name, string latitude, string longitude, long scale)
+        /// <param name="vsetting"></param>
+        /// <returns></returns>
+        private static SettingCLKMeans ConvertVSettingCLKMeansToSettingCLKMeans(VSettingCLKMeans vsetting)
         {
-            GraphicMap graphicMap = new GraphicMap
+            SettingCLKMeans setting = new SettingCLKMeans
             {
-                Name = name,
-                Latitude = latitude,
-                Longitude = longitude,
-                Scale = scale,
-                Width = regMatrix.Width,
-                Length = regMatrix.Length,
-                MaxDepth = regMatrix.MaxDepth,
-                Points = new Point3DColor[regMatrix.Points.Length],
-                WidthEdgeOfMap = regMatrix.Step / 4,
-                WidthEndOfLine = regMatrix.Step / 8,
-                PointSize = 8.0f
+                Seeding = ConvertVSeedingsToSeedings(vsetting.Seeding),
+                MaxDegreeOfParallelism = vsetting.MaxDegreeOfParallelism,
+                MaxItarations = vsetting.MaxItarations
             };
-
-            DrawingObjects.DepthScale depthScale = new DrawingObjects.DepthScale(graphicMap.MaxDepth);
-            
-            int countSourcePoints = 0;
-            for (int i = 0; i < regMatrix.Length; ++i)
-            {
-                for (int j = 0; j < regMatrix.Width; ++j)
-                {
-                    var point = regMatrix.Points[i * regMatrix.Width + j];
-                    graphicMap.Points[i * regMatrix.Width + j] = new Point3DColor
-                    {
-                        IsSource = point.IsSource,
-                        X = regMatrix.Step * j,
-                        Y = regMatrix.Step * i,
-                        Depth = point.Depth,
-                        Color = depthScale.GetColorDepth(point.Depth)
-                    };
-                    countSourcePoints = point.IsSource ? countSourcePoints + 1 : countSourcePoints;
-                }
-            }
-
-            graphicMap.CountSourcePoints = countSourcePoints;
-
-            return graphicMap;
+            return setting;
         }
+
+        /// <summary>
+        /// Конвертация SettingCLKMeans в IVSettingCL.
+        /// </summary>
+        /// <param name="setting"></param>
+        /// <returns></returns>
+        private static IVSettingCL ConvertSettingClKMeansToIVSettingCL(SettingCLKMeans setting)
+        {
+            IVSettingCL vsetting = new VSettingCLKMeans
+            {
+                Seeding = ConvertSeedingsToVSeedings(setting.Seeding),
+                MaxDegreeOfParallelism = setting.MaxDegreeOfParallelism,
+                MaxItarations = setting.MaxItarations
+            };
+            return vsetting;
+        }
+
+        /// <summary>
+        /// Конвертация Seedings в VSeedings.
+        /// </summary>
+        /// <param name="seeding"></param>
+        /// <returns></returns>
+        private static VSeedings ConvertSeedingsToVSeedings(Seedings seeding)
+        {
+            switch (seeding)
+            {
+                case Seedings.Random: return VSeedings.Random;
+                default: return VSeedings.Random;
+            }
+        }
+
+        /// <summary>
+        /// Конвертация VSeedings в Seedings.
+        /// </summary>
+        /// <param name="vseeding"></param>
+        /// <returns></returns>
+        private static Seedings ConvertVSeedingsToSeedings(VSeedings vseeding)
+        {
+            switch (vseeding)
+            {
+                case VSeedings.Random: return Seedings.Random;
+                default: return Seedings.Random;
+            }
+        }
+
+        /// <summary>
+        /// Конвертация SelectionRules в VSelectionRules.
+        /// </summary>
+        /// <param name="selectionRule"></param>
+        /// <returns></returns>
+        private static VSelectionRules ConvertSelectionRulesToVSelectionRules(SelectionRules selectionRule)
+        {
+            switch (selectionRule)
+            {
+                case SelectionRules.Topfer: return VSelectionRules.Topfer;
+                default: return VSelectionRules.Topfer;
+            }
+        }
+
+        /// <summary>
+        /// Конвертация VSelectionRules в SelectionRules.
+        /// </summary>
+        /// <param name="vselectionRule"></param>
+        /// <returns></returns>
+        private static SelectionRules ConvertVSelectionRulesToSelectionRules(VSelectionRules vselectionRule)
+        {
+            switch (vselectionRule)
+            {
+                case VSelectionRules.Topfer: return SelectionRules.Topfer;
+                default: return SelectionRules.Topfer;
+            }
+        }
+
+        #endregion
     }
 }

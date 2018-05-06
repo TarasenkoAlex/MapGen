@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MapGen.Model.General;
 
 namespace MapGen.Model.Interpolation.Setting
 {
@@ -17,29 +18,5 @@ namespace MapGen.Model.Interpolation.Setting
         /// Фактор сглаживания.
         /// </summary>
         double R { get; set; }
-    }
-
-    public enum BasicFunctions
-    {
-        /// <summary>
-        /// Мультиквадрик (MultiQuadric).
-        /// </summary>
-        MultiQuadric = 0,
-        /// <summary>
-        /// Обратный мультиквадрик (InverseMultiQuadric).
-        /// </summary>
-        InverseMultiQuadric = 1,
-        /// <summary>
-        /// Мультилогарифмическая (MultiLog).
-        /// </summary>
-        MultiLog = 2,
-        /// <summary>
-        /// Натуральный кубический сплайн (NaturalCubicSpline).
-        /// </summary>
-        NaturalCubicSpline = 3,
-        /// <summary>
-        /// Сплайн тонкой пластины (ThinPlateSpline).
-        /// </summary>
-        ThinPlateSpline = 4
     }
 }

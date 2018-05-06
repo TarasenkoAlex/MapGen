@@ -12,44 +12,42 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MapGen.View.GUI.Grids;
-using MapGen.View.Source.Classes.SettingInterpol;
+using MapGen.View.Source.Classes;
+using MapGen.View.Source.Classes.SettingClustering;
+using MapGen.View.Source.Classes.SettingGen;
 using MapGen.View.Source.Interfaces;
 
 namespace MapGen.View.GUI.Windows
 {
     /// <summary>
-    /// Interaction logic for SettingsInterlopWindow.xaml
+    /// Interaction logic for SettingsGenWindow.xaml
     /// </summary>
-    public partial class SettingsInterlopWindow : Window, ISettingInterpol
+    public partial class SettingsGenWindow : Window, ISettingGen
     {
-        
         #region Region properties.
 
-        public IVSettingInterpol SettingInterpol
+        public VSettingGen SettingGen
         {
+            private get { return _settingGen;}
             set
             {
-                if (value is VSettingInterpolKriging)
+                _settingGen = value;
+
+                if (value.SelectionRule == VSelectionRules.Topfer)
                 {
-                    _isKriging = true;
-                    _settingKrigingGrid = new SettingKrigingGrid
+                    RadioButtonTopfer.IsChecked = true;
+                }
+
+                if (value.SettingCL is VSettingCLKMeans)
+                {
+                    _isKMeans = true;
+                    _settingKMeansGrid = new SettingKMeansGrid
                     {
-                        SettingInterpol = value as VSettingInterpolKriging
+                        SettingCl = value.SettingCL as VSettingCLKMeans
                     };
 
-                    RadioButtonKriging.IsChecked = true;
-                    _content = _settingKrigingGrid.Grid;
-                }   
-                else if (value is VSettingInterpolRbf)
-                {
-                    _isKriging = false;
-                    _settingRbfGrid = new SettingRbfGrid
-                    {
-                        SettingInterpol = value as VSettingInterpolRbf
-                    };
-
-                    RadioButtonRbf.IsChecked = true;
-                    _content = _settingRbfGrid.Grid;
+                    RadioButtonKMeans.IsChecked = true;
+                    _content = _settingKMeansGrid.Grid;
                 }
             }
         }
@@ -58,37 +56,40 @@ namespace MapGen.View.GUI.Windows
 
         #region Region events.
 
-        public event Action<IVSettingInterpol> Save;
+        public event Action<VSettingGen> Save;
 
         #endregion
 
         #region Region private fields.
 
         /// <summary>
-        /// Выбран Кригинг?.
+        /// Настройка генерализации.
         /// </summary>
-        private bool _isKriging = true;
+        private VSettingGen _settingGen = new VSettingGen();
 
         /// <summary>
-        /// Grid с настройками Кригинга.
+        /// Формула генерализации.
         /// </summary>
-        private ISettingKriging _settingKrigingGrid = new SettingKrigingGrid();
+        private VSelectionRules _selectionRule = VSelectionRules.Topfer;
 
         /// <summary>
-        /// Grid с настройками RBF.
+        /// Выбран К - средних?.
         /// </summary>
-        private ISettingRbf _settingRbfGrid = new SettingRbfGrid();
+        private bool _isKMeans = true;
+
+        /// <summary>
+        /// Grid с настройками K - средних.
+        /// </summary>
+        private ISettingKMeans _settingKMeansGrid = new SettingKMeansGrid();
 
         #endregion
 
-        public SettingsInterlopWindow()
+        public SettingsGenWindow()
         {
             InitializeComponent();
             SubscribeEventsWindow();
         }
 
-        #region Region private methods.
-        
         /// <summary>
         /// Подписка событий окна.
         /// </summary>
@@ -100,30 +101,29 @@ namespace MapGen.View.GUI.Windows
             // Обработка кнопки сохранения.
             ButtonSave.Click += ButtonSave_Click;
 
-            // Обработка изменения радиобатона.
-            RadioButtonKriging.Checked += (sender, args) =>
+            // Обработка изменения радиобатона формулы генерализации.
+            RadioButtonTopfer.Checked += (sender, args) => { _selectionRule = VSelectionRules.Topfer; };
+
+            // Обработка изменения радиобатона кластеризации.
+            RadioButtonKMeans.Checked += (sender, args) =>
             {
-                _isKriging = true;
-                _content = _settingKrigingGrid.Grid;
-            };
-            RadioButtonRbf.Checked += (sender, args) =>
-            {
-                _isKriging = false;
-                _content = _settingRbfGrid.Grid;
+                _isKMeans = true;
+                _content = _settingKMeansGrid.Grid;
             };
         }
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             Close();
-            if (_isKriging)
+
+            SettingGen.SelectionRule = _selectionRule;
+
+            if (_isKMeans)
             {
-                Save?.Invoke(_settingKrigingGrid.SettingInterpol);
+                SettingGen.SettingCL = _settingKMeansGrid.SettingCl;
             }
-            else
-            {
-                Save?.Invoke(_settingRbfGrid.SettingInterpol);
-            }
+
+            Save?.Invoke(SettingGen);
         }
 
         private Grid _content
@@ -142,19 +142,16 @@ namespace MapGen.View.GUI.Windows
             }
         }
 
-        #endregion
-
         #region Region public methods.
 
         /// <summary>
         /// Отобразить окно.
         /// </summary>
-        public void ShowSettingsInterlopWindow()
+        public void ShowSettingsGenWindow()
         {
             ShowDialog();
         }
 
         #endregion
-
     }
 }

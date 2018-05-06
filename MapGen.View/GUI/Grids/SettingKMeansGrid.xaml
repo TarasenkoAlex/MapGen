@@ -1,0 +1,20 @@
+﻿<Grid x:Class="MapGen.View.GUI.Grids.SettingKMeansGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MapGen.View.GUI.Grids"
+             mc:Ignorable="d" 
+             Height="162" Width="330">
+
+    <Grid>
+        <Label Content="Начальный выбор центроидов:" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" HorizontalAlignment="Left" Width="186" Height="25" VerticalAlignment="Top" />
+        <ComboBox x:Name="ComboBoxSeeding" SelectedIndex="0" FontFamily="Segoe UI" FontSize="12" Margin="191,0,0,0" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="129">
+            <ListBoxItem Content="Случайный" FontFamily="Segoe UI" FontSize="12" Height="20"/>
+        </ComboBox>
+        <Label Content="Максимальное кол-во итераций:" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" HorizontalAlignment="Left" Width="275" Height="25" VerticalAlignment="Top" Margin="0,31,0,0" />
+        <TextBox x:Name="TextBoxMaxItarations" Text="-1" FontFamily="Segoe UI" FontSize="12" Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" Margin="280,35,0,0"/>
+        <Label Content="Максимальная степень параллелизма:" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" HorizontalAlignment="Left" Width="275" Height="25" VerticalAlignment="Top" Margin="0,64,0,0" />
+        <TextBox x:Name="TextBoxMaxDegreeOfParallelism" Text="-1" FontFamily="Segoe UI" FontSize="12" Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" Margin="280,68,0,0"/>
+    </Grid>
+</Grid>

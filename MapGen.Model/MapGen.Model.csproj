@@ -113,8 +113,8 @@
     <Compile Include="Clustering\Algoritm\ICLAlgoritm.cs" />
     <Compile Include="Clustering\Algoritm\Kernel\KMeans.cs" />
     <Compile Include="Clustering\Algoritm\KMeansAlgoritm.cs" />
-    <Compile Include="Clustering\Setting\ICLSetting.cs" />
-    <Compile Include="Clustering\Setting\KMeansCLSetting.cs" />
+    <Compile Include="Clustering\Setting\ISettingCL.cs" />
+    <Compile Include="Clustering\Setting\SettingCLKMeans.cs" />
     <Compile Include="Database\DbWorker\DatabaseWorker.cs" />
     <Compile Include="Database\EDM\Map.cs">
       <DependentUpon>MapGen.tt</DependentUpon>
@@ -141,11 +141,11 @@
     <Compile Include="Database\Repository\MapsRepository.cs" />
     <Compile Include="Database\Repository\PointsRepository.cs" />
     <Compile Include="Database\UnitOfWork\UnitOfWork.cs" />
-    <Compile Include="Enums.cs" />
+    <Compile Include="General\Enums.cs" />
     <Compile Include="Generalization\Algoritm\CLMGAlgoritm.cs" />
     <Compile Include="Generalization\Algoritm\IMGAlgoritm.cs" />
     <Compile Include="Generalization\Algoritm\SelectionFunctions.cs" />
-    <Compile Include="Generalization\Setting\ISettingGen.cs" />
+    <Compile Include="Generalization\Setting\SettingGen.cs" />
     <Compile Include="General\Methods.cs" />
     <Compile Include="Interpolation\Setting\ISettingInterpol.cs" />
     <Compile Include="Interpolation\Setting\ISettingInterpolGeneral.cs" />

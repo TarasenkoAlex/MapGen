@@ -96,6 +96,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GUI\Grids\SettingKMeansGrid.xaml.cs">
+      <DependentUpon>SettingKMeansGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Grids\SettingKrigingGrid.xaml.cs">
       <DependentUpon>SettingKrigingGrid.xaml</DependentUpon>
     </Compile>
@@ -104,6 +107,9 @@
     </Compile>
     <Compile Include="GUI\UserControls\CircularProgressBar.xaml.cs">
       <DependentUpon>CircularProgressBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Windows\SettingsGenWindow.xaml.cs">
+      <DependentUpon>SettingsGenWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\Windows\SettingsInterlopWindow.xaml.cs">
       <DependentUpon>SettingsInterlopWindow.xaml</DependentUpon>
@@ -119,6 +125,9 @@
     <Compile Include="Source\Classes\MGCamera.cs" />
     <Compile Include="Source\Classes\DrawingObjects.cs" />
     <Compile Include="Source\Classes\MapView.cs" />
+    <Compile Include="Source\Classes\SettingClustering\IVSettingCL.cs" />
+    <Compile Include="Source\Classes\SettingClustering\VSettingCLKMeans.cs" />
+    <Compile Include="Source\Classes\SettingGen\VSettingGen.cs" />
     <Compile Include="Source\Classes\SettingGraphicMap.cs" />
     <Compile Include="Source\Classes\SettingInterpol\IVSettingInterpol.cs" />
     <Compile Include="Source\Classes\Viewer.cs" />
@@ -126,7 +135,9 @@
     <Compile Include="Source\Classes\SettingInterpol\VSettingInterpolRbf.cs" />
     <Compile Include="Source\Classes\ZoomStepper.cs" />
     <Compile Include="Source\Interfaces\IMain.cs" />
+    <Compile Include="Source\Interfaces\ISettingGen.cs" />
     <Compile Include="Source\Interfaces\ISettingInterpol.cs" />
+    <Compile Include="Source\Interfaces\ISettingKMeans.cs" />
     <Compile Include="Source\Interfaces\ISettingRbf.cs" />
     <Compile Include="Source\Interfaces\ISettingKriging.cs" />
     <Compile Include="Source\Interfaces\ITableMaps.cs" />
@@ -177,6 +188,10 @@
     <Resource Include="Resources\window.minimize.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="GUI\Grids\SettingKMeansGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\Grids\SettingKrigingGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -190,6 +205,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\Windows\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Windows\SettingsGenWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -241,6 +260,13 @@
   <ItemGroup>
     <Resource Include="Resources\mapgen.title.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\settings.interpol.window.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\settings.gen.window.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

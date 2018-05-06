@@ -18,7 +18,7 @@
             <RowDefinition Height="270"/>
         </Grid.RowDefinitions>
         <Grid Background="#2D2D30">
-            <Image HorizontalAlignment="Left" Width="30" Height="30" Stretch="None" Source="/MapGen.View;component/Resources/table.maps.window.database.png" Margin="10,0,0,0" />
+            <Image HorizontalAlignment="Left" Width="30" Height="30" Stretch="Fill" Source="/MapGen.View;component/Resources/table.maps.window.database.png" Margin="10,0,0,0" />
             <Label Content="База данных карт" Margin="45,0,0,0" Foreground="#FFCC00" HorizontalAlignment="Left" Width="160" FontWeight="Bold"/>
             <StackPanel Height="30" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button x:Name="ButtonClose" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Закрыть">

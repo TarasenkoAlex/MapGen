@@ -1,4 +1,6 @@
-﻿namespace MapGen.Model.Interpolation.Setting
+﻿using MapGen.Model.General;
+
+namespace MapGen.Model.Interpolation.Setting
 {
     /// <summary>
     /// Класс настройки интерполяции методом RBF.

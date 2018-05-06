@@ -6,6 +6,7 @@ using MapGen.View.Source.Interfaces;
 using MapGen.View.Source.Classes;
 using MapGen.Model.RegMatrix;
 using MapGen.View.Source.Classes.SettingInterpol;
+using MapGen.View.Source.Classes.SettingGen;
 
 namespace MapGen.Presenter
 {
@@ -69,10 +70,12 @@ namespace MapGen.Presenter
             _view.LoadDbMap += View_LoadDbMap;
             _view.MenuItemListMapsClick += View_MenuItemListMapsClick;
             _view.MenuItemSettingsInterpolClick += View_MenuItemSettingsInterpolClick;
+            _view.MenuItemSettingsGenClick += View_MenuItemSettingsGenClick;
             _view.ZoomEvent += View_ZoomEvent;
             _view.SaveSettingsInterpol += View_SaveSettingsInterpol;
+            _view.SaveSettingsGen += View_SaveSettingsGen;
         }
-        
+
         /// <summary>
         /// Подписка событий Model.
         /// </summary>
@@ -240,6 +243,28 @@ namespace MapGen.Presenter
         }
 
         /// <summary>
+        /// Обработка события открытия окна с настройками генерализации.
+        /// </summary>
+        private void View_MenuItemSettingsGenClick()
+        {
+            new Thread(() =>
+                {
+                    // Запускаем прогресс-бар главного окна.
+                    _view.IsRunningProgressBarMainWindow = true;
+
+                    // Загружаем настройки генерализации из model в view.
+                    _view.SettingGen = Converter.ToVSettingGen(_model.SettingGen);
+
+                    // Отображаем окно с настройками генерализации.
+                    _view.ShowSettingsGenWindow();
+
+                    // Останавливаем прогресс-бар главного окна.
+                    _view.IsRunningProgressBarMainWindow = false;
+                })
+                { IsBackground = true }.Start();
+        }
+
+        /// <summary>
         /// Обработка события сохранения настроек интерполяции.
         /// </summary>
         /// <param name="setting"></param>
@@ -295,6 +320,29 @@ namespace MapGen.Presenter
                     _view.IsRunningProgressBarMainWindow = false;
                 })
                 { IsBackground = true }.Start();
+        }
+
+        /// <summary>
+        /// Обработка события сохранения настроек генерализации.
+        /// </summary>
+        /// <param name="setting"></param>
+        private void View_SaveSettingsGen(VSettingGen setting)
+        {
+            new Thread(() =>
+            {
+                // Запускаем прогресс-бар главного окна.
+                _view.IsRunningProgressBarMainWindow = true;
+
+                // Сохранение настройки интерполяции в model.
+                _model.SettingGen = Converter.ToSettingGen(setting);
+
+                // Отображаем карту.
+                _view.DrawSeaMapWithoutResetCamera();
+
+                // Останавливаем прогресс-бар главного окна.
+                _view.IsRunningProgressBarMainWindow = false;
+            })
+            { IsBackground = true }.Start();
         }
 
         #endregion

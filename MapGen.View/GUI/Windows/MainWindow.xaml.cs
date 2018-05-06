@@ -73,14 +73,19 @@ namespace MapGen.View.GUI.Windows
         #region Region events.
 
         /// <summary>
-        /// Событие выбора елемента View "Файл.База данных карт".
+        /// Событие выбора элемента View "Файл.База данных карт".
         /// </summary>
         public event Action MenuItemListMapsClick;
 
         /// <summary>
-        /// Событие выбора елемента View "Сервис.Настройки.Интерполяция".
+        /// Событие выбора элемента View "Сервис.Настройки.Интерполяция".
         /// </summary>
         public event Action MenuItemSettingsInterpolClick;
+
+        /// <summary>
+        /// Событие выбора элемента View "Сервис.Настройки.Генерализация".
+        /// </summary>
+        public event Action MenuItemSettingsGenClick;
 
         /// <summary>
         /// Событие изменения масштаба.
@@ -219,6 +224,7 @@ namespace MapGen.View.GUI.Windows
 
             // Сервис.
             MenuItemSettingsInterpol.Click += MenuItemSettingsInterpol_Click;
+            MenuItemSettingsGen.Click += MenuItemSettingsGen_Click;
 
             // Вид.
             MenuItemToolBar.Click += MenuItemToolBar_Click;
@@ -459,6 +465,16 @@ namespace MapGen.View.GUI.Windows
         private void MenuItemSettingsInterpol_Click(object sender, RoutedEventArgs e)
         {
             MenuItemSettingsInterpolClick?.Invoke();
+        }
+
+        /// <summary>
+        /// Событие выбора элемента View "Сервис.Настройки.Генерализация".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuItemSettingsGen_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItemSettingsGenClick?.Invoke();
         }
 
         #endregion

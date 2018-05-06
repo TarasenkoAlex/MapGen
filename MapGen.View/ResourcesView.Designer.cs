@@ -173,6 +173,26 @@ namespace MapGen.View {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap settings_gen_window {
+            get {
+                object obj = ResourceManager.GetObject("settings_gen_window", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settings_interpol_window {
+            get {
+                object obj = ResourceManager.GetObject("settings_interpol_window", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap table_maps_window_database {
             get {
                 object obj = ResourceManager.GetObject("table_maps_window_database", resourceCulture);

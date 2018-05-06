@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MapGen.Model.Clustering.Setting
 {
-    public interface ICLSetting
+    public interface ISettingCL
     {
     }
 }

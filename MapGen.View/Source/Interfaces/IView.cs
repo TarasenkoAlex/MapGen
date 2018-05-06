@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Threading;
 using MapGen.View.GUI.Windows;
 using MapGen.View.Source.Classes;
+using MapGen.View.Source.Classes.SettingGen;
 using MapGen.View.Source.Classes.SettingInterpol;
 
 namespace MapGen.View.Source.Interfaces
@@ -14,6 +15,7 @@ namespace MapGen.View.Source.Interfaces
         GraphicMap GraphicMap { set; }
         Dispatcher Dispatcher { get; }
         IVSettingInterpol SettingInterpol { get; set; }
+        VSettingGen SettingGen { get; set; }
         bool IsRunningProgressBarMainWindow { set; }
         #endregion
 
@@ -21,11 +23,13 @@ namespace MapGen.View.Source.Interfaces
         event Action<int> LoadDbMap;
         event Action<int> ZoomEvent;
         event Action<IVSettingInterpol> SaveSettingsInterpol;
+        event Action<VSettingGen> SaveSettingsGen;
         #endregion
 
         #region Region events of MainWindow.
         event Action MenuItemListMapsClick;
         event Action MenuItemSettingsInterpolClick;
+        event Action MenuItemSettingsGenClick;
         #endregion
 
         #region Region methods of TableMapsWindow.
@@ -44,6 +48,7 @@ namespace MapGen.View.Source.Interfaces
 
         #region Region methods of windows settings.
         void ShowSettingsInterlopWindow();
+        void ShowSettingsGenWindow();
         #endregion
 
     }

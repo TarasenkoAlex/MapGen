@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MapGen.View.Source.Classes
+﻿namespace MapGen.Model.General
 {
+    /// <summary> Формулы для определения норм отбора. </summary>
+    public enum SelectionRules
+    {
+        /// <summary> Формула Топфера для определения норм отбора. </summary>
+        Topfer = 0,
+    }
+
     /// <summary> Вариограмма. </summary>
-    public enum VVariograms
+    public enum Variograms
     {
         /// <summary> Сферическая вариограмма. </summary>
         Spherial = 0,
@@ -26,15 +27,15 @@ namespace MapGen.View.Source.Classes
     }
 
     /// <summary> Базисная функция. </summary>
-    public enum VBasicFunctions
+    public enum BasicFunctions
     {
         /// <summary> Мультиквадрик (MultiQuadric). </summary>
         MultiQuadric = 0,
-        
+
         /// <summary> Обратный мультиквадрик (InverseMultiQuadric). </summary>
         InverseMultiQuadric = 1,
 
-        /// <summary> Мультилогарифмическая (MultiLog).</summary>
+        /// <summary> Мультилогарифмическая (MultiLog). </summary>
         MultiLog = 2,
 
         /// <summary> Натуральный кубический сплайн (NaturalCubicSpline). </summary>
@@ -44,15 +45,8 @@ namespace MapGen.View.Source.Classes
         ThinPlateSpline = 4
     }
 
-    /// <summary> Формулы для определения норм отбора. </summary>
-    public enum VSelectionRules
-    {
-        /// <summary> Формула Топфера для определения норм отбора. </summary>
-        Topfer = 0,
-    }
-
     /// <summary> Настройка выбора центроидов на первом шаге алгоритма кластеризации.</summary>
-    public enum VSeedings
+    public enum Seedings
     {
         /// <summary> Случайная последовательность. </summary>
         Random = 0,

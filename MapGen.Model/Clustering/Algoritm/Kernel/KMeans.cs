@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MapGen.Model.Database.EDM;
+using MapGen.Model.General;
 
 namespace MapGen.Model.Clustering.Algoritm.Kernel
 {
@@ -241,10 +242,4 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
             Centroid = tmp;
         }
     }
-
-    public enum Seedings
-    {
-        /// <summary> Случайная последовательность. </summary>
-        Random = 0,
-    };
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MapGen.Model.Database.EDM;
+using MapGen.Model.Generalization.Setting;
 using MapGen.Model.Interpolation.Setting;
 using MapGen.Model.Interpolation.Strategy;
 using MapGen.Model.Maps;
@@ -16,6 +17,7 @@ namespace MapGen.Model
         DbMap SourceSeaMap { get; }
         DbMap MapGenSeaMap { get; }
         ISettingInterpol SettingInterpol { get; set; }
+        SettingGen SettingGen { get; set; }
         #endregion
 
         #region Region methods. Database.
