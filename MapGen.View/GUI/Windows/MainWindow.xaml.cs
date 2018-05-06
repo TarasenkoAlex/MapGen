@@ -527,6 +527,48 @@ namespace MapGen.View.GUI.Windows
                     _isDrawMap = true;
                     break;
                 }
+                case Key.Left: // Движение камеры влево.
+                {
+                    OpenGL gl = OpenGlControl.OpenGL;
+                    _currentCamera.MoveLeftRight(-float.Parse(ResourcesView.MoveSpeed));
+                    _isDrawMap = true;
+                    break;
+                }
+                case Key.Right: // Движение камеры вправо.
+                {
+                    OpenGL gl = OpenGlControl.OpenGL;
+                    _currentCamera.MoveLeftRight(float.Parse(ResourcesView.MoveSpeed));
+                    _isDrawMap = true;
+                    break;
+                }
+                case Key.Down: // Движение камеры вниз.
+                {
+                    OpenGL gl = OpenGlControl.OpenGL;
+                    _currentCamera.MoveUpDown(-float.Parse(ResourcesView.MoveSpeed));
+                    _isDrawMap = true;
+                    break;
+                }
+                case Key.Up: // Движение камеры вверх.
+                {
+                    OpenGL gl = OpenGlControl.OpenGL;
+                    _currentCamera.MoveUpDown(float.Parse(ResourcesView.MoveSpeed));
+                    _isDrawMap = true;
+                    break;
+                }
+                case Key.OemMinus: // Движение камеры назад.
+                {
+                    OpenGL gl = OpenGlControl.OpenGL;
+                    _currentCamera.MoveForwardBackward(-float.Parse(ResourcesView.MoveSpeed));
+                    _isDrawMap = true;
+                    break;
+                }
+                case Key.OemPlus: // Движение камеры вперед.
+                {
+                    OpenGL gl = OpenGlControl.OpenGL;
+                    _currentCamera.MoveForwardBackward(float.Parse(ResourcesView.MoveSpeed));
+                    _isDrawMap = true;
+                    break;
+                }
             }
         }
 
