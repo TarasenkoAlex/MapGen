@@ -197,6 +197,7 @@ namespace MapGen.View.GUI.Windows
             SubscribeEventsButtonHeadWindow();
             SubscribeEventButtonMenu();
             SubscribeEventButtonWindow();
+            SubscribeEventButtonToolBar();
         }
 
         /// <summary>
@@ -254,6 +255,22 @@ namespace MapGen.View.GUI.Windows
             // Вид.
             MenuItemToolBar.Click += MenuItemToolBar_Click;
             MenuItemStatusBar.Click += MenuItemStatusBar_Click;
+        }
+
+        /// <summary>
+        /// Подписка на события кнопок панели инструментов.
+        /// </summary>
+        private void SubscribeEventButtonToolBar()
+        {
+            // Файл.
+            ToolBarDatabaseMaps.Click += (s, e) => { MenuItemListMaps_Click(null, null); };
+
+            // Сервис.
+            ToolBarSettingInterpol.Click += (s, e) => { MenuItemSettingsInterpol_Click(null, null); };
+            ToolBarSettingGen.Click += (s, e) => { MenuItemSettingsGen_Click(null, null); };
+
+            // Справка.
+
         }
 
         /// <summary>

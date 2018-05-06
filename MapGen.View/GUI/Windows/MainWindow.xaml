@@ -41,17 +41,32 @@
         <Menu Background="#2D2D30" Grid.Row="1">
             <MenuItem Header="Файл" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25">
                 <MenuItem x:Name="MenuItemListMaps" Header="База данных карт" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25">
+                    <MenuItem.Icon>
+                        <Image Source="/MapGen.View;component/Resources/menuitem.databasemaps.png" Stretch="Fill" Margin="0,0,-6,-5" />
+                    </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
                 <MenuItem x:Name="MenuItemExit" Header="Выход" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25">
+                    <MenuItem.Icon>
+                        <Image Source="/MapGen.View;component/Resources/menuitem.exit.png" Stretch="Fill" Margin="0,0,-6,-5" />
+                    </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Сервис" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25">
                 <MenuItem Header="Настройки" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25">
                     <MenuItem x:Name="MenuItemSettingsInterpol" Header="Интерполяция" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25">
+                        <MenuItem.Icon>
+                            <Image Source="/MapGen.View;component/Resources/menuitem.settings.interpol.png" Stretch="Fill" Margin="0,0,-6,-5" />
+                        </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem x:Name="MenuItemSettingsGen" Header="Генерализация" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25">
+                        <MenuItem.Icon>
+                            <Image Source="/MapGen.View;component/Resources/menuitem.settings.gen.png" Stretch="Fill" Margin="0,0,-6,-5" />
+                        </MenuItem.Icon>
                     </MenuItem>
+                    <MenuItem.Icon>
+                        <Image Source="/MapGen.View;component/Resources/menuitem.settings.png" Stretch="Fill" Margin="0,0,-6,-5" />
+                    </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Вид" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25">
@@ -68,6 +83,20 @@
                     <GradientStop Color="#FF474747" Offset="1"/>
                 </LinearGradientBrush>
             </Grid.Background>
+            <Button x:Name="ToolBarDatabaseMaps" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="База данных карт" VerticalAlignment="Top" Margin="10,0,960,0">
+                <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/toolbar.databasemaps.png" Stretch="Fill" />
+            </Button>
+            <GridSplitter HorizontalAlignment="Left" Margin="45,0,0,0" Width="1" Background="#2D2D30"/>
+            <Button x:Name="ToolBarSettingInterpol" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Настройка интерполяции" VerticalAlignment="Top" Margin="51,0,919,0">
+                <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/toolbar.settings.interpol.png" Stretch="Fill" />
+            </Button>
+            <Button x:Name="ToolBarSettingGen" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Настройка генерализации" VerticalAlignment="Top" Margin="86,0,884,0">
+                <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/toolbar.settings.gen.png" Stretch="Fill" />
+            </Button>
+            <GridSplitter HorizontalAlignment="Left" Margin="121,0,0,0" Width="1" Background="#2D2D30"/>
+            <Button x:Name="ToolBarAbout" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Справка" VerticalAlignment="Top" Margin="127,0,843,0">
+                <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/toolbar.about.png" Stretch="Fill" />
+            </Button>
         </Grid>
         <Grid Grid.Row="3">
             <wpf:OpenGLControl 

@@ -266,7 +266,33 @@
   <ItemGroup>
     <Resource Include="Resources\settings.gen.window.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\toolbar.about.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\toolbar.settings.gen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\toolbar.settings.interpol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\toolbar.databasemaps.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\menuitem.exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\menuitem.settings.interpol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\menuitem.settings.gen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\menuitem.databasemaps.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\menuitem.settings.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

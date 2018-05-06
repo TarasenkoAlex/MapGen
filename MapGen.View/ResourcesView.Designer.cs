@@ -162,6 +162,56 @@ namespace MapGen.View {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap menuitem_databasemaps {
+            get {
+                object obj = ResourceManager.GetObject("menuitem_databasemaps", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap menuitem_exit {
+            get {
+                object obj = ResourceManager.GetObject("menuitem_exit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap menuitem_settings {
+            get {
+                object obj = ResourceManager.GetObject("menuitem_settings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap menuitem_settings_gen {
+            get {
+                object obj = ResourceManager.GetObject("menuitem_settings_gen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap menuitem_settings_interpol {
+            get {
+                object obj = ResourceManager.GetObject("menuitem_settings_interpol", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 0,1.
         /// </summary>
         internal static string MoveSpeed {
@@ -196,6 +246,56 @@ namespace MapGen.View {
         internal static System.Drawing.Bitmap table_maps_window_database {
             get {
                 object obj = ResourceManager.GetObject("table_maps_window_database", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap toolbar_about {
+            get {
+                object obj = ResourceManager.GetObject("toolbar_about", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap toolbar_about1 {
+            get {
+                object obj = ResourceManager.GetObject("toolbar_about1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap toolbar_databasemaps {
+            get {
+                object obj = ResourceManager.GetObject("toolbar_databasemaps", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap toolbar_settings_gen {
+            get {
+                object obj = ResourceManager.GetObject("toolbar_settings_gen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap toolbar_settings_interpol {
+            get {
+                object obj = ResourceManager.GetObject("toolbar_settings_interpol", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
