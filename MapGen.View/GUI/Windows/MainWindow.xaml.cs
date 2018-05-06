@@ -121,8 +121,8 @@ namespace MapGen.View.GUI.Windows
         /// </summary>
         private readonly MGCamera _initialCamera = new MGCamera
         {
-            Target = new Vertex(0.0f, 0.0f, 0.0f),
-            Position = new Vertex(0.0f, 0.0f, 1.0f),
+            Target = new Vertex(0.4f, 0.2f, 0.0f),
+            Position = new Vertex(0.4f, 0.2f, 1.0f),
             UpVector = new Vertex(0.0f, 1.0f, 0.0f)
         };
 
@@ -178,7 +178,6 @@ namespace MapGen.View.GUI.Windows
         /// </summary>
         private void InitializeFields()
         {
-            
         }
 
         /// <summary>
