@@ -4,8 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Accord.IO;
-using Accord.MachineLearning;
 using MapGen.Model.Clustering.Setting;
 using MapGen.Model.Database.EDM;
 using KMeans = MapGen.Model.Clustering.Algoritm.Kernel.KMeans;
