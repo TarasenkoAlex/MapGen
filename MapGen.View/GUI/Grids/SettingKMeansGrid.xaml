@@ -13,8 +13,8 @@
             <ListBoxItem Content="Случайный" FontFamily="Segoe UI" FontSize="12" Height="20"/>
         </ComboBox>
         <Label Content="Максимальное кол-во итераций:" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" HorizontalAlignment="Left" Width="275" Height="25" VerticalAlignment="Top" Margin="0,31,0,0" />
-        <TextBox x:Name="TextBoxMaxItarations" Text="-1" FontFamily="Segoe UI" FontSize="12" Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" Margin="280,35,0,0"/>
+        <TextBox x:Name="TextBoxMaxItarations" Text="-1" FontFamily="Segoe UI" FontSize="12" Height="21" VerticalAlignment="Top" ToolTip="Если выбрать максимальное кол-во итераций -1, то кластеризация не будет учитывать данный параметр при выполнении" HorizontalAlignment="Left" Width="40" Margin="280,35,0,0"/>
         <Label Content="Максимальная степень параллелизма:" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" HorizontalAlignment="Left" Width="275" Height="25" VerticalAlignment="Top" Margin="0,64,0,0" />
-        <TextBox x:Name="TextBoxMaxDegreeOfParallelism" Text="-1" FontFamily="Segoe UI" FontSize="12" Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" Margin="280,68,0,0"/>
+        <TextBox x:Name="TextBoxMaxDegreeOfParallelism" Text="-1" FontFamily="Segoe UI" FontSize="12" Height="21" ToolTip="Если выбрать максимальную степень параллелизма -1, то кластеризация будет брать данный параметр автоматически максимально, исходя из мощностей компьютера"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" Margin="280,68,0,0"/>
     </Grid>
 </Grid>

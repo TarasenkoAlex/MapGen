@@ -83,18 +83,18 @@
                     <GradientStop Color="#FF474747" Offset="1"/>
                 </LinearGradientBrush>
             </Grid.Background>
-            <Button x:Name="ToolBarDatabaseMaps" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="База данных карт" VerticalAlignment="Top" Margin="10,0,960,0">
+            <Button x:Name="ToolBarDatabaseMaps" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="База данных карт" VerticalAlignment="Top" Margin="10,0,0,0" HorizontalAlignment="Left" Width="30">
                 <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/toolbar.databasemaps.png" Stretch="Fill" />
             </Button>
             <GridSplitter HorizontalAlignment="Left" Margin="45,0,0,0" Width="1" Background="#2D2D30"/>
-            <Button x:Name="ToolBarSettingInterpol" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Настройка интерполяции" VerticalAlignment="Top" Margin="51,0,919,0">
+            <Button x:Name="ToolBarSettingInterpol" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Настройка интерполяции" VerticalAlignment="Top" Margin="51,0,0,0" HorizontalAlignment="Left" Width="30">
                 <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/toolbar.settings.interpol.png" Stretch="Fill" />
             </Button>
-            <Button x:Name="ToolBarSettingGen" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Настройка генерализации" VerticalAlignment="Top" Margin="86,0,884,0">
+            <Button x:Name="ToolBarSettingGen" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Настройка генерализации" VerticalAlignment="Top" Margin="86,0,0,0" HorizontalAlignment="Left" Width="30">
                 <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/toolbar.settings.gen.png" Stretch="Fill" />
             </Button>
             <GridSplitter HorizontalAlignment="Left" Margin="121,0,0,0" Width="1" Background="#2D2D30"/>
-            <Button x:Name="ToolBarAbout" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Справка" VerticalAlignment="Top" Margin="127,0,843,0">
+            <Button x:Name="ToolBarAbout" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Справка" VerticalAlignment="Top" Margin="127,0,0,0" HorizontalAlignment="Left" Width="30">
                 <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/toolbar.about.png" Stretch="Fill" />
             </Button>
         </Grid>
@@ -165,16 +165,16 @@
             <Separator Background="#2D2D30" Margin="0" Height="1" VerticalAlignment="Top"/>
             <Label Content="Имя карты:" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="8,2,0,2" HorizontalAlignment="Left" Width="72"/>
             <Label x:Name="LabelNameMap" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="80,2,0,2" HorizontalAlignment="Left" Width="100"/>
-            <Label Content="Долгота:" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="185,2,0,2" HorizontalAlignment="Left" Width="56"/>
-            <Label x:Name="LabelLongitude" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="241,2,0,2" HorizontalAlignment="Left" Width="64"/>
-            <Label Content="Широта:" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="310,2,0,2" HorizontalAlignment="Left" Width="56"/>
-            <Label x:Name="LabelLatitude" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="366,2,0,2" HorizontalAlignment="Left" Width="64"/>
-            <Label Content="Ширина:" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="435,2,0,2" HorizontalAlignment="Left" Width="59"/>
-            <Label x:Name="LabelWidth" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="494,2,0,2" HorizontalAlignment="Left" Width="61"/>
-            <Label Content="Длина:" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="560,2,0,2" HorizontalAlignment="Left" Width="48"/>
-            <Label x:Name="LabelLength" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="608,2,0,2" HorizontalAlignment="Left" Width="61"/>
-            <Label Content="Количество точек:" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="674,2,0,2" HorizontalAlignment="Left" Width="111"/>
-            <Label x:Name="LabelCountPoints" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="790,2,0,2" HorizontalAlignment="Left" Width="50"/>
+            <Label Content="Долгота:" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="180,2,0,2" HorizontalAlignment="Left" Width="56"/>
+            <Label x:Name="LabelLongitude" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="236,2,0,2" HorizontalAlignment="Left" Width="64"/>
+            <Label Content="Широта:" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="300,2,0,2" HorizontalAlignment="Left" Width="56"/>
+            <Label x:Name="LabelLatitude" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="356,2,0,2" HorizontalAlignment="Left" Width="64"/>
+            <Label Content="Ширина (сек.):" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="420,2,0,2" HorizontalAlignment="Left" Width="88"/>
+            <Label x:Name="LabelWidth" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="508,2,0,2" HorizontalAlignment="Left" Width="51"/>
+            <Label Content="Длина (сек.):" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="559,2,0,2" HorizontalAlignment="Left" Width="81"/>
+            <Label x:Name="LabelLength" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="640,2,0,2" HorizontalAlignment="Left" Width="49"/>
+            <Label Content="Количество точек:" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="689,2,0,2" HorizontalAlignment="Left" Width="111"/>
+            <Label x:Name="LabelCountPoints" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="800,2,0,2" HorizontalAlignment="Left" Width="50"/>
             <Label Content="Масштаб:" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="0,2,74,2" HorizontalAlignment="Right" Width="62"/>
             <Label x:Name="LabelScale" Content="" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Height="25" Margin="0,2,10,2" HorizontalAlignment="Right" Width="64"/>
             <Grid.Background>
