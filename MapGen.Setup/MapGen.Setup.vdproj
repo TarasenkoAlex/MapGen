@@ -123,18 +123,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2893D811CF87544E765BD5F4CF0EE659"
-        "OwnerKey" = "8:_3DDDEFAD4ADD4445BD1822A2F9E50E19"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2893D811CF87544E765BD5F4CF0EE659"
-        "OwnerKey" = "8:_574BE39B893C73B945E32231F14B5A5A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_2DC6081FA1702C979666E1409E786085"
         "OwnerKey" = "8:_81D62FF61BCD4A3D8D96975D2418F3DB"
         "MsmSig" = "8:_UNDEFINED"
@@ -159,18 +147,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_47BD201E30EDA351FFE48188B2E0561B"
-        "OwnerKey" = "8:_A03DB77C23861025C7E9F62FAAB664E2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_47BD201E30EDA351FFE48188B2E0561B"
-        "OwnerKey" = "8:_3DDDEFAD4ADD4445BD1822A2F9E50E19"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_4E82D46DA31DED911578E803EAC2DF93"
         "OwnerKey" = "8:_2DCA394477CF444DA01EC49D6DE59D51"
         "MsmSig" = "8:_UNDEFINED"
@@ -191,24 +167,6 @@
         {
         "MsmKey" = "8:_55906ECF2A8FEF3A28E3034B1D58650C"
         "OwnerKey" = "8:_81D62FF61BCD4A3D8D96975D2418F3DB"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_574BE39B893C73B945E32231F14B5A5A"
-        "OwnerKey" = "8:_A03DB77C23861025C7E9F62FAAB664E2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_574BE39B893C73B945E32231F14B5A5A"
-        "OwnerKey" = "8:_3DDDEFAD4ADD4445BD1822A2F9E50E19"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_574BE39B893C73B945E32231F14B5A5A"
-        "OwnerKey" = "8:_47BD201E30EDA351FFE48188B2E0561B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -257,36 +215,6 @@
         {
         "MsmKey" = "8:_81D62FF61BCD4A3D8D96975D2418F3DB"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_89E2AD69BC056BD445FE169E2B8FBA2D"
-        "OwnerKey" = "8:_A03DB77C23861025C7E9F62FAAB664E2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_89E2AD69BC056BD445FE169E2B8FBA2D"
-        "OwnerKey" = "8:_3DDDEFAD4ADD4445BD1822A2F9E50E19"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_89E2AD69BC056BD445FE169E2B8FBA2D"
-        "OwnerKey" = "8:_47BD201E30EDA351FFE48188B2E0561B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_89E2AD69BC056BD445FE169E2B8FBA2D"
-        "OwnerKey" = "8:_574BE39B893C73B945E32231F14B5A5A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A03DB77C23861025C7E9F62FAAB664E2"
-        "OwnerKey" = "8:_3DDDEFAD4ADD4445BD1822A2F9E50E19"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -423,36 +351,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_EAF71F30D51E361302B5FA0FB1F9B9C7"
-        "OwnerKey" = "8:_3DDDEFAD4ADD4445BD1822A2F9E50E19"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EAF71F30D51E361302B5FA0FB1F9B9C7"
-        "OwnerKey" = "8:_47BD201E30EDA351FFE48188B2E0561B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EAF71F30D51E361302B5FA0FB1F9B9C7"
-        "OwnerKey" = "8:_574BE39B893C73B945E32231F14B5A5A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EAF71F30D51E361302B5FA0FB1F9B9C7"
-        "OwnerKey" = "8:_89E2AD69BC056BD445FE169E2B8FBA2D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EAF71F30D51E361302B5FA0FB1F9B9C7"
-        "OwnerKey" = "8:_A03DB77C23861025C7E9F62FAAB664E2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_F53B3EFF432DF8BA587A6A5CBE29A554"
         "OwnerKey" = "8:_3DDDEFAD4ADD4445BD1822A2F9E50E19"
         "MsmSig" = "8:_UNDEFINED"
@@ -526,42 +424,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A03DB77C23861025C7E9F62FAAB664E2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_47BD201E30EDA351FFE48188B2E0561B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_574BE39B893C73B945E32231F14B5A5A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_89E2AD69BC056BD445FE169E2B8FBA2D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EAF71F30D51E361302B5FA0FB1F9B9C7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2893D811CF87544E765BD5F4CF0EE659"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_31DCF7CD530D433EB9D53649FFCFC6EC"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -627,7 +489,7 @@
         "DisplayName" = "8:Debug"
         "IsDebugOnly" = "11:TRUE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:Debug\\Setup MapGen v.1.0.1.msi"
+        "OutputFilename" = "8:Debug\\Setup MapGen v.1.1.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -659,7 +521,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\Setup MapGen v.1.0.1.msi"
+        "OutputFilename" = "8:Release\\Setup MapGen v.1.1.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -878,37 +740,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2893D811CF87544E765BD5F4CF0EE659"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.IO.Compression, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
-                "ScatterAssemblies"
-                {
-                    "_2893D811CF87544E765BD5F4CF0EE659"
-                    {
-                    "Name" = "8:System.IO.Compression.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:System.IO.Compression.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2DC6081FA1702C979666E1409E786085"
             {
             "AssemblyRegister" = "3:1"
@@ -923,37 +754,6 @@
                     }
                 }
             "SourcePath" = "8:MapGen.Presenter.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_47BD201E30EDA351FFE48188B2E0561B"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Accord.Statistics, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_47BD201E30EDA351FFE48188B2E0561B"
-                    {
-                    "Name" = "8:Accord.Statistics.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Accord.Statistics.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
@@ -1016,37 +816,6 @@
                     }
                 }
             "SourcePath" = "8:System.Data.SQLite.Linq.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_574BE39B893C73B945E32231F14B5A5A"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Accord.Math, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_574BE39B893C73B945E32231F14B5A5A"
-                    {
-                    "Name" = "8:Accord.Math.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Accord.Math.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
@@ -1160,68 +929,6 @@
                     }
                 }
             "SourcePath" = "8:EntityFramework.SqlServer.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_89E2AD69BC056BD445FE169E2B8FBA2D"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Accord.Math.Core, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_89E2AD69BC056BD445FE169E2B8FBA2D"
-                    {
-                    "Name" = "8:Accord.Math.Core.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Accord.Math.Core.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A03DB77C23861025C7E9F62FAAB664E2"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Accord.MachineLearning, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_A03DB77C23861025C7E9F62FAAB664E2"
-                    {
-                    "Name" = "8:Accord.MachineLearning.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Accord.MachineLearning.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
@@ -1425,37 +1132,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EAF71F30D51E361302B5FA0FB1F9B9C7"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Accord, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_EAF71F30D51E361302B5FA0FB1F9B9C7"
-                    {
-                    "Name" = "8:Accord.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Accord.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F53B3EFF432DF8BA587A6A5CBE29A554"
             {
             "AssemblyRegister" = "3:1"
@@ -1554,15 +1230,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MapGen"
-        "ProductCode" = "8:{0388B3A7-CC08-472E-AE59-7ACFF1A351EE}"
-        "PackageCode" = "8:{E3BB0A06-4E4C-47A3-85AD-2AF8C7809080}"
+        "ProductCode" = "8:{247FCA7B-0E6D-40AF-BAAC-CFBADB0D180A}"
+        "PackageCode" = "8:{6B512D7A-1CDD-4DD3-BDED-BAC3C8D343DB}"
         "UpgradeCode" = "8:{C9F0B2E9-95CF-4C13-B85B-0F8B1A464C0F}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.1"
+        "ProductVersion" = "8:1.1"
         "Manufacturer" = "8:Tarasenko A.S."
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/TarasenkoAlex/MapGen"
@@ -2047,7 +1723,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2DCA394477CF444DA01EC49D6DE59D51"
             {
-            "SourcePath" = "8:..\\MapGen.Presenter\\obj\\x64\\Debug\\MapGen.Presenter.dll"
+            "SourcePath" = "8:..\\MapGen.Presenter\\obj\\x64\\Release\\MapGen.Presenter.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
@@ -2075,7 +1751,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_31DCF7CD530D433EB9D53649FFCFC6EC"
             {
-            "SourcePath" = "8:..\\MapGen.View\\obj\\x64\\Debug\\MapGen.View.exe"
+            "SourcePath" = "8:..\\MapGen.View\\obj\\x64\\Release\\MapGen.View.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
@@ -2103,7 +1779,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3DDDEFAD4ADD4445BD1822A2F9E50E19"
             {
-            "SourcePath" = "8:..\\MapGen.Model\\obj\\x64\\Debug\\MapGen.Model.dll"
+            "SourcePath" = "8:..\\MapGen.Model\\obj\\x64\\Release\\MapGen.Model.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
@@ -2131,7 +1807,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_81D62FF61BCD4A3D8D96975D2418F3DB"
             {
-            "SourcePath" = "8:..\\MapGen\\obj\\x64\\Debug\\MapGen.exe"
+            "SourcePath" = "8:..\\MapGen\\obj\\x64\\Release\\MapGen.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_63FF4CD2DEC946DCB450440609EA8D30"
