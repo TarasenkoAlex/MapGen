@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MapGen.View.GUI.Windows"
              xmlns:classes="clr-namespace:MapGen.View.Source.Classes"
-             MinHeight="300" MinWidth="640" MaxHeight="300" MaxWidth="640" Height="300" Width="640" 
+             MinHeight="300" MinWidth="660" MaxHeight="300" MaxWidth="660" Height="300" Width="660" 
              WindowStyle="None" 
              AllowsTransparency="True"
              WindowStartupLocation="CenterScreen">
