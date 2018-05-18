@@ -113,7 +113,7 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
                     }
                     else
                     {
-                        if (data[Clusters[i][j]].Depth > outData[i].Depth)
+                        if (data[Clusters[i][j]].Depth < outData[i].Depth)
                         {
                             outData[i] = data[Clusters[i][j]];
                         }
