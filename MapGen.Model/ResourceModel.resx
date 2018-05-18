@@ -123,6 +123,9 @@
   <data name="DATABASE_FILE_NAME" xml:space="preserve">
     <value>MapGen.db</value>
   </data>
+  <data name="DIR_TESTS" xml:space="preserve">
+    <value>C:\MapGen\Tests\</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="MapGen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Database\Files\MapGen.db;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

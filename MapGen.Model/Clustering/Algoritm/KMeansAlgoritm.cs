@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MapGen.Model.Clustering.Algoritm.Kernel;
 using MapGen.Model.Clustering.Setting;
 using MapGen.Model.Database.EDM;
 using KMeans = MapGen.Model.Clustering.Algoritm.Kernel.KMeans;
@@ -12,10 +13,23 @@ namespace MapGen.Model.Clustering.Algoritm
 {
     public class KMeansAlgoritm : ICLAlgoritm
     {
+
+        /// <summary>
+        /// Кластера.
+        /// </summary>
+        public KMeansCluster[] Clusters => _algoritmKMeans.Clusters;
+
+
         /// <summary>
         /// Настройка кластеризации.
         /// </summary>
         private readonly SettingCLKMeans _setting;
+
+        /// <summary>
+        /// Алгоритм k - средних.
+        /// </summary>
+        private KMeans _algoritmKMeans = new KMeans();
+        
 
         /// <summary>
         /// Создает объект для выполнения кластеризации методом К-средних.
@@ -41,7 +55,7 @@ namespace MapGen.Model.Clustering.Algoritm
                 message = string.Empty;
 
                 // Выполняем кластеризацию.
-                KMeans algoritmKMeans = new KMeans(countPointsOfOutDbMap)
+                _algoritmKMeans = new KMeans(countPointsOfOutDbMap)
                 {
                     Seeding = _setting.Seeding,
                     MaxItarations = _setting.MaxItarations,
@@ -50,11 +64,7 @@ namespace MapGen.Model.Clustering.Algoritm
                         MaxDegreeOfParallelism = _setting.MaxDegreeOfParallelism
                     }
                 };
-                Stopwatch st = new Stopwatch();
-                st.Reset();
-                st.Start();
-                algoritmKMeans.Learn(sourceCloudPoints, out distCloudPoints);
-                st.Stop();
+                _algoritmKMeans.Learn(sourceCloudPoints, out distCloudPoints);
 
                 return true;
             }

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MapGen.Model.Database.EDM;
+using MapGen.Model.Clustering.Algoritm.Kernel;
+using Point = MapGen.Model.Database.EDM.Point;
 
 namespace MapGen.Model.Maps
 {
@@ -53,6 +55,21 @@ namespace MapGen.Model.Maps
 
         #region Public methods.
 
+
+        public void DrawToBMP(KMeansCluster[] clusters, string pathBMP)
+        {
+            System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap((int)(Width + 1), (int)(Length + 1));
+            System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(bitmap);
+
+            graphics.Clear(Color.White);
+
+            foreach (KMeansCluster cluster in clusters)
+            {
+                graphics.FillRectangle(new SolidBrush(Color.Blue), (int) cluster.MapGenCentroid.X, (int) cluster.MapGenCentroid.Y, 1, 1);
+            }
+
+            bitmap.Save(pathBMP);
+        }
 
         #endregion
 

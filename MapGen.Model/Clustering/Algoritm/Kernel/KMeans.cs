@@ -12,7 +12,7 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
         /// <summary>
         /// Количество кластеров.
         /// </summary>
-        public int K { get; }
+        public int K { get; set; }
 
         /// <summary>
         /// Коичество итераций.
@@ -46,6 +46,13 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
         public KMeans(int k)
         {
             K = k;
+        }
+
+        /// <summary>
+        /// Создает объект для выполнения метода кластеризации.
+        /// </summary>
+        public KMeans()
+        {
         }
 
         /// <summary>
@@ -110,12 +117,14 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
                     if (j == 0)
                     {
                         outData[i] = data[Clusters[i][j]];
+                        Clusters[i].MapGenCentroid = data[Clusters[i][j]];
                     }
                     else
                     {
                         if (data[Clusters[i][j]].Depth < outData[i].Depth)
                         {
                             outData[i] = data[Clusters[i][j]];
+                            Clusters[i].MapGenCentroid = data[Clusters[i][j]];
                         }
                     }
                 }
@@ -148,9 +157,9 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
             for (int i = 0; i < K; ++i)
             {
                 Clusters[i] = new KMeansCluster();
-                Clusters[i].Centroid[0] = data[ind[i]].X;
-                Clusters[i].Centroid[1] = data[ind[i]].Y;
-                Clusters[i].Centroid[2] = data[ind[i]].Depth;
+                Clusters[i].KMeansCentroid[0] = data[ind[i]].X;
+                Clusters[i].KMeansCentroid[1] = data[ind[i]].Y;
+                Clusters[i].KMeansCentroid[2] = data[ind[i]].Depth;
             }
         }
 
@@ -180,11 +189,11 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
             {
                 if (i == 0)
                 {
-                    distance = FindDistance(pointDouble, Clusters[0].Centroid);
+                    distance = FindDistance(pointDouble, Clusters[0].KMeansCentroid);
                 }
                 else
                 {
-                    var dist = FindDistance(pointDouble, Clusters[i].Centroid);
+                    var dist = FindDistance(pointDouble, Clusters[i].KMeansCentroid);
                     if (dist < distance)
                     {
                         distance = dist;
@@ -223,7 +232,8 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
 
     public class KMeansCluster : List<int>
     {
-        public double[] Centroid { get; private set; } = new double[3];
+        public double[] KMeansCentroid { get; private set; } = new double[3];
+        public Point MapGenCentroid { get; set; } = new Point();
 
         public void UpdateCentroid(Point[] data)
         {
@@ -239,7 +249,7 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
             tmp[1] /= Count;
             tmp[2] /= Count;
 
-            Centroid = tmp;
+            KMeansCentroid = tmp;
         }
     }
 }

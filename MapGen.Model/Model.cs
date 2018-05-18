@@ -282,6 +282,10 @@ namespace MapGen.Model
             // Выставляем, что необходимо отрисовывать карту, полученную после генерализации.
             _isUseSourceMap = false;
 
+
+            // TODO Для тестирования отрисовки. Временно.
+            SourceSeaMap.DrawToBMP(_mgAlgoritm.Clusters, $"{ResourceModel.DIR_TESTS}\\test.bmp");
+
             return result;
         }
 

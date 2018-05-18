@@ -79,6 +79,15 @@ namespace MapGen.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to C:\MapGen\Tests\.
+        /// </summary>
+        internal static string DIR_TESTS {
+            get {
+                return ResourceManager.GetString("DIR_TESTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] MapGen {

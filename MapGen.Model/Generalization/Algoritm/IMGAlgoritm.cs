@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MapGen.Model.Clustering.Algoritm;
+using MapGen.Model.Clustering.Algoritm.Kernel;
 using MapGen.Model.Generalization.Setting;
 using MapGen.Model.Maps;
 
@@ -16,6 +17,11 @@ namespace MapGen.Model.Generalization.Algoritm
         /// </summary>
         SettingGen SettingGen { get; set; }
 
+        /// <summary>
+        /// Кластера.
+        /// </summary>
+        KMeansCluster[] Clusters { get; }
+    
         /// <summary>
         /// Выполнить генерализацию.
         /// </summary>

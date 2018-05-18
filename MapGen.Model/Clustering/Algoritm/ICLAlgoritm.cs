@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MapGen.Model.Clustering.Algoritm.Kernel;
 using MapGen.Model.Database.EDM;
 
 namespace MapGen.Model.Clustering.Algoritm
 {
     public interface ICLAlgoritm
     {
+        /// <summary>
+        /// Кластера.
+        /// </summary>
+        KMeansCluster[] Clusters { get; }
+
         /// <summary>
         /// Выполнить кластеризацию.
         /// </summary>

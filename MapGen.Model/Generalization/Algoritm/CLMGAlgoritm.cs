@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MapGen.Model.Clustering.Algoritm;
+using MapGen.Model.Clustering.Algoritm.Kernel;
 using MapGen.Model.Clustering.Setting;
 using MapGen.Model.Database.EDM;
 using MapGen.Model.General;
@@ -43,6 +44,11 @@ namespace MapGen.Model.Generalization.Algoritm
                 }
             }
         }
+
+        /// <summary>
+        /// Кластера.
+        /// </summary>
+        public KMeansCluster[] Clusters => _clusteringAlgoritm.Clusters;
 
         /// <summary>
         /// Создет объект для выполнения алгоритма картографической генерализации методом кластеризации.
