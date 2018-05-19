@@ -50,22 +50,38 @@ namespace MapGen.Model.Maps
         /// Облако точек карты.
         /// </summary>
         public Point[] CloudPoints { get; set; }
-
+        
         #endregion
 
         #region Public methods.
 
 
-        public void DrawToBMP(KMeansCluster[] clusters, string pathBMP)
+        public void DrawToBMP(Cluster[] clusters, string pathBMP, int coeffDraw = 6)
         {
-            System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap((int)(Width + 1), (int)(Length + 1));
+            System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap((int)(Width + 1) * coeffDraw, (int)(Length + 1) * coeffDraw);
             System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(bitmap);
 
             graphics.Clear(Color.White);
 
-            foreach (KMeansCluster cluster in clusters)
+            foreach (Cluster cluster in clusters)
             {
-                graphics.FillRectangle(new SolidBrush(Color.Blue), (int) cluster.MapGenCentroid.X, (int) cluster.MapGenCentroid.Y, 1, 1);
+                graphics.FillRectangle(new SolidBrush(Color.Blue), (int) CloudPoints[cluster.MapGenCentroid].X * coeffDraw, (int) CloudPoints[cluster.MapGenCentroid].Y * coeffDraw, coeffDraw, coeffDraw);
+            }
+
+            bitmap.Save(pathBMP);
+        }
+
+        public void DrawToBMP(string pathBMP, int coeffDraw = 6, int distance = 12)
+        {
+            //System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap((int)(Width + 1) * (coeffDraw + distance) - distance, (int)(Length + 1) * (coeffDraw + distance) - distance);
+            System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap((int)(Width + 1) * (coeffDraw + distance), (int)(Length + 1) * (coeffDraw + distance));
+            System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(bitmap);
+
+            graphics.Clear(Color.White);
+            
+            foreach (Point point in CloudPoints)
+            {
+                graphics.FillRectangle(new SolidBrush(Color.Blue), (int)point.X * (coeffDraw + distance), (int)point.Y * (coeffDraw + distance), coeffDraw, coeffDraw);
             }
 
             bitmap.Save(pathBMP);

@@ -48,7 +48,7 @@ namespace MapGen.Model.Generalization.Algoritm
         /// <summary>
         /// Кластера.
         /// </summary>
-        public KMeansCluster[] Clusters => _clusteringAlgoritm.Clusters;
+        public Cluster[] Clusters => _clusteringAlgoritm.Clusters;
 
         /// <summary>
         /// Создет объект для выполнения алгоритма картографической генерализации методом кластеризации.

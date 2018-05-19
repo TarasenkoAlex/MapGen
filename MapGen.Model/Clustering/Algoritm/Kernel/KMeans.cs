@@ -32,7 +32,7 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
         /// <summary>
         /// Кластера.
         /// </summary>
-        public KMeansCluster[] Clusters { get; private set; }
+        public Cluster[] Clusters { get; private set; }
 
         /// <summary>
         /// Настройка выбора центроидов на первом шаге алгоритма.
@@ -117,14 +117,14 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
                     if (j == 0)
                     {
                         outData[i] = data[Clusters[i][j]];
-                        Clusters[i].MapGenCentroid = data[Clusters[i][j]];
+                        Clusters[i].MapGenCentroid = Clusters[i][j];
                     }
                     else
                     {
                         if (data[Clusters[i][j]].Depth < outData[i].Depth)
                         {
                             outData[i] = data[Clusters[i][j]];
-                            Clusters[i].MapGenCentroid = data[Clusters[i][j]];
+                            Clusters[i].MapGenCentroid = Clusters[i][j];
                         }
                     }
                 }
@@ -133,7 +133,7 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
 
         private void SeedingCentroids(Point[] data)
         {
-            Clusters = new KMeansCluster[K];
+            Clusters = new Cluster[K];
 
             switch (Seeding)
             {
@@ -156,10 +156,15 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
         {
             for (int i = 0; i < K; ++i)
             {
-                Clusters[i] = new KMeansCluster();
-                Clusters[i].KMeansCentroid[0] = data[ind[i]].X;
-                Clusters[i].KMeansCentroid[1] = data[ind[i]].Y;
-                Clusters[i].KMeansCentroid[2] = data[ind[i]].Depth;
+                Clusters[i] = new Cluster
+                {
+                    MiddleCentroid =
+                    {
+                        [0] = data[ind[i]].X,
+                        [1] = data[ind[i]].Y,
+                        [2] = data[ind[i]].Depth
+                    }
+                };
             }
         }
 
@@ -189,11 +194,11 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
             {
                 if (i == 0)
                 {
-                    distance = FindDistance(pointDouble, Clusters[0].KMeansCentroid);
+                    distance = FindDistance(pointDouble, Clusters[0].MiddleCentroid);
                 }
                 else
                 {
-                    var dist = FindDistance(pointDouble, Clusters[i].KMeansCentroid);
+                    var dist = FindDistance(pointDouble, Clusters[i].MiddleCentroid);
                     if (dist < distance)
                     {
                         distance = dist;
@@ -227,29 +232,6 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
             Array.Sort(randVector);
 
             return randVector;
-        }
-    }
-
-    public class KMeansCluster : List<int>
-    {
-        public double[] KMeansCentroid { get; private set; } = new double[3];
-        public Point MapGenCentroid { get; set; } = new Point();
-
-        public void UpdateCentroid(Point[] data)
-        {
-            double[] tmp = new double[3];
-            foreach (var element in this)
-            {
-                tmp[0] += data[element].X;
-                tmp[1] += data[element].Y;
-                tmp[2] += data[element].Depth;
-            }
-
-            tmp[0] /= Count;
-            tmp[1] /= Count;
-            tmp[2] /= Count;
-
-            KMeansCentroid = tmp;
         }
     }
 }

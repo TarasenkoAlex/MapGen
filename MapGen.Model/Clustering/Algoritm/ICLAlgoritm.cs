@@ -13,7 +13,7 @@ namespace MapGen.Model.Clustering.Algoritm
         /// <summary>
         /// Кластера.
         /// </summary>
-        KMeansCluster[] Clusters { get; }
+        Cluster[] Clusters { get; }
 
         /// <summary>
         /// Выполнить кластеризацию.

@@ -20,7 +20,7 @@ namespace MapGen.Model.Generalization.Algoritm
         /// <summary>
         /// Кластера.
         /// </summary>
-        KMeansCluster[] Clusters { get; }
+        Cluster[] Clusters { get; }
     
         /// <summary>
         /// Выполнить генерализацию.

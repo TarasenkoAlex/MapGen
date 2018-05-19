@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using MapGen.Model.Clustering.Algoritm.Kernel;
 using MapGen.Model.Clustering.Setting;
 using MapGen.Model.Database.EDM;
-using KMeans = MapGen.Model.Clustering.Algoritm.Kernel.KMeans;
 
 namespace MapGen.Model.Clustering.Algoritm
 {
@@ -17,7 +16,7 @@ namespace MapGen.Model.Clustering.Algoritm
         /// <summary>
         /// Кластера.
         /// </summary>
-        public KMeansCluster[] Clusters => _algoritmKMeans.Clusters;
+        public Cluster[] Clusters => _algoritmKMeans.Clusters;
 
 
         /// <summary>
