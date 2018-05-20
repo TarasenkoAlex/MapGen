@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using MapGen.Model.Database.EDM;
 
 namespace MapGen.Model.General
@@ -73,6 +74,23 @@ namespace MapGen.Model.General
             }
 
             return listIndexPointsSurround;
+        }
+
+        /// <summary>
+        /// Удаление всех лементов директории.
+        /// </summary>
+        /// <param name="dirPath"></param>
+        public static void DeleteAllElementsOnDirectry(string dirPath)
+        {
+            foreach (var dir in Directory.GetDirectories(dirPath))
+            {
+                Directory.Delete(dir);
+            }
+
+            foreach (var file in Directory.GetFiles(dirPath))
+            {
+                File.Delete(file);
+            }
         }
     }
 }

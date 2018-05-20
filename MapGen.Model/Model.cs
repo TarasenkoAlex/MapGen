@@ -225,7 +225,9 @@ namespace MapGen.Model
                 // Сохраняем карту.
                 SourceSeaMap = new DbMap(map.Name, map.Width, map.Length, map.Scale, map.Latitude, map.Longitude, cloudPoints);
 
-                SourceSeaMap.DrawToBMP($"{ResourceModel.DIR_TESTS}\\test.bmp");
+                // Отрисовываем в файл.
+                Methods.DeleteAllElementsOnDirectry(ResourceModel.DIR_RUNTIME);
+                SourceSeaMap.DrawToBMP($"{ResourceModel.DIR_RUNTIME}Before.bmp");
 
                 // Выставляем, что необходимо отрисовывать исходную карту.
                 _isUseSourceMap = true;
@@ -283,7 +285,10 @@ namespace MapGen.Model
 
             // Выставляем, что необходимо отрисовывать карту, полученную после генерализации.
             _isUseSourceMap = false;
-            
+
+            // Отрисовываем в файл.
+            SourceSeaMap.DrawToBMP(_mgAlgoritm.Clusters, $"{ResourceModel.DIR_RUNTIME}After.bmp");
+
             return result;
         }
 

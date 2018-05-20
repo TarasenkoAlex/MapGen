@@ -79,6 +79,15 @@ namespace MapGen.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to C:\MapGen\Runtime\.
+        /// </summary>
+        internal static string DIR_RUNTIME {
+            get {
+                return ResourceManager.GetString("DIR_RUNTIME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to C:\MapGen\Tests\.
         /// </summary>
         internal static string DIR_TESTS {

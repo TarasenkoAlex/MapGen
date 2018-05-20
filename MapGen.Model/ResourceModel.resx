@@ -123,6 +123,9 @@
   <data name="DATABASE_FILE_NAME" xml:space="preserve">
     <value>MapGen.db</value>
   </data>
+  <data name="DIR_RUNTIME" xml:space="preserve">
+    <value>C:\MapGen\Runtime\</value>
+  </data>
   <data name="DIR_TESTS" xml:space="preserve">
     <value>C:\MapGen\Tests\</value>
   </data>
