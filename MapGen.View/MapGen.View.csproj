@@ -96,6 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Properties\GlobalAssemblyInfo.cs" />
     <Compile Include="GUI\Grids\SettingKMeansGrid.xaml.cs">
       <DependentUpon>SettingKMeansGrid.xaml</DependentUpon>
     </Compile>
@@ -149,9 +150,6 @@
     </Compile>
     <Compile Include="GUI\Windows\TableMapsWidow.xaml.cs">
       <DependentUpon>TableMapsWidow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
