@@ -16,6 +16,7 @@ namespace MapGen.Model
         #region Region properties.
         DbMap SourceSeaMap { get; }
         DbMap MapGenSeaMap { get; }
+        DbMap CurrentSeaMap { get; }
         ISettingInterpol SettingInterpol { get; set; }
         SettingGen SettingGen { get; set; }
         #endregion

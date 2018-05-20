@@ -67,6 +67,11 @@ namespace MapGen.Model
         public DbMap MapGenSeaMap { get; private set; }
 
         /// <summary>
+        /// Отображаемая карта.
+        /// </summary>
+        public DbMap CurrentSeaMap => _isUseSourceMap ? SourceSeaMap : MapGenSeaMap;
+
+        /// <summary>
         /// Настройка интерполяции.
         /// </summary>
         public ISettingInterpol SettingInterpol
@@ -103,6 +108,7 @@ namespace MapGen.Model
                 _mgAlgoritm.SettingGen = value;
             }
         }
+        
 
         #endregion
 
@@ -272,6 +278,19 @@ namespace MapGen.Model
         /// <returns>Успешно ли прошел алгоритм генерализации.</returns>
         public bool ExecuteMapGen(long scale, out string message)
         {
+            message = string.Empty;
+            if (scale == SourceSeaMap.Scale)
+            {
+                // Отрисовываем в файл.
+                Methods.DeleteAllElementsOnDirectry(ResourceModel.DIR_RUNTIME);
+                SourceSeaMap.DrawToBMP($"{ResourceModel.DIR_RUNTIME}Before.bmp");
+
+                // Выставляем, что необходимо отрисовывать исходную карту.
+                _isUseSourceMap = true;
+
+                return true;
+            }
+
             DbMap outDbMap;
 
             // В зависимости от настройки выполнить генерализацию.

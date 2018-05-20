@@ -176,7 +176,7 @@ namespace MapGen.Presenter
                     // Запускаем прогресс-бар главного окна.
                     _view.IsRunningProgressBarMainWindow = true;
                     _view.NameProcess = "Генерализация";
-
+                    
                     string message;
                     if (!_model.ExecuteMapGen(scale, out message))
                     {
@@ -197,10 +197,10 @@ namespace MapGen.Presenter
                     // Конвертируем регулярную матрицу в карту для отрисовки. Передаем во View.
                     _view.GraphicMap = Converter.ToGraphicMap(
                         regMatrix,
-                        _model.MapGenSeaMap.Name,
-                        _model.MapGenSeaMap.Latitude,
-                        _model.MapGenSeaMap.Longitude,
-                        _model.MapGenSeaMap.Scale);
+                        _model.CurrentSeaMap.Name,
+                        _model.CurrentSeaMap.Latitude,
+                        _model.CurrentSeaMap.Longitude,
+                        _model.CurrentSeaMap.Scale);
 
                     // Отображаем карту.
                     _view.DrawSeaMapWithoutResetCamera();
