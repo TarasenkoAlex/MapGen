@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -127,6 +128,15 @@ namespace MapGen.Model
 
             _settingGen = new SettingGen();
             _mgAlgoritm = new CLMGAlgoritm(new SettingGen());
+
+            if (!Directory.Exists(ResourceModel.DIR_RUNTIME))
+            {
+                Directory.CreateDirectory(ResourceModel.DIR_RUNTIME);
+            }
+            if (!Directory.Exists(ResourceModel.DIR_TESTS))
+            {
+                Directory.CreateDirectory(ResourceModel.DIR_TESTS);
+            }
         }
 
         #endregion
@@ -232,7 +242,7 @@ namespace MapGen.Model
                 SourceSeaMap = new DbMap(map.Name, map.Width, map.Length, map.Scale, map.Latitude, map.Longitude, cloudPoints);
 
                 // Отрисовываем в файл.
-                Methods.DeleteAllElementsOnDirectry(ResourceModel.DIR_RUNTIME);
+               Methods.DeleteAllElementsOnDirectry(ResourceModel.DIR_RUNTIME);
                 SourceSeaMap.DrawToBMP($"{ResourceModel.DIR_RUNTIME}Before.bmp");
 
                 // Выставляем, что необходимо отрисовывать исходную карту.
