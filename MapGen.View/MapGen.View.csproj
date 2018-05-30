@@ -73,6 +73,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -95,6 +96,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GUI\Grids\SettingKNPGrid.xaml.cs">
+      <DependentUpon>SettingKNPGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\GlobalAssemblyInfo.cs" />
     <Compile Include="GUI\Grids\SettingKMeansGrid.xaml.cs">
@@ -127,6 +131,7 @@
     <Compile Include="Source\Classes\DrawingObjects.cs" />
     <Compile Include="Source\Classes\MapView.cs" />
     <Compile Include="Source\Classes\SettingClustering\IVSettingCL.cs" />
+    <Compile Include="Source\Classes\SettingClustering\VSettingCLKNP.cs" />
     <Compile Include="Source\Classes\SettingClustering\VSettingCLKMeans.cs" />
     <Compile Include="Source\Classes\SettingGen\VSettingGen.cs" />
     <Compile Include="Source\Classes\SettingGraphicMap.cs" />
@@ -138,6 +143,7 @@
     <Compile Include="Source\Interfaces\IMain.cs" />
     <Compile Include="Source\Interfaces\ISettingGen.cs" />
     <Compile Include="Source\Interfaces\ISettingInterpol.cs" />
+    <Compile Include="Source\Interfaces\ISettingKNP.cs" />
     <Compile Include="Source\Interfaces\ISettingKMeans.cs" />
     <Compile Include="Source\Interfaces\ISettingRbf.cs" />
     <Compile Include="Source\Interfaces\ISettingKriging.cs" />
@@ -187,6 +193,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="GUI\Grids\SettingKMeansGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Grids\SettingKNPGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

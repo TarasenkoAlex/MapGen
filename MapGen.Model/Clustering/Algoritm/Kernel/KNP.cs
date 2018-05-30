@@ -36,7 +36,7 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
         public int Itarations { get; private set; } = 0;
 
         /// <summary>
-        /// Создает объект для выполнения кластеризации алгоритмом минимального покрывающего дерева.
+        /// Создает объект для выполнения кластеризации алгоритмом кратчайший незамкнутый путь.
         /// </summary>
         /// <param name="k">Количество кластеров.</param>
         public KNP(int k)
@@ -45,7 +45,7 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
         }
 
         /// <summary>
-        /// Создает объект для выполнения кластеризации алгоритмом минимального покрывающего дерева.
+        /// Создает объект для выполнения кластеризации алгоритмом кратчайший незамкнутый путь.
         /// </summary>
         public KNP()
         {

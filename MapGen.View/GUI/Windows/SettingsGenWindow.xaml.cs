@@ -47,7 +47,21 @@ namespace MapGen.View.GUI.Windows
                     };
 
                     RadioButtonKMeans.IsChecked = true;
+                    RadioButtonKNP.IsChecked = false;
                     _content = _settingKMeansGrid.Grid;
+                }
+
+                if (value.SettingCL is VSettingCLKNP)
+                {
+                    _isKMeans = false;
+                    _settingKNPGrid = new SettingKNPGrid
+                    {
+                        SettingCl = value.SettingCL as VSettingCLKNP
+                    };
+
+                    RadioButtonKMeans.IsChecked = false;
+                    RadioButtonKNP.IsChecked = true;
+                    _content = _settingKNPGrid.Grid;
                 }
             }
         }
@@ -82,6 +96,11 @@ namespace MapGen.View.GUI.Windows
         /// </summary>
         private ISettingKMeans _settingKMeansGrid = new SettingKMeansGrid();
 
+        /// <summary>
+        /// Grid с настройками кратчайший незамкнутый путь.
+        /// </summary>
+        private ISettingKNP _settingKNPGrid = new SettingKNPGrid();
+
         #endregion
 
         public SettingsGenWindow()
@@ -110,6 +129,11 @@ namespace MapGen.View.GUI.Windows
                 _isKMeans = true;
                 _content = _settingKMeansGrid.Grid;
             };
+            RadioButtonKNP.Checked += (sender, args) =>
+            {
+                _isKMeans = false;
+                _content = _settingKNPGrid.Grid;
+            };
         }
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
@@ -121,6 +145,10 @@ namespace MapGen.View.GUI.Windows
             if (_isKMeans)
             {
                 SettingGen.SettingCL = _settingKMeansGrid.SettingCl;
+            }
+            else
+            {
+                SettingGen.SettingCL = _settingKNPGrid.SettingCl;
             }
 
             Save?.Invoke(SettingGen);

@@ -42,6 +42,14 @@ namespace MapGen.Model.Generalization.Algoritm
                 {
                     _clusteringAlgoritm = new KMeansAlgoritm(kmeans);
                 }
+                else
+                {
+                    var knp = value.SettingCL as SettingCLKNP;
+                    if (knp != null)
+                    {
+                        _clusteringAlgoritm = new KNPAlgoritm(knp);
+                    }
+                }
             }
         }
 

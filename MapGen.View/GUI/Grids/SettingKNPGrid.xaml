@@ -1,0 +1,14 @@
+﻿<Grid x:Class="MapGen.View.GUI.Grids.SettingKNPGrid"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MapGen.View.GUI.Grids"
+      mc:Ignorable="d" 
+      Height="162" Width="330">
+
+    <Grid>
+        <Label Content="Максимальная степень параллелизма:" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" HorizontalAlignment="Left" Width="275" Height="25" VerticalAlignment="Top" Margin="0,1,0,0" />
+        <TextBox x:Name="TextBoxMaxDegreeOfParallelism" Text="-1" FontFamily="Segoe UI" FontSize="12" Height="21" ToolTip="Если выбрать максимальную степень параллелизма -1, то кластеризация будет брать данный параметр автоматически максимально, исходя из мощностей компьютера"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" Margin="280,5,0,0"/>
+    </Grid>
+</Grid>

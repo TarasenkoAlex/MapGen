@@ -41,6 +41,7 @@
             <GroupBox Header="Методы кластеризации" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Margin="10,72,0,0" VerticalAlignment="Top" Height="57" BorderBrush="#FFB7F1D5" HorizontalAlignment="Left" Width="344">
                 <Grid>
                     <RadioButton x:Name="RadioButtonKMeans" Content="K - средних" IsChecked="True" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Margin="10,10,0,0" HorizontalAlignment="Left" Width="150" Height="20" VerticalAlignment="Top"/>
+                    <RadioButton x:Name="RadioButtonKNP" Content="Кр. незамкнутый путь" IsChecked="False" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Margin="165,10,0,0" HorizontalAlignment="Left" Width="150" Height="20" VerticalAlignment="Top"/>
                 </Grid>
             </GroupBox>
             <GroupBox Header="Параметры кластеризации" Foreground="#FFCC00" FontFamily="Segoe UI" FontSize="12" Margin="10,134,0,0" VerticalAlignment="Top" Height="187" BorderBrush="#FFB7F1D5" HorizontalAlignment="Left" Width="344">

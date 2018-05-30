@@ -24,12 +24,12 @@ namespace MapGen.Model.Clustering.Algoritm
         private readonly SettingCLKNP _setting;
 
         /// <summary>
-        /// Алгоритм k - средних.
+        /// Алгоритм кратчайший незамкнутый путь.
         /// </summary>
         private KNP _algoritmKNP = new KNP();
 
         /// <summary>
-        /// Создает объект для выполнения кластеризации алгоритмом минимального покрывающего дерева.
+        /// Создает объект для выполнения кластеризации алгоритмом кратчайший незамкнутый путь.
         /// </summary>
         /// <param name="setting">Настройка кластеризации.</param>
         public KNPAlgoritm(SettingCLKNP setting)

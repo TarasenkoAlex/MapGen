@@ -168,6 +168,16 @@ namespace MapGen.Presenter
                 };
             }
 
+            var knp = setting.SettingCL as SettingCLKNP;
+            if (knp != null)
+            {
+                vsetting = new VSettingGen()
+                {
+                    SelectionRule = ConvertSelectionRulesToVSelectionRules(setting.SelectionRule),
+                    SettingCL = ConvertSettingClKNPToIVSettingCL(knp)
+                };
+            }
+
             return vsetting;
         }
 
@@ -188,6 +198,18 @@ namespace MapGen.Presenter
                     SelectionRule = ConvertVSelectionRulesToSelectionRules(vsetting.SelectionRule),
                     SettingCL = ConvertVSettingCLKMeansToSettingCLKMeans(kmeans)
                 };
+            }
+            else
+            {
+                var knp = vsetting.SettingCL as VSettingCLKNP;
+                if (knp != null)
+                {
+                    setting = new SettingGen()
+                    {
+                        SelectionRule = ConvertVSelectionRulesToSelectionRules(vsetting.SelectionRule),
+                        SettingCL = ConvertVSettingCLKNPToSettingCLKMeans(knp)
+                    };
+                }
             }
 
             return setting;
@@ -270,7 +292,21 @@ namespace MapGen.Presenter
         }
 
         /// <summary>
-        /// Конвертация VSettingCLKMeans в SettingCLMeans.
+        /// Конвертация VSettingCLKNP в SettingCLKNP.
+        /// </summary>
+        /// <param name="vsetting"></param>
+        /// <returns></returns>
+        private static SettingCLKNP ConvertVSettingCLKNPToSettingCLKMeans(VSettingCLKNP vsetting)
+        {
+            SettingCLKNP setting = new SettingCLKNP
+            {
+                MaxDegreeOfParallelism = vsetting.MaxDegreeOfParallelism,
+            };
+            return setting;
+        }
+
+        /// <summary>
+        /// Конвертация VSettingCLKMeans в SettingCLKMeans.
         /// </summary>
         /// <param name="vsetting"></param>
         /// <returns></returns>
@@ -283,6 +319,20 @@ namespace MapGen.Presenter
                 MaxItarations = vsetting.MaxItarations
             };
             return setting;
+        }
+
+        /// <summary>
+        /// Конвертация SettingCLKNP в IVSettingCL.
+        /// </summary>
+        /// <param name="setting"></param>
+        /// <returns></returns>
+        private static IVSettingCL ConvertSettingClKNPToIVSettingCL(SettingCLKNP setting)
+        {
+            IVSettingCL vsetting = new VSettingCLKNP()
+            {
+                MaxDegreeOfParallelism = setting.MaxDegreeOfParallelism,
+            };
+            return vsetting;
         }
 
         /// <summary>
