@@ -57,6 +57,10 @@
       <HintPath>..\packages\alglibnet2.0.0.0\lib\alglibnet2.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -65,9 +69,25 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="QuickGraph, Version=3.6.61114.0, Culture=neutral, PublicKeyToken=f3fb40175eec2af3, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuickGraph.3.6.61119.7\lib\net4\QuickGraph.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="QuickGraph.Data, Version=3.6.61114.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuickGraph.3.6.61119.7\lib\net4\QuickGraph.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="QuickGraph.Graphviz, Version=3.6.61114.0, Culture=neutral, PublicKeyToken=f3fb40175eec2af3, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuickGraph.3.6.61119.7\lib\net4\QuickGraph.Graphviz.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="QuickGraph.Serialization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuickGraph.3.6.61119.7\lib\net4\QuickGraph.Serialization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data.SQLite, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.108.0\lib\net45\System.Data.SQLite.dll</HintPath>
       <Private>True</Private>
@@ -95,10 +115,14 @@
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Clustering\Algoritm\ICLAlgoritm.cs" />
+    <Compile Include="Clustering\Algoritm\Kernel\AGNES.cs" />
     <Compile Include="Clustering\Algoritm\Kernel\Cluster.cs" />
     <Compile Include="Clustering\Algoritm\Kernel\KMeans.cs" />
+    <Compile Include="Clustering\Algoritm\Kernel\KNP.cs" />
+    <Compile Include="Clustering\Algoritm\KNPAlgoritm.cs" />
     <Compile Include="Clustering\Algoritm\KMeansAlgoritm.cs" />
     <Compile Include="Clustering\Setting\ISettingCL.cs" />
+    <Compile Include="Clustering\Setting\SettingCLKNP.cs" />
     <Compile Include="Clustering\Setting\SettingCLKMeans.cs" />
     <Compile Include="Database\DbWorker\DatabaseWorker.cs" />
     <Compile Include="Database\EDM\Map.cs">

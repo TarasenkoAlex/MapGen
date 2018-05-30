@@ -32,6 +32,24 @@ namespace MapGen.Model.General
         }
 
         /// <summary>
+        /// Нахождение расстояния между двумя точками на плоскости.
+        /// </summary>
+        /// <returns>расстояние между двумя точками</returns>
+        public static double DistanceBetweenTwoPoints2D(Point pt1, Point pt2)
+        {
+            return Math.Sqrt(Math.Pow(pt2.X - pt1.X, 2.0) + Math.Pow(pt2.Y - pt1.Y, 2.0));
+        }
+
+        /// <summary>
+        /// Нахождение расстояния между двумя точками на плоскости.
+        /// </summary>
+        /// <returns>расстояние между двумя точками</returns>
+        public static double DistanceBetweenTwoPoints2D(double[] pt1, double[] pt2)
+        {
+            return Math.Sqrt(Math.Pow(pt2[0] - pt1[0], 2.0) + Math.Pow(pt2[1] - pt1[1], 2.0));
+        }
+
+        /// <summary>
         /// Нахождение расстояния между двумя точками в трехмерии.
         /// </summary>
         /// <returns>расстояние между двумя точками</returns>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MapGen.Model.Database.EDM;
+using MapGen.Model.General;
 
 namespace MapGen.Model.Clustering.Algoritm.Kernel
 {
@@ -28,6 +29,33 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
             tmp[2] /= Count;
 
             MiddleCentroid = tmp;
+        }
+
+        public double DistanceTo(Cluster cluster, Point[] data)
+        {
+            double distance = -1;
+
+            foreach (var indexFirst in this)
+            {
+                foreach (var indexSecond in cluster)
+                {
+                    var dist = Methods.DistanceBetweenTwoPoints2D(data[indexFirst], data[indexSecond]);
+
+                    if (Math.Abs(distance - (-1)) < double.Epsilon)
+                    {
+                        distance = dist;
+                    }
+                    else
+                    {
+                        if (dist < distance)
+                        {
+                            distance = dist;
+                        }
+                    }
+                } 
+            }
+
+            return distance;
         }
     }
 }

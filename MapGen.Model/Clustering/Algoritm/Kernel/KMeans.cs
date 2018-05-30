@@ -32,7 +32,7 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
         /// <summary>
         /// Кластера.
         /// </summary>
-        public Cluster[] Clusters { get; private set; }
+        public Cluster[] Clusters { get; set; }
 
         /// <summary>
         /// Настройка выбора центроидов на первом шаге алгоритма.
@@ -40,7 +40,7 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
         public Seedings Seeding { get; set; } = Seedings.Random;
 
         /// <summary>
-        /// Создает объект для выполнения метода кластеризации.
+        /// Создает объект для выполнения метода кластеризации k - средних.
         /// </summary>
         /// <param name="k">Количество кластеров.</param>
         public KMeans(int k)
@@ -64,10 +64,10 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
         {
             outData = new Point[K];
 
-            // Инициализируем центроиды.
+            // 1. Инициализируем центроиды.
             FirstInitClusters(data);
 
-            // Запускаем кластеризацию пока н сработает критерий останова.
+            // 2. Запускаем кластеризацию пока не сработает критерий останова.
             object sync = new object();
             int movements = 1;
             while (movements > 0 && !(Itarations == MaxItarations && MaxItarations != -1))
@@ -109,7 +109,7 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
                 Itarations++;
             }
 
-            // Формируем выходной 
+            // 3. Формируем выходные даные.
             for (int i = 0; i < K; ++i)
             {
                 for (int j = 0; j < Clusters[i].Count; ++j)
@@ -178,12 +178,7 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
                 Clusters[index].Add(i);
             }
         }
-
-        private double FindDistance(double[] pt1, double[] pt2)
-        {
-            return Math.Sqrt(Math.Pow(pt2[0] - pt1[0], 2.0) + Math.Pow(pt2[1] - pt1[1], 2.0)/* + Math.Pow(pt2[2] - pt1[2], 2.0)*/);
-        }
-
+        
         private int FindNearestCluster(Point point)
         {
             int minIndex = 0;
@@ -194,11 +189,11 @@ namespace MapGen.Model.Clustering.Algoritm.Kernel
             {
                 if (i == 0)
                 {
-                    distance = FindDistance(pointDouble, Clusters[0].MiddleCentroid);
+                    distance = Methods.DistanceBetweenTwoPoints2D(pointDouble, Clusters[0].MiddleCentroid);
                 }
                 else
                 {
-                    var dist = FindDistance(pointDouble, Clusters[i].MiddleCentroid);
+                    var dist = Methods.DistanceBetweenTwoPoints2D(pointDouble, Clusters[i].MiddleCentroid);
                     if (dist < distance)
                     {
                         distance = dist;
