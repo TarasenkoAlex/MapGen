@@ -19,5 +19,15 @@ namespace MapGen.Model.Generalization.Setting
         /// Настройка кластеризации.
         /// </summary>
         public ISettingCL SettingCL { get; set; } = new SettingCLKMeans();
+
+        public override string ToString()
+        {
+            string selectionRule = $"Формулы для определения норм отбора: {SelectionRule.ToString()}";
+            string settingCL = SettingCL.ToString();
+
+            string result = $"{selectionRule}\n{settingCL}";
+
+            return result;
+        }
     }
 }

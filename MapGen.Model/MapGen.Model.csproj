@@ -176,6 +176,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourceModel.resx</DependentUpon>
     </Compile>
+    <Compile Include="Test\TestSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

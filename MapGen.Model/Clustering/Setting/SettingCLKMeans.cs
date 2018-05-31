@@ -24,5 +24,16 @@ namespace MapGen.Model.Clustering.Setting
         /// Настройка выбора центроидов на первом шаге алгоритма.
         /// </summary>
         public Seedings Seeding { get; set; } = Seedings.Random;
+
+        public override string ToString()
+        {
+            string maxItarations = $"Максимальное количество итераций: {MaxItarations}";
+            string maxDegreeOfParallelism = $"Максимальная степень параллелизма: {MaxDegreeOfParallelism}";
+            string seeding = $"Настройка выбора центроидов на первом шаге алгоритма: {Seeding.ToString()}";
+
+            string result = $"{maxItarations}\n{maxDegreeOfParallelism}\n{seeding}";
+
+            return result;
+        }
     }
 }
