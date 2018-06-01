@@ -130,6 +130,15 @@ namespace MapGen.Model
         /// </summary>
         public Model()
         {
+            if (!Directory.Exists(ResourceModel.DIR_RUNTIME))
+            {
+                Directory.CreateDirectory(ResourceModel.DIR_RUNTIME);
+            }
+            if (!Directory.Exists(ResourceModel.DIR_TESTS))
+            {
+                Directory.CreateDirectory(ResourceModel.DIR_TESTS);
+            }
+
             // private.
             _testSystem = new TestSystem();
             _testSystem.Init();
@@ -142,15 +151,6 @@ namespace MapGen.Model
 
             _settingGen = new SettingGen();
             _mgAlgoritm = new CLMGAlgoritm(new SettingGen());
-
-            if (!Directory.Exists(ResourceModel.DIR_RUNTIME))
-            {
-                Directory.CreateDirectory(ResourceModel.DIR_RUNTIME);
-            }
-            if (!Directory.Exists(ResourceModel.DIR_TESTS))
-            {
-                Directory.CreateDirectory(ResourceModel.DIR_TESTS);
-            }
         }
         
         #endregion
