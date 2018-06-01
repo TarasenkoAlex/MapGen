@@ -17,9 +17,10 @@ namespace MapGen.Model.Clustering.Setting
 
         public override string ToString()
         {
+            string algorithm = "Метод кластеризации: кр. незамкнутый путь";
             string maxDegreeOfParallelism = $"Максимальная степень параллелизма: {MaxDegreeOfParallelism}";
 
-            string result = $"{maxDegreeOfParallelism}";
+            string result = $"{algorithm}\n{maxDegreeOfParallelism}";
 
             return result;
         }

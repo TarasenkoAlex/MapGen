@@ -18,6 +18,7 @@ namespace MapGen.View.Source.Interfaces
         VSettingGen SettingGen { get; set; }
         bool IsRunningProgressBarMainWindow { set; }
         string NameProcess { set; }
+        long SourcScale { get; set; }
         #endregion
 
         #region Region general events.
@@ -25,12 +26,14 @@ namespace MapGen.View.Source.Interfaces
         event Action<int> ZoomEvent;
         event Action<IVSettingInterpol> SaveSettingsInterpol;
         event Action<VSettingGen> SaveSettingsGen;
+        event Action<List<VTestCase>> RunAllTests;
         #endregion
 
         #region Region events of MainWindow.
         event Action MenuItemListMapsClick;
         event Action MenuItemSettingsInterpolClick;
         event Action MenuItemSettingsGenClick;
+        event Action MenuItemTestSystemClick;
         #endregion
 
         #region Region methods of TableMapsWindow.
@@ -50,6 +53,11 @@ namespace MapGen.View.Source.Interfaces
         #region Region methods of windows settings.
         void ShowSettingsInterlopWindow();
         void ShowSettingsGenWindow();
+        #endregion
+
+        #region Region methods of windows test system.
+        void ShowTestSystemWindow(int maxIdTestCase);
+        void TestFinished(VTestResult vTestResult);
         #endregion
 
     }

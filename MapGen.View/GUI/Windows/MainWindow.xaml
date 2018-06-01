@@ -68,6 +68,11 @@
                         <Image Source="/MapGen.View;component/Resources/menuitem.settings.png" Stretch="Fill" Margin="0,0,-6,-5" />
                     </MenuItem.Icon>
                 </MenuItem>
+                <MenuItem x:Name="MenuItemTestSystem" Header="Тестовая система" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25">
+                    <MenuItem.Icon>
+                        <Image Source="/MapGen.View;component/Resources/menuitem.testsystem.png" Stretch="Fill" Margin="0,0,-6,-5" />
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="Вид" Foreground="#B7F1D5" FontFamily="Segoe UI" FontSize="12" Height="25">
                 <MenuItem x:Name="MenuItemToolBar" Header="Панель инструментов" Foreground="#FF1D1D1D" FontFamily="Segoe UI" FontSize="12" Height="25" IsChecked="True"/>
@@ -93,8 +98,11 @@
             <Button x:Name="ToolBarSettingGen" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Настройка генерализации" VerticalAlignment="Top" Margin="86,0,0,0" HorizontalAlignment="Left" Width="30">
                 <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/toolbar.settings.gen.png" Stretch="Fill" />
             </Button>
-            <GridSplitter HorizontalAlignment="Left" Margin="121,0,0,0" Width="1" Background="#2D2D30"/>
-            <Button x:Name="ToolBarAbout" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Справка" VerticalAlignment="Top" Margin="127,0,0,0" HorizontalAlignment="Left" Width="30">
+            <Button x:Name="ToolBarTestSystem" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Настройка генерализации" VerticalAlignment="Top" Margin="121,0,0,0" HorizontalAlignment="Left" Width="30">
+                <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/window.testsystem.png" Stretch="Fill" />
+            </Button>
+            <GridSplitter HorizontalAlignment="Left" Margin="156,0,0,0" Width="1" Background="#2D2D30"/>
+            <Button x:Name="ToolBarAbout" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Справка" VerticalAlignment="Top" Margin="162,0,0,0" HorizontalAlignment="Left" Width="30">
                 <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/toolbar.about.png" Stretch="Fill" />
             </Button>
         </Grid>

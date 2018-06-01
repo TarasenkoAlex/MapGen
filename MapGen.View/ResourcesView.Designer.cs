@@ -144,6 +144,16 @@ namespace MapGen.View {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap error {
+            get {
+                object obj = ResourceManager.GetObject("error", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap main_window_headicon {
             get {
                 object obj = ResourceManager.GetObject("main_window_headicon", resourceCulture);
@@ -212,6 +222,16 @@ namespace MapGen.View {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap menuitem_testsystem {
+            get {
+                object obj = ResourceManager.GetObject("menuitem_testsystem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 0,1.
         /// </summary>
         internal static string MoveSpeed {
@@ -236,6 +256,16 @@ namespace MapGen.View {
         internal static System.Drawing.Bitmap settings_interpol_window {
             get {
                 object obj = ResourceManager.GetObject("settings_interpol_window", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap success {
+            get {
+                object obj = ResourceManager.GetObject("success", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -436,6 +466,16 @@ namespace MapGen.View {
         internal static System.Drawing.Bitmap window_opengl_stripsedge_unlock {
             get {
                 object obj = ResourceManager.GetObject("window_opengl_stripsedge_unlock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap window_testsystem {
+            get {
+                object obj = ResourceManager.GetObject("window_testsystem", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

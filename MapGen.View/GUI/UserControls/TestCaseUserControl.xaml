@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="MapGen.View.GUI.UserControls.TestCaseUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MapGen.View.GUI.UserControls"
+             mc:Ignorable="d" Height="96" Width="746" >
+    <Grid >
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFFFFF" Offset="0.5"/>
+                <GradientStop Color="#F4F5F7"/>
+                <GradientStop Color="#F4F5F7" Offset="1"/>
+                <GradientStop Color="#FFFFFF" Offset="0.5"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Rectangle Stroke="#2D2D30"/>
+        <Label Content="Id теста:" BorderBrush="#3F3F46" FontFamily="Segoe UI" FontSize="12" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="56" FontWeight="Bold" Margin="10,10,0,0"/>
+        <Label x:Name="LabelId" Content="" BorderBrush="#3F3F46" FontFamily="Segoe UI" FontSize="12" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="35" Margin="71,10,0,0" FontWeight="Bold"/>
+        <Label Content="Исх. масштаб:" BorderBrush="#3F3F46" FontFamily="Segoe UI" FontSize="12" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="92" Margin="10,34,0,0" FontWeight="Bold"/>
+        <Label x:Name="LabelSourceScale" Content="" BorderBrush="#3F3F46" FontFamily="Segoe UI" FontSize="12" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="66" Margin="111,34,0,0" FontWeight="Bold"/>
+        <Label Content="Масштаб теста:" BorderBrush="#3F3F46" FontFamily="Segoe UI" FontSize="12" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="101" Margin="10,58,0,0" FontWeight="Bold"/>
+        <TextBox x:Name="TextBoxDistScale" Text="" FontFamily="Segoe UI" FontSize="12" Margin="111,62,0,0" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="66"/>
+        <Label Content="Метод кластеризации:" BorderBrush="#3F3F46" FontFamily="Segoe UI" FontSize="12" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" Margin="182,10,0,0" FontWeight="Bold"/>
+        <ComboBox x:Name="ComboBoxAlgoritm" SelectedIndex="0" FontFamily="Segoe UI" FontSize="12" Margin="325,12,0,0" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="145">
+            <ListBoxItem Content="K - средних" FontFamily="Segoe UI" FontSize="12" Height="20"/>
+            <ListBoxItem Content="Кр. незамкнутый путь" FontFamily="Segoe UI" FontSize="12" Height="20"/>
+        </ComboBox>
+        <Label Content="Максимальная степень параллелизма:" BorderBrush="#3F3F46" FontFamily="Segoe UI" FontSize="12" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="238" Margin="182,34,0,0" FontWeight="Bold"/>
+        <TextBox x:Name="TextBoxMaxDegreeOfParallelism" Text="-1" FontFamily="Segoe UI" FontSize="12" Margin="420,38,0,0" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50"/>
+        <Label x:Name="LabelMaxItarations" Content="Максимальное кол-во итераций:" BorderBrush="#3F3F46" FontFamily="Segoe UI" FontSize="12" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="221" Margin="182,58,0,0" FontWeight="Bold"/>
+        <TextBox x:Name="TextBoxMaxItarations" Text="-1" FontFamily="Segoe UI" FontSize="12" Margin="420,62,0,0" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50"/>
+        <Label Content="Время выполнения (мс):" BorderBrush="#3F3F46" FontFamily="Segoe UI" FontSize="12" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="155" Margin="496,18,0,0" FontWeight="Bold"/>
+        <Label x:Name="LabelTime" Content="" BorderBrush="#3F3F46" FontFamily="Segoe UI" FontSize="18" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="155" Margin="496,42,0,0" FontWeight="Bold"/>
+        <Viewbox x:Name="ProgressBar" Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="666,16,20,20" Visibility="Collapsed">
+            <local:TestCaseCircularProgressBar/>
+        </Viewbox>
+        <Image x:Name="ImageIsSuccess" Width="60" Height="60" Source="/MapGen.View;component/Resources/success.png" Margin="666,16,20,20" Stretch="None" Visibility="Collapsed"/>
+    </Grid>
+</UserControl>

@@ -13,6 +13,7 @@ using MapGen.Model.RegMatrix;
 using MapGen.View.Source.Classes;
 using MapGen.View.Source.Classes.SettingInterpol;
 using MapGen.Model.Generalization.Setting;
+using MapGen.Model.Test;
 using MapGen.View.Source.Classes.SettingClustering;
 using MapGen.View.Source.Classes.SettingGen;
 
@@ -25,8 +26,6 @@ namespace MapGen.Presenter
         /// <summary>
         /// Конвертировать ISettingInterpolKriging в IVSettingInterpol.
         /// </summary>
-        /// <param name="kriging"></param>
-        /// <returns></returns>
         public static IVSettingInterpol ToIVSettingInterpol(ISettingInterpolKriging kriging)
         {
             IVSettingInterpol interpol = new VSettingInterpolKriging
@@ -45,8 +44,6 @@ namespace MapGen.Presenter
         /// <summary>
         /// Конвертировать ISettingInterpolRbf в IVSettingInterpol.
         /// </summary>
-        /// <param name="rbf"></param>
-        /// <returns></returns>
         public static IVSettingInterpol ToIVSettingInterpol(ISettingInterpolRbf rbf)
         {
             IVSettingInterpol interpol = new VSettingInterpolRbf()
@@ -63,8 +60,6 @@ namespace MapGen.Presenter
         /// <summary>
         /// Конвертировать VSettingInterpolKriging в ISettingInterpol.
         /// </summary>
-        /// <param name="kriging"></param>
-        /// <returns></returns>
         public static ISettingInterpol ToISettingInterpol(VSettingInterpolKriging kriging)
         {
             ISettingInterpol interpol = new SettingInterpolKriging
@@ -83,8 +78,6 @@ namespace MapGen.Presenter
         /// <summary>
         /// Конвертировать VSettingInterpolRbf в ISettingInterpol.
         /// </summary>
-        /// <param name="rbf"></param>
-        /// <returns></returns>
         public static ISettingInterpol ToISettingInterpol(VSettingInterpolRbf rbf)
         {
             ISettingInterpol interpol = new SettingInterpolRbf
@@ -152,8 +145,6 @@ namespace MapGen.Presenter
         /// <summary>
         /// Конвертировать SettingGen в VSettingGen.
         /// </summary>
-        /// <param name="setting"></param>
-        /// <returns></returns>
         public static VSettingGen ToVSettingGen(SettingGen setting)
         {
             VSettingGen vsetting = null;
@@ -184,8 +175,6 @@ namespace MapGen.Presenter
         /// <summary>
         /// Конвертировать VSettingGen в SettingGen.
         /// </summary>
-        /// <param name="vsetting"></param>
-        /// <returns></returns>
         public static SettingGen ToSettingGen(VSettingGen vsetting)
         {
             SettingGen setting = null;
@@ -215,6 +204,33 @@ namespace MapGen.Presenter
             return setting;
         }
 
+        /// <summary>
+        /// Конвертировать TestResult в VTestResult.
+        /// </summary>
+        public static VTestResult ToVTestResult(TestResult testResult)
+        {
+            VTestResult vtestResult = new VTestResult
+            {
+                IdTestCase = testResult.IdTestCase,
+                Time = testResult.Time,
+                IsSuccess = testResult.IsSuccess
+            };
+            return vtestResult;
+        }
+
+        /// <summary>
+        /// Конвертировать VTestCase в TestCase.
+        /// </summary>
+        public static TestCase ToVTestResult(VTestCase vTestCase)
+        {
+            TestCase testResult = new TestCase
+            {
+                SettingGen = ToSettingGen(vTestCase.SettingGen),
+                Scale = vTestCase.Scale
+            };
+            return testResult;
+        }
+
         #endregion
 
         #region Private methods.
@@ -222,8 +238,6 @@ namespace MapGen.Presenter
         /// <summary>
         /// Конвертация вариаграммы из model в вариаграмму view.
         /// </summary>
-        /// <param name="variograms"></param>
-        /// <returns></returns>
         private static VVariograms ConvertVariogramsToVVariograms(Variograms variograms)
         {
             switch (variograms)
@@ -240,8 +254,6 @@ namespace MapGen.Presenter
         /// <summary>
         /// Конвертация вариаграммы из view в вариаграмму model.
         /// </summary>
-        /// <param name="variograms"></param>
-        /// <returns></returns>
         private static Variograms ConvertVVariogramsToVariograms(VVariograms variograms)
         {
             switch (variograms)
@@ -258,8 +270,6 @@ namespace MapGen.Presenter
         /// <summary>
         /// Конвертация радиальной базисной функции из model в радиальную базисную функцию view.
         /// </summary>
-        /// <param name="basicFunctions"></param>
-        /// <returns></returns>
         private static VBasicFunctions ConvertBasicFunctionsToVBasicFunctions(BasicFunctions basicFunctions)
         {
             switch (basicFunctions)
@@ -276,8 +286,6 @@ namespace MapGen.Presenter
         /// <summary>
         /// Конвертация радиальной базисной функции из view в радиальную базисную функцию model.
         /// </summary>
-        /// <param name="basicFunctions"></param>
-        /// <returns></returns>
         private static BasicFunctions ConvertVBasicFunctionsToBasicFunctions(VBasicFunctions basicFunctions)
         {
             switch (basicFunctions)
@@ -294,8 +302,6 @@ namespace MapGen.Presenter
         /// <summary>
         /// Конвертация VSettingCLKNP в SettingCLKNP.
         /// </summary>
-        /// <param name="vsetting"></param>
-        /// <returns></returns>
         private static SettingCLKNP ConvertVSettingCLKNPToSettingCLKMeans(VSettingCLKNP vsetting)
         {
             SettingCLKNP setting = new SettingCLKNP
@@ -308,8 +314,6 @@ namespace MapGen.Presenter
         /// <summary>
         /// Конвертация VSettingCLKMeans в SettingCLKMeans.
         /// </summary>
-        /// <param name="vsetting"></param>
-        /// <returns></returns>
         private static SettingCLKMeans ConvertVSettingCLKMeansToSettingCLKMeans(VSettingCLKMeans vsetting)
         {
             SettingCLKMeans setting = new SettingCLKMeans
@@ -324,8 +328,6 @@ namespace MapGen.Presenter
         /// <summary>
         /// Конвертация SettingCLKNP в IVSettingCL.
         /// </summary>
-        /// <param name="setting"></param>
-        /// <returns></returns>
         private static IVSettingCL ConvertSettingClKNPToIVSettingCL(SettingCLKNP setting)
         {
             IVSettingCL vsetting = new VSettingCLKNP()
@@ -338,8 +340,6 @@ namespace MapGen.Presenter
         /// <summary>
         /// Конвертация SettingCLKMeans в IVSettingCL.
         /// </summary>
-        /// <param name="setting"></param>
-        /// <returns></returns>
         private static IVSettingCL ConvertSettingClKMeansToIVSettingCL(SettingCLKMeans setting)
         {
             IVSettingCL vsetting = new VSettingCLKMeans
@@ -354,8 +354,6 @@ namespace MapGen.Presenter
         /// <summary>
         /// Конвертация Seedings в VSeedings.
         /// </summary>
-        /// <param name="seeding"></param>
-        /// <returns></returns>
         private static VSeedings ConvertSeedingsToVSeedings(Seedings seeding)
         {
             switch (seeding)
@@ -368,8 +366,6 @@ namespace MapGen.Presenter
         /// <summary>
         /// Конвертация VSeedings в Seedings.
         /// </summary>
-        /// <param name="vseeding"></param>
-        /// <returns></returns>
         private static Seedings ConvertVSeedingsToSeedings(VSeedings vseeding)
         {
             switch (vseeding)
@@ -382,8 +378,6 @@ namespace MapGen.Presenter
         /// <summary>
         /// Конвертация SelectionRules в VSelectionRules.
         /// </summary>
-        /// <param name="selectionRule"></param>
-        /// <returns></returns>
         private static VSelectionRules ConvertSelectionRulesToVSelectionRules(SelectionRules selectionRule)
         {
             switch (selectionRule)
@@ -396,8 +390,6 @@ namespace MapGen.Presenter
         /// <summary>
         /// Конвертация VSelectionRules в SelectionRules.
         /// </summary>
-        /// <param name="vselectionRule"></param>
-        /// <returns></returns>
         private static SelectionRules ConvertVSelectionRulesToSelectionRules(VSelectionRules vselectionRule)
         {
             switch (vselectionRule)

@@ -97,6 +97,33 @@ namespace MapGen.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to After.bmp.
+        /// </summary>
+        internal static string FILENAME_AFTER_BMP {
+            get {
+                return ResourceManager.GetString("FILENAME_AFTER_BMP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Before.bmp.
+        /// </summary>
+        internal static string FILENAME_BEFORE_BMP {
+            get {
+                return ResourceManager.GetString("FILENAME_BEFORE_BMP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TestInformation.txt.
+        /// </summary>
+        internal static string FILENAME_TESTINFO {
+            get {
+                return ResourceManager.GetString("FILENAME_TESTINFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] MapGen {

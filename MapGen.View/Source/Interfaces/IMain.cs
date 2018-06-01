@@ -18,6 +18,7 @@ namespace MapGen.View.Source.Interfaces
         event Action MenuItemListMapsClick;
         event Action MenuItemSettingsInterpolClick;
         event Action MenuItemSettingsGenClick;
+        event Action MenuItemTestSystemClick;
         event Action<int> ZoomEvent;
         #endregion
 

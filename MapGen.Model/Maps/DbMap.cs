@@ -150,6 +150,16 @@ namespace MapGen.Model.Maps
             bitmap.Save(pathBMP);
         }
 
+        public override string ToString()
+        {
+            string widthInfo = $"Ширина карты: {Width}";
+            string lengthInfo = $"Длина карты: {Length}";
+            string counPointsInfo = $"Количество точек: {CloudPoints.Length}";
+            string sourceScaleInfo = $"Исходный масштаб карты: 1:{Scale}";
+            string result = $"{widthInfo}\n{lengthInfo}\n{counPointsInfo}\n{sourceScaleInfo}";
+            return result;
+        }
+
         #endregion
 
         #region Region cosntructor.

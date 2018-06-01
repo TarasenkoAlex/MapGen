@@ -23,7 +23,7 @@ namespace MapGen.View.Source.Classes
         /// Загружена ли карта.
         /// </summary>
         private bool _isLoadMap = false;
-
+        
         #endregion
 
         #region Region properties.
@@ -76,6 +76,11 @@ namespace MapGen.View.Source.Classes
             set { _mainWindow.NameProcess = value; }
         }
 
+        /// <summary>
+        /// Масштаб исходной карты.
+        /// </summary>
+        public long SourcScale { get; set; } = 0;
+
         #endregion
 
         #region Region general events.
@@ -100,6 +105,11 @@ namespace MapGen.View.Source.Classes
         /// </summary>
         public event Action<VSettingGen> SaveSettingsGen;
 
+        /// <summary>
+        /// Событие запуска тестов.
+        /// </summary>
+        public event Action<List<VTestCase>> RunAllTests;
+
         #endregion
 
         #region Region events of MainWindow.
@@ -118,6 +128,11 @@ namespace MapGen.View.Source.Classes
         /// Событие выбора елемента View "Сервис.Настройки.Генерализация".
         /// </summary>
         public event Action MenuItemSettingsGenClick;
+
+        /// <summary>
+        /// Событие выбора елемента View "Сервис.Тестовая система".
+        /// </summary>
+        public event Action MenuItemTestSystemClick;
 
         #endregion
 
@@ -230,7 +245,13 @@ namespace MapGen.View.Source.Classes
             _mainWindow.MenuItemListMapsClick += MenuItemListMaps_Click;
             _mainWindow.MenuItemSettingsInterpolClick += MenuItemSettingsInterpol_Click;
             _mainWindow.MenuItemSettingsGenClick += MenuItemSettingsGen_Click;
+            _mainWindow.MenuItemTestSystemClick += MenuItemTestSystem_Click;
             _mainWindow.ZoomEvent += MainWindow_ZoomEvent;
+        }
+
+        private void MenuItemTestSystem_Click()
+        {
+            MenuItemTestSystemClick?.Invoke();
         }
 
         private void MenuItemSettingsInterpol_Click()
@@ -317,6 +338,43 @@ namespace MapGen.View.Source.Classes
             {
                 SaveSettingsGen?.Invoke(settings);
             }
+        }
+
+        #endregion
+
+        #region Region methods of windows test system.
+
+        private ITestSystem testSystemWindow;
+        /// <summary>
+        /// Отображение окна с тестовой системой.
+        /// </summary>
+        public void ShowTestSystemWindow(int maxIdTestCase)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                testSystemWindow = new TestSystemWindow(maxIdTestCase, SourcScale);
+                testSystemWindow.RunAllTests += ЕestSystemWindow_RunAllTests; ;
+                testSystemWindow.ShowTestSystem();
+            });
+        }
+
+        private void ЕestSystemWindow_RunAllTests(List<VTestCase> testCases)
+        {
+            if (_isLoadMap)
+            {
+                RunAllTests?.Invoke(testCases);
+            }
+        }
+
+        /// <summary>
+        /// Отобразить результат теста.
+        /// </summary>
+        public void TestFinished(VTestResult vTestResult)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                testSystemWindow.TestFinished(vTestResult);
+            });
         }
 
         #endregion

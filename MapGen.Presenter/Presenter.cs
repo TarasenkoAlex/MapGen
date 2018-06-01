@@ -5,6 +5,7 @@ using MapGen.Model.Interpolation.Setting;
 using MapGen.View.Source.Interfaces;
 using MapGen.View.Source.Classes;
 using MapGen.Model.RegMatrix;
+using MapGen.Model.Test;
 using MapGen.View.Source.Classes.SettingInterpol;
 using MapGen.View.Source.Classes.SettingGen;
 
@@ -74,6 +75,8 @@ namespace MapGen.Presenter
             _view.ZoomEvent += View_ZoomEvent;
             _view.SaveSettingsInterpol += View_SaveSettingsInterpol;
             _view.SaveSettingsGen += View_SaveSettingsGen;
+            _view.MenuItemTestSystemClick += View_MenuItemTestSystemClick;
+            _view.RunAllTests += View_RunAllTests;
         }
 
         /// <summary>
@@ -81,6 +84,20 @@ namespace MapGen.Presenter
         /// </summary>
         private void SubscribeEventsOfModel()
         {
+            _model.TestFinished += Model_TestFinished;
+        }
+
+        /// <summary>
+        /// Обработка события завершения теста.
+        /// </summary>
+        private void Model_TestFinished(TestResult testResult)
+        {
+            new Thread(() =>
+                {
+                    VTestResult vTestResult = Converter.ToVTestResult(testResult);
+                    _view.TestFinished(vTestResult);
+                })
+                { IsBackground = true }.Start();
         }
 
         /// <summary>
@@ -155,6 +172,9 @@ namespace MapGen.Presenter
                         _model.SourceSeaMap.Latitude, 
                         _model.SourceSeaMap.Longitude, 
                         _model.SourceSeaMap.Scale);
+
+                    // Выставляем исходный мастаб.
+                    _view.SourcScale = _model.SourceSeaMap.Scale;
 
                     // Отображаем карту.
                     _view.DrawSeaMapWithResetCamera();
@@ -356,6 +376,46 @@ namespace MapGen.Presenter
                 _view.IsRunningProgressBarMainWindow = false;
             })
             { IsBackground = true }.Start();
+        }
+
+        /// <summary>
+        /// Обработка события открытия окна с тестовой системой.
+        /// </summary>
+        private void View_MenuItemTestSystemClick()
+        {
+            new Thread(() =>
+                {
+                    // Запускаем прогресс-бар главного окна.
+                    _view.IsRunningProgressBarMainWindow = true;
+                    _view.NameProcess = "Загрузка тестовой системы";
+
+                    // Удаляем все предыдущее TestCase.
+                    _model.RemoveAllTestCase();
+
+                    // Получаем максимальный id теста.
+                    int maxIdTestCase = _model.GetMaxIdTestCase();
+
+                    // Отображаем окно с настройками генерализации.
+                    _view.ShowTestSystemWindow(maxIdTestCase);
+
+                    // Останавливаем прогресс-бар главного окна.
+                    _view.IsRunningProgressBarMainWindow = false;
+                })
+                { IsBackground = true }.Start();
+        }
+
+        /// <summary>
+        /// Обработка запуска всех тестов.
+        /// </summary>
+        private void View_RunAllTests(List<VTestCase> vTestCases)
+        {
+            new Thread(() =>
+                {
+                    List<TestCase> testCases = new List<TestCase>();
+                    vTestCases.ForEach(el => testCases.Add(Converter.ToVTestResult(el)));
+                    _model.RunTestSystem(testCases);
+                })
+                {IsBackground = true}.Start();
         }
 
         #endregion

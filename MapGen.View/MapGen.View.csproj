@@ -100,6 +100,15 @@
     <Compile Include="GUI\Grids\SettingKNPGrid.xaml.cs">
       <DependentUpon>SettingKNPGrid.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\UserControls\TestCaseCircularProgressBar.xaml.cs">
+      <DependentUpon>TestCaseCircularProgressBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\TestCaseUserControl.xaml.cs">
+      <DependentUpon>TestCaseUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Windows\TestSystemWindow.xaml.cs">
+      <DependentUpon>TestSystemWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\GlobalAssemblyInfo.cs" />
     <Compile Include="GUI\Grids\SettingKMeansGrid.xaml.cs">
       <DependentUpon>SettingKMeansGrid.xaml</DependentUpon>
@@ -139,6 +148,7 @@
     <Compile Include="Source\Classes\Viewer.cs" />
     <Compile Include="Source\Classes\SettingInterpol\VSettingInterpolKriging.cs" />
     <Compile Include="Source\Classes\SettingInterpol\VSettingInterpolRbf.cs" />
+    <Compile Include="Source\Classes\VTestSystem.cs" />
     <Compile Include="Source\Classes\ZoomStepper.cs" />
     <Compile Include="Source\Interfaces\IMain.cs" />
     <Compile Include="Source\Interfaces\ISettingGen.cs" />
@@ -147,6 +157,8 @@
     <Compile Include="Source\Interfaces\ISettingKMeans.cs" />
     <Compile Include="Source\Interfaces\ISettingRbf.cs" />
     <Compile Include="Source\Interfaces\ISettingKriging.cs" />
+    <Compile Include="Source\Interfaces\ITestCase.cs" />
+    <Compile Include="Source\Interfaces\ITestSystem.cs" />
     <Compile Include="Source\Interfaces\ITableMaps.cs" />
     <Compile Include="Source\Interfaces\IView.cs" />
   </ItemGroup>
@@ -212,6 +224,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI\UserControls\TestCaseCircularProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\UserControls\TestCaseUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\Windows\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -225,6 +245,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\Windows\TableMapsWidow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Windows\TestSystemWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -300,6 +324,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\menuitem.settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\menuitem.testsystem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\success.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\window.testsystem.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

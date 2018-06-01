@@ -114,6 +114,11 @@ namespace MapGen.View.GUI.Windows
         public event Action MenuItemSettingsGenClick;
 
         /// <summary>
+        /// Событие выбора элемента View "Сервис.Тестовая система".
+        /// </summary>
+        public event Action MenuItemTestSystemClick;
+
+        /// <summary>
         /// Событие изменения масштаба.
         /// </summary>
         public event Action<int> ZoomEvent;
@@ -251,12 +256,13 @@ namespace MapGen.View.GUI.Windows
             // Сервис.
             MenuItemSettingsInterpol.Click += MenuItemSettingsInterpol_Click;
             MenuItemSettingsGen.Click += MenuItemSettingsGen_Click;
+            MenuItemTestSystem.Click += MenuItemTestSystem_Click;
 
             // Вид.
             MenuItemToolBar.Click += MenuItemToolBar_Click;
             MenuItemStatusBar.Click += MenuItemStatusBar_Click;
         }
-
+        
         /// <summary>
         /// Подписка на события кнопок панели инструментов.
         /// </summary>
@@ -268,6 +274,7 @@ namespace MapGen.View.GUI.Windows
             // Сервис.
             ToolBarSettingInterpol.Click += (s, e) => { MenuItemSettingsInterpol_Click(null, null); };
             ToolBarSettingGen.Click += (s, e) => { MenuItemSettingsGen_Click(null, null); };
+            ToolBarTestSystem.Click += (s, e) => { MenuItemTestSystem_Click(null, null); };
 
             // Справка.
 
@@ -517,6 +524,16 @@ namespace MapGen.View.GUI.Windows
         private void MenuItemSettingsGen_Click(object sender, RoutedEventArgs e)
         {
             MenuItemSettingsGenClick?.Invoke();
+        }
+
+        /// <summary>
+        /// Событие выбора элемента View "Сервис.Тестовая система".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuItemTestSystem_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItemTestSystemClick?.Invoke();
         }
 
         #endregion

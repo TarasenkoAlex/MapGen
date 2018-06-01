@@ -27,11 +27,12 @@ namespace MapGen.Model.Clustering.Setting
 
         public override string ToString()
         {
+            string algorithm = "Метод кластеризации: K - средних";
             string maxItarations = $"Максимальное количество итераций: {MaxItarations}";
             string maxDegreeOfParallelism = $"Максимальная степень параллелизма: {MaxDegreeOfParallelism}";
             string seeding = $"Настройка выбора центроидов на первом шаге алгоритма: {Seeding.ToString()}";
 
-            string result = $"{maxItarations}\n{maxDegreeOfParallelism}\n{seeding}";
+            string result = $"{algorithm}\n{maxItarations}\n{maxDegreeOfParallelism}\n{seeding}";
 
             return result;
         }

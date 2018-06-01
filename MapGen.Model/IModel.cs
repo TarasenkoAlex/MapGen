@@ -8,6 +8,7 @@ using MapGen.Model.Generalization.Setting;
 using MapGen.Model.Interpolation.Setting;
 using MapGen.Model.Interpolation.Strategy;
 using MapGen.Model.Maps;
+using MapGen.Model.Test;
 
 namespace MapGen.Model
 {
@@ -19,6 +20,7 @@ namespace MapGen.Model
         DbMap CurrentSeaMap { get; }
         ISettingInterpol SettingInterpol { get; set; }
         SettingGen SettingGen { get; set; }
+        event Action<TestResult> TestFinished;
         #endregion
 
         #region Region methods. Database.
@@ -34,6 +36,14 @@ namespace MapGen.Model
 
         #region Region public methods. MapGen.
         bool ExecuteMapGen(long scale, out string message);
+        #endregion
+
+        #region Region public methods. TestSystem.
+        void AddTestCase(SettingGen settingGen, long scale);
+        void RemoveAllTestCase();
+        void RunTestSystem(List<TestCase> testCases);
+        int GetMaxIdTestCase();
+
         #endregion
     }
 }

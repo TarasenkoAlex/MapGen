@@ -16,6 +16,7 @@ using MapGen.Model.Interpolation.Setting;
 using MapGen.Model.Interpolation.Strategy;
 using MapGen.Model.Maps;
 using MapGen.Model.RegMatrix;
+using MapGen.Model.Test;
 
 namespace MapGen.Model
 {
@@ -52,6 +53,11 @@ namespace MapGen.Model
         /// Создет объект для выполнения алгоритма картографической генерализации методом кластеризации.
         /// </summary>
         private readonly IMGAlgoritm _mgAlgoritm;
+
+        /// <summary>
+        /// Тестовая система.
+        /// </summary>
+        private readonly TestSystem _testSystem;
 
         #endregion
 
@@ -109,7 +115,11 @@ namespace MapGen.Model
                 _mgAlgoritm.SettingGen = value;
             }
         }
-        
+
+        /// <summary>
+        /// Событие завершения теста.
+        /// </summary>
+        public event Action<TestResult> TestFinished;
 
         #endregion
 
@@ -121,6 +131,10 @@ namespace MapGen.Model
         public Model()
         {
             // private.
+            _testSystem = new TestSystem();
+            _testSystem.Init();
+            _testSystem.TestFinished += TestFinishedHandler;
+
             _databaseWorker = new DatabaseWorker();
 
             _settingInterpol = new SettingInterpolKriging();
@@ -138,7 +152,7 @@ namespace MapGen.Model
                 Directory.CreateDirectory(ResourceModel.DIR_TESTS);
             }
         }
-
+        
         #endregion
         
         #region Region public methods. Database.
@@ -323,9 +337,50 @@ namespace MapGen.Model
 
         #endregion
 
+        #region Region public methods. TestSystem.
+
+        /// <summary>
+        /// Добавить TestCase.
+        /// </summary>
+        public void AddTestCase(SettingGen settingGen, long scale)
+        {
+            _testSystem.AddTestCase(SourceSeaMap, settingGen, scale);
+        }
+
+        /// <summary>
+        /// Удалить все TestCase.
+        /// </summary>
+        public void RemoveAllTestCase()
+        {
+            _testSystem.RemoveAllTestCase();
+        }
+        
+        /// <summary>
+        /// Запуск тестовой системы.
+        /// </summary>
+        public void RunTestSystem(List<TestCase> testCases)
+        {
+            testCases.ForEach(el => _testSystem.AddTestCase(SourceSeaMap, el.SettingGen, el.Scale));
+            _testSystem.Run();
+        }
+
+        /// <summary>
+        /// Получить максимальный доступный id теста.
+        /// </summary>
+        /// <returns></returns>
+        public int GetMaxIdTestCase()
+        {
+            return _testSystem.GetMaxIdTestCase();
+        }
+
+        #endregion
+
         #region Region private methods.
 
-
+        private void TestFinishedHandler(TestResult testResult)
+        {
+            TestFinished?.Invoke(testResult);
+        }
 
         #endregion
     }

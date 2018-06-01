@@ -11,7 +11,7 @@ namespace MapGen.Model.Generalization.Setting
     public class SettingGen
     {
         /// <summary> 
-        /// Формулы для определения норм отбора. 
+        /// Формулы для определения норм отбора.
         /// </summary>
         public SelectionRules SelectionRule { get; set; } = SelectionRules.Topfer;
 
@@ -22,7 +22,7 @@ namespace MapGen.Model.Generalization.Setting
 
         public override string ToString()
         {
-            string selectionRule = $"Формулы для определения норм отбора: {SelectionRule.ToString()}";
+            string selectionRule = $"Формула для определения норм отбора: {SelectionRule.ToString()}";
             string settingCL = SettingCL.ToString();
 
             string result = $"{selectionRule}\n{settingCL}";
