@@ -63,6 +63,15 @@ namespace MapGen.Model.Database.Repository
         }
 
         /// <summary>
+        /// Добавление точки в репозиторий.
+        /// </summary>
+        /// <param name="point">Добавляемая точка.</param>
+        public void Create(List<Point> points)
+        {
+            _db.Points.AddRange(points);
+        }
+
+        /// <summary>
         /// Удаление точки из репозитория по его id.
         /// </summary>
         /// <param name="id">ID удаляемой точки.</param>

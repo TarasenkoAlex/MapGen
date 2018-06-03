@@ -221,7 +221,7 @@ namespace MapGen.Model.Database.DbWorker
         /// </summary>
         /// <param name="message">Сообщение с ошибкой.</param>
         /// <returns>Произошло ли успешное сохранение.</returns>
-        public bool Save(out string message)
+        public bool SaveAsync(out string message)
         {
             message = string.Empty;
             if (!IsConnected)
@@ -250,7 +250,7 @@ namespace MapGen.Model.Database.DbWorker
         /// <param name="map">Добавляемый элемент.</param>
         /// <param name="message">Сообщение с ошибкой.</param>
         /// <returns>Произошла ли успешная вставка.</returns>
-        public bool InsertMap(Map map, out string message)
+        public bool InsertMapAsync(Map map, out string message)
         {
             message = string.Empty;
             if (!IsConnected)
@@ -275,10 +275,41 @@ namespace MapGen.Model.Database.DbWorker
         /// <summary>
         /// Вставка записи в таблицу Maps.
         /// </summary>
+        /// <param name="map">Добавляемый элемент.</param>
+        /// <param name="message">Сообщение с ошибкой.</param>
+        /// <returns>Произошла ли успешная вставка.</returns>
+        public bool InsertMap(Map map, out string message)
+        {
+            message = string.Empty;
+            if (!IsConnected)
+            {
+                message = "Подключение к базе данных отсутствует.";
+                return false;
+            }
+
+            try
+            {
+                _unitOfWork.Maps.Create(map);
+                _unitOfWork.Save();
+            }
+            catch (Exception ex)
+            {
+                message = $"Ошибка во время записи данных в таблицу Maps. {Methods.CalcMessageException(ex)}";
+                return false;
+            }
+
+
+
+            return true;
+        }
+
+        /// <summary>
+        /// Вставка записи в таблицу Maps.
+        /// </summary>
         /// <param name="point">Добавляемый элемент.</param>
         /// <param name="message">Сообщение с ошибкой.</param>
         /// <returns>Произошла ли успешная вставка.</returns>
-        public bool InsertPoint(Point point, out string message)
+        public bool InsertPointAsync(Point point, out string message)
         {
             message = string.Empty;
             if (!IsConnected)
@@ -290,6 +321,35 @@ namespace MapGen.Model.Database.DbWorker
             try
             {
                 _queueInserts.Enqueue(new Tuple<TypeQueue, object>(TypeQueue.Insert, point));
+            }
+            catch (Exception ex)
+            {
+                message = $"Ошибка во время записи данных в таблицу Points. {Methods.CalcMessageException(ex)}";
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Вставка записи в таблицу Maps.
+        /// </summary>
+        /// <param name="points">Добавляемый элемент.</param>
+        /// <param name="message">Сообщение с ошибкой.</param>
+        /// <returns>Произошла ли успешная вставка.</returns>
+        public bool InsertPoint(List<Point> points, out string message)
+        {
+            message = string.Empty;
+            if (!IsConnected)
+            {
+                message = "Подключение к базе данных отсутствует.";
+                return false;
+            }
+
+            try
+            {
+                _unitOfWork.Points.Create(points);
+                _unitOfWork.Save();
             }
             catch (Exception ex)
             {
