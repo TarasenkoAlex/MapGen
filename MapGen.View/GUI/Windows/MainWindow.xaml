@@ -98,7 +98,7 @@
             <Button x:Name="ToolBarSettingGen" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Настройка генерализации" VerticalAlignment="Top" Margin="86,0,0,0" HorizontalAlignment="Left" Width="30">
                 <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/toolbar.settings.gen.png" Stretch="Fill" />
             </Button>
-            <Button x:Name="ToolBarTestSystem" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Настройка генерализации" VerticalAlignment="Top" Margin="121,0,0,0" HorizontalAlignment="Left" Width="30">
+            <Button x:Name="ToolBarTestSystem" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Тестовая система" VerticalAlignment="Top" Margin="121,0,0,0" HorizontalAlignment="Left" Width="30">
                 <Image Height="26" Width="26" Source="/MapGen.View;component/Resources/window.testsystem.png" Stretch="Fill" />
             </Button>
             <GridSplitter HorizontalAlignment="Left" Margin="156,0,0,0" Width="1" Background="#2D2D30"/>
